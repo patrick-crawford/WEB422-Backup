@@ -23,7 +23,7 @@ let users = [
 
         let findIndex1 = _.findIndex(users, function(user) { 
             return user.user == 'fred'; 
-        }); // => 1
+        }); // => 0
 
         // take: https://lodash.com/docs/4.17.4#take
 
