@@ -46,9 +46,8 @@ Remove a previously-stored piece of data.
 See: http://api.jquery.com/jQuery.removeData/
 
 ```js
-jQuery.removeData( div, "test" );
-
-jQuery.data( div, "test" ).first; // => TypeError: Cannot read property 'first' of undefined
+$("div").removeData("test");
+console.log( $( "div" ).data( "test" ).first ); // => TypeError: Cannot read property 'first' of undefined
 ```
 
 ### jQuery.contains()
