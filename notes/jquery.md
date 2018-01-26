@@ -34,15 +34,9 @@ Store arbitrary data associated with the specified element and/or return the val
 See: [http://api.jquery.com/jQuery.data/](http://api.jquery.com/jQuery.data/)
 
 ```js
-var div = $( "div" )[ 0 ];
-
-jQuery.data( div, "test", {
-  first: 16,
-  last: "pizza!"
-});
-
-jQuery.data( div, "test" ).first; // => 16
-jQuery.data( div, "test" ).last; // => "pizza!"
+$( "div" ).data( "test", { first: 16, last: "pizza!" } );
+    console.log( $( "div" ).data( "test" ).first );
+    console.log( $( "div" ).data( "test" ).last );
 ```
 
 ### jQuery.removeData()
