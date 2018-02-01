@@ -121,7 +121,7 @@ However, if we save both our **main.js** and **index.html** files at this point 
 
 This is because The **data-bind** attribute isn’t native to HTML, though it is perfectly OK (it’s strictly compliant in HTML 5). But since the browser doesn’t know what it means, you need to activate Knockout to make it take effect:
 
-At the bottom of your **server.js** file, we must add the code to actually apply the "data-bind" properties to our "model"
+At the bottom of your **main.js** file, we must add the code to actually apply the "data-bind" properties to our "model"
 
 ```js
 $(function(){
