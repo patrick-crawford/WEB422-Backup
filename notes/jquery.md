@@ -31,7 +31,7 @@ There are a number of [Utility functions / methods](http://api.jquery.com/catego
 
 Store arbitrary data associated with the specified element and/or return the value that was set.
 
-See: [http://api.jquery.com/jQuery.data/](http://api.jquery.com/jQuery.data/)
+See: [https://api.jquery.com/data/](https://api.jquery.com/data/)
 
 ```js
 $( "div" ).data( "test", { first: 16, last: "pizza!" } );
@@ -43,7 +43,7 @@ console.log( $( "div" ).data( "test" ).last );
 
 Remove a previously-stored piece of data.
 
-See: http://api.jquery.com/jQuery.removeData/
+See: [https://api.jquery.com/removedata/](https://api.jquery.com/removedata/)
 
 ```js
 $("div").removeData("test");
