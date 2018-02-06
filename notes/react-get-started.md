@@ -17,7 +17,7 @@ Get ready by visiting the [React home page](https://reactjs.org/), and read/scan
 
 ### Installation
 
-As described in the [Docs](https://reactjs.org/docs/installation.html) installation notes, React is installed by using the Node Package Manager. 
+As described in the [Docs](https://reactjs.org/docs/add-react-to-a-new-app.html) installation notes, React is installed by using the Node Package Manager. 
 
 For best results, use the React app generator. Install it on your computer:
 
@@ -71,7 +71,7 @@ At the top of this document we noted that the next part of our learning journey 
 
 Therefore, spend a few hours (before, during, and after class) to go through these topics:
 
-[Installation](https://reactjs.org/docs/installation.html)  
+[Installation](https://reactjs.org/docs/add-react-to-a-new-app.html)  
 [Hello World](https://reactjs.org/docs/hello-world.html)  
 [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)  
 [Rendering Elements](https://reactjs.org/docs/rendering-elements.html)  
