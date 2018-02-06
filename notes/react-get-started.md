@@ -9,9 +9,9 @@ The next part of our learning journey will depend almost completely on the excel
 
 Get ready by visiting the [React home page](https://reactjs.org/), and read/scan the content.
 
-On the top navigation menu, notice the [Docs](https://reactjs.org/docs/installation.html) (documentation) and [Tutorial](https://reactjs.org/tutorial/tutorial.html) items. 
+<!-- On the top navigation menu, notice the [Docs](https://reactjs.org/docs/installation.html) (documentation) and [Tutorial](https://reactjs.org/tutorial/tutorial.html) items. 
 
-![React web site](../media/react-web-site.png)
+![React web site](../media/react-web-site.png) -->
 
 <br>
 
