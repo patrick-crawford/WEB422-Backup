@@ -39,15 +39,16 @@ class Employee extends React.Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        // make a shallow copy of the current state
-        var updatedEmployee = _.extend({}, this.state.employee);
-        // only update the relavent field on the new object
-        updatedEmployee[name] = value;
+        this.setState(function(prevState){
+            // make a shallow copy of the current ("previous") state
+            var updatedEmployee = _.extend({}, prevState.employee);
+            // only update the relavent field on the new object
+            updatedEmployee[name] = value;
 
-        // update the state of the whole employee object to match the "updatedEmployee"
-        this.setState({
-            employee: updatedEmployee
+            return {employee: updatedEmployee}
         });
+
+       
     }
 
     handleSubmit(event){ 
