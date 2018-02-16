@@ -375,11 +375,10 @@ class ListNames extends Component {
     }
 
     handleListItemAdd(){
-        let newArray = this.state.names;
-        newArray.push("New Item");
-
-        this.setState({
-            names: newArray
+        this.setState(function(prevState){
+            let newArray = prevState.names;
+            newArray.push("New Item");
+            return {names: newArray};
         });
     }
     
