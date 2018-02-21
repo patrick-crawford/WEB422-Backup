@@ -71,14 +71,6 @@ The short-term goal for the week is to cover the content in the first five numbe
 
 <br>
 
-**Getting started**
-
-The "Setup..." info in step number 2 will enable you to get the code for the project. 
-
-Do that before continuing.
-
-<br>
-
 **Additional notes**
 
 The Angular documentation is excellent. At this point here, we cannot add value. So, follow along and learn.
