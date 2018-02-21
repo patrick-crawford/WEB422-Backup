@@ -76,7 +76,7 @@ Introduction to Angular:<br><br>
 <ul>
 <li>Introduction (Relevant History, Angular / AngularJS, Value Proposition)</li>
 <li>Getting started - Introduction to the Angular CLI & Architecture Overview</li>
-<li>Creating a simple app: Tour of Heroes Tutorial (First 4 Steps) </li>
+<li>Creating a simple app: Tour of Heroes Tutorial (First 5 Steps) </li>
 </ul>
 </td>
 </tr>
