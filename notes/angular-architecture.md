@@ -61,11 +61,13 @@ We are asking you to go through the TUTORIAL now. Doing this will enable you to 
 
 In a future class/session, we will circle back and connect some of this work to general architecture principles, so that we can build on this knowledge in the near future. 
 
-The short-term goal for the week is to cover the content in the first four numbered steps of the tutorial:
-1. Introduction
-2. The Hero Editor
-3. Master/Detail
-4. Multiple Components
+The short-term goal for the week is to cover the content in the first five numbered steps of the tutorial:
+
+1. [Introduction](https://angular.io/tutorial)
+2. [The Application Shell](https://angular.io/tutorial/toh-pt0)
+3. [The Hero Editor](https://angular.io/tutorial/toh-pt1)
+4. [Display a Heroes List](https://angular.io/tutorial/toh-pt2)
+5. [Master/Detail Components](https://angular.io/tutorial/toh-pt3)
 
 <br>
 
