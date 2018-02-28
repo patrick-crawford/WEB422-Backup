@@ -60,7 +60,7 @@ we need to modify our App.js file as well as our index.js file.
 * "import" the `<BrowserRouter>` Component using `import { BrowserRouter } from 'react-router-dom'` 
 * Update the ReactDom.render() method to wrap the `<App />` component in a `<BrowserRouter>` component:
 
-  ```javascript
+  ```jsx
   ReactDOM.render(
     <BrowserRouter>
         <App />
