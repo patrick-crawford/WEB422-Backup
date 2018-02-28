@@ -158,6 +158,6 @@ Sometimes, we wish to "redirect" the user to a different route and override the 
 
 React provides an intuitive way to achieve this, by providing a special [&lt;Redirect /&gt;](https://reacttraining.com/react-router/web/api/Redirect) component.  When rendered, it will redirect the client to the specified route using the following syntax (Note: the use of "push" will add the new route to the "history" stack):
 
-```
+```jsx
 <Redirect push to={"/newRoute"} />
 ```
