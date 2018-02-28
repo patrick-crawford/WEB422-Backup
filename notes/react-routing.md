@@ -23,7 +23,7 @@ npm install react-router-dom --save
 
 Now, let's say that we have 3 top-level components that represent 3 separate views, ie: **Home**, **Projects** and **Project**:
 
-```javascript
+```jsx
 class Home extends Component{
   render(){
     return <h1>Home Page</h1>
@@ -77,7 +77,7 @@ The above code specifies the type of router that we will be using in our `<App /
 * "import" the `<Route>` and `<Switch>` Components using `import { Route, Switch } from 'react-router-dom'`
 * Update the render() method of the "App" class to use the following JSX:
 
-  ```javascript
+  ```jsx
   <Switch>
         <Route exact path='/' render={() => (
                 <Home />
@@ -103,7 +103,7 @@ If we wish to pass a specific URL pattern to a given route, we can use the same 
 
 * Update the "Project" component's "render()" method to include a reference to an "id" property:
 
-  ```javascript
+  ```jsx
   render(){
     return <h1>Project {this.props.id} Page</h1>
   }
@@ -111,7 +111,7 @@ If we wish to pass a specific URL pattern to a given route, we can use the same 
 
 * Update the "Project" `<Route>` component:
 
-  ```javascript
+  ```jsx
   <Route path='/Project/:id' render={(props) => (
       <Project id={props.match.params.id} />
   )}/>
@@ -127,7 +127,7 @@ Using React Router, we can easily define a "Not Found" route - this is analagous
 
 To add a "Not Found" route, we simply need to add another route as a child to our `<Switch>` component defined in App.js.  This route will need to be **beneath** the other routes, so that it doesn't block any of our legitimate routes:
 
-```javascript
+```jsx
 <Route render={() => (
         <h1>Not Found</h1>
 )}/>
