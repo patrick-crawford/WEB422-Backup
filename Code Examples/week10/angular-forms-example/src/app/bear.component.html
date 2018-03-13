@@ -21,7 +21,7 @@
         <label for="description">Description</label>
         <textarea name="description" class="form-control" required [(ngModel)]='course.description' rows="5"></textarea>
       </div>
-      <button class="btn btn-primary">Add course</button>
+      <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Add course</button>
     </form>
     <hr>
     <p>All {{courses.length}} courses:</p>
