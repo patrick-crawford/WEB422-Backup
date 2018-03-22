@@ -43,7 +43,7 @@ The effect of this policy will be extended to all students. At the end of the co
 
 ### Assignments
 
-We have planned eight (6) assignments during the term.
+We have planned six (6) assignments during the term.
 
 Most assignments have a two-week lifetime. Most are independent of each other. If you do not submit an assignment by the due date, its grade is zero, and there is no opportunity to earn marks for a late submission.
 
