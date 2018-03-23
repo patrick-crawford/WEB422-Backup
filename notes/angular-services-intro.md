@@ -189,6 +189,12 @@ When trying to use **HttpClient** anywhere else in your application (ie: a servi
 import { HttpClient } from "@angular/common/http";
 ```
 
+and "inject" it using the constructor, ie:
+
+```js
+constructor(private http: HttpClient) { }
+```
+
 #### Asynchronous by nature
 
 As you have learned in the past, communication between systems over HTTP is asynchronous in nature. When we send a request, we just do not know when - or if - we will receive a response. 
