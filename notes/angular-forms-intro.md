@@ -263,7 +263,7 @@ Since both the "ownedTransportation" and "favouriteTransportation properties use
 #### input (type="checkbox")
 
 ```html
-<input type="checkbox" id="driverLicence" name="driverLicence" [(ngModel)]="driverData.driverLicence" />
+<input type="checkbox" id="driverLicence" name="driverLicence" /> <label for="driverLicence">Driver's Licence</label><br />
 ```
 
 Once again, nothing special here.  We simply bind to ngModel as before.
