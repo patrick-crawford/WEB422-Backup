@@ -50,7 +50,7 @@ It builds upon your experience with one-way read-only data binding (using [inter
 
 **Reactive Forms**
 
-This approach features more programming in the component class, where each element of the form is explicitly declared, configured, and managed. 
+[This approach](https://angular.io/guide/reactive-forms#reactive-forms) features more programming in the component class, where each element of the form is explicitly declared, configured, and managed. 
 
 We will not work with Reactive Forms in this course. After understanding and working with Template-driven Forms, you will be able to learn what you need to, if or when you need to, work with Reactive Forms. 
 
@@ -58,7 +58,7 @@ We will not work with Reactive Forms in this course. After understanding and wor
 
 **Dynamic Forms**
 
-This approach is interesting, in that metadata on the data model is used to generate forms dynamically. This replaces the cycle of editing in Template-driven Forms, where we go back-and-forth between the component's class code and its HTML template, when developing a form. 
+[This approach](https://angular.io/guide/dynamic-form#dynamic-forms) is interesting, in that metadata on the data model is used to generate forms dynamically. This replaces the cycle of editing in Template-driven Forms, where we go back-and-forth between the component's class code and its HTML template, when developing a form. 
 
 As above, we will not work with Dynamic Forms in this course. After understanding and working with Template-driven Forms, you will be able to learn what you need to, if or when you need to, work with Dynamic Forms. 
 
