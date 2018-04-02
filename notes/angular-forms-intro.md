@@ -44,7 +44,7 @@ In this course, we will work only with *Template-driven Forms*.
 
 This approach takes advantage of your knowledge of, and skills with an HTML template in a component. 
 
-It builds upon your experience with one-way read-only data binding (using `{{ curly braces syntax }}`), by going further with two-way data binding. 
+It builds upon your experience with one-way read-only data binding ( using {{ interpolation }} ), by going further with two-way data binding. 
 
 <br>
 
