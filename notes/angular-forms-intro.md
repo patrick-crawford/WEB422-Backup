@@ -122,8 +122,8 @@ It's likely that you have written hundreds of these forms. It's a very well-unde
 
 Before making any changes to the form, we must add the Angular forms-handling bits to the project. In the documentation's [Revise *app.module.ts*](https://angular.io/guide/forms#revise-appmodulets) section, we do a task with two related steps:
 
-1. Import the FormsModule
-2. Add FormsModule to the "imports" array
+1. Import the [FormsModule](https://angular.io/api/forms/FormsModule)
+2. Add **FormsModule** to the "imports" array
 
 <br>
 
