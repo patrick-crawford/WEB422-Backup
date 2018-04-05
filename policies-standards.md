@@ -47,7 +47,7 @@ We have planned six (6) assignments during the term.
 
 Most assignments have a two-week lifetime. Most are independent of each other. If you do not submit an assignment by the due date, its grade is zero, and there is no opportunity to earn marks for a late submission.
 
-Each assignment will be worth 10% of your final course grade. The total value of all assignments will be 45%. At the end of the course, the lowest assignment result will be discarded, leaving your best five results.
+Each assignment will be worth 10% of your final course grade. The total value of all assignments will be 50%. At the end of the course, the lowest assignment result will be discarded, leaving your best five results.
 
 #### Submission Policy
 
