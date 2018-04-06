@@ -176,7 +176,7 @@ Note: "Describing" test suites and "specs" helps us to group tests and easily id
 
 ### expect()
 
-The **expect** function is used to build "Expections", by providing a value, called the actual. It is chained with a Matcher function (ie: `toBe()`), which takes the expected value.
+The **expect** function is used to build "Expectations", by providing a value, called the actual. It is chained with a Matcher function (ie: `toBe()`), which takes the expected value.
 
 <br>
 
