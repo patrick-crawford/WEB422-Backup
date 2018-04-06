@@ -272,7 +272,7 @@ In the above code, we create an "Observable" by passing a function that contains
 
 Once the function is complete, it notifies any subscribers by invoking the "complete" method.
 
-If we wish to "subscribe" to our Observable method we an simply invoke the "subscribe" method on the Observable and pass in 1 (or more) callback functions to be executed on: **"next"**, **"error"** or **"complete"**.
+If we wish to "subscribe" to our Observable method we can simply invoke the "subscribe" method on the Observable and pass in 1 (or more) callback functions to be executed on: **"next"**, **"error"** or **"complete"**.
 
 If we run the code above as-is, we should see the output: 
 
