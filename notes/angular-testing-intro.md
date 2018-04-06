@@ -504,6 +504,39 @@ it('must have at least 1 paragraph', () => {
 });
 ```
 
+<br>
+
+### Test Two - Verifying the "TextContent" of an Element
+
+The above test works fine for "counting" elements, however what if we wish to test the element using a native DOM node method (ie, ["TextContent"](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)?
+
+Before we begin, let's update our paragraph element in our "component-one.component.html" file to include a "greeting" class, and update the "greeting" to Hello, ie:
+
+```html
+<p class="greeting">Hello</p>
+```
+
+For our test, we wish to use the "TextContent" method of our "greeting" paragraph element to determine whether or not the text is "Hello".  To accomplish this, you would assume that we can wire up our test as such:
+
+```js
+it('The "greeting" must read: "Hello"',()=>{
+  let greetingElement = fixture.debugElement.query(By.css('p.greeting'));
+  expect(greetingElement.textContent).toEqual('Hello');
+});
+```
+However, you will notice that the "textContent" property is highlighted red.  This is because our **greetingElement** isn't actually a DOM Node, but actually a **debugElement** (ie, fixture.debugElement).  To gain access to the native DOM node, we simply update the expectation to include the **nativeElement** property:
+
+```js
+it('The "greeting" must read: "Hello"',()=>{
+  let greetingElement = fixture.debugElement.query(By.css('p.greeting'));
+    //expect(greetingElement.textContent).toEqual('Hello'); // does not work, because we need a "native element"
+    expect(greetingElement.nativeElement.textContent).toEqual('Hello');
+});
+```
+If we try it now, we should see that everything works as expected and our test is a **success**.  To verify that this does indeed work, try modifying the content from "Hello" to something else, we will see that the test **fails**.
+
+<br>
+
 ### More Examples
 
 Angular testing is an extremely complex topic and beyond the scope of this lecture.  However, the good news is that (as we have seen) the documentation is very clear and well written.  For the full documentation on testing in Angular using the techniques mentioned above as a starting point, check out:
