@@ -464,7 +464,7 @@ A second (synchronous) beforeeach is used to actually **create** the component u
 
 <br>
 
-### Updating the Component & Writing a Simple Test
+### Updating the Component & Writing Simple Tests
 
 Finally - the testing environment is all configured.  Now we can begin to update "ComponentOne" and write a simple test.
 
