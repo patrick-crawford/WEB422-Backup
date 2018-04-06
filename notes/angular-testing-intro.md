@@ -508,7 +508,7 @@ it('must have at least 1 paragraph', () => {
 
 ### Test Two - Verifying the "TextContent" of an Element
 
-The above test works fine for "counting" elements, however what if we wish to test the element using a native DOM node method (ie, ["TextContent"](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)?
+The above test works fine for "counting" elements, however what if we wish to test the element using a native DOM node method (ie, ["TextContent"](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent))?
 
 Before we begin, let's update our paragraph element in our "component-one.component.html" file to include a "greeting" class, and update the "greeting" to Hello, ie:
 
