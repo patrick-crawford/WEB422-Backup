@@ -524,7 +524,7 @@ it('The "greeting" must read: "Hello"',()=>{
   expect(greetingElement.textContent).toEqual('Hello');
 });
 ```
-However, you will notice that the "textContent" property is highlighted red.  This is because our **greetingElement** isn't actually a DOM Node, but actually a **debugElement** (ie, fixture.debugElement).  To gain access to the native DOM node, we simply update the expectation to include the **nativeElement** property:
+However, you will notice that the "textContent" property is highlighted red.  This is because our **greetingElement** isn't  a DOM Node, but actually a **debugElement** (ie, fixture.debugElement).  To gain access to the native DOM node, we simply update the expectation to include the **nativeElement** property:
 
 ```js
 it('The "greeting" must read: "Hello"',()=>{
