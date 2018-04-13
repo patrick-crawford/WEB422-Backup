@@ -298,7 +298,7 @@ export class ChatService {
 }
 ```
 
-Here, you will notice that we import the required files for "socket.io-client" and "Subject" (Recall, "Subjects" are a special kind of Observable - for a quick explanation of the differences, see: [http://javascript.tutorialhorizon.com/2017/03/23/rxjs-subject-vs-observable/](http://javascript.tutorialhorizon.com/2017/03/23/rxjs-subject-vs-observable/) ). 
+Here, you will notice that we import the required files for "socket.io-client" and "Subject" ("Subjects" are a special kind of Observable - for a quick explanation of the differences, see: [http://javascript.tutorialhorizon.com/2017/03/23/rxjs-subject-vs-observable/](http://javascript.tutorialhorizon.com/2017/03/23/rxjs-subject-vs-observable/) ). 
 
 We declare a local "socket" as type "SocketIOClient.Socket" and connect to it within the constructor function using our familiar "io.connect" code.  We also make use of the socket.on() method, only instead of outputting the "msg" to the console (as we did in our test code), we will instead use our "getMessages" Subject to send the message out to the "Subscribers" of the service, using it's "next()" method.
 
