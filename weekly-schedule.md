@@ -82,9 +82,7 @@ We will have a test at the start of every **Lecture** starting on **Week 2** (we
 <td><ul><li>Assignment&nbsp;3</li></ul></td>
 </tr>
 
-<tr>
-<td colspan="4"><br /><strong>Study Break - No Classes</strong><br /><br /></td>
-</tr>
+
 
 <tr>
 <td>7</td>
@@ -93,7 +91,9 @@ We will have a test at the start of every **Lecture** starting on **Week 2** (we
 <td></td>
 </tr>
 
-
+<tr>
+<td colspan="4"><br /><strong>Study Break - No Classes</strong><br /><br /></td>
+</tr>
 
 <tr>
 <td>8</td>
