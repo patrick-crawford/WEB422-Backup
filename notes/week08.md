@@ -1,9 +1,9 @@
 ---
-title: WEB422 Week 9
+title: WEB422 Week 8
 layout: default
 ---
 
-## WEB422 Week 9 Notes
+## WEB422 Week 8 Notes
 
 The theme for this week is to work with Angular services. A service can provide functionality - service - to one or more components.  We will explore how we can create services using the Angular CLI as well as how to include them in our Components using DI (Dependency Injection).  
 
