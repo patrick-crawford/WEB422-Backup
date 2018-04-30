@@ -1,9 +1,9 @@
 ---
-title: WEB422 Week 10
+title: WEB422 Week 9
 layout: default
 ---
 
-## WEB422 Week 10 Notes
+## WEB422 Week 9 Notes
 
 The theme for this week is to work with Angular forms. An app that interacts with users must use forms efficiently and effectively.  To this end, we focus on:
 
