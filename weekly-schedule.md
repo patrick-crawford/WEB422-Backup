@@ -54,12 +54,6 @@ We will have a test at the start of every **Lecture** starting on **Week 2** (we
 <tr>
 <td>3</td>
   <td><ul><li>Introduction to MVVM using Knockout.js</li></ul></td>
-<ul>
-<li>Transition to current/modern front end dev env design patterns / methodologies (MVVM / MVW)</li>
-<li>The rise of “component architecture” as the front end dev paradigm</li>
-<li>Survey and study some current frameworks, ie: Knockout.js, React.js, etc.</li>
-</ul>
-</td>
 <td>
 <ul>
 <li>Test 1
