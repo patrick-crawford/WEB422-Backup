@@ -1,9 +1,9 @@
 ---
-title: WEB422 Week 8
+title: WEB422 Week 7
 layout: default
 ---
 
-## WEB422 Week 8 Notes
+## WEB422 Week 7 Notes
 
 Recall, the theme for the *remainder of the course* is to cover the Angular platform.  
 
