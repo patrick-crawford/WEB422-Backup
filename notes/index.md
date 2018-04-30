@@ -141,7 +141,7 @@ Introduction to Socket.io <br><br>
 </td>
 </tr>
   <tr>
-<td>12 - Notes (Coming Soon)</td>
+<td>12 - Notes (Coming Soon...)</td>
 <td>
 Introduction to Securing a Web API with JWT <br><br>
 <ul>
