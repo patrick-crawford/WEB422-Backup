@@ -1,4 +1,4 @@
-## Week 12 Example
+## Week 11 Example
 
 The code example this week contains Two folders "chatApp" and "chatServer":
 

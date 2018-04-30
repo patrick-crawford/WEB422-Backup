@@ -1,4 +1,4 @@
-## Week 10 Example
+## Week 9 Example
 
 The code example this week is a continuation of the "Animals" examples from weeks 7, 8 & 9. 
 
