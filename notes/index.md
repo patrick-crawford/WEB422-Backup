@@ -70,20 +70,14 @@ React Continued:<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/web422/notes/week06">6 - Notes</a></td>
+<td>6 - Notes (Coming Soon...)</td>
 <td>
 Introduction to Angular:<br><br>
 <ul>
 <li>Introduction (Relevant History, Angular / AngularJS, Value Proposition)</li>
 <li>Getting started - Introduction to the Angular CLI & Architecture Overview</li>
-<li>Creating a simple app: Tour of Heroes Tutorial (First 5 Steps) </li>
 </ul>
-</td>
-</tr>
-<tr>
-<td><a href="/web422/notes/week07">7 - Notes</a></td>
-<td>
-Introduction to Angular Components:<br><br>
+  Introduction to Angular Components:<br><br>
 <ul>
 <li>High Level Discussion of Angular Components</li>
 <li>Creating components manually / using the Angular CLI</li>
@@ -93,9 +87,9 @@ Introduction to Angular Components:<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/web422/notes/week08">8 - Notes</a></td>
+<td><a href="/web422/notes/week07">7 - Notes</a></td>
 <td>
-Introduction to Angular Routing / Componts cont'd:<br><br>
+Introduction to Angular Routing / Components cont'd:<br><br>
 <ul>
 <li>Additional details surrounding Components & Directives</li>
 <li>Introduction to Angular Routing Concepts</li>
@@ -103,8 +97,8 @@ Introduction to Angular Routing / Componts cont'd:<br><br>
 </ul>
 </td>
 </tr>
-  <tr>
-<td><a href="/web422/notes/week09">9 - Notes</a></td>
+<tr>
+<td><a href="/web422/notes/week08">8 - Notes</a></td>
 <td>
 Introduction to Angular Services / Routing cont'd:<br><br>
 <ul>
@@ -116,7 +110,7 @@ Introduction to Angular Services / Routing cont'd:<br><br>
 </td>
 </tr>
   <tr>
-<td><a href="/web422/notes/week10">10 - Notes</a></td>
+<td><a href="/web422/notes/week09">9 - Notes</a></td>
 <td>
 Introduction to Angular Forms<br><br>
 <ul>
@@ -126,8 +120,8 @@ Introduction to Angular Forms<br><br>
 </ul>
 </td>
 </tr>
-    <tr>
-<td><a href="/web422/notes/week11">11 - Notes</a></td>
+  <tr>
+<td><a href="/web422/notes/week10">10 - Notes</a></td>
 <td>
 Introduction to Angular Deployment &amp; Testing<br><br>
 <ul>
@@ -136,14 +130,26 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </ul>
 </td>
 </tr>
-  <tr>
-<td><a href="/web422/notes/week12">12 - Notes</a></td>
+    <tr>
+<td><a href="/web422/notes/week11">11 - Notes</a></td>
 <td>
 Introduction to Socket.io <br><br>
 <ul>
 <li>Creating a server using Node/Express for managing socket connections</li>
 <li>Developing an Angular application which contains a working "chat window"</li>
 </ul>
+</td>
+</tr>
+  <tr>
+<td>12 - Notes (Coming Soon)</td>
+<td>
+Introduction to Securing a Web API with JWT <br><br>
+<ul>
+  <li>Introduction to JWT</li>
+  <li>Review User Account Management / Security (MongoDB / bcrypt)</li>
+  <li>Securing routes in existing Teams API using Passport.js / Passport-jwt</li>
+  <li>Updating an Angular app to use JWT (Route Guards / Http Interceptors)</li>
+  </ul>
 </td>
 </tr>
 </tbody>
