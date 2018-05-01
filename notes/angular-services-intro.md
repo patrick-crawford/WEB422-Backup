@@ -360,7 +360,7 @@ The route for the component that displays the details for a specific product wou
 export const routes: Routes = [
   { path: '', redirectTo: 'product-list', pathMatch: 'full' },
   { path: 'product-list', component: ProductList },
-  { path: 'product-details/:id', component: ProductDetails }
+  { path: 'product-details/:id', component: ProductDetailsComponent }
 ];
 ```
 
@@ -388,7 +388,7 @@ goToProductDetails(id) {
 
 ##### Reading Route Parameters
 
-The ProductDetails component must read the parameter, then load the product based on the ID given in the parameter.
+The ProductDetailsComponent must read the parameter, then load the product based on the ID given in the parameter.
 The ActivatedRoute service provides a params Observable which we can subscribe to to get the route parameters (see Observables).
 
 ```js
@@ -396,14 +396,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'product-details',
+  selector: 'app-product-details',
   template: `
     <div>
       Showing product details for product: {{id}}
     </div>
   `,
 })
-export class LoanDetailsPage implements OnInit, OnDestroy {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
   id: number;
   private sub: any;
 
@@ -460,10 +460,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'product-list',
+  selector: 'app-product-list',
   template: `<!-- Show product list -->`
 })
-export default class ProductList {
+export default class ProductListComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router) {}
