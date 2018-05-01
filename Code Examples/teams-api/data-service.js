@@ -67,6 +67,7 @@ module.exports = function(mongoDBConnectionString){
                 Employee.find({_id: employeeId})
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
                 .populate("Position") // populate the "Position" field
+                .limit(1)
                 .exec()
                 .then((employees) => {
                     resolve(employees);
@@ -81,6 +82,7 @@ module.exports = function(mongoDBConnectionString){
 
                 Employee.find({_id: employeeId})
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
+                .limit(1)
                 .exec()
                 .then((employees) => {
                     resolve(employees);
@@ -144,6 +146,7 @@ module.exports = function(mongoDBConnectionString){
 
                 Position.find({_id: positionId})
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
+                .limit(1)
                 .exec()
                 .then((positions) => {
                     resolve(positions);
@@ -207,6 +210,7 @@ module.exports = function(mongoDBConnectionString){
 
                 Project.find({_id: projectId})
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
+                .limit(1)
                 .exec()
                 .then((projects) => {
                     resolve(projects);
@@ -318,6 +322,7 @@ module.exports = function(mongoDBConnectionString){
                     model: 'Position'
                     } 
                 })
+                .limit(1)
                 .exec()
                 .then((teams) => {
                     resolve(teams);
@@ -331,6 +336,7 @@ module.exports = function(mongoDBConnectionString){
             return new Promise(function(resolve,reject){
 
                 Team.find({_id: teamId})
+                .limit(1)
                 .exec()
                 .then((teams) => {
                     resolve(teams);
