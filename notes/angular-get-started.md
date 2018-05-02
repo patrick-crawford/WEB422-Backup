@@ -11,6 +11,7 @@ Get ready by visiting the [Angular home page](https://angular.io/), and read/sca
 * Landing page
 * FEATURES page
 * The DOCS landing page
+* GETTING STARTED / QuickStart
 
 <br>
 
