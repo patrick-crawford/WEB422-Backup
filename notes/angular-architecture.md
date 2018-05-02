@@ -9,8 +9,6 @@ This document is intended to be a light summary of the concepts and principles o
 
 The authoritative source is the excellent "Architecture" section in the FUNDAMENTALS section of the Angular documentation. This content *complements* the official docs - it does *not* replace it. Make sure that you open and go through both.
 
-![Angular FUNDAMENTALS > Architecture](../media/angular-docs-fundamentals.png)
-
 <br>
 
 ### The big picture
