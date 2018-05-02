@@ -7,7 +7,7 @@ layout: default
 
 This document is intended to be a light summary of the concepts and principles of the Angular architecture. 
 
-The authoritative source is the excellent "Architecture" section in the FUNDAMENTALS section of the Angular documentation. This content *complements* the official docs - it does *not* replace it. Make sure that you open and go through both.
+The authoritative source is the excellent ["Architecture"](https://angular.io/guide/architecture) section in the FUNDAMENTALS section of the Angular documentation. This content *complements* the [official docs ](https://angular.io/docs) - it does *not* replace it. Make sure that you open and go through both.
 
 <br>
 
