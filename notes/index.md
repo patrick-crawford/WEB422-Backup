@@ -70,7 +70,7 @@ React Continued:<br><br>
 </td>
 </tr>
 <tr>
-<td>6 - Notes (Coming Soon...)</td>
+<td><a href="/web422/notes/week06">6 - Notes</a></td>
 <td>
 Introduction to Angular:<br><br>
 <ul>
