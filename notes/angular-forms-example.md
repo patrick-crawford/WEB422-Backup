@@ -46,9 +46,9 @@ The key to this is the *appropriate location*. For example, some code examples h
 
 ### Getting started with forms
 
-Fetch the week 10 code example from [the course's GitHub code repository](https://github.com/sictweb/web422). 
+Fetch the week 9 code example from [the course's GitHub code repository](https://github.com/sictweb/web422). 
 
-Using Terminal, open the `week10` folder. Then, run the `npm update` command to refresh the modules. 
+Using Terminal, open the `week9` folder. Then, run the `npm update` command to refresh the modules. 
 
 Open the project for editing. Remember the quick-and-easy way to do this:  
 `code .` 
