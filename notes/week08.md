@@ -13,6 +13,6 @@ Lastly, we will expand upon our Angular Routing techniques and add the notion of
 
 * ["Angular Service Introduction"](angular-services-intro) - The core notes for this week.
 
-* ["Angular Service Example"](angular-services-example) - A supporting example, explaining the "Code Example" for Week 9 (available on GitHub under "Code Examples")
+* ["Angular Service Example"](angular-services-example) - A supporting example, explaining the "Code Example" for Week 8 (available on GitHub under "Code Examples")
 
 <br>
