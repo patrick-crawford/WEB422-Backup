@@ -262,4 +262,4 @@ The result will look something like the following:
 
 ### For the Complete Example
 
-See the "Week 7" Code Example in our WEB422 GitHub Repository:  [https://github.com/sictweb/web422/tree/master/Code%20Examples/week7/angular-components-example](https://github.com/sictweb/web422/tree/master/Code%20Examples/week7/angular-components-example)
+See the "Week 7" Code Example in our WEB422 GitHub Repository:  [https://github.com/sictweb/web422/tree/master/Code%20Examples/week6/angular-components-example](https://github.com/sictweb/web422/tree/master/Code%20Examples/week6/angular-components-example)
