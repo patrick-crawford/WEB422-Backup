@@ -23,9 +23,9 @@ From the Socket.io documentation:
 
 Creating any application that makes use of socket.io, requires two parts: a **client** and a **server**.  We will start with creating the **server** piece, before developing an Angular application that connects to it.
 
-1. Create a new folder called "Week12Example"
+1. Create a new folder called "Week11Example"
 2. Within that folder, create a "chatServer" folder
-3. Open the "Week12Example" folder in Visual Studio Code and right-click the "chatServer" folder - choose "open in Terminal".  You can expand this folder, as it will be our "working folder"
+3. Open the "Week11Example" folder in Visual Studio Code and right-click the "chatServer" folder - choose "open in Terminal".  You can expand this folder, as it will be our "working folder"
 4. We will create a Node/Express server using our usual steps, ie:
     - Create a file **server.js** but leave it empty for now.
     - Run the command "npm init" in the Integrated Terminal
@@ -195,7 +195,7 @@ Now that we know our server is capable of sending and receiving messages, we can
 
 **Before we begin**: Please note that we must keep the server running in the background, so that our Angular app will have something to connect to.  Therefore, we will *not* stop the server or close the Integrated Terminal window.
 
-With the server still running, click the "+" icon next to the dropdown in the top-right corner of the Integrated Terminal (this will open a 2nd Terminal).  With this new Terminal window open, ensure that your working directory is the "Week12Example" directory (ie, `pwd`).  While in this directory, create a new Angular application (with Routing) called "chatApp", ie: `ng n chatApp --routing`.  Once this is complete, change your working directory to "chatApp" and expand the "chatApp" folder.
+With the server still running, click the "+" icon next to the dropdown in the top-right corner of the Integrated Terminal (this will open a 2nd Terminal).  With this new Terminal window open, ensure that your working directory is the "Week11Example" directory (ie, `pwd`).  While in this directory, create a new Angular application (with Routing) called "chatApp", ie: `ng n chatApp --routing`.  Once this is complete, change your working directory to "chatApp" and expand the "chatApp" folder.
 
 <br >
 
