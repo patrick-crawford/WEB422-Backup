@@ -11,7 +11,7 @@ In this document, you will learn how to add and use a service in an app. It's th
 
 ### Getting started
 
-Fetch the week 8 code example from [the course's GitHub code repository](https://github.com/sictweb/web422). 
+Fetch the week 7 code example from [the course's GitHub code repository](https://github.com/sictweb/web422). 
 
 Using Terminal, open the `week8` folder. Then, run the `npm update` command to refresh the modules. 
 
