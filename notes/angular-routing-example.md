@@ -48,7 +48,7 @@ We do start out by doing the same task as last week - we edit the app component'
 ```html
 <app-header></app-header>
 <app-navmain></app-navmain>
-<div class="container"> <!-- All main "content" will be in a bootstrap "container" -->
+<div class="container"> <!-- All main "content" will be in a Bootstrap "container" -->
   <app-content></app-content>
 </div>
 <app-footer></app-footer>
@@ -70,6 +70,8 @@ Edit the content component's HTML template (`content.component.html`). We will h
 ```
 
 Notice the new `<router-outlet>` custom element. As you have learned, the HTML markup from the routed component will be added to the document object model (DOM) *just below* the `<router-outlet>` element. 
+
+Also notice that we're doing something different here, when compared to a "new" project, which locates the `<router-outlet>` element in the *app component*. Here, we are locating it in the *content component*. 
 
 <br>
 
@@ -133,9 +135,11 @@ Add menu items for each routed content component. Notice that we do NOT use an `
 
 <br>
 
-#### Quick Note: RouterLinkActive Directive
+#### Quick note: RouterLinkActive directive
 
-A great feature included in the @angular/router package is the ["RouterLinkActive" Directive](https://angular.io/api/router/RouterLinkActive).  Using this directive, we can specify a class to be added *only when the route is "active"*.  This is extremely useful when writing navigation components, as they typically require a class to be applied when the corresponding route is visible (ie: we wish to highlight the text "Horse" by setting the class "active" on the parent &lt;li&gt;&lt;/li&gt; element:
+A great feature included in the @angular/router package is the ["RouterLinkActive" Directive](https://angular.io/api/router/RouterLinkActive).  Using this directive, we can specify a class to be added *only when the route is "active"*.  
+
+This is extremely useful when writing navigation components, as they typically require a class to be applied when the corresponding route is visible (ie: we wish to highlight the text "Horse" by setting the class "active" on the parent `<li>` element:
 
 ```html
 <li class="nav-item" routerLinkActive="active">
