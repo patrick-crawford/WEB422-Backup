@@ -13,7 +13,7 @@ This page has details about the graded work in WEB422, for the current academic 
 
 We have planned six (6) tests during the term.
 
-The duration of each test will be less than 20 minutes. Each test will be worth 10% of your final course grade. All tests will be hand-written, and will happen sometime during the class timeslot. The total value of all tests will be 50%.
+The duration of each test will be 30-35 minutes. Each test will be worth 10% of your final course grade. All tests will be hand-written, and will happen sometime during the class timeslot. The total value of all tests will be 50%.
 
 If you miss a test, there is no opportunity to do a replacement test. However, absence due to illness or other reasons happen occasionally. As a result, you can miss up to one (1) test, without suffering the loss of grades.
 
@@ -75,3 +75,5 @@ We don't do due date extensions for assignments, for a number of reasons, includ
 * Finally a due date extension is disrespectful to other professors and their courses, because it takes your attention away from their coursework while you are working on late work.
 
 Therefore, no due date extensions.
+
+<br>
