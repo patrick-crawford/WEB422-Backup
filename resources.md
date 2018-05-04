@@ -22,15 +22,25 @@ Therefore, continue to use the content from the courses that you have successful
 
 ### Developer tools
 
-* [Visual Studio Code](https://code.visualstudio.com/)  
+* [Visual Studio Code](https://code.visualstudio.com/) (info, download)  
+   * [Getting started docs](https://code.visualstudio.com/docs)
 * Browsers (current versions of Chrome, Firefox, Safari, Opera, Edge)  
 * Browser dev tools  
 * HTTP inspector (e.g. [Postman](https://www.getpostman.com/))
 * [Plunker](https://plnkr.co/)
 * [jsFiddle](https://jsfiddle.net/)
 * [jsBin](https://jsbin.com)
+* Other dev tools will be introduced as we make progress through the weekly topics
 
 You will need one or more devices. A College or personal desktop or laptop, and (likely) a personal mobile device (e.g. a smartphone).
+
+<br>
+
+**Use macOS or Linux**
+
+We expect the student to do their work on a computer that runs macOS (Mac OS X), Linux, or another Unix-like operating system. 
+
+If a student has a Windows-only computer, then plan to install a multiboot or virtualization environment that enables the installation of Linux.
 
 <br>
 
@@ -61,13 +71,16 @@ There are several required online resources:
 
 **Others:**
 
+* [Bootstrap (version 3) CSS documentation](https://getbootstrap.com/docs/3.3/css/)  
+Links to other topics (e.g. Getting started, etc.) are on that page
+
 * Official [Angular Documentation](https://angular.io/docs)
 
 * Angular CLI videos on YouTube, by [Codevolution](https://www.youtube.com/channel/UC80PWRj_ZU8Zu0HSMNVwKWw/videos)
 
 * Node Reference
   * [Node.js Documentation](https://nodejs.org/en/docs/)
-  * (Suggested) [nodejitsu](https://docs.nodejitsu.com/)<br><br>
+  * (Suggested) [nodejitsu](https://docs.nodejitsu.com/)
 
 * [Express.js Documentation](https://expressjs.com/en/4x/api.html)
 
@@ -120,6 +133,46 @@ Was known as "Reactive Extensions"
 Make sure that you're in your project folder.  
 Then type this command: `code .`
 
-**IntelliSense**
+> Note: This assumes that your computer is configured to run this command. See the [Running VS Code on Mac](https://code.visualstudio.com/docs/setup/mac) to configure that feature. 
 
-Trigger IntelliSense: `Ctrl+Space` 
+<br>
+
+**Useful keyboard shortcuts**
+
+Trigger IntelliSense: `Control + Space` 
+
+Toggle comments on/off: `Command + /`
+
+Reformat document: `Shift + Option + Command + F`
+
+Show/hide left-side bar: `Command + B`
+
+Show/hide terminal: `Control + (back-tick)`
+
+Markdown preview pane toggle on/off: `Command + K, V`
+
+<br>
+
+**Useful Emmet snippets**
+
+For most elements, just begin typing the element name, without the angle bracket.
+
+`.` Declare class(es), e.g. `div.row`
+
+`#` Declare unique identifier, e.g. `table#customers`
+
+`>` Child, e.g. `div>p`
+
+`*` Multiplier, e.g. `ul>li*5`
+
+`( )` Grouping, often used with multiplier
+
+`+` Sibling, e.g. `div>h3+p*3`
+
+`{blahblah}` Text content for an element, e.g. `h3{Hello, world!}`
+
+`[` Custom attribute, e.g. `span[data-bind`
+
+See the [Emmet cheat sheet](https://docs.emmet.io/cheat-sheet/) for full coverage.
+
+<br>
