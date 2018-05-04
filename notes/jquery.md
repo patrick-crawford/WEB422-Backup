@@ -5,7 +5,7 @@ layout: default
 
 ## jQuery
 
-Last week we introduced jQuery and it's value proposition as a the "swiss army knife" of the DOM, giving us everything we need to create DHTML (ie: selecting elements, watching for / responding to events & updating the DOM).  We finished off the lecture by discussing how we can make AJAX requests using jQuery, ie:
+jQuery was introduced with its value proposition as a the "swiss army knife" of the DOM, giving us everything we need to create dynamic HTML (ie: selecting elements, watching for / responding to events & updating the DOM).  We finished off by discussing how we can make Ajax requests using jQuery, for example:
 
 ```js
 $.ajax({
@@ -21,17 +21,21 @@ $.ajax({
 });
 ```
 
-Today, we will be rounding out our discussion of jQuery by discussing some of jQuery's **Utility** methods, as well as how to handle **form data** (ie: reading / writing form information). Lastly, we will have a quick discussion on working with **Bootstrap 3 Components** using jQuery:
+Now, we will be rounding out our discussion of jQuery by discussing some of jQuery's **Utility** methods, as well as how to handle **form data** (ie: reading / writing form information). Lastly, we will have a quick discussion on working with **Bootstrap 3 Components** using jQuery:
+
+<br>
 
 ## Utility Methods
 
 There are a number of [Utility functions / methods](http://api.jquery.com/category/utilities/) included in jQuery (35\+). We will only discuss some of the ones that we're likely to see in this course. However, all of the methods available are useful and we encourage you to **Bookmark** the full list for future reference.  
 
+<br>
+
 ### jQuery.data()
 
 Store arbitrary data associated with the specified element and/or return the value that was set.
 
-See: [https://api.jquery.com/data/](https://api.jquery.com/data/)
+See: [http://api.jquery.com/jQuery.data/](http://api.jquery.com/jQuery.data/)
 
 ```js
 $( "div" ).data( "test", { first: 16, last: "pizza!" } );
@@ -39,16 +43,20 @@ console.log( $( "div" ).data( "test" ).first );
 console.log( $( "div" ).data( "test" ).last );
 ```
 
+<br>
+
 ### jQuery.removeData()
 
 Remove a previously-stored piece of data.
 
-See: [https://api.jquery.com/removedata/](https://api.jquery.com/removedata/)
+See: http://api.jquery.com/jQuery.removeData/
 
 ```js
 $("div").removeData("test");
 console.log( $( "div" ).data( "test" ).first ); // => TypeError: Cannot read property 'first' of undefined
 ```
+
+<br>
 
 ### jQuery.contains()
 
@@ -60,6 +68,8 @@ See:[http://api.jquery.com/jQuery.contains/](http://api.jquery.com/jQuery.contai
 $.contains( $("ul")[0], $("li")[0] ); // true
 $.contains( $("li")[0], $("ul")[0] ); // false
 ```
+
+<br>
 
 ### jQuery.grep()
 
@@ -73,6 +83,8 @@ let arr  = $.grep(employees, function( employee ) {
 }); // => 35 "employee" objects returned
 ```
 
+<br>
+
 ### jQuery.map()
 
 Translate all items in an array or object to new array of items.
@@ -85,6 +97,8 @@ $.map(employees, function( val, i ) {
 }); // => transform all last names to end in "!"
 ```
 
+<br>
+
 ### jQuery.parseHTML()
 
 Parses a string into an array of DOM nodes.
@@ -95,11 +109,15 @@ See: [http://api.jquery.com/jQuery.parseHTML/](http://api.jquery.com/jQuery.pars
 let htmlArr = $.parseHTML( "hello, <b>my name is</b> jQuery." ); // => 3 elements: 'hello, ', <b> and ' jQuery.'
 ```
 
+<br>
+
 ## Handling Form Data
 
 jQuery has a very nice interface for handling form values.  The following sections illustrate how we can **get**, **set** and correctly **clear** the values of **text** / **password**, **checkbox**, **radiobutton**, **textarea** and **select (single / multiple)** elements.  
 
-If you’re following along with the “Code Samples” the following functionality is located in the **“week2/jQuery”** folder
+If you’re following along with the “Code Samples” the following functionality is located in the **“week2/jQuery-more”** folder
+
+<br>
 
 ### text / password elements
 
@@ -126,6 +144,8 @@ $("#inputEmail").val("");
 $("#inputPassword").val("");
 ```
 
+<br>
+
 ### checkbox elements
 
 ```html
@@ -147,7 +167,9 @@ $("#checkbox1").prop("checked"); // true / false
 $("#checkbox1").prop("checked", false);
 ```
 
-### radiobutton elements
+<br>
+
+### radio (button) elements
 
 ```html
 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> Option One
@@ -169,6 +191,8 @@ $('input[name=optionsRadios]:checked').val(); // get the value of the checked "o
 $('input[name=optionsRadios]').prop("checked", false);
 ```
 
+<br>
+
 ### textarea elements
 
 ```html
@@ -189,6 +213,8 @@ $("#textarea1").val();
 ```js
 $("#textarea1").val("");
 ```
+
+<br>
 
 ### select (single / multiple) elements
 
@@ -228,9 +254,11 @@ $("#select1").val("");
 $("#select2").val("");
 ```
 
+<br>
+
 ## jQuery & Bootstrap
 
-The Bootstrap UI framework has become so instrumental in the construction of modern, responsive web apps; largety due to it's execellent design patterns, modern tooling and wealth of online resources and templates.  However, we have only really used it's CSS (and minimal) JavaScript capabilities.  In order to unlock Bootstrap's full potential as a UI/UX framework, is to familiarize ourselves with the interactive UI components and the jQuery API used to invoke/manipulate them.  
+The Bootstrap UI framework has become so instrumental in the construction of modern, responsive web apps; largely due to its execellent design patterns, modern tooling and wealth of online resources and templates.  However, we have only really used its CSS (and minimal) JavaScript capabilities.  In order to unlock Bootstrap's full potential as a UI/UX framework, is to familiarize ourselves with the interactive UI components and the jQuery API used to invoke/manipulate them.  
 
 As we have seen, we don't necessairly need to touch any JS code to make use of some of the interactive components.  The bootstrap framework uses jQuery in an unobtrusive way, by utalizing '**data-**' attributes, ie:
 
@@ -240,9 +268,11 @@ As we have seen, we don't necessairly need to touch any JS code to make use of s
 </button>
 ```
 
-However, what if we wish to launch a modal window at a different (unknown) time? For example; when an AJAX request completes?  This is where the [Programmatic API](https://getbootstrap.com/docs/3.3/javascript/#js-programmatic-api) comes in to play. It gives us more power and flexability to work with the compoments.
+However, what if we wish to launch a modal window at a different (unknown) time? For example; when an Ajax request completes?  This is where the [Programmatic API](https://getbootstrap.com/docs/3.3/javascript/#js-programmatic-api) comes in to play. It gives us more power and flexability to work with the compoments.
 
 Using the API we can interact with all of Bootstrap's JavaScript components programmatically (from JavaScript).  The following examples illustrate how we can use the API to take advantage of some of Bootstraps most useful components:
+
+<br>
 
 ### Modal Window
 
@@ -257,9 +287,11 @@ $('#myModal').modal({ // show the modal programmatically
 });
 ````
 
+<br>
+
 ### Button States
 
-Although, technically deprecated, the 'loading' and 'reset' button states are simple way to programmatically enable/disable a button while at the same time, changing it's text.  This is useful in cases where clicking the button makes an AJAX request and we wish to disable the button until the request has completed.
+Although, technically deprecated, the 'loading' and 'reset' button states are simple way to programmatically enable/disable a button while at the same time, changing its text.  This is useful in cases where clicking the button makes an Ajax request and we wish to disable the button until the request has completed.
 
 The 'toggle' state is not deprecated and provides a quick way to show a button as 'pressed'.   
 
@@ -270,6 +302,8 @@ $("#loadingDelay").button('loading'); // switch to a disabled 'loading' state
 $("#loadingDelay").button('reset'); // reset the button state
 $("#loadingDelay").button('toggle'); // toggles 'push' state
 ```
+
+<br>
 
 ### Popovers
 
@@ -287,6 +321,8 @@ $("#dynamicPopover").popover({
     trigger: 'click'
 });
 ```
+
+<br>
 
 ### Alerts
 
@@ -311,3 +347,5 @@ setTimeout(function(){
 ```
 
 See: [https://getbootstrap.com/docs/3.3/javascript/#alerts-methods](https://getbootstrap.com/docs/3.3/javascript/#alerts-methods)
+
+<br>
