@@ -9,9 +9,13 @@ SASS, or "Syntactically Awesome StyleSheets" is an extension of CSS that adds po
 
 There are two syntaxes available for Sass. The first, known as SCSS (Sassy CSS) is an **extension** of the syntax of CSS and the primary syntax that we will be **using in this course**.  The other syntax ("Sass"), provides a more concise way of writing CSS. It uses indentation rather than brackets to indicate nesting of selectors, and newlines rather than semicolons to separate properties.
 
+<br>
+
 ### Getting Started
 
 SASS functions as a CSS precompiler - it adds functionality to CSS in a layer *above* it and we must run a script / program to convert our SASS files into regular CSS.  Where do we find this program?  There are [plenty](http://sass-lang.com/install) to choose from, ranging from simple command line tools to elaborate GUI applications.  However, we will be sticking with something simple... 
+
+<br>
 
 ### Using NPM (of course)
 
@@ -72,11 +76,15 @@ Now, every time we make a change to **main.scss** our SASS will be compiled and 
 
 You will know when the process has completed successfully when you see the following green message in the terminal: **Rendering Complete, saving .css file...**.  Similairly, you will know that there was an error compiling your SCSS if you see a red JSON string in the terminal with the **"message"** property reading: **"Invalid CSS after ..."** (... somewhere close to your error within the SCSS file)
 
+<br>
+
 ## Working with SCSS
 
 With our script humming along in the background waiting for changes, why don't we try out some of the great features of our new (Awesome) CSS extension language?
 
 Please Note: If you're following along with the "Code Samples" the following functionality is located in the **"week2/SASS"** folder
+
+<br>
 
 ### Variables
 
@@ -100,6 +108,8 @@ body {
   color: #333;
 }
 ```
+
+<br>
 
 ### Nesting
 
@@ -145,9 +155,13 @@ nav a {
 }
 ```
 
+<br>
+
 ### Partials
 
 You can create partial Sass files that contain little snippets of CSS that you can include in other Sass files. This is a great way to modularize your CSS and help keep things easier to maintain. A partial is simply a Sass file named with a leading underscore. You might name it something like **\_partial.scss**. The underscore lets Sass know that the file is only a partial file and that it should not be generated into a CSS file. Sass partials are used with the **@import** directive.
+
+<br>
 
 ### Import
 
@@ -192,6 +206,8 @@ body {
 }
 ```
 
+<br>
+
 ## Mixins
 
 Some things in CSS are a bit tedious to write, especially with CSS3 and the many vendor prefixes that exist. A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values to make your mixin more flexible. A good use of a mixin is for vendor prefixes. Here's an example for **border-radius**.
@@ -217,6 +233,8 @@ To create a mixin you use the **@mixin** directive and give it a name. We've nam
   border-radius: 10px;
 }
 ```
+
+<br>
 
 ## Extend/Inheritance
 
@@ -267,6 +285,8 @@ What the above code does is allow you to take the CSS properties in **.message**
 }
 ```
 
+<br>
+
 ## Operators
 
 Doing math in your CSS is very helpful. Sass has a handful of standard math operators like **+**, **-**, **\***, **/**, and **%**. In our example we're going to do some simple math to calculate widths for an **aside** & **article**.
@@ -304,6 +324,8 @@ aside[role="complementary"] {
 }
 ```
 
-
+<br>
 
 Content Sourced from: [Offical SASS Documentation](http://sass-lang.com/)
+
+<br>
