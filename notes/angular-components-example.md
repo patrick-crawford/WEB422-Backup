@@ -32,7 +32,7 @@ For our example app, here's what we're trying to do. Each rectangle will (or cou
 At this point, we will assume that you are comfortable using the Angular CLI to create a new project. For example, this command will create a new "animals" project:
 
 ```
-ng new animals --routing -st
+ng new animals --routing -st -sg
 ```
   
 **Recall:** 
@@ -40,6 +40,8 @@ ng new animals --routing -st
 The `--routing` option adds the code we need for "routing", which is a topic that will be covered in detail next week. Adding routing now (when the new project is created) is a *best practice*. 
 
 The `-st` option does not add "testing" code. One of the effects is that it reduces the size of the project, and makes it slightly faster in the change detection and build processes.
+
+The `-sg` option does not create a Git repository for the project. That simplifies the configuration for us. 
 
 <br>
 
@@ -53,7 +55,7 @@ We can add this framework by adding this now-familiar code to the `<head>` eleme
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 ```
 
-Then, add the following code to the bottom of the `<body>` element:
+Optionally, add the following code to the bottom of the `<body>` element:
 
 ```html
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
@@ -66,18 +68,18 @@ Then, add the following code to the bottom of the `<body>` element:
 
 Create the app's basic structural components:
 * Header
-* Navigation (named "NavMain")
+* Navigation (named "NavBar")
 * Main content (named "Content")
-* Secondary content (named "Guide"; often known as a "Sidebar") 
+* Secondary content (named "SideBar") 
 * Footer
 
 This is done with Angular CLI commands:
 
 ```text
 ng g c header --flat
-ng g c navmain --flat
+ng g c navbar --flat
 ng g c content --flat
-ng g c guide --flat
+ng g c sidebar --flat
 ng g c footer --flat
 ```
 
@@ -93,11 +95,9 @@ In `header.component.html`, some getting-started text is generated. We always re
 
 ```html
 <div class="header">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <h3>Header</h3>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+        <h3>Animals are awesome!</h3>
     </div>
   </div>
 </div>
@@ -171,11 +171,13 @@ In the root of the project's file system, the `index.html` source code file can 
 
 The first substantial change will be in the app component's HTML template. (Why? Because that is used - bootstrapped - when the app loads for the first time.)
 
-Here, we will add elements for each of the structural components:
+Remove the existing content, except for the `<router-outlet></router-outlet>` element.
+
+Then, add elements for each of the structural components:
 
 ```html
 <app-header></app-header>
-<app-navmain></app-navmain>
+<app-navbar></app-navbar>
 <div class="container"> <!-- All main "content" will be in a bootstrap "container" -->
   <app-content></app-content>
 </div>
@@ -201,6 +203,8 @@ Notice the `app-content` selector. Let's look at the correspond "content" compon
 
 Notice how the "content" component contains all of our other "content" and "routing" components.  This corresponds directly with our initial design from the "Getting Started" section above!  Once our components are defined, it's simple to place them within other components to create complex views.   
 
+<br>
+
 #### Updating our Navigation component
 
 For now, the navigation component - i.e. the menu bar - will simply be used to jump to a specific "content" component (ie: "horse" using it's "id" element, ie
@@ -209,7 +213,7 @@ For now, the navigation component - i.e. the menu bar - will simply be used to j
 <a href="#horse">Horse</a>
 ```
 
-Open the HTML template for the "navmain" component. Create a standard, Bootstrap 3 Navbar:
+Open the HTML template for the "navbar" component. Create a standard, Bootstrap 3 Navbar:
 
 ```html
 <nav class="navbar navbar-default">
@@ -260,6 +264,12 @@ The result will look something like the following:
 
 <br>
 
-### For the Complete Example
+### Study the code example
 
 See the "Week 6" Code Example in our WEB422 GitHub Repository:  [https://github.com/sictweb/web422/tree/master/Code%20Examples/week6/angular-components-example](https://github.com/sictweb/web422/tree/master/Code%20Examples/week6/angular-components-example)
+
+It implements the instructions in this document.
+
+For best learning results, you should try to reproduce it.
+
+<br>
