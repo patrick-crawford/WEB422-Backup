@@ -13,13 +13,9 @@ In this document, you will learn how to add and use a service in an app. It's th
 
 Fetch the week 7 code example from [the course's GitHub code repository](https://github.com/sictweb/web422). 
 
-Using Terminal, open the `week8` folder. Then, run the `npm update` command to refresh the modules. 
+Using Terminal, open the `week7` folder. Then, run the `npm update` command (or `npm install`) to refresh the modules. 
 
-Open the project for editing. Remember the quick-and-easy way to do this:  
-`code .` 
-
-Then, you can build and run the app with this:  
-`ng serve --open`. 
+Open the project for editing. Then, you can build and run the app. 
 
 <br>
 
@@ -35,7 +31,9 @@ Later, we will edit the service to implement a more complex and typical scenario
 
 In the [Adding a service to an app](angular-services-intro#adding-a-service-to-an-app) section of the "intro" notes, you learned how to add a service to an app. We used the Angular CLI:
 
-`ng g s DataService --module=app --spec false`
+```
+ng g s DataManager --module app --spec false
+```
 
 It created a new source code file, and it updated the app module. 
 
@@ -110,7 +108,7 @@ Now we are ready to use the service's public properties and functions, anywhere 
 
 <br>
 
-**Best practice - use the ngOnInit when appropriate**
+#### Best practice - use the ngOnInit when appropriate
 
 To prepare for the scenario in which we will fetch data from an external web service, we will use a *best practice* pattern. We use this pattern whenever we need to data from a service when our component loads for the first time. 
 
@@ -224,9 +222,9 @@ Then, add the `HttpClientModule` to the `imports` collection in the `@NgModule` 
 
 This action will enable all services in the app to use HTTP (in other words, work with a web service). 
 
-**Important Note:**
+#### Important Note
 
-When trying to use **HttpClient** anywhere else in your application (ie: a service.ts file), be sure to *import* ***HttpClient*** (not HttpClientModule), ie:
+When trying to use **HttpClient** anywhere else in your application (e.g. a `whatever.service.ts` file), be sure to *import* ***HttpClient*** (and not HttpClientModule) into that service or component. For example:
 
 ```js
 import { HttpClient } from "@angular/common/http";
@@ -236,7 +234,9 @@ import { HttpClient } from "@angular/common/http";
 
 #### Visit and browse the web service
 
-A programmer with the moniker *typicode* has published a small-size web service. Open Postman (or JSON Formatter), and look at the results from these URLs:
+For the following, we could use our Teams API. Just to be different and flexible, we'll use a different web service. 
+
+A programmer with the moniker *typicode* has published a small-size web service named "JSONPlaceholder". Open Postman (or JSON Formatter), and look at the results from these URLs:
 
 `http://jsonplaceholder.typicode.com/posts`
 
@@ -250,7 +250,7 @@ All return an array/collection of data.
 
 #### Write view model classes to match the data
 
-Now, write view model classes to match the data returned by the first two URLs above. We must do this when working with web services. Here's how:
+Now, write *view model* classes to match the data returned by the first two URLs above. We must do this when working with web services. Here's how:
 
 Create a new source code file named `vm-typicode.ts`. Its name suggests that this source code file will define "view models for the typicode web service". In it, we will write several classes, which will allow us to work with "posts", "users", and "comments":
 
@@ -315,11 +315,13 @@ import { Observable } from "rxjs/Observable";
 import { Post, Comment, Geo, Address, Company, User } from "./vm-typicode";
 ```
 
-We need `Observable`, because that's the type of the web service result. 
+We need `Observable`, because that's the type of the web service get/fetch result. 
 
 We need the view model classes to enable the model binder to correctly create the arrays/collections. 
 
-**Suggestion - create a "url" string field**
+<br>
+
+#### Suggestion - create a "url" string field
 
 Suggestion - create a "url" string field, to hold the long and constant part of the URL to the web service. Doing this will make it easy to create a concatenated string that includes the segment we want. 
 
@@ -327,7 +329,9 @@ Suggestion - create a "url" string field, to hold the long and constant part of 
   private url = "http://jsonplaceholder.typicode.com";
 ```
 
-**Write a function for each web service resource**
+<br>
+
+#### Write a function for each web service resource
 
 Write a function for each web service resource that the app needs. Assume, as noted above, that we want posts, comments, and users.
 
