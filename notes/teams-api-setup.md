@@ -33,7 +33,7 @@ For this course we will be continuing to use MLab:
 
 5. On the next screen, name your database something that you will remember, i.e. "teams-api-db" and click the blue "Continue" button
 
-6. Finally click the "Submit Order" button - your "Total Price" should read "FREE"
+6. Click the "Submit Order" button - your "Total Price" should read "FREE"
 
 ### Adding a New User:
 
@@ -68,7 +68,7 @@ using the information identified above - it should look something like:
 
 `mongorestore -h ds123456.mlab.com:23456 -d teams-api-db -u user -p pass`
 
-8. You should see a number of lines output to the terminal indicating the progress, and then finally a "done" message
+Finally, you should see a number of lines output to the terminal indicating the progress, and then finally a "done" message
 
 ### UPDATING The mongoDBConnectionString:
 
@@ -84,7 +84,7 @@ using the information identified above - it should look something like:
 
 `mongodb://user:password@ds123456.mlab.com:23456/teams-api-db`
 
-Finally, save the changes and run the server from the integrated terminal using the familiar command "node server.js"
+Lastly, save the changes and run the server from the integrated terminal using the familiar command "node server.js"
 
 ## USING THE API
 
