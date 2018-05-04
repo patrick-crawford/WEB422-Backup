@@ -13,11 +13,9 @@ Get ready by visiting the [React home page](https://reactjs.org/), and read/scan
 
 ![React web site](../media/react-web-site.png) -->
 
-<br>
-
 ### Installation
 
-As described in the [Docs](https://reactjs.org/docs/add-react-to-a-new-app.html) installation notes, React is installed by using the Node Package Manager. 
+As described in the [Docs](https://reactjs.org/docs/installation.html) installation notes, React is installed by using the Node Package Manager. 
 
 For best results, use the React app generator. Install it on your computer:
 
@@ -71,7 +69,7 @@ At the top of this document we noted that the next part of our learning journey 
 
 Therefore, spend a few hours (before, during, and after class) to go through these topics:
 
-[Installation](https://reactjs.org/docs/add-react-to-a-new-app.html)  
+[Installation](https://reactjs.org/docs/installation.html)  
 [Hello World](https://reactjs.org/docs/hello-world.html)  
 [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)  
 [Rendering Elements](https://reactjs.org/docs/rendering-elements.html)  
@@ -129,3 +127,5 @@ Another is the official [React tutorial](https://reactjs.org/tutorial/tutorial.h
 The other is from the Visual Studio Code documentation set, titled [Using React in VS Code](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial). It's a reasonably short document. One of its very useful topics is the how-to for debugging React in VS Code. 
 
 Happy coding!
+
+<br>
