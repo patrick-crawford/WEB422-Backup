@@ -7,7 +7,7 @@ layout: default
 
 In this document, you will learn how to add the routing feature to an existing app. 
 
-It is not very likely that you will be working with an app that does not yet have routing. But if you do, use this information to help you get started.
+It is not very likely that you will be working with an app that does not yet have routing. But if you do, use this information to help you add routing.
 
 <br>
 
