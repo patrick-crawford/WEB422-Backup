@@ -16,9 +16,11 @@ To summarize, you learned some new ideas:
 
 As you would expect, Angular has the routing feature. If you understood the configuration and use of routing in React, then you will be comfortable with routing in Angular. 
 
+> One of the differences between Angular and React is that the Angular team wrote the router as part of the platform. If you want routing in a React app, then you must use a third-party router written by people who are not on the React team. 
+
 This document covers some of the *getting started* topics, with the support of the official Angular documentation. Then, in a separate document, we'll take an existing app that has multiple components, and implement routing for it.
 
-For the remainder of the course, we'll continue to work with routing, as we cover *services* and *interactive forms*. For example, next week, we will learn about routing with URL parameters. 
+For the remainder of the course, we'll continue to work with routing, as we cover *services* and *interactive forms*. For example, next week, we will learn about routing with URL parameters.
 
 <br>
 
@@ -47,9 +49,9 @@ In summary, some of this content is useful to skim. (Do that now.) However, your
 
 The best and easiest way to add the routing feature to an app is to make sure that it has it when the project is *created* for the first time. 
 
-As you learned last week, when learning more about components, we should (must) use the `--routing` option when creating a new project:
+As you have learned, when learning more about components, we should (must) use the `--routing` option when creating a new project:
 
-`ng new animals --routing -st`
+`ng new animals --routing -st -sg`
 
 The remainder of this document teaches you how to configure and use routing. 
 
@@ -59,7 +61,7 @@ The remainder of this document teaches you how to configure and use routing.
 
 We prefer to cover this topic in a [separate document](angular-routing-existing-app). 
 
-It is not very likely that you will be working with an app that does not yet have routing. As a result, we prefer to cover that topic separately, to minimize the distraction from our main message, here in this document.
+It is not very likely that you will be working with an app that does not yet have routing. As a result, we prefer to cover that topic separately, to minimize the distraction from our main message in this document.
 
 <br>
 
@@ -104,8 +106,8 @@ When fully configured, the `routes` constant will look something like this:
 
 ```javascript
 const routes: Routes = [
-  { path: 'horse', component: HorseComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'horse', component: HorseComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -198,7 +200,9 @@ Then, add a new *route* object to the `routes` array:
 
 ```javascript
 const routes: Routes = [
-  { path: 'horse', component: HorseComponent }
+  // other existing routes may already be here
+  { path: 'horse', component: HorseComponent },
+  // other existing routes (empty, not found, etc.)
 ];
 ```
 
@@ -222,7 +226,7 @@ Soon, you will learn about a couple of other members for some specialty route ob
 
 <br>
 
-#### Add a router-outlet element to the hosting component
+#### Locate and use the router-outlet element in the hosting component
 
 The view for a routed component must appear somewhere, right?
 
@@ -238,11 +242,13 @@ Then, in that component's HTML markup, in a suitable location, add a `<router-ou
 
 At runtime, the HTML markup from the routed component will be added to the document object model (DOM) *just below* the `<router-outlet>` element. 
 
+> Note: In a new app, we find the `<router-outlet>` element in the *app component*.
+
 <br>
 
-**More about router-outlet**
+##### More about router-outlet
 
-In the [RouterOutlet documentation](https://angular.io/api/router/RouterOutlet), we learn that it is a directive. 
+In the [RouterOutlet documentation](https://angular.io/api/router/RouterOutlet), we learn that it is a *directive*. 
 
 "It acts as a placeholder that Angular dynamically fills based on the current router state." 
 
@@ -275,7 +281,7 @@ For example, assume we are adding a link to the new "horse" component from above
 ```
 <br>
 
-**More about routerLink**
+##### More about routerLink
 
 In the [RouterLink documentation](https://angular.io/api/router/RouterLink), we learn that it is a directive. 
 
@@ -293,6 +299,8 @@ In the Description section, it briefly describes the usage of a static link, whi
 While the tasks above will enable you to successfully define, configure, and use routing, an app needs a few more "special" routing-related tasks. 
 
 First, an app should have a "home" view, that serves as its "start page" or "landing page". That's easy to create and code. The component's name can be "home" or "start" or something that makes sense for your app.
+
+> It is usually a good idea to configure the "home" route as the first object in the routes array.
 
 Next, an app must have a *route object* to handle an empty route. In other words, if the URL has no segments - just the host name - then the app must know what to show. Assuming that you have already created a "home" component (mentioned in the previous paragraph), add a new *route object* to the `routes` constant in the app routing module:
 
@@ -323,7 +331,7 @@ const routes: Routes = [
 
 <br>
 
-**Does the order of the *route objects* in the `routes` array matter?**
+##### Does the order of the *route objects* in the `routes` array matter?
 
 Does the order of the *route objects* in the `routes` array matter? 
 
@@ -347,8 +355,8 @@ The best plan is to ensure that a new project is created with the routing option
 
 <br>
 
-**Next actions**
+##### Next actions
 
-In our [getting started example](angular-routing-example) document, you will learn to enhance last week's components example, by adding the routing feature. 
+In our [getting started example](angular-routing-example) document, you will learn to enhance the "animals" components example, by adding the routing feature. 
 
 <br>
