@@ -7,7 +7,7 @@ layout: default
 
 In recent weeks, we have had a straight-line topic treatment of components, routing, and services. However, we have mostly avoided the topic of *user interaction*, but now it's time to do that, now that we have a good foundation on which to build. 
 
-As the [official Angular documentation states](https://angular.io/guide/forms), "Forms are the mainstay of business applications. You use forms to log in, submit a help request, place an order, book a flight, schedule a meeting, and perform countless other data-entry tasks."
+As the [official Angular documentation](https://angular.io/guide/forms) states, "Forms are the mainstay of business applications. You use forms to log in, submit a help request, place an order, book a flight, schedule a meeting, and perform countless other data-entry tasks."
 
 <br>
 
@@ -15,15 +15,15 @@ As the [official Angular documentation states](https://angular.io/guide/forms), 
 
 * First, we describe three ways to do forms in Angular. We will use only one, *Template-driven Forms*. 
 
-* Next, we refresh your memory by showing a simple and standard HTML Form. 
+* Next, we refresh our memory by showing a simple and standard HTML Form. 
 
-* Then, we show how to configure an Angular app to use HTML forms
+* Then, we show how to configure an Angular app to use HTML forms.
 
-* Once the Angular app configured properly, we will add some data in a Component to be used with the form
+* Once the Angular app configured properly, we will add some data in a Component to be used with the form.
 
-* We will then show the changes required to the form as well as each of the standard form elements to "bind" our data (using "two-way" binding) and "submit" the form
+* We will then show the changes required to the form as well as each of the standard form elements to "bind" our data (using "two-way" binding) and "submit" the form.
 
-* Finally, we will illustrate some of the special CSS classes Angular uses to automatically track the "state" of elements, ie: "untouched", "dirty", "invalid", etc
+* Finally, we will illustrate some of the special CSS classes Angular uses to automatically track the "state" of elements, ie: "untouched", "dirty", "invalid", etc.
 
 Once this is compete, a brief summary of the highlights and dev tips are presented. 
 
@@ -40,31 +40,31 @@ In this course, we will work only with *Template-driven Forms*.
 
 <br>
 
-**Template-driven Forms**
+#### Template-driven Forms
 
 This approach takes advantage of your knowledge of, and skills with an HTML template in a component. 
 
-It builds upon your experience with one-way read-only data binding (using [interpolation syntax](https://angular.io/guide/template-syntax#interpolation----)), by going further with two-way data binding. 
+It builds upon your experience with one-way read-only data binding (using `{%raw%}{{ curly braces syntax }}{%endraw%}`), by going further with two-way data binding. 
 
 <br>
 
-**Reactive Forms**
+#### Reactive Forms
 
-[This approach](https://angular.io/guide/reactive-forms#reactive-forms) features more programming in the component class, where each element of the form is explicitly declared, configured, and managed. 
+This approach features more programming in the component class, where each element of the form is explicitly declared, configured, and managed. 
 
-We will not work with Reactive Forms in this course. After understanding and working with Template-driven Forms, you will be able to learn what you need to, if or when you need to, work with Reactive Forms. 
-
-<br>
-
-**Dynamic Forms**
-
-[This approach](https://angular.io/guide/dynamic-form#dynamic-forms) is interesting, in that metadata on the data model is used to generate forms dynamically. This replaces the cycle of editing in Template-driven Forms, where we go back-and-forth between the component's class code and its HTML template, when developing a form. 
-
-As above, we will not work with Dynamic Forms in this course. After understanding and working with Template-driven Forms, you will be able to learn what you need to, if or when you need to, work with Dynamic Forms. 
+We will NOT work with Reactive Forms in this course. After understanding and working with Template-driven Forms, you will be able to learn what you need to, if or when you need to, work with Reactive Forms. 
 
 <br>
 
-#### "Standard" HTML Form, without Angular
+#### Dynamic Forms
+
+This approach is interesting, in that metadata on the data model is used to generate forms dynamically. This replaces the cycle of editing in Template-driven Forms, where we go back-and-forth between the component's class code and its HTML template, when developing a form. 
+
+As above, we will NOT work with Dynamic Forms in this course. After understanding and working with Template-driven Forms, you will be able to learn what you need to, if or when you need to, work with Dynamic Forms. 
+
+<br>
+
+### "Standard" HTML Form, without Angular
 
 Here's a simple form, in pure HTML5, which features all of the most typical form elements, ie:
 * input (type: "text", "checkbox", "radio")
@@ -75,16 +75,19 @@ It also uses the bootstrap "forms" classes, ie "form-group" and "form-control" f
 
 ```html
 <form action="/path/to/handler" method="post">
+
   <div class="form-group">
-    <label for="name">Full Name:</label>
+    <label class="control-label" for="name">Full Name:</label>
     <input type="text" class="form-control" id="name" name="name" required autofocus>
   </div>
+
   <div class="form-group">
-    <label for="description">Description</label>
-    <textarea class="form-control" id="description" name="description"></textarea>
+    <label class="control-label" for="description">Description:</label>
+    <textarea class="form-control" id="description" name="description" rows="6"></textarea>
   </div>
+
   <div class="form-group">
-    <label for="ownedTransportation">Owned Transportation</label>
+    <label class="control-label" for="ownedTransportation">Owned Transportation:</label>
     <select multiple class="form-control" id="ownedTransportation" name="ownedTransportation">
       <option value="C">Car</option>
       <option value="B">Bus</option>
@@ -92,8 +95,9 @@ It also uses the bootstrap "forms" classes, ie "form-group" and "form-control" f
       <option value="H">Helicopter</option>
     </select>
   </div>
+
   <div class="form-group">
-    <label for="favouriteTransportation">Favourite Transportation</label>
+    <label class="control-label" for="favouriteTransportation">Favourite Transportation:</label>
     <select class="form-control" id="favouriteTransportation" name="favouriteTransportation">
       <option value="C">Car</option>
       <option value="B">Bus</option>
@@ -101,20 +105,42 @@ It also uses the bootstrap "forms" classes, ie "form-group" and "form-control" f
       <option value="H">Helicopter</option>
     </select>
   </div>
-  <input type="checkbox" id="driverLicence" name="driverLicence" /> <label for="driverLicence">Driver's Licence</label><br />
+
   <div class="form-group">
-    <h5>Vehicle Usage:</h5>
-    <input type="radio" id="vehicleUseBusiness" name="vehicleUse" value="business" /> <label for="vehicleUseBusiness"> Business</label><br />
-    <input type="radio" id="vehicleUsePleasure" name="vehicleUse" value="pleasure" /> <label for="vehicleUsePleasure"> Pleasure</label><br />
-    <input type="radio" id="vehicleUseOther" name="vehicleUse" value="other" /> <label for="vehicleUseOther"> Other</label><br />
+    <label for="" class="control-label">Has a driver's license?</label>
+    <div class="checkbox">
+      <label class="control-label" for="driverLicence">
+        <input type="checkbox" id="driverLicence" name="driverLicence" />Yes, if checked</label>
+    </div>
   </div>
+
+  <div class="form-group">
+    <label for="" class="control-label">Vehicle usage:</label>
+    <div class="radio">
+      <label class="control-label" for="vehicleUseBusiness">
+        <input type="radio" id="vehicleUseBusiness" name="vehicleUse" value="business" /> Business
+      </label>
+    </div>
+    <div class="radio">
+      <label class="control-label" for="vehicleUsePleasure">
+        <input type="radio" id="vehicleUsePleasure" name="vehicleUse" value="pleasure" /> Pleasure
+      </label>
+    </div>
+    <div class="radio">
+      <label class="control-label" for="vehicleUseOther">
+        <input type="radio" id="vehicleUseOther" name="vehicleUse" value="other" /> Other
+      </label>
+    </div>
+  </div>
+
   <button class="btn btn-primary" type="submit">Create</button>
+
 </form>
 ```
 
 <br>
 
-It's likely that you have written hundreds of these forms. It's a very well-understood process. 
+It's possible that you have written hundreds of these forms. It's a very well-understood process. 
 
 <br>
 
@@ -220,7 +246,7 @@ For example, let's see how we can update each of our form element types in our "
 #### input (type="text")
 
 ```html
-<input type="text" class="form-control" id="name" name="name" [(ngModel)]="driverData.name" required autofocus>
+<input type="text" class="form-control" name="name" [(ngModel)]="driverData.name" required autofocus>
 ```
 
 Here, we simply add the "two-way" binding syntax with ngModel to reference the "driverData.name" property
@@ -230,7 +256,7 @@ Here, we simply add the "two-way" binding syntax with ngModel to reference the "
 #### textarea
 
 ```html
-<textarea class="form-control" id="description" name="description" [(ngModel)]="driverData.description"></textarea>
+<textarea class="form-control" name="description" [(ngModel)]="driverData.description"></textarea>
 ```
 
 This is very similar to the **input** example above, ie: we simply add the two-way data binding to ngModel with the correct Component property
@@ -240,30 +266,30 @@ This is very similar to the **input** example above, ie: we simply add the two-w
 #### select / select multiple
 {% raw %}
 ```html
-<select multiple class="form-control" id="ownedTransportation" name="ownedTransportation" [(ngModel)]="driverData.ownedTransportation">
+<select multiple class="form-control" name="ownedTransportation" [(ngModel)]="driverData.ownedTransportation">
         <option *ngFor = "let transportation of transportationList" [value]="transportation.value">{{transportation.text}}</option>
 </select>
 ```
 {% endraw %}
 {% raw %}
 ```html
-<select class="form-control" id="favouriteTransportation" name="favouriteTransportation" [(ngModel)]="driverData.favouriteTransportation">
+<select class="form-control" name="favouriteTransportation" [(ngModel)]="driverData.favouriteTransportation">
           <option *ngFor = "let transportation of transportationList" [value]="transportation.value">{{transportation.text}}</option>
 </select>
 ```
 {% endraw %}
 The above two examples are practically identical, the only differences are the property that they're binding to and the "multiple" attribute.
 
-You will notice that our ```[(ngMode)]``` binding syntax has not changed, however the method for displaying the &lt;option&gt; elements is different.  Here, we use the standard \*ngFor structural directive, but we have added a **value** property that we can / must set.  
+You will notice that our ```[(ngMode)]``` binding syntax has not changed, however the method for displaying the `<option>` elements is different.  Here, we use the standard `*ngFor` structural directive, but we have added a **value** property that we can / must set.  
 
-Since both the "ownedTransportation" and "favouriteTransportation properties use the "value" of the transportation, we must use "transportation.value" as the "value" for the &lt;option&gt; elements, if we want to correctly bind to the lists
+Since both the "ownedTransportation" and "favouriteTransportation properties use the "value" of the transportation, we must use "transportation.value" as the "value" for the `<option>` elements, if we want to correctly bind to the lists
 
 <br>
 
 #### input (type="checkbox")
 
 ```html
-<input type="checkbox" id="driverLicence" name="driverLicence" [(ngModel)]="driverData.driverLicence" /> <label for="driverLicence">Driver's Licence</label><br />
+<input type="checkbox" name="driverLicence" [(ngModel)]="driverData.driverLicence" />
 ```
 
 Once again, nothing special here.  We simply bind to ngModel as before.
@@ -273,9 +299,9 @@ Once again, nothing special here.  We simply bind to ngModel as before.
 #### input (type="radio")
 
 ```html
-<input type="radio" id="vehicleUseBusiness" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="business" /> <label for="vehicleUseBusiness"> Business</label><br />
-<input type="radio" id="vehicleUsePleasure" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="pleasure" /> <label for="vehicleUsePleasure"> Pleasure</label><br />
-<input type="radio" id="vehicleUseOther" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="other" /> <label for="vehicleUseOther"> Other</label><br />
+<input type="radio" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="business" /> <label for="vehicleUseBusiness"> Business</label><br />
+<input type="radio" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="pleasure" /> <label for="vehicleUsePleasure"> Pleasure</label><br />
+<input type="radio" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="other" /> <label for="vehicleUseOther"> Other</label><br />
 ```
 
 Here, we must place identical ngModel binding on each "radio" button with the same "name" attribute.
@@ -294,13 +320,13 @@ Finally, all of our data for "Richard Hammond" should be correctly rendered in t
 {% endraw %}
 This will show you how your driverData "data model" is being updated with every change you make in the form!
 
-If we want to handle a form submission event, we simply add the event handler "ngSubmit" to our &lt;form&gt; element:
+If we want to handle a form submission event, we simply add the event handler "ngSubmit" to our `<form>` element:
 
 ```html
 <form (ngSubmit)='onSubmit()'>
 ```
 
-The above will execute the method "onSubmit" (to be added) when the form is submitted.  If we wish to pass a reference to the specific form to the onSubmit() event handler, we can use 'ngForm' to assign a reference variable (see: [Template Reference Variables](https://angular.io/guide/template-syntax#ref-vars)) to the form itself, and pass it to onSubmit(), ie:
+The above will execute the method "onSubmit" (which we will have to write) when the form is submitted.  If we wish to pass a reference to the specific form to the onSubmit() event handler, we can use 'ngForm' to assign a reference variable (see: [Template Reference Variables](https://angular.io/guide/template-syntax#ref-vars)) to the form itself, and pass it to onSubmit(), ie:
 
 ```html
 <form #f='ngForm' (ngSubmit)='onSubmit(f)'>
@@ -312,12 +338,12 @@ If we decide to do this, our onSubmit handler will take the form:
 onSubmit(f: NgForm): void { }
 ```
 
-Notice that "f" is type "NgForm"?  For this to function properly, we must:
+Notice that "f" is type "NgForm"? For this to function properly, we must:
 
 ```js
 import { NgForm } from "@angular/forms";
 ```
-By passing a reference to the form into onSubmit, we gain access to the aggregate value (```f.value```) and validity status (```f.valid```) of the form, as well as user interaction properties like dirty (```f.dirty```) and touched (```f.touched```).
+By passing a reference to the form into onSubmit, we gain access to the aggregate value (`f.value`) and validity status (`f.valid`) of the form, as well as user interaction properties like dirty (`f.dirty`) and touched (`f.touched`).
 
 <br>
 
@@ -369,7 +395,7 @@ In addition to leveraging the native HTML5 validation attributes, we can also cr
 Basically, if we wish to display a message for a specific type of error, we make a template reference to the element we want using "ngModel" (same procedure as above), ie:
 
 ```html
-<input type="text" class="form-control" id="name" name="name" [(ngModel)]="driverData.name" required autofocus #name="ngModel">
+<input type="text" class="form-control" name="name" [(ngModel)]="driverData.name" required autofocus #name="ngModel">
 ```
 we can then access it's "error" property, ie: **name.error**.  For a quick glimpse at what error properties get applied, we can place the following diagnostic output somewhere near the "name" control:
 {% raw %}
@@ -397,7 +423,7 @@ appear in our diagnostic code.  We can then use this to conditionally show a war
 
 While there are *many* new ideas, some new syntax, plenty of Angular parts (directives, classes, etc.), working with forms at a beginner level is not hard. Use the guidance at the top of this document to quickly build success. 
 
-Here are the important "big ideas".
+Here are the important "big ideas":
 
 Enable forms for the entire app by adding an import in the app module. It's a one-time task per app. Doing this enables Angular to do its magic whenever a form is declared and used. 
 
