@@ -84,7 +84,7 @@ using the information identified above - it should look something like:
 
 `mongodb://user:password@ds123456.mlab.com:23456/teams-api-db`
 
-2. Save the changes and run the server from the integrated terminal using the familiar command "node server.js"
+Finally, save the changes and run the server from the integrated terminal using the familiar command "node server.js"
 
 ## USING THE API
 
