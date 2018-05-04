@@ -183,7 +183,7 @@ To make HttpClient available everywhere in the app:
 
 <br>
 
-##### Important Note
+#### Important Note
 
 When trying to use **HttpClient** anywhere else in your application (e.g. a `whatever.service.ts` file), be sure to *import* ***HttpClient*** (and not HttpClientModule) into that service or component. For example:
 
@@ -560,7 +560,7 @@ This week, we learned how to add *services* to an app. This feature gets externa
 
 <br>
 
-#### Next actions**
+#### Next actions
 
 In our [getting started example](angular-services-example) document, you will learn to enhance last week's routing example, by adding services. 
 
