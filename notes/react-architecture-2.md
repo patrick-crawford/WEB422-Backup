@@ -5,21 +5,21 @@ layout: default
 
 ## Composing a Simple Page (Using Components)
 
-Now that we have learned all about Components in React (Stateful, Statless, Functional, etc).  It's time that we start using this knowledge to create something that resembles a real page using these ideas.
+Now that we have learned all about Components in React (Stateful, Stateless, Functional, etc).  It's time that we start using this knowledge to create something that resembles a real app that uses these ideas.
 
-To get started, create a **new app** using **create-react-app**.  Once this is complete follow the steps in the terminal to start the development server (ie: **npm start**).  This *should* open a new browser window to **http://localhost:3000**, but if it doesn't - proceed to open up that url now.
+To get started, create a *new app* (maybe named "comp1") using **create-react-app**.  Once this is complete follow the steps in the terminal to start the development server (ie: **npm start**).  This *should* open a new browser window to **http://localhost:3000**, but if it doesn't - proceed to open up that url now.
 
-Notice how the create-react-app tool has created a pretty cool start page for us already (you should remember this from last week).  However, now that we know a little bit more about how React is used to define and manage "Components", let's disect what's happening here and create our own start page.
+Notice how the create-react-app tool has created a start page for us already.  However, now that we know a little bit more about how React is used to define and manage "Components", let's disect what's happening here and create our own start page.
 
 Inside the **src/index.js** file is where everything really kicks off.  It's known as the "JavaScript entry point" for our application and it's where we will put our highest level component (ie: `<App />`.  As you can see, this is exactly what create-react-app has done for us:
 
-```jsx
+```js
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
 Here, we invoke the [ReactDom.render](https://reactjs.org/docs/react-dom.html#render) method to render our primary "App" element onto the main `<div>` element in `index.html`
 
-You will notice however, that `<App />` isn't defined in index.js and neither is `ReactDOM`.  References to the original source is included via ["import"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) statements at the top of the file.  This behaviour is defined in ES6 and it simply functions as a method for us to include modules from other files.  You can think of this as analogous to our "require" statements that we use when writing server code in Node.js.  
+You will notice however, that `<App />` isn't defined in index.js and neither is `ReactDOM`.  References to the original source is included via ["import"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) statements at the top of the file.  This behaviour is defined in ES6 and it simply is the way for us to include modules from other source code files.  You can think of this as analogous to our "require" statements that we use when writing server code in Node.js.  
 
 In our current application (index.js file), we import the modules **React**, **ReactDOM**, **App** and **registerServiceWorker**.  We can discard the **registerServiceWorker** code for now (for more infomation see: [Service Workers: an Introduction](https://developers.google.com/web/fundamentals/primers/service-workers/)).  This should leave you with the following code:
 
@@ -67,7 +67,7 @@ A simple way to start thinking about what components you'll need to develop your
 
 <br>
 
-#### Incorporating Bootstrap 3.3.7
+#### Incorporating Bootstrap
 
 For simpliity, we're simply going to include all of the relavent CDN links that we've been using in the past weeks, ie:
 
@@ -207,11 +207,11 @@ class Navbar extends Component {
 export default Navbar;
 ```
 
-Here, we have removed all of the "nav" code and placed it in it's own "Navbar" component, defined in "Navbar.js" (**src/Navbar.js**).  The static text has been removed in favour of accepting a "title" property to our new component.
+Here, we have removed all of the "nav" code and placed it in its own "Navbar" component, defined in "Navbar.js" (**src/Navbar.js**).  The static text has been removed in favour of accepting a "title" property to our new component.
 
 Now, if any other file wishes to use the component, they can simply "import" the module.  For example, to ensure that we can use it in our App.js file, we add the line:
 
-```js
+```javascript
 import Navbar from './Navbar';
 ```
 
@@ -247,7 +247,7 @@ class Panel extends Component {
 export default Panel;
 ```
 
-Here, we have removed all of the "panel" code and placed it in it's own component, defined in "Panel.js" (**src/Panel.js**).  The static title has been removed in favour of accepting a "title" property and the "content" of the panel is set up to render all components that rest inside the <Panel></Panel> element.  This is accomplished via a reserved property: **"children"**.
+Here, we have removed all of the "panel" code and placed it in its own component, defined in "Panel.js" (**src/Panel.js**).  The static title has been removed in favour of accepting a "title" property and the "content" of the panel is set up to render all components that rest inside the <Panel></Panel> element.  This is accomplished via a reserved property: **"children"**.
 
 Like our "Navbar" component, if any other file wishes to use the "Panel", they can simply "import" the module.  For example, to ensure that we can use it in our App.js file, we add the line:
 
@@ -326,7 +326,7 @@ class ListNames extends Component {
 export default ListNames;
 ```
 
-If we wish to render each name in it's own `<li>` element, we need to embed some JavaScript into our render() method to iterate over **this.state.names** and output the resulting element.  Fortunately, as we have seen, we can provide a valid JavaScript *expression* at any point in our JSX code.  Therefore, if we want to iterate over the names collection, we can make use of the [Array Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) Method to access each element in turn and output the related data.  For example, we can replace our `<li>TODO: ...</li>`: JSX with the following code.
+If we wish to render each name in its own `<li>` element, we need to embed some JavaScript into our render() method to iterate over **this.state.names** and output the resulting element.  Fortunately, as we have seen, we can provide a valid JavaScript *expression* at any point in our JSX code.  Therefore, if we want to iterate over the names collection, we can make use of the [Array Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) Method to access each element in turn and output the related data.  For example, we can replace our `<li>TODO: ...</li>`: JSX with the following code.
 
 ```jsx
 {this.state.names.map((name, index) => {
@@ -405,7 +405,7 @@ Notice how we had to wrap the entire JSX code in a `<div>` element?  This is bec
 
 Also, we must to explicitly "bind" **this** to the handleListItemAdd method in the constructor (so that we can reference  ListNames using "this" in the function) using the line:
 
-```js
+```javascript
  this.handleListItemAdd = this.handleListItemAdd.bind(this);
 ```
 
@@ -415,9 +415,9 @@ Also, we must to explicitly "bind" **this** to the handleListItemAdd method in t
 
 There is one stateful pattern that you may be tempted to try: setting the state of a child component via "props" to the "state" value of the parent.  
 
-The idea here is that when the **parent** state changes, so too should the **child** state.  Unfortunately, this does not occur, since each element has it's own state. Changes in the parent will not affect changes in the child, even if the value is passed via "props". 
+The idea here is that when the **parent** state changes, so too should the **child** state.  Unfortunately, this does not occur, since each element has its own state. Changes in the parent will not affect changes in the child, even if the value is passed via "props". 
 
-For example, take the two following components; "Inner" and "Outer".  "Outer" has "outerName" in it's state and passes it to the "Inner" component using the "name" property.  The "Inner" component uses this value to initialize it's own "innerName" property in it's own state.  After 2 seconds, the "Outer" component sets the "outerName" state to "Bob".  The expectation here is that the "innerName" should be updated as well, since innerName was initialized using "this.props.name":
+For example, take the two following components; "Inner" and "Outer".  "Outer" has "outerName" in its state and passes it to the "Inner" component using the "name" property.  The "Inner" component uses this value to initialize its own "innerName" property in its own state.  After 2 seconds, the "Outer" component sets the "outerName" state to "Bob".  The expectation here is that the "innerName" should be updated as well, since innerName was initialized using "this.props.name":
 
 ```jsx
 class Inner extends Component{
@@ -488,3 +488,4 @@ class Outer extends Component {
 }
 ```
 
+<br>
