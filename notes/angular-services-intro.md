@@ -11,7 +11,7 @@ A service can be used by *any* of your app's components. Its use promotes a laye
 
 <br>
 
-**More about components, and the role of services**
+#### More about components, and the role of services
 
 Consider a scenario where an app has many components. Some of the components need to display data that's stored in a database on a server somewhere out there. The data could be fetched in a couple of ways:
 1. Wrong way - add the same data-handling code to each component (so that multiple components have the same repeated block of data-handling code)
@@ -23,7 +23,7 @@ Angular helps you follow these principles by making it easy to factor your appli
 
 <br>
 
-**Learning pathway**
+#### Learning pathway
 
 In recent weeks, you learned that a *component* is a code asset that manages an area of the user interface. Most often, an app's user interface has many components. 
 
@@ -85,7 +85,7 @@ The community has some quality documentation too. A technology that comes from t
 
 <br>
 
-**In summary...**
+#### To summarize the introduction...
 
 As a wrap-up, rely on these course notes to guide your learning path, and refer or link you out to other documentation sets. Following that path will enable you to make better use, in the future, of the supporting documentation introduced in this section. 
 
@@ -95,7 +95,9 @@ As a wrap-up, rely on these course notes to guide your learning path, and refer 
 
 We can use the Angular CLI to add a service. In the example below, a service named "DataManager" is added to the app:
 
-`ng g s DataManager --module=app`
+```
+ng g s DataManager --module app --spec false
+```
 
 As you have seen when creating components, a CamelCase name is transformed into lower case with dash word separators, when it generates the source code files. 
 
@@ -175,15 +177,15 @@ From the official documentation:
 > With `HttpClient`, `@angular/common/http` provides a simplified API for HTTP functionality for use with Angular applications, building on top of the `XMLHttpRequest` interface exposed by browsers. Additional benefits of `HttpClient` include testability support, strong typing of request and response objects, request and response interceptor support, and better error handling.
 
 To make HttpClient available everywhere in the app:
-1. Open the root AppModule for editing (app.module.ts),  
+1. Open the root AppModule for editing (`app.module.ts`),  
 2. Import the **HttpClientModule** symbol from @angular/common/http,  
 3. Add it to the **@NgModule.imports** array.
 
 <br>
 
-**Important Note:**
+##### Important Note
 
-When trying to use **HttpClient** anywhere else in your application (ie: a service.ts file), be sure to *import* ***HttpClient*** (not HttpClientModule), ie:
+When trying to use **HttpClient** anywhere else in your application (e.g. a `whatever.service.ts` file), be sure to *import* ***HttpClient*** (and not HttpClientModule) into that service or component. For example:
 
 ```js
 import { HttpClient } from "@angular/common/http";
@@ -203,6 +205,8 @@ In our apps - in our components - the user interface must remain responsive. A c
 
 All the parts of our solutions will respect this requirement. In fact, you'll learn that the guidance will result in a flexible yet correct approach to handling interaction with a web service. 
 
+<br>
+
 #### The get() function
 
 [HttpClient](https://angular.io/api/common/http/HttpClient) includes a `get()` function. Guess what it does?
@@ -213,20 +217,34 @@ This is what we will use in our getting-started examples. In its simplest usage,
  
 The `get()` function returns an *Observable*, to be explained in detail soon. In essence, it is a stream of asynchronous data. The data could be a single object, or a collection. (That's determined by the web service resource.)
 
-For example, you will work with a function, in a service (ie: "UserService"), that looks like the following. It will request a collection of "users" from a web service:
+> The return type is actually a generic `Observable`.  
+> The syntax is `Observable<T>`, where `T` is a placeholder for a type.  
+> Read/skim [the generics documentation](https://www.typescriptlang.org/docs/handbook/generics.html) for more coverage.  
+> Often, it is an observable of an array of something.  
 
+For example, assume that the web service has a resource URL `/users` that will deliver a collection of user objects. 
+
+Next, assume that our data manager service is still responsible for the app's data. Its code will have a method that will call into the web service. For example, it may have a `getUsers()` method similar to this:
+
+{%raw%}
 ```js
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}/users`)
   }
 ```
-We can then "subscribe" to the result by using the code (assuming we have injected the "UserService" as "userService"):
+{%endraw%}
+
+Notice that the return type of the method is `Observable<User[]>`. You can read this return type as an "observable of an array of User objects". 
+
+In any component class that is using the data manager service, we "subscribe" to the result by using the following code:
 
 ```js
-this.userService.getUsers().subscribe(users => this.users = users);
+// assume we have a local "this.users" property defined
+// and "this.m" is a reference to the data manager service
+this.m.getUsers().subscribe(users => this.users = users);
 ```
 
-In the component, the stream of data - a collection of users - will be transformed into a more familiar array object that we can immediately work with. 
+The result is that the stream of data - a collection of users - is transformed into a more familiar array object that we can immediately work with. 
 
 <br>
 
@@ -236,7 +254,7 @@ In the component, the stream of data - a collection of users - will be transform
 
 > "RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code."
 
-This sounds like exactly what we need - something to "make it easier to compose **asynchronous** code".  However, you might be thinking "we have that already, it's called a **Promise**".  This is true, Promises do help us manage asynchronous code; they do so by giving us an opportunity to perform a task / queue up a follow up Promise to be executed upon the completion or failure of the first piece of asynchronous code (Promise).  By writing functions that return promises, we can inforce an order of execution for asychronous code while avoiding the use of callbacks, which tend to lead to ["Callback Hell"](http://callbackhell.com/).
+This sounds like exactly what we need - something to "make it easier to compose **asynchronous** code".  However, you might be thinking "we have that already, it's called a **Promise**".  This is true, Promises do help us manage asynchronous code; they do so by giving us an opportunity to perform a task / queue up a follow up Promise to be executed upon the completion or failure of the first piece of asynchronous code (Promise).  By writing functions that return promises, we can enforce an order of execution for asychronous code while avoiding the use of callbacks, which tend to lead to ["Callback Hell"](http://callbackhell.com/).
 
 Observables on the other hand, allow us to watch (observe) the changing values of data over time and execute code when these changes occur.  For example:
 
@@ -314,6 +332,8 @@ import "rxjs/add/operator/distinct";
 
 For a full reference of all methods available on the Observable object, see: [the official documentation here](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html).
 
+<br>
+
 ### Creating a Service to work with Data
 
 At this point, it's useful to visit the [Week 9 example](angular-services-example), as it reinforces the ideas introduced above, ie:
@@ -325,6 +345,7 @@ At this point, it's useful to visit the [Week 9 example](angular-services-exampl
 * Subscribing to (injected) Observable service methods and updating Component data
 * Rendering Component data in its template
 
+<br>
 
 ### Review: Structural directives: \*ngFor and \*ngIf & Data binding
 
@@ -487,6 +508,8 @@ export default class ProductListComponent {
 }
 ```
 
+<br>
+
 ### Summary, and next actions
 
 In past weeks, we have had a good treatment of *components* and *routing*. The scenarios were simple, in that the goal was to package and display an area of the user interface. Multiple components were created and displayed. 
@@ -495,7 +518,7 @@ This week, we learned how to add *services* to an app. This feature gets externa
 
 <br>
 
-**Next actions**
+#### Next actions**
 
 In our [getting started example](angular-services-example) document, you will learn to enhance last week's routing example, by adding services. 
 
