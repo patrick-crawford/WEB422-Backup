@@ -9,9 +9,13 @@ layout: default
 
 As John puts it, Lodash is a toolkit or library of functions that extend some of the current working JavaScript core functionaltiy.  Even with new versions of JavaScript (ie: [ES6 and Beyond)](https://en.wikipedia.org/wiki/ECMAScript#Versions) starting to catch up to all of the libraries and toolkits developed over the last decade or so, Lodash still proves itself as something many JS developers still can't live without.
 
+<br>
+
 ### Downloading Lodash
 
 Like most JavaScript libraries, Lodash exists as a single, minified .js file that you can either [download](https://raw.githubusercontent.com/lodash/lodash/4.17.4/dist/lodash.min.js) and include in your local solution, or [reference the CDN](https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js) in your pages/views.  If you're thinking that you might want to use it in your Node.js server applications, you can do that as well [via NPM](https://www.npmjs.com/package/lodash).
+
+<br>
 
 ### The Full Documentation
 
@@ -19,11 +23,15 @@ Lodash is a very large, comprehensive library and covering it in it's entierity 
 
 However, you should absolutely [**Bookmark the Documentation Page**](https://lodash.com/docs/) and always check it before you start working with Objects, Collections, Strings, Dates, etc.  The chances are very good that there's ***something*** in there that will help optomize your code and make your life easier.
 
+<br>
+
 ### The Fun Stuff
 
 As previously stated, this is only a sampling of some of the more interesting and most accessable features of the Lodash library.  We will use some of these to add primitave paging and filtering functionality to last week's **jQuery-AJAX** example.  
 
 If you're following along with the "Code Samples" the following functionality is located in the **"week2/Lodash"** folder
+
+<br>
 
 ### Sample Data
 
@@ -37,7 +45,11 @@ let users = [
 ];
 ```
 
+<br>
+
 ## Array Methods
+
+<br>
 
 ### \_.chunk(array, [size=1])
 
@@ -48,6 +60,8 @@ let chunk1 = _.chunk(['a', 'b', 'c', 'd'], 2); // => [['a', 'b'], ['c', 'd']]
 let chunk2 = _.chunk(['a', 'b', 'c', 'd'], 3); // => [['a', 'b', 'c'], ['d']]
 let chunk3 = _.chunk(users, 2); // objects for [['fred', 'pebbles'], 'barney']
 ```
+
+<br>
 
 ### \_.findIndex(array, [predicate=_.identity], [fromIndex=0])
 
@@ -61,6 +75,8 @@ let findIndex1 = _.findIndex(users, function(user) {
 }); // => 0
 ```
 
+<br>
+
 ### \_.take(array, [n=1])
 
 Creates a slice of array with n elements taken from the beginning.
@@ -71,7 +87,11 @@ See: [https://lodash.com/docs/4.17.4#take](https://lodash.com/docs/4.17.4#take)
 let take1 = _.take(users,2) // => objects for ['fred, pebbles']
 ```
 
+<br>
+
 ## Collection Methods
+
+<br>
 
 ### \_.filter(collection, [predicate=_.identity])
 
@@ -84,6 +104,8 @@ let filter1 = _.filter(users, function(user) {
     return user.active == true;
 }); // => objects for ['barney']
 ```
+
+<br>
 
 ### \_.sortBy(collection, [iteratees=[_.identity]])
 
@@ -99,6 +121,8 @@ let sortBy1 = _.sortBy(users, [
 ]); // => objects for ['barney', 'fred', 'pebbles']
 ```
 
+<br>
+
 ### \_.forEachRight(collection, [iteratee=_.identity])
 
 This method is like \_.forEach except that it iterates over elements of collection from right to left.
@@ -113,7 +137,11 @@ _.forEachRight(users, function(user) {
 }); // iterates as ['barney', 'pebbles', 'fred']
 ```
 
+<br>
+
 ## Number Methods
+
+<br>
 
 ### \_.random([lower=0], [upper=1], [floating])
 
@@ -128,7 +156,11 @@ let random3 = _.random(5, true); // => a floating-point number between 0 and 5
 let random4 = _.random(1.2, 5.2);// => a floating-point number between 1.2 and 5.2
 ```
 
+<br>
+
 ## Object Methods
+
+<br>
 
 ### \_.cloneDeep(value)
 
@@ -140,6 +172,8 @@ See: [https://lodash.com/docs/4.17.4#cloneDeep](https://lodash.com/docs/4.17.4#c
 let cloneDeep1 = _.cloneDeep(users); // cloneDeep1[0] !== users[0]
 ```
 
+<br>
+
 ### \_.pick(object, [paths])
 
 Creates an object composed of the picked object properties.
@@ -150,7 +184,11 @@ See: [https://lodash.com/docs/4.17.4#pick](https://lodash.com/docs/4.17.4#pick)
 let pick1 = _.pick(users[0], ['user', 'age']); // => { 'user': 'fred', 'age': 40 } // note: pick !== users[0]
 ```
 
+<br>
+
 ## String Methods
+
+<br>
 
 ### \_.escape([string=''])
 
@@ -161,6 +199,8 @@ See: [https://lodash.com/docs/4.17.4#escape](https://lodash.com/docs/4.17.4#esca
 ```js
 let escape1 = _.escape('fred, barney, & pebbles'); // => 'fred, barney, &amp; pebbles'
 ```
+
+<br>
 
 ### \_.template([string=''], [options={}])
 
@@ -196,13 +236,12 @@ let template4 = _.template('<ul>' +
 let template4Result = template4({ 'users': users }); // => '<ul><li>fred</li><li>pebbles</li><li>barney</li></ul>'
 ```
 
+<br>
+
 ## Adding Sorting & Paging
 
 Using the methods outlined above, we can very easily add "paging" and "sorting" functionality to our week1 **jquery-AJAX** example.  This can be accomplished using the **.\_template()**, **.\_chunk()**, **.\_take()** and **.\_sortBy()** methods.
 
 To see how we can use Lodash and the aforementioned properties to implement **sorting** and **paging**, open the **Lodash-AJAX** Example located in the **week2** folder.  We will walk through the solution together in class.
 
-
-
-
-
+<br>
