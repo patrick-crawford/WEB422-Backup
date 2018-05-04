@@ -47,3 +47,11 @@ This week's topics include:
 [jQuery Review & Rendering web API Data](/web422/notes/jquery-review)
 
 <br>
+
+**Reminder**
+
+We expect the student to do their work on a computer that runs macOS (Mac OS X), Linux, or another Unix-like operating system. 
+
+If a student has a Windows-only computer, then plan to install a multiboot or virtualization environment that enables the installation of Linux.
+
+<br>
