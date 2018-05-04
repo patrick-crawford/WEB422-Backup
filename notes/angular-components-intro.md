@@ -5,6 +5,10 @@ layout: default
 
 ## Angular Components Introduction
 
+This document introduces "components". 
+
+<br>
+
 ### What is an Angular component?
 
 The following was summarized from Angular Docs > Fundamentals > [Architecture](https://angular.io/guide/architecture#components)
@@ -33,6 +37,8 @@ The *component* has the code for the *controller* and the *view model*.
 
 The *template* has the code for the *view*. 
 
+<br>
+
 ### Quick Review - Creating an Angular Project from Scratch
 
 Before we start writing components, we should get a new Angular project going.  Recall, from week 6:
@@ -45,34 +51,34 @@ Before we start writing components, we should get a new Angular project going.  
   ng new my-dream-app --routing -st
   ```
   
-  **Note:** 
-  
-  The `--routing` option adds the code we need for "routing", which is a topic that will be covered in detail next week. Adding routing now (when the new project is created) is a *best practice*. 
+  **Note:**   
+> The `--routing` option adds the code we need for "routing", which is a topic that will be covered in detail soon. Adding routing now (when the new project is created) is a *best practice*.  
+> The `-st` option does not add "testing" code. One of the effects is that it reduces the size of the project, and makes it slightly faster in the change detection and build processes.
 
-The `-st` option does not add "testing" code. One of the effects is that it reduces the size of the project, and makes it slightly faster in the change detection and build processes.
-  
-Finally, change your working directory to the newly created folder and start the server listener, ie:
+<br>
+
+3. Finally, change your working directory to the newly created folder and start the server listener, ie:
 
 ```
 cd my-dream-app
 ng serve --open
 ```
 
+<br>
+
 ### Creating a Component from Scratch (Using "ng generate")
 
-Recall, from the Angular "Tour of Heroes" app, we can manually create a component using the following steps
-
-1. Stop the server listener in the integrated terminal (ctrl + c) and execute the command:
+Recall, from the Angular "Tour of Heroes" app, we can manually create a component using the following task:
 
 ```
 ng generate component foo --flat
 ```
 
-**Note:**
-
-The "--flat" flag will NOT create a folder to enclose the component's source code files. We'll use that for the first while, until the number of files in the app folder gets too unreasonable.
-
+> **Note:**  
+> The "--flat" flag will NOT create a folder to enclose the component's source code files. We'll use that for the first while, until the number of files in the app folder gets too unreasonable.  
 > Documentation for the `ng generate component` command is [here](https://github.com/angular/angular-cli/wiki/generate-component). 
+
+<br>
 
 Using "ng generate" to create the "foo" component for us has saved us time by automating the following (necessary) steps:
 
@@ -86,7 +92,7 @@ import { FooComponent } from './foo.component';
 
 * Added "FooComponent" to the "@NgModule" decoration in app.module.ts, ie:
 
-```
+```js
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,6 +108,8 @@ import { FooComponent } from './foo.component';
 export class AppModule { }
 ```
 
+<br>
+
 ### Including the New Component
 
 Recall the "selector" property that was automatically added, ie "app-foo".  This corresponds to the custom element `<app-foo></app-foo>` that we can use to render our newly created "foo" component.
@@ -110,11 +118,15 @@ To see this in action, add the `<app-foo></app-foo>` element to the bottom of yo
 
 You should now see the text "foo works" at the bottom of the default "start" page.
 
+<br>
+
 ### How to think about and plan your components
 
 Now that we are comfortable adding new (simple) components, why don't we try creating a view using *multiple* components.  
 
 > The content for this discussion can be found in ["Angular Components Example"](angular-components-example)
+
+<br>
 
 ### Using "Templates" in your components
 
@@ -133,7 +145,14 @@ Note:  We will save ["Two-way binding"](https://angular.io/guide/template-syntax
 
 #### Quick Directive Overview
 
-[https://angular.io/guide/attribute-directives#directives-overview](https://angular.io/guide/attribute-directives#directives-overview)
+A *directive* is an Angular class. It interacts with HTML elements in the browser DOM. There are three kinds of directives:
+1. Components — directives with an HTML template
+2. Structural directives — they change the DOM layout by adding and removing DOM elements
+3. Attribute directives — change the appearance or behavior of an element
+
+Components are the most common kind of directive. 
+
+[Directives overview](https://angular.io/guide/attribute-directives#directives-overview)
 
 **Built In Directives**
 
@@ -145,5 +164,3 @@ Note:  We will save ["Two-way binding"](https://angular.io/guide/template-syntax
 * [Build a simple attribute directive](https://angular.io/guide/attribute-directives#build-a-simple-attribute-directive)
 
 <br>
-
-
