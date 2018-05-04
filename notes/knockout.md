@@ -5,16 +5,20 @@ layout: default
 
 ## Introduction to Knockout.js
 
-[Knockout.js](http://knockoutjs.com/) is a JavaScript library that helps you to create rich, responsive display and editor user interfaces with a clean underlying data model. Any time you have sections of UI that update dynamically (e.g., changing depending on the user’s actions or when an external data source changes), KO can help you implement it more simply and maintainably.
+[Knockout.js](http://knockoutjs.com/) is a JavaScript library that helps you to create rich, responsive display and editor user interfaces with a clean underlying data model. 
+
+Any time you have sections of UI that update dynamically (e.g., changing depending on the user’s actions or when an external data source changes), Knockout (often abbreviated to "KO") can help you implement it more simply and maintainably.
 
 <br>
 
 ### Installation
 
-Since Knockout.js is a **client-side** library, we will include it in the same way that we would include Lodash, Moment.js or jQuery; by downloading it and referencing it in a **&lt;script&gt;** element.  We can also reference the library using the popular [CDNJS Content Delivery Network](https://cdnjs.com/).
+Since Knockout.js is a **client-side** library, we will include it in the same way that we would include Lodash, Moment.js or jQuery, by downloading it and referencing it in a **`<script>`** element.  
+
+We can also reference the library using the popular [CDNJS Content Delivery Network](https://cdnjs.com/).
 
 * The official, full source code can be downloaded [from here](http://knockoutjs.com/downloads/knockout-3.4.2.js)
-* The CDN Link for the minified code is: `https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js`
+* The CDN Link for the minified code is: <br>`https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js`
 
 <br>
 
@@ -26,45 +30,62 @@ Since Knockout.js is a **client-side** library, we will include it in the same w
 
 <br>
 
-### Data Model? - Enter the "MVVM" Pattern
+### Data Model? Introducing the "MVVM" design pattern
 
-Knockout.js is an important library for us to examine in this course, because it does an excellent job of introducing the "MVVM" ("Model-View-View Model") design Pattern, as well as introducing us to a more "modern" approach to web app development:
+Knockout.js is an important library for us to examine in this course, because it does an excellent job of introducing the "MVVM" ("Model - View - View Model") design pattern, as well as introducing us to a more "modern" approach to web app development:
 
 Essentially, MVVM describes how you can keep a potentially sophisticated UI simple by splitting it into three parts:
-
-
-
-#### A model: 
-
-Your application’s stored data. This data represents objects and operations in your business domain (e.g., bank accounts that can perform money transfers) and is independent of any UI. When using KO, you will usually make Ajax calls to some server-side code to read and write this stored model data.
-
-
-
-#### A view model: 
-
-A pure-code representation of the data and operations on a UI. For example, if you’re implementing a list editor, your view model would be an object holding a list of items, and exposing methods to add and remove items.
-
-Note that this is not the UI itself: it doesn’t have any concept of buttons or display styles. It’s not the persisted data model either - it holds the unsaved data the user is working with. When using KO, your view models are pure JavaScript objects that hold no knowledge of HTML. Keeping the view model abstract in this way lets it stay simple, so you can manage more sophisticated behaviors without getting lost.
-
-
-
-#### A view: 
-
-A visible, interactive UI representing the state of the view model. It displays information from the view model, sends commands to the view model (e.g., when the user clicks buttons), and updates whenever the state of the view model changes.
-
-When using KO, your view is simply your HTML document with declarative bindings to link it to the view model. Alternatively, you can use templates that generate HTML using data from your view model.
+1. Model
+2. View model
+3. View
 
 <br>
 
-## Creating a View Model
+#### A model (the first "M" in the initialism): 
+
+The model is your application’s persisted (stored) data. 
+
+This data represents objects and operations in your business domain (e.g., bank accounts that can perform money transfers) and is independent of any UI. When using KO, you will usually make Ajax calls to some server-side code to read and write this stored model data.
+
+> For example, we will use the Teams API
+
+<br>
+
+#### A view model (the last "VM"): 
+
+A view model is a code-only representation of the data model *and* any supported operations. 
+
+For example, if you’re implementing a list editor, your view model would be an object holding a list of items, and would expose methods to add and remove items.
+
+Note that this is not the UI itself, as it doesn’t have any concept of buttons or display styles. It’s not the persisted data model either. It holds the unsaved data the user is working with. 
+
+When using KO, your view models are pure JavaScript objects that have no knowledge of HTML. Keeping the view model abstract in this way lets it stay simple, so you can manage more sophisticated behaviors without getting lost.
+
+<br>
+
+#### A view (the middle "V"): 
+
+A view is a visible, interactive UI area, representing the state of the view model. 
+
+It displays information from the view model, sends commands to the view model (e.g., when the user clicks buttons), and updates whenever the state of the view model changes.
+
+When using KO, your view is simply your HTML document with declarative bindings to link it to the view model. Alternatively, you can use templates that generate HTML using data from your view model.
+
+![KO in action](../media/kov1.png)
+
+<br>
+
+### Creating a View Model
 
 To start working with Knockout and creating View Models, we should first create a new folder with the following (minimal) file/folder structure:
 
-* js
-  * main.js
-* index.html
+```
+index.html
+js
+    main.js
+```
 
-In your index.html file, enter the following boiler plate code (this includes the CDN links to Bootstrap, jQuery and Knockout.js)
+In your index.html file, enter the following boilerplate code (this includes the CDN links to Bootstrap, jQuery and Knockout.js)
 
 ```html
 <!DOCTYPE html>
@@ -119,9 +140,9 @@ The name is <span data-bind="text: personName"></span>
 
 However, if we save both our **main.js** and **index.html** files at this point and run them in the browser, we will find that our HTML isn't updated!  
 
-This is because The **data-bind** attribute isn’t native to HTML, though it is perfectly OK (it’s strictly compliant in HTML 5). But since the browser doesn’t know what it means, you need to activate Knockout to make it take effect:
+This is because The **data-bind** attribute isn’t native to HTML, though it is perfectly OK (it’s strictly compliant in HTML 5). But since the browser doesn’t know what it means, you need to activate Knockout to make it take effect.
 
-At the bottom of your **main.js** file, we must add the code to actually apply the "data-bind" properties to our "model"
+In the document-ready function, we must add the code to actually apply the "data-bind" properties to our "view model":
 
 ```js
 $(function(){
@@ -129,7 +150,9 @@ $(function(){
 });
 ```
 
-Here, we're telling Knockout (ko) to use the **"myViewModel"** object with all of the bindings (ie: "data-bind") in the **&lt;body&gt;** element. Since we're using jQuery to select the element from the DOM, we are including the "applyBindings" function with a jQuery document.ready callback (ie: `$(function(){ ... });`).  (Quick Note: We use the syntax <a href="https://learn.jquery.com/using-jquery-core/faq/how-do-i-pull-a-native-dom-element-from-a-jquery-object/">$(selector)[0]</a> to fetch the raw DOM element).
+Here, we're telling Knockout (ko) to use the **"myViewModel"** object with all of the bindings (ie: "data-bind") in the **&lt;body&gt;** element. 
+
+(Quick Note: We use the syntax <a href="https://learn.jquery.com/using-jquery-core/faq/how-do-i-pull-a-native-dom-element-from-a-jquery-object/">$(selector)[0]</a> to fetch the raw DOM element.)
 
 Since we have placed our `<span data-bind="text: personName"></span>` code within the &lt;body&gt;, the "text: personName" binding makes sense (it's pulling it from "myViewModel").
 
@@ -167,11 +190,11 @@ $(function(){
 });
 ```
 
-**Note:** It is not strictly necessary to provide a selector as a second parameter to the **applyBindings()** method. This is useful if you wish to have your model apply to the whole document, ie: `ko.applyBinds(someViewModel);`
+**Note:** It is not strictly necessary to provide a selector as a second parameter to the **applyBindings()** method. This is useful if you wish to have your model apply to the whole document, ie: `ko.applyBindings(someViewModel);`
 
 <br>
 
-## Responding to View Model Changes
+### Responding to View Model Changes
 
 So far, we've seen how to create a basic view model and how to display one of its properties using a binding. But one of the key benefits of KO is that it updates your UI automatically when the view model changes. How can KO know when parts of your view model change? Answer: you need to declare your model properties as observables, because these are special JavaScript objects that can notify subscribers about changes, and can automatically detect dependencies.
 
@@ -210,7 +233,7 @@ If we refresh our page, we'll see that "Bob" changes to "Dave" after 2 seconds w
 
 <br>
 
-## Beyond "text" Binding
+### Beyond "text" Binding
 
 Knockout provides many ways of watching the View Model and updating the DOM automatically.  There are even bindings that work with form elements to create **"Two-way"** binding, in which changes to the data presented in the view (ie: form elements) will **automatically update** the correct view model data, keeping them in sync.
 
@@ -263,7 +286,7 @@ Binding Type | Description
 
 <br>
 
-## Explicitly Watching for View Model Changes
+### Explicitly Watching for View Model Changes
 
 Sometimes we wish to execute some *other* code when the View Model data changes (ie, log the data, set a "dirty" flag, update a property, etc).
 
@@ -277,11 +300,13 @@ myViewModel.personName.subscribe(function(newValue) {
 
 <br>
 
-## Using Existing Data (ie: Teams API)
+### Using Existing Data (ie: Teams API)
 
 Creating custom objects in the client side is pretty straightforward (Recall: we define View Model properties as "observables".  However, what if we're pulling down some large-scale data from an API? 
 
 This is exactly the case with our Teams API, however fortunately Knockout.js **has the answer!**
+
+<br>
 
 ### The Mapping Plugin
 
@@ -306,11 +331,12 @@ let plainObjects = ko.mapping.toJS(employeesModel);
 ```
 <br>
 
-## Editing "Employee" Data
+### Editing "Employee" Data
 
-To see how we can use Knockout.js to implement a simple interface to edit existing "Employee" objects within our Teams API, open the **knockout-AJAX** Example located in the week3 folder. We will walk through the solution together in class.
+To see how we can use Knockout.js to implement a simple interface to edit existing "Employee" objects within our Teams API, open the **knockout-Ajax** Example located in the week 3 folder. We will walk through the solution together in class.
 
-<br><br>
+<br>
+
 Source: [Knockout.js Official Documentation](http://knockoutjs.com/)
 
-
+<br>
