@@ -5,7 +5,7 @@ layout: default
 
 ## jQuery Review
 
-As we have seen from the notes in WEB322, the jQuery Library is an extremely popular and valuable tool for front-end web application development.  To refresh your memory:
+As we have seen from the notes in the WEB322 course, the jQuery Library is an extremely popular and valuable tool for front-end web application development.  To refresh your memory:
 
 <br>
 
@@ -17,16 +17,18 @@ Today, we will be re-examining the way that jQuery can help us manipulate the DO
 
 Lastly, we will look at how jQuery can make AJAX calls simple to execute and we will try querying our Teams API for data and updating the DOM.  You can think of this as a way to replace what was initially done in Handlebars.js in WEB322.  However, instead of relying on the server to generate the dynamic content before serving the page, we will shift that logic to the client (in this case, a web browser). By decoupling the data-rendering tasks from the server, we gain more freedom in how we render the data.  This allows us to create richer user experiences across multiple different platforms. 
 
-<br>
-
 Before we start to re-examine creating DHTML with jQuery, we should first grab the sample code from the course [Github Repository](https://github.com/sictweb/web422).  It can be found under **Code Examples/week1**.
 
 To begin, open up the **week1/jQuery** folder and take a look at the index.html page.  Here, you will see a perfectly normal HTML page with some elements on it, ie: a &lt;table&gt;, &lt;form&gt; some input elements, etc.  This page also includes some important css/js files including:
+
+<br>
 
 #### CSS
 
 * [The bootstrap 3.3.7 compiled/minified CSS file from the maxcdn.bootstrapcdn.com CDN](https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css)
 * Our own custom css file (main.css) located in the "css" directory
+
+<br>
 
 #### JavaScript
 
@@ -36,10 +38,10 @@ To begin, open up the **week1/jQuery** folder and take a look at the index.html 
 <br>
 <br>
 
-### The '$(function() { });' or '$(document).ready(function(){ });' functions
+### {% raw %}The '$(function() { });' or '$(document).ready(function(){ });' functions{% endraw %}
 
 
-It stands to reason that any JavaScript code that deals with accessing elements in the DOM **must** be executed *after* the DOM is built.   It is for this reason that you will see most jQuery code residing in an anonymous function delcared as a parameter to either **$();** or **$(document).ready();**.  When the DOM is ready, the supplied anonymous ("callback") function will be executed, ensuring that any DOM operation within the function will be safe to use.
+It stands to reason that any JavaScript code that deals with accessing elements in the DOM **must** be executed *after* the DOM is built.   It is for this reason that you will see most jQuery code residing in an anonymous function delcared as a parameter to either **$();** or **$(document.ready());**.  When the DOM is ready, the supplied anonymous ("callback") function will be executed, ensuring that any DOM operation within the function will be safe to use.
 
 <br>
 
@@ -303,6 +305,8 @@ Lastly, we append the new row onto the tbody element and move onto the next empl
 
 Using this strategy of creating DOM elements in response to the acquisition of new data is the first step in creating rich, data-driven web applications.  It may seem easier to simply serve up the rendered page using Handlebars, but we're only getting started with client-side development.  The JavaScript community has been busy and there are lots of frameworks to help us to deal with dynamic, on-demand data on the client side, and we will see some of these in the coming weeks.  In the mean time...
 
+<br>
+
 ## More jQuery Next Week
 
 * Continuing coverage of jQuery, including topics:
@@ -310,5 +314,5 @@ Using this strategy of creating DOM elements in response to the acquisition of n
   * jQuery Plugin Community: [https://plugins.jquery.com/](https://plugins.jquery.com/) & [NPM](https://www.npmjs.com/browse/keyword/jquery-plugin)
   * Advanced data rendering (Bootstrap, populating forms, etc)
   * Using jQuery to invoke Bootstrap Controls
-  
-  
+
+<br>
