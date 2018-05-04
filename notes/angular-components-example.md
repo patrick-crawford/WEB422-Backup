@@ -96,9 +96,7 @@ In `header.component.html`, some getting-started text is generated. We always re
 ```html
 <div class="header">
   <div class="row">
-    <div class="col-md-12">
-        <h3>Animals are awesome!</h3>
-    </div>
+    <h3>Animals are awesome!</h3>
   </div>
 </div>
 ```
