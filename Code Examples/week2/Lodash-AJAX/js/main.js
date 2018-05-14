@@ -24,7 +24,7 @@ $(function() { // this is the same as: $(document).ready(function(){
     tbody = $("#employees-table tbody");
 
     $.ajax({
-        url: "http://localhost:8081/employees", // This only works if the Teams API is running locally - change this url to your Heroku API (/employees) to use your API on Heroku
+        url: "your teams api url/employees", // change "your teams api url" to your Teams API url on Heroku
         type: "GET",
         //data: JSON.stringify({ some: "data" }), // we can also send data using the "data" option
         contentType: "application/json"

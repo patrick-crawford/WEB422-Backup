@@ -9,7 +9,7 @@ function fetchLatestEmployeeData(){
     
     return new Promise(function(resolve,reject){
         $.ajax({
-            url: "http://localhost:8081/employees",
+            url: "your teams api url/employees", // change "your teams api url" to your Teams API url on Heroku
             type: "GET",
             contentType: "application/json"
         })
@@ -80,7 +80,7 @@ function persistEmployeeChanges(){
     
         AJAXTasks.push(new Promise(function(resolve,reject){
             $.ajax({
-                url: "http://localhost:8081/employee/" + plainEmployee._id,
+                url: "your teams api url/employee/" + plainEmployee._id, //// change "your teams api url" to your Teams API url on Heroku
                 type: "PUT",
                 data: JSON.stringify(plainEmployee),
                 contentType: "application/json"

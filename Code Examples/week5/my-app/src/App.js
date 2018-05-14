@@ -34,10 +34,10 @@ class App extends React.Component {
                         <Team title={"Team " + props.match.params.teamId} id={props.match.params.teamId}/>
                 )}/>
                 <Route exact path='/employees' render={() => (
-                        <Employees title="Employees" dataSource = "http://localhost:8081/employees" />
+                        <Employees title="Employees" dataSource = "your teams api url/employees" /> // change "your teams api url" to your Teams API url on Heroku
                 )}/>
                 <Route path='/employee/:employeeId' render={(props) => (
-                        <Employee title="Employee" dataSource={"http://localhost:8081/employee/" + props.match.params.employeeId } />
+                        <Employee title="Employee" dataSource={"your teams api url/employee/" + props.match.params.employeeId } /> // change "your teams api url" to your Teams API url on Heroku
                 )}/>
                 <Route exact path='/projects' render={() => (
                         <Projects title="Projects" />
