@@ -54,7 +54,7 @@ We don't do make-up or replacement tests, for a number of reasons, including the
 
 * Tests are designed, in part, to encourage you to prepare for class before you walk into the room. Doing a test after the class has happened just doesn't make sense.
 
-* Your lowest two test results are discarded before your final grade is calculated, so missing a test does not affect your final grade.
+* Your lowest test result is discarded before your final grade is calculated, so missing a test does not affect your final grade.
 
 * Test answers are discussed during class, so doing a test after class is pointless.
 
