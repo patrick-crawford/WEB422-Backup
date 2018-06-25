@@ -23,11 +23,13 @@ Once this is complete, execute the command:
 node server.js
 ```
 
-to start the server and test the "/api/vehicles" route.  You should see an array of JSON objects, consisting of 5 vehicles. 
+to start the server and test the "/api/vehicles" route on localhost:8080.  You should see an array of JSON objects, consisting of 5 vehicles. 
 
 <br>
 
 ### Review User Account Management & Security
+
+Now that our extremely simple "vehicles" API is in place and produces data, we can discuss how we might *protect* this data from unwanted access. For example, say these vehicles belong to a (rich) user of the system, and they do not want the VIN numbers available to the public.
 
 Back in WEB322, we discussed a number of [security considerations](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week12-class1/) that are vital to a modern web application.  This primairly included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up an mLab DB to store our user information & credentials.
 
