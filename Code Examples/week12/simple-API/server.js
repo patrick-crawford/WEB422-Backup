@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dataService = require("./data-service.js");
+const userService = require("./user-service.js");
 const app = express();
 
 app.use(cors());
