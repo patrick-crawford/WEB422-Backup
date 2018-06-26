@@ -5,7 +5,7 @@ layout: default
 
 ## Introduction to Securing a Web API with JWT
 
-Introduction paragraph here.... (NOTE: mention having postman installed upfront)
+Introduction paragraph here.... (NOTE: mention having postman installed upfront).  NOTE: have a "completed" version of this, available as well, ie "simple-API-complete", etc.
 
 Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 12 example code](https://github.com/sictweb/web422/tree/master/Code%20Examples/week12).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
 
@@ -29,7 +29,7 @@ to start the server and test the "/api/vehicles" route on localhost:8080.  You s
 
 ### Review User Account Management & Security
 
-Now that our extremely simple "vehicles" API is in place and produces data, we can discuss how we might *protect* this data from unwanted access. For example, say these vehicles belong to a user of the system, and they do not want the VIN numbers available to the public.
+Now that our extremely simple "vehicles" API is in place and produces data, we can discuss how we might *protect* this data from unwanted access. For example, say the information for all vehicles in the system must be kept private and only authorized users are permitted access it.
 
 Back in WEB322, we discussed a number of [security considerations](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week12-class1/) that are vital to a modern web application.  This primairly included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up an mLab DB to store our user information & credentials.
 
@@ -39,13 +39,16 @@ Back in WEB322, we discussed a number of [security considerations](http://zenit.
 
 You should be familiar with mLab from our [experience in WEB322](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) as well as the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup).  MLab will be responsible for hosting our separate (MongoDB) "users" database.
 
-To set up your new "users" collection, follow along with the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup) starting with "**MongoDB Database**" and continuing until you complete the "**Adding a new User**" step.  **Note:** Instead of naming your collection "teams-api-db", name it "simple-api-users" to keep everything separate and clear.
+To set up a new "users" collection for the simple API, follow along with the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup) starting with "**MongoDB Database**" and continuing until you complete the "**Adding a new User**" step.  **Note:** Instead of naming your collection "teams-api-db", name it "simple-api-users" to keep everything separate and clear.
 
 Be sure to keep track of your connection string, as we will be using it in the next piece:
 
-#### Adding the "user-service"
+#### Updating the "user-service"
 
-To keep our DB authentication clean, we will be adding a new "user-service.js" file to our solution.
+To keep our DB authentication piece clean, we will be making use of the "user-service.js" file (included in our main server.js as "userService".  If you open this file, you will see....
+
+```
+```
 
 <br>
 
