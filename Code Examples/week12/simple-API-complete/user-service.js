@@ -39,42 +39,60 @@ module.exports.registerUser =  function (userData) {
             reject("Passwords do not match");
         } else {
 
-            let newUser = new User(userData);
-
-            newUser.save((err) => {
+            // Generate a "salt" using 10 rounds
+            bcrypt.genSalt(10, function (err, salt) {
                 if (err) {
-                    if (err.code == 11000) {
-                        reject("User Name already taken");
-                    } else {
-                        reject("There was an error creating the user: " + err);
-                    }
-
+                    reject("There was an error encrypting the password");
                 } else {
-                    resolve("User " + userData.userName + " successfully registered");
+
+                    // Encrypt the password: userData.password
+                    bcrypt.hash(userData.password, salt, function (err, hash) {
+
+                        if (err) {
+                            reject("There was an error encrypting the password");
+                        } else {
+
+                            userData.password = hash;
+
+                            let newUser = new User(userData);
+
+                            newUser.save((err) => {
+                                if (err) {
+                                    if (err.code == 11000) {
+                                        reject("User Name already taken");
+                                    } else {
+                                        reject("There was an error creating the user: " + err);
+                                    }
+
+                                } else {
+                                    resolve("User " + userData.userName + " successfully registered");
+                                }
+                            });
+                        }
+                    });
                 }
             });
         }
     });
-                
 };
 
 module.exports.checkUser = function (userData) {
     return new Promise(function (resolve, reject) {
 
         User.find({ userName: userData.userName })
-            .limit(1)
             .exec()
             .then((users) => {
 
                 if (users.length == 0) {
                     reject("Unable to find user " + userData.userName);
                 } else {
-                    if(userData.password == users[0].password){
-                        resolve(users[0]);
-                    } else {
-                        reject("Incorrect password for user " + userData.userName);
-                    }
-                    
+                    bcrypt.compare(userData.password, users[0].password).then((res) => {
+                        if (res === true) {
+                            resolve(users[0]);
+                        } else {
+                            reject("Incorrect password for user " + userData.userName);
+                        }
+                    });
                 }
             }).catch((err) => {
                 reject("Unable to find user " + userData.userName);

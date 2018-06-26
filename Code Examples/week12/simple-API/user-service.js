@@ -53,8 +53,7 @@ module.exports.registerUser =  function (userData) {
                 }
             });
         }
-    });
-                
+    });      
 };
 
 module.exports.checkUser = function (userData) {
