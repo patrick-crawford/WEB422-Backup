@@ -15,7 +15,7 @@ Once you have grabbed the "simple-api" folder from gitHub, open it in Visual Stu
 npm install
 ```
 
-to fetch the dependencies (currently, only [express](https://www.npmjs.com/package/express) & [cors](https://www.npmjs.com/package/cors)).
+from the integrated terminal to fetch the dependencies (currently, only [express](https://www.npmjs.com/package/express) & [cors](https://www.npmjs.com/package/cors)).
 
 Once this is complete, execute the command:
 
@@ -29,7 +29,7 @@ to start the server and test the "/api/vehicles" route on localhost:8080.  You s
 
 ### Review User Account Management & Security
 
-Now that our extremely simple "vehicles" API is in place and produces data, we can discuss how we might *protect* this data from unwanted access. For example, say these vehicles belong to a (rich) user of the system, and they do not want the VIN numbers available to the public.
+Now that our extremely simple "vehicles" API is in place and produces data, we can discuss how we might *protect* this data from unwanted access. For example, say these vehicles belong to a user of the system, and they do not want the VIN numbers available to the public.
 
 Back in WEB322, we discussed a number of [security considerations](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week12-class1/) that are vital to a modern web application.  This primairly included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up an mLab DB to store our user information & credentials.
 
