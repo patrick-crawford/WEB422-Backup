@@ -16,6 +16,21 @@ let userSchema = new Schema({
 
 let User;
 
+module.exports.connect = function () {
+    return new Promise(function (resolve, reject) {
+        let db = mongoose.createConnection(mongoDBConnectionString);
+
+        db.on('error', (err) => {
+            reject(err); // reject the promise with the provided error
+        });
+
+        db.once('open', () => {
+            User = db.model("users", userSchema);
+            resolve();
+        });
+    });
+};
+
 module.exports.registerUser =  function (userData) {
     return new Promise(function (resolve, reject) {
 
@@ -65,21 +80,3 @@ module.exports.checkUser = function (userData) {
             });
     });
 };
-
-module.exports.findUserById = function (userId) {
-    return new Promise(function (resolve, reject) {
-
-        User.find({ _id: userId })
-            .limit(1)
-            .exec()
-            .then((users) => {
-                if (users.length == 0) {
-                    reject("Unable to find user with id " + userId);
-                } else {
-                    resolve(users[0]);
-                }
-            }).catch((err) => {
-                reject("Unable to find user with id " + userId);
-            });
-    });
-}
