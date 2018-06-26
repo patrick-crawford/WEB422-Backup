@@ -5,7 +5,7 @@ layout: default
 
 ## Introduction to Securing a Web API with JWT
 
-Introduction paragraph here.... (NOTE: mention having postman installed upfront).  NOTE: have a "completed" version of this, available as well, ie "simple-API-complete", etc.
+Introduction paragraph here...  NOTE: have a "completed" version of this, available as well, ie "simple-API-complete", etc.
 
 Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 12 example code](https://github.com/sictweb/web422/tree/master/Code%20Examples/week12).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
 
@@ -43,15 +43,15 @@ Back in WEB322, we discussed a number of [security considerations](http://zenit.
 
 #### mLab & MongoDB
 
-You should be familiar with mLab from our [experience in WEB322](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) as well as the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup).  MLab will be responsible for hosting our separate (MongoDB) "users" database.
+You should be familiar with mLab from our [experience in WEB322](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) as well as the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup).  mLab will be responsible for hosting our separate (MongoDB) "users" database.
 
-To set up a new "users" collection for the simple API, follow along with the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup) starting with "**MongoDB Database**" and continuing until you complete the "**Adding a new User**" step.  **Note:** Instead of naming your collection "teams-api-db", name it "simple-api-users" to keep everything separate and clear.
+To set up a new "users" database for the simple API, follow along with the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup) starting with "**MongoDB Database**" and continuing until you complete the "**Adding a new User**" step.  **Note:** Instead of naming your collection "teams-api-db", name it "simple-api-users" to keep everything separate and clear.
 
 Be sure to keep track of your connection string, as we will be using it in the next piece:
 
 #### Updating the "user-service"
 
-To keep our DB authentication piece clean, we will be making use of the promise-based "userService" module, defined in the   "user-service.js" file.  If you open this file, you will see a space for your Mongo DB connection string - enter it now before proceeding.
+To keep our DB authentication piece clean, we will be making use of the promise-based "userService" module, defined in the   "user-service.js" file.  If you open this file, you will see a space for your MongoDB connection string - enter it now before proceeding.
 
 Next, you will notice a definition for a "user" Schema (userSchema).  In this case, it consists of 4 simple fields:
 
@@ -81,7 +81,7 @@ userService.connect().then(()=>{
 
 #### Hashed Passwords with bcrypt (bcryptjs)
 
-Up to this point, our user service is storing passwords as plain text.  This is a serious security concern and as a result, passwords must **always** be encrypted.  In WEB322, we learned how to accomplish this using bcrypt.
+Up to this point, our user service is storing passwords as plain text.  This is a serious security concern as passwords must **always** be encrypted.  In WEB322, we learned how to accomplish this using bcrypt.
 
 Recall: To include bcrypt, we must install bcryptjs it using **npm** and "require" the module at the top of our user-service.js:
 
@@ -89,7 +89,7 @@ Recall: To include bcrypt, we must install bcryptjs it using **npm** and "requir
 const bcrypt = require('bcryptjs');
 ```
 
-Once we have the model, we can use the following logic to **hash** a password, ie:
+Once we have the module, we can use the following logic to **hash** a password using bcrypt's **genSalt()** and **hash()** methods, ie:
 
 ```javascript
 // Encrypt the plain text: "myPassword123"
@@ -149,9 +149,9 @@ module.exports.registerUser =  function (userData) {
 };
 ```
 
-It's a little more complicated, but we are really only adding the **bcrypt.genSalt()** & **bcrypt.hash()** methods to our existing function.
+This makes the code a little harder to follow, but we are really only adding the **bcrypt.genSalt()** & **bcrypt.hash()** methods to our existing function.
 
-Similairly, if we wish to **compare** a plain text password to a **hashed** password, we can use the following logic:
+If we wish to **compare** a plain text password to a **hashed** password, we can use bcrypt's **compare()** method with the following logic:
 
 ```javascript
 // Pull the password "hash" value from the DB and compare it to "myPassword123" (match)
@@ -160,7 +160,7 @@ bcrypt.compare("myPassword123", hash).then((res) => {
 });
 ```
 
-If we apply this logic to our "checkUser" function (thereby comparing the DB's *hashed* password with thethe provided password when registering the user), our code will look like this:
+If we apply this to our "checkUser" function (thereby comparing the DB's *hashed* password with the provided password when registering the user), our code will look like this:
 
 ```javascript
 module.exports.checkUser = function (userData) {
@@ -194,9 +194,33 @@ Not much has changed here.  Instead of simply comaring userData.password with us
 
 #### Adding & Testing Authentication Routes
 
+Now that we have a working "user" service that will handle registering and validating user information, we should add some new /api/ authentication routes to add the functionality to our API.  **NOTE:** Since we do not have a UI to gather user information for registration and validation, we must make use of an API testing application such as [**Postman**](https://www.getpostman.com/) (installed on the lab machines) to provide POST data to our new routes.
+
+**New Route: /api/register**
+
+This route simply collects user registration information sent using POST to the API in the form of a JSON object, ie: 
+
+```json
+{
+    userName: "bob",
+    password: "myPassword",
+    password2: "myPassword",
+    fullName: "Robert Wiley",
+    role: "administrator"
+}
+```
+
+Fortunately, our **userService.registerUser()** function is perfectly set up to handle this type of data.  It will validate whether password & password2 match and check that the user name "bob" is not taken.  If the data meets these requirements, the provided password will be hashed, and the user will be entered into the system.  T
+
 <br>
 
-### Introduction to JWT
+### Introduction to JSON Web Tokens (JWT)
+
+With our new authentication routes tested and working correctly, we can now concentrate on leveraging this logic to actually **secure** the vehicle data in our simple API.  Currently, the /api/vehicles route is available to anyone, regardless of whether they've been authenticated or not.
+
+... this can be accomplished using a **JSON Web Token (JWT)**.
+
+TODO: Intro to JWT blurb
 
 <br>
 
