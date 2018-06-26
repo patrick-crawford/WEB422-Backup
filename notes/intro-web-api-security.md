@@ -196,21 +196,64 @@ Not much has changed here.  Instead of simply comaring userData.password with us
 
 Now that we have a working "user" service that will handle registering and validating user information, we should add some new /api/ authentication routes to add the functionality to our API.  **NOTE:** Since we do not have a UI to gather user information for registration and validation, we must make use of an API testing application such as [**Postman**](https://www.getpostman.com/) (installed on the lab machines) to provide POST data to our new routes.
 
+
+NOTE: GOTTA TALK ABOUT BODY PARSER!!!!!!!!
+
 **New Route: /api/register**
 
 This route simply collects user registration information sent using POST to the API in the form of a JSON object, ie: 
 
 ```json
 {
-    userName: "bob",
-    password: "myPassword",
-    password2: "myPassword",
-    fullName: "Robert Wiley",
-    role: "administrator"
+    "userName": "bob",
+    "password": "myPassword",
+    "password2": "myPassword",
+    "fullName": "Robert Wiley",
+    "role": "administrator"
 }
 ```
 
-Fortunately, our **userService.registerUser()** function is perfectly set up to handle this type of data.  It will validate whether password & password2 match and check that the user name "bob" is not taken.  If the data meets these requirements, the provided password will be hashed, and the user will be entered into the system.  T
+Fortunately, our **userService.registerUser()** function is perfectly set up to handle this type of data.  It will validate whether password & password2 match and check that the user name "bob" is not taken.  If the data meets these requirements, the provided password will be hashed and the user will be entered into the system.  Therefore, our new /api/register route is very simple; it must simply pass the posted data to the userService for processing and report back when it has completed, ie:
+
+```javascript
+app.post("api/register", (req, res) => {
+    userService.registerUser(req.body)
+        .then((msg) => {
+            res.json({ "message": msg });
+        }).catch((msg) => {
+            res.status(422).json({ "message": msg });
+        });
+});
+```
+
+**NOTE:** The 422 error code communicates back to the client that the server understands the content type of the request  and the syntax is correct but was unable to process the data ([https://httpstatuses.com/422](https://httpstatuses.com/422)).
+
+To test this new route, stop and start your API (server.js) again and open your trusty **Postman** app.  You can dismiss the initial dialog box:
+
+[SCREENSHOT HERE]
+
+And proceed to enter the following data:
+
+* Make sure **POST** is selected in the request type dropdown
+* In the address bar, type: "http://localhost:8080/api/register"
+* In the **Headers** tab, ensure that "Content-Type" is selected with a value of "application/json"
+* In the **Body** tab, ensure that "raw" is selected and copy and paste our information for user "bob" in the provided text area:
+```json
+{
+    "userName": "bob",
+    "password": "myPassword",
+    "password2": "myPassword",
+    "fullName": "Robert Wiley",
+    "role": "administrator"
+}
+```
+
+If you entered the data correctly, your screen should look like the below:
+
+[SCREENSHOT HEADERS HERE]
+[SCREENSHOT BODY HERE]
+
+Once you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
 
 <br>
 
