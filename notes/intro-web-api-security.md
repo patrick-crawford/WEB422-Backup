@@ -27,6 +27,12 @@ to start the server and test the "/api/vehicles" route on localhost:8080.  You s
 
 <br>
 
+### Quick note on "CORS"
+
+TODO: Quick note explaining CORS
+
+<br>
+
 ### Review User Account Management & Security
 
 Now that our extremely simple "vehicles" API is in place and produces data, we can discuss how we might *protect* this data from unwanted access. For example, say the information for all vehicles in the system must be kept private and only authorized users are permitted access it.
@@ -45,14 +51,41 @@ Be sure to keep track of your connection string, as we will be using it in the n
 
 #### Updating the "user-service"
 
-To keep our DB authentication piece clean, we will be making use of the "user-service.js" file (included in our main server.js as "userService".  If you open this file, you will see....
+To keep our DB authentication piece clean, we will be making use of the promise-based "userService" module, defined in the   "user-service.js" file.  If you open this file, you will see a space for your Mongo DB connection string - enter it now before proceeding.
+
+Next, you will notice a definition for a "user" Schema (userSchema).  In this case, it consists of 4 simple fields:
+
+* **userName:** <br>A (unique) string representing the user's login/user name 
+* **password:** <br>The user's password
+* **fullName:** <br>Ths user's full name
+* **role:** <br>The user's role, ie "manager", "data-entry", "maintenance", etc. (the user's role will define exactly what, in the API the user has access to.  For our example we will not be using this field, as every user will have access to all vehicles)
+
+Below this, you should note that there are 4 exported functions:
+* **connect():** <br>This function simply ensures that we can connect to the DB and if successful, assign the "User" object as a "User" model, using the "users" collection (specified by userSchema).
+* **registerUser(userData):** <br>Ensures that the provided passwords match and that the user name is not already taken.  If this is so, add the user to the system. 
+* **checkUser(userData):** <br>This function ensures that the user specified by "userData" is in the system and has the correct password (used for logging in)
+
+Lastly, before we can move on to test the application (below), we must update our "server.js" to "connect" to our user service, before we start the server, ie:
 
 ```
+dataService.connect().then(()=>{
+    app.listen(HTTP_PORT, ()=>{console.log("API listening on: " + HTTP_PORT)});
+})
+.catch((err)=>{
+    console.log("unable to start the server: " + err);
+    process.exit();
+});
 ```
 
 <br>
 
 #### Hashed Passwords with bcrypt
+
+Up to this point, our user service is storing passwords as plain text.  This is a serious security concern and as a result, passwords must **always** be encrypted.  In WEB422, we learned how to accomplish this using bcrypt...
+
+<br>
+
+#### Adding & Testing Authentication Routes
 
 <br>
 
