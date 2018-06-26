@@ -60,15 +60,15 @@ Next, you will notice a definition for a "user" Schema (userSchema).  In this ca
 * **fullName:** <br>Ths user's full name
 * **role:** <br>The user's role, ie "manager", "data-entry", "maintenance", etc. (the user's role will define exactly what, in the API the user has access to.  For our example we will not be using this field, as every user will have access to all vehicles)
 
-Below this, you should note that there are 4 exported functions:
+Below this, you should note that there are 3 exported functions:
 * **connect():** <br>This function simply ensures that we can connect to the DB and if successful, assign the "User" object as a "User" model, using the "users" collection (specified by userSchema).
 * **registerUser(userData):** <br>Ensures that the provided passwords match and that the user name is not already taken.  If this is so, add the user to the system. 
 * **checkUser(userData):** <br>This function ensures that the user specified by "userData" is in the system and has the correct password (used for logging in)
 
-Lastly, before we can move on to test the application (below), we must update our "server.js" to "connect" to our user service, before we start the server, ie:
+Lastly, before we can move on to test the application (below) we must update our "server.js" to "connect" to our user service before we start the server, ie:
 
 ```
-dataService.connect().then(()=>{
+userService.connect().then(()=>{
     app.listen(HTTP_PORT, ()=>{console.log("API listening on: " + HTTP_PORT)});
 })
 .catch((err)=>{
@@ -79,9 +79,116 @@ dataService.connect().then(()=>{
 
 <br>
 
-#### Hashed Passwords with bcrypt
+#### Hashed Passwords with bcrypt (bcryptjs)
 
-Up to this point, our user service is storing passwords as plain text.  This is a serious security concern and as a result, passwords must **always** be encrypted.  In WEB422, we learned how to accomplish this using bcrypt...
+Up to this point, our user service is storing passwords as plain text.  This is a serious security concern and as a result, passwords must **always** be encrypted.  In WEB322, we learned how to accomplish this using bcrypt.
+
+Recall: To include bcrypt, we must install bcryptjs it using **npm** and "require" the module at the top of our user-service.js:
+
+```
+const bcrypt = require('bcryptjs');
+```
+
+Once we have the model, we can use the following logic to **hash** a password, ie:
+
+```javascript
+// Encrypt the plain text: "myPassword123"
+bcrypt.genSalt(10, function(err, salt) { // Generate a "salt" using 10 rounds
+    bcrypt.hash("myPassword123", salt, function(err, hash) { // encrypt the password: "myPassword123"
+        // TODO: Store the resulting "hash" value in the DB
+    });
+});
+
+```
+
+If we apply this process to our "registerUser" function (thereby *hashing* the provided password when registering the user), our code will look like this:
+
+```javascript
+module.exports.registerUser =  function (userData) {
+    return new Promise(function (resolve, reject) {
+
+        if (userData.password != userData.password2) {
+            reject("Passwords do not match");
+        } else {
+
+            // Generate a "salt" using 10 rounds
+            bcrypt.genSalt(10, function (err, salt) {
+                if (err) {
+                    reject("There was an error encrypting the password");
+                } else {
+
+                    // Encrypt the password: userData.password
+                    bcrypt.hash(userData.password, salt, function (err, hash) {
+
+                        if (err) {
+                            reject("There was an error encrypting the password");
+                        } else {
+
+                            userData.password = hash;
+
+                            let newUser = new User(userData);
+
+                            newUser.save((err) => {
+                                if (err) {
+                                    if (err.code == 11000) {
+                                        reject("User Name already taken");
+                                    } else {
+                                        reject("There was an error creating the user: " + err);
+                                    }
+
+                                } else {
+                                    resolve("User " + userData.userName + " successfully registered");
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
+};
+```
+
+It's a little more complicated, but we are really only adding the **bcrypt.genSalt()** & **bcrypt.hash()** methods to our existing function.
+
+Similairly, if we wish to **compare** a plain text password to a **hashed** password, we can use the following logic:
+
+```javascript
+// Pull the password "hash" value from the DB and compare it to "myPassword123" (match)
+bcrypt.compare("myPassword123", hash).then((res) => {
+   // if res === true, the passwords match
+});
+```
+
+If we apply this logic to our "checkUser" function (thereby comparing the DB's *hashed* password with thethe provided password when registering the user), our code will look like this:
+
+```javascript
+module.exports.checkUser = function (userData) {
+    return new Promise(function (resolve, reject) {
+
+        User.find({ userName: userData.userName })
+            .exec()
+            .then((users) => {
+
+                if (users.length == 0) {
+                    reject("Unable to find user " + userData.userName);
+                } else {
+                    bcrypt.compare(userData.password, users[0].password).then((res) => {
+                        if (res === true) {
+                            resolve(users[0]);
+                        } else {
+                            reject("Incorrect password for user " + userData.userName);
+                        }
+                    });
+                }
+            }).catch((err) => {
+                reject("Unable to find user " + userData.userName);
+            });
+    });
+};
+```
+
+Not much has changed here.  Instead of simply comaring userData.password with users[0].password directly, we use the **bcrypt.compare()** method.
 
 <br>
 
