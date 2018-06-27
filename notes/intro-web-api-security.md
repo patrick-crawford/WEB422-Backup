@@ -290,11 +290,11 @@ You can see this in Postman by scrolling down and selecting "body" in the respon
 
 You can also confirm that the user was added by clicking on the "users" collection in mLab:
 
-![mLab collections](../media/mlab-collections.png)
+![mLab collections](../media/mLab-collections.png)
 
 This will show all of the documents in the collection, including our new "bob" user: 
 
-![mLab Users](../media/mlab-users.png)
+![mLab Users](../media/mLab-users.png)
 
 <br>
 
