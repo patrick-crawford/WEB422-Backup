@@ -81,7 +81,7 @@ userService.connect().then(()=>{
 
 #### Hashed Passwords with bcrypt (bcryptjs)
 
-Up to this point, our user service is storing passwords as plain text.  This is a serious security concern as passwords must **always** be encrypted.  In WEB322, we learned how to accomplish this using bcrypt.
+Up to this point, our user service has been designed to store passwords as plain text.  This is a serious security concern as passwords must **always** be encrypted.  In WEB322, we learned how to accomplish this using bcrypt.
 
 Recall: To include bcrypt, we must install bcryptjs it using **npm** and "require" the module at the top of our user-service.js:
 
