@@ -217,7 +217,7 @@ With the body-parser module correctly installed and configured, we can reliably 
 
 **New Route: /api/register**
 
-This route simply collects user registration information sent using POST to the API in the form of a JSON object, ie: 
+This route simply collects user registration information sent using POST to the API in the form of a JSON-formatted string, ie: 
 
 ```json
 {
