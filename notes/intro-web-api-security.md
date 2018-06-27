@@ -267,7 +267,11 @@ And proceed to enter the following data:
 
 If you entered the data correctly, postman should look like the below:
 
+**"Headers" Tab**<br>
+
 ![Postman Headers](../media/Postman-headers.png)
+
+**"Body" Tab**<br>
 
 ![Postman Body](../media/Postman-body.png)
 
