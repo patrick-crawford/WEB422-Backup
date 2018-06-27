@@ -28,6 +28,15 @@ app.post("/api/register", (req, res) => {
         });
 });
 
+app.post("/login", (req, res) => {
+    dataAuth.checkUser(req.body)
+        .then((user) => {
+            res.json({ "message": "login successful" });
+        }).catch((msg) => {
+            res.status(422).json({ "message": msg });
+        });
+});
+
 app.use((req, res) => {
     res.status(404).end();
 });
