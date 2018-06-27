@@ -194,10 +194,25 @@ Not much has changed here.  Instead of simply comaring userData.password with us
 
 #### Adding & Testing Authentication Routes
 
-Now that we have a working "user" service that will handle registering and validating user information, we should add some new /api/ authentication routes to add the functionality to our API.  **NOTE:** Since we do not have a UI to gather user information for registration and validation, we must make use of an API testing application such as [**Postman**](https://www.getpostman.com/) (installed on the lab machines) to provide POST data to our new routes.
+Now that we have a working "user" service that will handle registering and validating user information, we should add some new "/api/" authentication routes to add the functionality to our API.  **NOTE:** Since we do not have a UI to gather user information for registration and validation, we must make use of an API testing application such as [**Postman**](https://www.getpostman.com/) (installed on the lab machines) to provide POST data to our new routes.
 
+Since our new routes will be accepting input (via JSON, POSTed to the route), we will need the "body-parser" module.  
 
-NOTE: GOTTA TALK ABOUT BODY PARSER!!!!!!!!
+Install the module using npm and "require" it near the top of your server.js file:
+
+```javascript
+const bodyParser = require('body-parser');
+```
+
+Next, we must configure body-parser to parse "JSON" formatted data.  As you will recall from WEB322, this can be accomplished by adding the line:
+
+```javascript
+app.use(bodyParser.json());
+```
+
+With the body-parser module correctly installed and configured, we can reliably assume that the "body" property of the request (req) will contain the properties and values of the data sent.
+
+<br>
 
 **New Route: /api/register**
 
@@ -238,6 +253,7 @@ And proceed to enter the following data:
 * In the address bar, type: "http://localhost:8080/api/register"
 * In the **Headers** tab, ensure that "Content-Type" is selected with a value of "application/json"
 * In the **Body** tab, ensure that "raw" is selected and copy and paste our information for user "bob" in the provided text area:
+
 ```json
 {
     "userName": "bob",
@@ -248,12 +264,46 @@ And proceed to enter the following data:
 }
 ```
 
-If you entered the data correctly, your screen should look like the below:
+If you entered the data correctly, postman should look like the below:
 
 [SCREENSHOT HEADERS HERE]
 [SCREENSHOT BODY HERE]
 
 Once you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
+
+Once the request is processed, it should return with a status 200 and the JSON: 
+
+```json
+{
+    "message": "User bob successfully registered"
+}
+```
+You can see this in Postman by scrolling down and selecting "body" in the response section:
+
+[SCREENSHOT RESULT HERE]
+
+You can also confirm that the user was added by clicking on the "users" collection in mLab:
+
+[SCREENSHOT MLAB HERE]
+
+This will show all of the documents in the collection, including our new "bob" user: 
+
+[SCREENSHOT MLAB HERE]
+
+<br>
+
+**New Route: /api/login**
+
+```javascript
+app.post("/login", (req, res) => {
+    dataAuth.checkUser(req.body)
+        .then((user) => {
+            res.json({ "message": "login successful" });
+        }).catch((msg) => {
+            res.status(422).json({ "message": msg });
+        });
+});
+```
 
 <br>
 
