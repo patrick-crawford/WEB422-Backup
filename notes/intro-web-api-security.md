@@ -245,7 +245,7 @@ app.post("api/register", (req, res) => {
 
 To test this new route, stop and start your API (server.js) again and open your trusty **Postman** app.  You can dismiss the initial dialog box:
 
-[SCREENSHOT HERE]
+![Postman Dialog](/media/Postman-dialog-box.png)
 
 And proceed to enter the following data:
 
@@ -266,8 +266,9 @@ And proceed to enter the following data:
 
 If you entered the data correctly, postman should look like the below:
 
-[SCREENSHOT HEADERS HERE]
-[SCREENSHOT BODY HERE]
+![Postman Headers](/media/Postman-headers.png)
+
+![Postman Body](/media/Postman-body.png)
 
 Once you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
 
@@ -280,15 +281,15 @@ Once the request is processed, it should return with a status 200 and the JSON:
 ```
 You can see this in Postman by scrolling down and selecting "body" in the response section:
 
-[SCREENSHOT RESULT HERE]
+![Postman Response](/media/Postman-response.png)
 
 You can also confirm that the user was added by clicking on the "users" collection in mLab:
 
-[SCREENSHOT MLAB HERE]
+![mLab collections](/media/mlab-collections.png)
 
 This will show all of the documents in the collection, including our new "bob" user: 
 
-[SCREENSHOT MLAB HERE]
+![mLab Users](/media/mlab-users.png)
 
 <br>
 
