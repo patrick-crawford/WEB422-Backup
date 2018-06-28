@@ -64,7 +64,7 @@ Next, you will notice a definition for a "user" Schema (userSchema).  In this ca
 * **userName:** <br>A (unique) string representing the user's login/user name<br><br> 
 * **password:** <br>The user's password<br><br>
 * **fullName:** <br>Ths user's full name<br><br>
-* **role:** <br>The user's role, ie "manager", "data-entry", "maintenance", etc. (the user's role will define exactly what, in the API the user has access to.  For our example we will not be using this field, as every user will have access to all vehicles)
+* **role:** <br>The user's role, ie "administrator", "data-entry", "maintenance", etc. (the user's role will define exactly what in the API the user has access to.  For our example we will not be using this field, as every user will have access to all vehicles)
 
 Below this, you should note that there are 3 exported functions:
 * **connect():** <br>This function simply ensures that we can connect to the DB and if successful, assign the "User" object as a "User" model, using the "users" collection (specified by userSchema).<br><br>
