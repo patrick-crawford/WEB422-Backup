@@ -29,7 +29,7 @@ to start the server and test the "/api/vehicles" route on localhost:8080.  You s
 
 ### Quick note on "CORS"
 
-At this point, you may be asking "What is CORS and why do we need this module?".  CORS stands for "Cross-Origin Resource Sharing" and it is essentially a way to enable JavaScript to make an AJAX call from one origin (domain) to a server on a **different** domain.  This is not permitted by default, as browsers restrict these types of HTTP requests initiated from JavaScript for security reasons. If we did not enable CORS, we could not use AJAX to make requests from our localhost to our API, if our API is placed online (ie: Heroku).
+At this point, you may be asking "What is 'cors' and why do we need this module?".  CORS stands for "Cross-Origin Resource Sharing" and it is essentially a way to enable JavaScript to make an AJAX call from one origin (domain) to a server on a **different** domain.  This is not permitted by default, as browsers restrict these types of HTTP requests initiated from JavaScript for security reasons. If we did not enable CORS, we could not use AJAX to make requests from our localhost to our API, if our API is placed online (ie: Heroku).
 
 The Teams API that we have used throughout this course has CORS enabled for this reason (you can see it in server.js for yourself).
 
