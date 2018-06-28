@@ -35,7 +35,7 @@ The Teams API that we have used throughout this course has CORS enabled for this
 
 In addition to simply allowing all AJAX requests from outside domains (this how our Teams API & Simple API function), the CORS module also allows you to "whitelist" certain domains, thereby allowing access for specific domains, while restricting access from all others.
 
-More details can be found on MDN under "[Cross-Origin Resource Sharing (Cors)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)" and the ["cors" module on NPM]((https://www.npmjs.com/package/cors))
+More details can be found on MDN under "[Cross-Origin Resource Sharing (Cors)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)" and the ["cors" module on NPM](https://www.npmjs.com/package/cors)
 
 <br>
 
