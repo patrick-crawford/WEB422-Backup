@@ -5,7 +5,7 @@ layout: default
 
 ## Introduction to Securing a Web API with JWT
 
-Introduction paragraph here...  NOTE: have a "completed" version of this, available as well, ie "simple-API-complete", etc.
+**Introduction paragraph here...** 
 
 Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 12 example code](https://github.com/sictweb/web422/tree/master/Code%20Examples/week12).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
 
@@ -29,7 +29,13 @@ to start the server and test the "/api/vehicles" route on localhost:8080.  You s
 
 ### Quick note on "CORS"
 
-TODO: Quick note explaining CORS
+At this point, you may be asking "What is CORS and why do we need this module?".  CORS stands for "Cross-Origin Resource Sharing" and it is essentially a way to enable JavaScript to make an AJAX call from one origin (domain) to a server on a **different** domain.  This is not permitted by default, as browsers restrict these types of HTTP requests initiated from JavaScript for security reasons. If we did not enable CORS, we could not use AJAX to make requests from our localhost to our API, if our API is placed online (ie: Heroku).
+
+The Teams API that we have used throughout this course has CORS enabled for this reason (you can see it in server.js for yourself).
+
+In addition to simply allowing all AJAX requests from outside domains (this how our Teams API & Simple API function), the CORS module also allows you to "whitelist" certain domains, thereby allowing access for specific domains, while restricting access from all others.
+
+More details can be found on MDN under "[Cross-Origin Resource Sharing (Cors)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)" and the ["cors" module on NPM]((https://www.npmjs.com/package/cors))
 
 <br>
 
