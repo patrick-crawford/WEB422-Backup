@@ -68,7 +68,7 @@ Next, you will notice a definition for a "user" Schema (userSchema).  In this ca
 
 Below this, you should note that there are 3 exported functions:
 * **connect():** <br>This function simply ensures that we can connect to the DB and if successful, assign the "User" object as a "User" model, using the "users" collection (specified by userSchema).<br><br>
-* **registerUser(userData):** <br>Ensures that the provided passwords match and that the user name is not already taken.  If this is so, add the user to the system.<br><br> 
+* **registerUser(userData):** <br>Ensures that the provided passwords match and that the user name is not already taken.  If the userData provided meets this criteria, add the user to the system.<br><br> 
 * **checkUser(userData):** <br>This function ensures that the user specified by "userData" is in the system and has the correct password (used for logging in)
 
 Lastly, before we can move on to test the application (below) we must update our "server.js" to "connect" to our user service before we start the server, ie:
@@ -155,7 +155,7 @@ module.exports.registerUser =  function (userData) {
 };
 ```
 
-This makes the code a little harder to follow, but we are really only adding the **bcrypt.genSalt()** & **bcrypt.hash()** methods to our existing function.
+This makes the code a little longer and harder to follow, but we are really only adding the **bcrypt.genSalt()** & **bcrypt.hash()** methods to our existing function.
 
 If we wish to **compare** a plain text password to a **hashed** password, we can use bcrypt's **compare()** method with the following logic:
 
@@ -166,7 +166,7 @@ bcrypt.compare("myPassword123", hash).then((res) => {
 });
 ```
 
-If we apply this to our "checkUser" function (thereby comparing the DB's *hashed* password with the provided password when registering the user), our code will look like this:
+If we apply this to our "checkUser" function (thereby comparing the DB's *hashed* password with the provided password), our code will look like this:
 
 ```javascript
 module.exports.checkUser = function (userData) {
@@ -203,7 +203,7 @@ Not much has changed here.  Instead of simply comaring userData.password with us
 
 Now that we have a working "user" service that will handle registering and validating user information, we should add some new "/api/" authentication routes to add the functionality to our API.  **NOTE:** Since we do not have a UI to gather user information for registration and validation, we must make use of an API testing application such as [**Postman**](https://www.getpostman.com/) (installed on the lab machines) to provide POST data to our new routes.
 
-Since our new routes will be accepting input (via JSON, POSTed to the route), we will need the "body-parser" module.  
+Since our new routes will be accepting input (via JSON, posted to the route), we will need the "body-parser" module.  
 
 Install the module using npm and "require" it near the top of your server.js file:
 
@@ -217,7 +217,7 @@ Next, we must configure body-parser to parse "JSON" formatted data.  As you will
 app.use(bodyParser.json());
 ```
 
-With the body-parser module correctly installed and configured, we can reliably assume that the "body" property of the request (req) will contain the properties and values of the data sent.
+With the body-parser module correctly installed and configured, we can reliably assume that the "body" property of the request (req) will contain the properties and values of the data sent from the AJAX request.
 
 <br>
 
@@ -281,7 +281,7 @@ If you entered the data correctly, postman should look like the below:
 
 ![Postman Body](../media/Postman-body.png)
 
-Once you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
+When you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
 
 Once the request is processed, it should return with a status 200 and the JSON: 
 
@@ -306,9 +306,11 @@ This will show all of the documents in the collection, including our new "bob" u
 
 **New Route: /api/login**
 
+In addition to **adding** users to the system, we must also be able to **authenticate** users and allow them to "login" before being granted access to the data.  In this case, all of the work required for authenticating user data is done in the "dataAuth.checkUser()" method.  So (like "/api/register"), our "/api/login" route, we once again pass the posted data to the userService for processing and report back when it has completed, ie: 
+
 ```javascript
-app.post("/login", (req, res) => {
-    dataAuth.checkUser(req.body)
+app.post("api/login", (req, res) => {
+    userService.checkUser(req.body)
         .then((user) => {
             res.json({ "message": "login successful" });
         }).catch((msg) => {
@@ -317,15 +319,53 @@ app.post("/login", (req, res) => {
 });
 ```
 
+To test this new route, once again stop and start your API (server.js) and open your trusty **Postman** app.  We will keep most of the values the same, with the following exceptions:
+
+* In the address bar, type: "http://localhost:8080/api/login"
+* In the **Body** tab, ensure that "raw" is selected and copy and paste our information for user "bob" in the provided text area:
+
+```json
+{
+    "userName": "bob",
+    "password": "myPassword"
+}
+```
+
+If you entered the data correctly, postman should look like the below:
+
+[SCREENSHOT HERE]
+
+
+Again, when you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
+
+Once the request is processed, it should return with a status 200 and the JSON: 
+
+```json
+{
+    "message": "login successful"
+}
+```
+You can see this in Postman by scrolling down and selecting "body" in the response section:
+
+[SCREENSHOT HERE]
+
+You can also try entering incorrect credentials in the request body (ie: a different "userName", or an incorrect "password") to validate that our service is indeed functioning properly and will not send the "login successful" message to unauthorized users. 
+
 <br>
 
 ### Introduction to JSON Web Tokens (JWT)
 
-With our new authentication routes tested and working correctly, we can now concentrate on leveraging this logic to actually **secure** the vehicle data in our simple API.  Currently, the /api/vehicles route is available to anyone, regardless of whether they've been authenticated or not.
+With our new authentication routes tested and working correctly, we can now concentrate on leveraging this logic to actually **secure** the vehicle data in our simple API.  Currently, the /api/vehicles route is available to anyone, regardless of whether they've been authenticated or not.  You can see this by executing a POST request to "/api/login" route from Postman with an incorrect password for "bob", followed by GET request for "/api/vehicles".  The fact that we did not provide correct credentials during the "login" phase, had no affect on whether or not we can access the data on the "/api/vehicles" route.  
 
-... this can be accomplished using a **JSON Web Token (JWT)**.
+So, how can we solve this problem?  In WEB322, we would send a [cookie](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week10-class1/) back to the client, once they're logged in, to be used for subsequent requests. Unfortunately, we cannot rely on cookies to solve this problem, as we cannot guarantee that the client accessing the data is a web browser.  Our API simply takes individual JSON-formatted requests, sent over HTTP and returns JSON-formatted responses.  
 
-TODO: Intro to JWT blurb
+Instead, what we need is some kind of secure "logged in" identifier that we can **send** back to the client that can then be stored and used for subsequent requests.  The philosophy is similar, however we will not rely on cookies or make any assumptions about how the client will store this identifier.  
+
+The client must then send the identifier as part of each request and the server will have to know that it originally sent the identifier and it has not been tampered with.  
+
+**JSON Web Token (JWT) to the rescue**
+
+JSON Web Tokens (JWT) are the answer to this problem. TODO: **More about JWT HERE**
 
 <br>
 
