@@ -133,23 +133,23 @@ Introduction to Angular Deployment &amp; Testing<br><br>
     <tr>
 <td><a href="/web422/notes/week11">11 - Notes</a></td>
 <td>
-Introduction to Socket.io <br><br>
-<ul>
-<li>Creating a server using Node/Express for managing socket connections</li>
-<li>Developing an Angular application which contains a working "chat window"</li>
-</ul>
-</td>
-</tr>
-  <tr>
-<td>12 - Notes (Coming Soon...)</td>
-<td>
-Introduction to Securing a Web API with JWT <br><br>
+  Introduction to Securing a Web API with JWT <br><br>
 <ul>
   <li>Introduction to JWT</li>
   <li>Review User Account Management / Security (MongoDB / bcrypt)</li>
   <li>Securing routes in existing Teams API using Passport.js / Passport-jwt</li>
   <li>Updating an Angular app to use JWT (Route Guards / Http Interceptors)</li>
   </ul>
+</td>
+</tr>
+  <tr>
+<td>12 - Notes (Coming Soon...)</td>
+<td>
+Introduction to Socket.io <br><br>
+<ul>
+<li>Creating a server using Node/Express for managing socket connections</li>
+<li>Developing an Angular application which contains a working "chat window"</li>
+</ul>  
 </td>
 </tr>
 </tbody>
