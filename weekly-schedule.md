@@ -194,7 +194,7 @@ We will have a test at the start of every **Lecture** starting on **Week 2** (we
 <td>11</td>
 <td>
 <ul>
-<li>Introduction to Socket.io</li>
+  <li>Introduction to Securing a Web API with JWT</li>
 </ul>
 </td>
 <td>
@@ -208,7 +208,7 @@ We will have a test at the start of every **Lecture** starting on **Week 2** (we
 
 <tr>
 <td>12</td>
-  <td><ul><li>Introduction to Securing a Web API with JWT</li></ul></td>
+  <td><ul><li>Introduction to Socket.io</li></ul></td>
 <td></td>
 <td>
 <ul>
@@ -219,7 +219,7 @@ We will have a test at the start of every **Lecture** starting on **Week 2** (we
 
 <tr>
 <td>13</td>
-  <td>Course Review</td>
+  <td><ul><li>Course Review</li></ul></td>
 <td>
 <ul>
 <li>Test 6
