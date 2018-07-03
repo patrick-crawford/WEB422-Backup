@@ -369,16 +369,10 @@ JSON Web Tokens (JWT) are the answer to this problem. TODO: **More about JWT HER
 
 <br>
 
-### Securing routes in existing Teams API 
+### Securing routes 
 
 * Passport.js
 * Passport-jwt
 
 <br>
 
-### Updating an Angular app to use JWT
-
-* Route Guards
-* Http Interceptors
-
-<br>
