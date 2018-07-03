@@ -333,7 +333,7 @@ To test this new route, once again stop and start your API (server.js) and open 
 
 If you entered the data correctly, postman should look like the below:
 
-[SCREENSHOT HERE]
+![Postman Login Data](../media/Postman-login-data.png)
 
 
 Again, when you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
@@ -347,7 +347,7 @@ Once the request is processed, it should return with a status 200 and the JSON:
 ```
 You can see this in Postman by scrolling down and selecting "body" in the response section:
 
-[SCREENSHOT HERE]
+![Postman Login Response](../media/Postman-login-response.png)
 
 You can also try entering incorrect credentials in the request body (ie: a different "userName", or an incorrect "password") to validate that our service is indeed functioning properly and will not send the "login successful" message to unauthorized users. 
 
