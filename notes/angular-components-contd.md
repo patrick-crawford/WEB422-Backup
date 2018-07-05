@@ -150,12 +150,3 @@ For example, while composing the component template, assume that we already know
 ```
 
 <br>
-
-### Skim the knowledge about Angular directives
-
-Before we move on to our next topic, it's important that we discuss Angular Directives:
-
-* [Attribute Directives / Directives Overview](https://angular.io/guide/attribute-directives#attribute-directives)
-* [Structural Directives](https://angular.io/guide/structural-directives#structural-directives)
-
-<br>
