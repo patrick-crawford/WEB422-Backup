@@ -294,6 +294,20 @@ In the Description section, it briefly describes the usage of a static link, whi
 
 <br>
 
+##### Highlighting the current Nav item with "routerLinkActive"
+
+"routerLink" also has a companion directive called [RouterLinkActive](https://angular.io/api/router/RouterLinkActive), which lets you add a ***CSS class*** to an element when the link's route becomes active.  Using our routerLink example from above, we could modify it to add the class ***"active"*** to the ***&lt;li class="nav-item"&gt;*** element, whenever the "/horse" link is currently active, ie: 
+
+```html
+  <!-- other markup below -->
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link" routerLink="/horse">Horse</a>
+  </li>
+  <!-- other markup below -->
+```
+
+<br>
+
 #### Special routed components and routes
 
 While the tasks above will enable you to successfully define, configure, and use routing, an app needs a few more "special" routing-related tasks. 
