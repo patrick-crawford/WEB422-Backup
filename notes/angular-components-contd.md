@@ -84,7 +84,7 @@ This includes topics such as:
 
 ### Built-In Structural Directives 
 
-We must not forget to include the extremely useful built-in structural directives in our list.  Using built-in directives like \*ngIf, \*ngFor, and \[ngSwitch] \ \*ngSwitchCase, we can control how our data is displayed, based on it's current value:
+We must not forget to include the extremely useful built-in structural directives in our list.  Using built-in directives like \*ngIf, \*ngFor, and \[ngSwitch] / \*ngSwitchCase, we can control how our data is displayed, based on it's current value:
 
 * ["Built in Structural Directives"](https://angular.io/guide/template-syntax#built-in-structural-directives)
 
