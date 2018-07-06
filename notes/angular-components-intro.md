@@ -134,7 +134,7 @@ From the example above, we have seen how we can add multiple components as child
 
 * [Interpolation](https://angular.io/guide/template-syntax#interpolation----)
 * [Template Expressions](https://angular.io/guide/template-syntax#template-expressions) / [Property Binding](https://angular.io/guide/template-syntax#property-binding--property-)
-* [Template Statements](https://angular.io/guide/template-syntax#template-statements)
+* [Template Statements / event binding](https://angular.io/guide/template-syntax#template-statements)
 * [Attribute, class, and style bindings](https://angular.io/guide/template-syntax#attribute-class-and-style-bindings)
 
 Essentially, the above logic is really referring to specific types of ["Binding Syntax"](https://angular.io/guide/template-syntax#binding-syntax-an-overview). 
