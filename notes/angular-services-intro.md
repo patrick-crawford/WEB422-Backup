@@ -136,7 +136,7 @@ Therefore, the simplest implementation of a service is to do the following two t
 1. Declare a private field to hold the data 
 2. Write a public function to deliver the data
 
-Not included in the above is a task that would *materialize* the data. Yes, that is necessary too. In the week 9 example (link above), you will see at least two examples; one will create local (in memory) data in the service class constructor, and the other will fetch data from a web service. 
+Not included in the above is a task that would *materialize* the data. Yes, that is necessary too. In the week 8 example (link above), you will see at least two examples; one will create local (in memory) data in the service class constructor, and the other will fetch data from a web service. 
 
 <br>
 
@@ -336,7 +336,7 @@ For a full reference of all methods available on the Observable object, see: [th
 
 ### Creating a Service to work with Data
 
-At this point, it's useful to visit the [Week 9 example](angular-services-example), as it reinforces the ideas introduced above, ie:
+At this point, it's useful to visit the [Week 8 example](angular-services-example), as it reinforces the ideas introduced above, ie:
 
 * Correctly creating a service using the Angular CLI
 * Working with the HttpClient Module in our services / application
