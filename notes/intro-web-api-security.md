@@ -365,7 +365,15 @@ The client must then send the identifier as part of each request and the server 
 
 **JSON Web Token (JWT) to the rescue**
 
-JSON Web Tokens (JWT) are the answer to this problem. TODO: **More about JWT HERE**
+JSON Web Tokens (JWT) are the answer to this problem:
+
+> JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.<br><br>([https://jwt.io/introduction/](https://jwt.io/introduction/))
+
+This is perfect for our purposes.  We can generate a JWT on the server (only) once the user has been **successfully authenticated** and send it back to the client along with the "login successful" message.  It will contain digitally-signed information about the authenticated user such as their "userName", "fullName" & "role" (but **never** their password).  The client can then read this information and **send the JWT back to the server** in the body of every subsequent request to be verified on the server. Since it is digitally signed on the server using a "secret", we can verify that the data has not been tampered with and that the JWT did indeed come from our simple API server.
+
+**From [jwt.io](https://jwt.io/introduction/):**
+
+**When should you use JSON Web Tokens?**<br>Here are some scenarios where JSON Web Tokens are useful:<br><br>**Authorization:** This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.<br><br>**Information Exchange:** JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
 
 <br>
 
