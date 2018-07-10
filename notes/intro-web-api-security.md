@@ -361,7 +361,7 @@ So, how can we solve this problem?  In WEB322, we would send a [cookie](http://z
 
 Instead, what we need is some kind of secure "logged in" identifier that we can **send** back to the client that can then be stored and used for subsequent requests.  The philosophy is similar, however we will not rely on cookies or make any assumptions about how the client will store this identifier.  
 
-The client must then send the identifier as part of each request and the server will have to know that it originally sent the identifier and it has not been tampered with.  
+The client must then send the identifier as part of each request and the server will have to know that it originally sent the identifier and it has not been tampered with.<br><br>  
 
 **JSON Web Token (JWT) to the rescue**
 
