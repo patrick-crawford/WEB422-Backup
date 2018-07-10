@@ -381,7 +381,7 @@ We have now identified that we would like to work with JWT to secure our routes.
 
 <br>
 
-##### jsonwebtoken
+#### jsonwebtoken
 
 The ["jsonwebtoken" module](https://www.npmjs.com/package/jsonwebtoken) (available using `npm install jsonwebtoken --save` &amp; added to server.js using: `var jwt = require('jsonwebtoken');`).  In our application, this module is used primairly to **"sign"** our JSON payload with a 'secret' and generate the token, ie:
 
@@ -401,7 +401,7 @@ For more information on the usage of this function including options such as add
 
 <br>
 
-##### passport
+#### passport
 
 The ["passport" module](https://www.npmjs.com/package/passport) (available using `npm install passport --save` &amp; added to server.js using `var passport = require("passport");`) is described as the following:
 
@@ -417,11 +417,11 @@ In our application, we will be using the following methods:
 
 <br>
 
-##### passport-jwt
+#### passport-jwt
 
 <br>
 
-#### Adding the code to server.js
+### Adding the code to server.js
 
 ...
 
