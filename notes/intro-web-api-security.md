@@ -409,11 +409,11 @@ The ["passport" module](https://www.npmjs.com/package/passport) (available using
 
 In our application, we will be using the following methods: 
 
-* **"initialize"**: This method is invoked when we add the passport middleware using the familiar **app.use()** method, ie: `app.use(passport.initialize());`
+* **"initialize"**: This method is invoked when we add the passport middleware using the familiar **app.use()** method, ie: ```app.use(passport.initialize());```
 
-* **"authenticate"**: The "authenticate" method is used as a middleware function that can be used for each of our routes that we wish to secure (more on this below).  For example: `app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => { ... }`
+* **"authenticate"**: The "authenticate" method is used as a middleware function that can be used for each of our routes that we wish to secure (more on this below).  For example: ```app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => { ... }```
 
-* **"use"**: The "use" method is where we specify our "strategy" for authenticating our routes.  This is done near the top of server.js after the "strategy" is configured (see: "passport-jwt" below), ie: `passport.use(strategy);`
+* **"use"**: The "use" method is where we specify our "strategy" for authenticating our routes.  This is done near the top of server.js after the "strategy" is configured (see: "passport-jwt" below), ie: ```passport.use(strategy);```
 
 <br>
 
