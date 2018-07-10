@@ -472,7 +472,7 @@ var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
 });
 ```
 
-There's a lot going on in the above code, but the key pieces involve first defining the jwtOptions (using the **jwtFromRequest** and **secretOrKey** properties) and then defining the "strategy" as a middleware function using the jwtOptions and providing a callback function.  The callback function simply checks that there is indeed a valid jwt_payload and if so
+There's a lot going on in the above code, but the key pieces involve first defining the **jwtOptions** (using the **jwtFromRequest** and **secretOrKey** properties) and then defining the "strategy" as a (JwtStrategy) middleware function using the jwtOptions and providing a callback function.  The callback function simply checks that there is indeed a valid jwt_payload and if so, invoke the **next()** method with the payload data as it's second parameter.  If the jwt_payload is invalid, the **next()** method will be called without the payload data, which will cause our server to return a **401 (Unauthorized)** error.
 
 <br>
 
