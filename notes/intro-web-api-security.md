@@ -365,8 +365,6 @@ The client must then send the identifier as part of each request and the server 
 
 **JSON Web Token (JWT) to the rescue**
 
-JSON Web Tokens (JWT) are the answer to this problem:
-
 > JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
 
 This is perfect for our purposes.  We can generate a JWT on the server (only) once the user has been **successfully authenticated** and send it back to the client along with the "login successful" message.  It will contain digitally-signed information about the authenticated user such as their "userName", "fullName" & "role" (but **never** their password).  The client can then read this information and **send the JWT back to the server** in the body of every subsequent request to be verified on the server. Since it is digitally signed on the server using a "secret", we can verify that the data has not been tampered with and that the JWT did indeed come from our simple API server.
