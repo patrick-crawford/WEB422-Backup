@@ -381,7 +381,7 @@ We have now identified that we would like to work with JWT to secure our routes.
 
 <br>
 
-#####jsonwebtoken**
+##### jsonwebtoken
 
 The ["jsonwebtoken" module](https://www.npmjs.com/package/jsonwebtoken) (available using `npm install jsonwebtoken --save` &amp; added to server.js using: `var jwt = require('jsonwebtoken');`).  In our application, this module is used primairly to **"sign"** our JSON payload with a 'secret' and generate the token, ie:
 
@@ -401,7 +401,7 @@ For more information on the usage of this function including options such as add
 
 <br>
 
-#####passport
+##### passport
 
 The ["passport" module](https://www.npmjs.com/package/passport) (available using `npm install passport --save` &amp; added to server.js using `var passport = require("passport");`) is described as the following:
 
@@ -410,7 +410,9 @@ The ["passport" module](https://www.npmjs.com/package/passport) (available using
 In our application, we will be using the following methods: 
 
 * **"initialize"**: This method is invoked when we add the passport middleware using the familiar **app.use()** method, ie: `app.use(passport.initialize());`
+
 * **"authenticate"**: The "authenticate" method is used as a middleware function that can be used for each of our routes that we wish to secure (more on this below).  For example: `app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => { ... }`
+
 * **"use"**: The "use" method is where we specify our "strategy" for authenticating our routes.  This is done near the top of server.js after the "strategy" is configured (see: "passport-jwt" below), ie: `passport.use(strategy);`
 
 <br>
