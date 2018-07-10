@@ -417,11 +417,11 @@ In our application, we will be using the following methods:
 
 <br>
 
-#####passport-jwt
+##### passport-jwt
 
 <br>
 
-####Adding the code to server.js
+#### Adding the code to server.js
 
 ...
 
