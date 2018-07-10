@@ -418,7 +418,9 @@ app.use(passport.initialize());
 * **"authenticate"**: The "authenticate" method is used as a middleware function that can be used for each of our routes that we wish to secure (more on this below).  For example: 
 
 ```javascript
-app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => { ... }
+app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => {
+    // ... 
+}
 ```
 
 * **"use"**: The "use" method is where we specify our "strategy" for authenticating our routes.  This is done near the top of server.js after the "strategy" is configured (see: "passport-jwt" below), ie: 
