@@ -415,7 +415,7 @@ In our application, we will be using the following methods:
 app.use(passport.initialize());
 ```
 
-* **"authenticate"**: The "authenticate" method is used as a middleware function that can be used for each of our routes that we wish to secure (more on this below).  For example: 
+* **"authenticate"**: The "authenticate" method is used as a middleware function that can be used for each of our routes that we wish to secure.  For example: 
 
 ```javascript
 app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => {
