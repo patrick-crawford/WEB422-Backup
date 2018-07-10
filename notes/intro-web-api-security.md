@@ -385,13 +385,13 @@ We have now identified that we would like to work with JWT to secure our routes.
 
 The ["jsonwebtoken" module](https://www.npmjs.com/package/jsonwebtoken) (available using `npm install jsonwebtoken --save` &amp; added to server.js using: `var jwt = require('jsonwebtoken');`).  In our application, this module is used primairly to **"sign"** our JSON payload with a 'secret' and generate the token, ie:
 
-```
+```javascript
 var token = jwt.sign({ userName: 'bob' }, 'secret');
 ```
 
 We can also use a 3rd parameter to specify options such as **expiresIn** (A numeric value is interpreted as a seconds count):
 
-```
+```javascript
 jwt.sign({
   userName: 'bob'
 }, 'secret', { expiresIn: 60 * 60 });
@@ -409,11 +409,23 @@ The ["passport" module](https://www.npmjs.com/package/passport) (available using
 
 In our application, we will be using the following methods: 
 
-* **"initialize"**: This method is invoked when we add the passport middleware using the familiar **app.use()** method, ie: ```app.use(passport.initialize());```
+* **"initialize"**: This method is invoked when we add the passport middleware using the familiar **app.use()** method, ie: 
 
-* **"authenticate"**: The "authenticate" method is used as a middleware function that can be used for each of our routes that we wish to secure (more on this below).  For example: ```app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => { ... }```
+```javascript
+app.use(passport.initialize());
+```
 
-* **"use"**: The "use" method is where we specify our "strategy" for authenticating our routes.  This is done near the top of server.js after the "strategy" is configured (see: "passport-jwt" below), ie: ```passport.use(strategy);```
+* **"authenticate"**: The "authenticate" method is used as a middleware function that can be used for each of our routes that we wish to secure (more on this below).  For example: 
+
+```javascript
+app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => { ... }
+```
+
+* **"use"**: The "use" method is where we specify our "strategy" for authenticating our routes.  This is done near the top of server.js after the "strategy" is configured (see: "passport-jwt" below), ie: 
+
+```javascript
+passport.use(strategy);
+```
 
 <br>
 
