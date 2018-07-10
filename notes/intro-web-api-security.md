@@ -375,10 +375,51 @@ For more information about JWT, including the signature &amp; structure of the p
 
 <br>
 
-### Securing routes 
+### Securing routes with JWT
 
-* Passport.js
-* Passport-jwt
+We have now identified that we would like to work with JWT to secure our routes.  However, how to we go about implementing JWT generation and verification in our server.js?  This will involve 3 key modules, obtained from NPM:
 
 <br>
+
+#####jsonwebtoken**
+
+The ["jsonwebtoken" module](https://www.npmjs.com/package/jsonwebtoken) (available using `npm install jsonwebtoken --save` &amp; added to server.js using: `var jwt = require('jsonwebtoken');`).  In our application, this module is used primairly to **"sign"** our JSON payload with a 'secret' and generate the token, ie:
+
+```
+var token = jwt.sign({ userName: 'bob' }, 'secret');
+```
+
+We can also use a 3rd parameter to specify options such as **expiresIn** (A numeric value is interpreted as a seconds count):
+
+```
+jwt.sign({
+  userName: 'bob'
+}, 'secret', { expiresIn: 60 * 60 });
+```
+
+For more information on the usage of this function including options such as additional options, methods and errors/codes, see [the documentaiton for jsonwebtoken on npm](https://www.npmjs.com/package/jsonwebtoken)
+
+<br>
+
+#####passport
+
+The ["passport" module](https://www.npmjs.com/package/passport) (available using `npm install passport --save` &amp; added to server.js using `var passport = require("passport");`) is described as the following:
+
+> Passport is Express-compatible authentication middleware for Node.js.<br><br>Passport's sole purpose is to authenticate requests, which it does through an extensible set of plugins known as strategies. Passport does not mount routes or assume any particular database schema, which maximizes flexibility and allows application-level decisions to be made by the developer. The API is simple: you provide Passport a request to authenticate, and Passport provides hooks for controlling what occurs when authentication succeeds or fails.
+
+In our application, we will be using the following methods: 
+
+* **"initialize"**: This method is invoked when we add the passport middleware using the familiar **app.use()** method, ie: `app.use(passport.initialize());`
+* **"authenticate"**: The "authenticate" method is used as a middleware function that can be used for each of our routes that we wish to secure (more on this below).  For example: `app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => { ... }`
+* **"use"**: The "use" method is where we specify our "strategy" for authenticating our routes.  This is done near the top of server.js after the "strategy" is configured (see: "passport-jwt" below), ie: `passport.use(strategy);`
+
+<br>
+
+#####passport-jwt
+
+<br>
+
+####Adding the code to server.js
+
+...
 
