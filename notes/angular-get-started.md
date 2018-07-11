@@ -62,7 +62,7 @@ If you have created an app using the above `ng new my-dream-app --routing -st -s
 ng new my-dream-app --routing -S
 ```
 
-This will skip the testing, while still keeping the .html &amp .css files intact.  Unfortunately, it will still generate a .git directory inside your newly created "my-dream-app" directory.  Simply remove the .git directory to avoid using git in our solution.
+This will skip the testing, while still keeping the .html &amp;.css files intact.  Unfortunately, it will still generate a .git directory inside your newly created "my-dream-app" directory.  Simply remove the .git directory to avoid using git in our solution.
 
 <br>
 
