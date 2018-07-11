@@ -478,5 +478,63 @@ There's a lot going on in the above code, but the key pieces involve first defin
 
 ### Adding the code to server.js
 
+With all of the individual pieces of our JWT solution identified, it's now time to update server.js:
+
+#### Step 1: Requiring the Modules
+
+As you will recall (from above), our JWT enabled server.js will require 3 modules: "jwt", "passport" &amp; "passport-jwt" to function correctly.  Once these modules are installed via NPM (ie: "npm install ..."), we can add them to our list of imports at the top of server js:
+
+```javascript
+const jwt = require('jsonwebtoken');
+const passport = require("passport");
+const passportJWT = require("passport-jwt");
+```
+
+#### Step 2: Configuring the "Strategy"
+
+With our modules added, we can now add the code to configure the JWT "strategy".  Recall, this involves creating a **jwtOptions** object that we can pass to the **jwtStrategy** constructor, along with a callback function that looks at "jwt_payload". For our purposes, we can use the code exactly as it has been identified above, placed before our first "app.use()" statement.  However, a new "secretOrKey" property should be generated (optionally using the ["Generate Password" Tool](https://www.lastpass.com/password-generator) from LastPass). 
+
+**NOTE:** If the "user" has different properties (ie, something *other* than, "\_id", "userName", "fullName" and "role"), the data passed in the **next()** function should be modified to reflect the correct properties.
+
+```javascript
+// JSON Web Token Setup
+var ExtractJwt = passportJWT.ExtractJwt;
+var JwtStrategy = passportJWT.Strategy;
+
+// Configure its options
+var jwtOptions = {};
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
+
+// IMPORTANT - this secret should be a long, unguessable string 
+// (ideally stored in a "protected storage" area on the 
+// web server, a topic that is beyond the scope of this course)
+// We suggest that you generate a random 64-character string
+// using the following online tool:
+// https://lastpass.com/generatepassword.php 
+
+jwtOptions.secretOrKey = '&0y7$noP#5rt99&GB%Pz7j2b1vkzaB0RKs%^N^0zOP89NT04mPuaM!&G8cbNZOtH';
+
+var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
+    console.log('payload received', jwt_payload);
+
+    if (jwt_payload) {
+        // The following will ensure that all routes using 
+        // passport.authenticate have a req.user._id, req.user.userName, req.user.fullName & req.user.role values 
+        // that matches the request payload data
+        next(null, { _id: jwt_payload._id, 
+            userName: jwt_payload.userName, 
+            fullName: jwt_payload.fullName, 
+            role: jwt_payload.role }); 
+    } else {
+        next(null, false);
+    }
+});
+```
+
+<br>
+
+### Testing the New Functionality
+
 ...
+
 
