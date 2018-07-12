@@ -559,7 +559,7 @@ At this point, we're all set to work with JWT.  We have the correct modules adde
 }
 ```
 
-along with a 200 status code, to indicate that the login was indeed successful.  If we wish to grant this user access to our (soon to be) protected routes, we will have to also provide the JWT as a means of identification.  Using the **sign()** method of the included **jsonwebtoken** module, we can generate it and send it back to the client alongside the message.  
+along with a 200 status code, to indicate that the login was indeed successful.  If we wish to grant this user access to our (soon to be) protected routes, we will have to also provide the JWT as a means of identification.  Using the **sign()** method of the included **jsonwebtoken** module, we can generate it and send it back to the client alongside the "message".  
 
 To accomplish this, we need to add the following code to our "/api/login" route at the top of our **userService.checkUser(req.body).then( ... )** callback:
 
@@ -574,15 +574,9 @@ To accomplish this, we need to add the following code to our "/api/login" route 
 var token = jwt.sign(payload, jwtOptions.secretOrKey);
 ```
 
-This will generate a JWT for us using the user's "\_id", "userName", "fullName" and "role" properties, encrypted with our "secretOrKey", identified when we configured our passport strategy (in jwtOptions).
+This will generate a JWT for us using the user's "\_id", "userName", "fullName" and "role" properties, encrypted with our "secretOrKey" (identified when we configured our passport strategy in jwtOptions).
 
-Once we have the token - it should look something like:
-
-```
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjQ3ODY4MzU0MTA1Y2YzOGMzODIxODAiLCJ1c2VyTmFtZSI6InVzZXIiLCJmdWxsTmFtZSI6InVzZXIgZnVsbCBuYW1lIiwicm9sZSI6ImFkbWluaXN0cmF0b3IiLCJpYXQiOjE1MzE0MTQ3NTd9.9zJyWDaX2Sa1Lrm9VBxQo-M6wDVEm5feshqsaH00C64
-```
-
-then we can send it back along with the message to the user using **res.json()**:
+Once we have the token, we can send it back along with the message to the user using **res.json()** (typically using the property: "token"):
 
 ```javascript
 res.json({ "message": "login successful", "token": token });
@@ -592,8 +586,64 @@ res.json({ "message": "login successful", "token": token });
 
 #### Step 5 Protecting Route(s) using the Passport Middleware
 
+In order to restrict access to our /api/vehicles route, we need to employ the Passport middleware "authenticate" function (identified above in our **authenticate()** example).
+
+This simply involves adding the code: 
+
+```javascript
+passport.authenticate('jwt', { session: false })
+```
+
+as a middleware function to any routes that we wish to protecet (ie: our /api/vehicles route):
+
+```javascript
+app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => {
+    // ... 
+}
+```
+
+You will notice that we provide the option "session: false".  This is because we require credentials to be supplied with each request, rather than set up a session.  For more information and configuration options, see the Passport.js documentation, under ["Authenticate"](http://www.passportjs.org/docs/authenticate/).
+
+
 ### Testing the New Functionality
 
-...
+We have now completed all of the changes that are required on our server.js and are ready to test our Simple API and see if this technology really works to protect our routes.
+
+To test this, we must insure the following series of actions yields the expected results (listed below):
+
+**Action**: Attempt to access the route /api/vehicles as before (without supplying a JWT).
+
+[SCREENSHOT]
+
+**Expected Result:** Server returns a 401 error code and the text "unauthorized".
+
+[SCREENSHOT]
+
+<br>
+
+**Action**: Log in as user "bob" (as above) and copy the value of the returned "token" property.
+
+[SCREENSHOT]
+
+**Action**: Attempt to access the route /api/vehicles as before, only this time add the header "Authorization" with the value "JWT" followed by a *space*, follwed by the returned "token" that was sent when "bob" logged in (above)
+
+[SCREENSHOT]
+
+**Expected Result:** Vehicle data is returned
+
+[SCREENSHOT]
+
+<br>
+
+**Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).
+
+[SCREENSHOT]
+
+**Expected Result**: Server returns a 401 error code and the text "unauthorized".
+
+[SCREENSHOT]
+
+<br>
+
 
 
