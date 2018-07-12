@@ -299,9 +299,9 @@ Once again, nothing special here.  We simply bind to ngModel as before.
 #### input (type="radio")
 
 ```html
-<input type="radio" id="vehicleUseBusiness" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="business" /> <label for="vehicleUseBusiness"> Business</label><br />
-<input type="radio" id="vehicleUsePleasure" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="pleasure" /> <label for="vehicleUsePleasure"> Pleasure</label><br />
-<input type="radio" id="vehicleUseOther" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="other" /> <label for="vehicleUseOther"> Other</label><br />
+<input type="radio" id="vehicleUseBusiness" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="business" /> 
+<input type="radio" id="vehicleUsePleasure" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="pleasure" /> 
+<input type="radio" id="vehicleUseOther" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="other" />
 ```
 
 Here, we must place identical ngModel binding on each "radio" button with the same "name" attribute.
