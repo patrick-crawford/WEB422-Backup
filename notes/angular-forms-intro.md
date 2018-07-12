@@ -246,7 +246,7 @@ For example, let's see how we can update each of our form element types in our "
 #### input (type="text")
 
 ```html
-<input type="text" class="form-control" name="name" [(ngModel)]="driverData.name" required autofocus>
+<input type="text" class="form-control" id="name" name="name" [(ngModel)]="driverData.name" required autofocus>
 ```
 
 Here, we simply add the "two-way" binding syntax with ngModel to reference the "driverData.name" property
@@ -256,7 +256,7 @@ Here, we simply add the "two-way" binding syntax with ngModel to reference the "
 #### textarea
 
 ```html
-<textarea class="form-control" name="description" [(ngModel)]="driverData.description"></textarea>
+<textarea class="form-control" id="description" name="description" [(ngModel)]="driverData.description"></textarea>
 ```
 
 This is very similar to the **input** example above, ie: we simply add the two-way data binding to ngModel with the correct Component property
@@ -266,14 +266,14 @@ This is very similar to the **input** example above, ie: we simply add the two-w
 #### select / select multiple
 {% raw %}
 ```html
-<select multiple class="form-control" name="ownedTransportation" [(ngModel)]="driverData.ownedTransportation">
+<select multiple class="form-control" id="ownedTransportation" name="ownedTransportation" [(ngModel)]="driverData.ownedTransportation">
         <option *ngFor = "let transportation of transportationList" [value]="transportation.value">{{transportation.text}}</option>
 </select>
 ```
 {% endraw %}
 {% raw %}
 ```html
-<select class="form-control" name="favouriteTransportation" [(ngModel)]="driverData.favouriteTransportation">
+<select class="form-control" id="favouriteTransportation" name="favouriteTransportation" [(ngModel)]="driverData.favouriteTransportation">
           <option *ngFor = "let transportation of transportationList" [value]="transportation.value">{{transportation.text}}</option>
 </select>
 ```
@@ -289,7 +289,7 @@ Since both the "ownedTransportation" and "favouriteTransportation properties use
 #### input (type="checkbox")
 
 ```html
-<input type="checkbox" name="driverLicence" [(ngModel)]="driverData.driverLicence" />
+<input type="checkbox" id="driverLicence" name="driverLicence" [(ngModel)]="driverData.driverLicence" />
 ```
 
 Once again, nothing special here.  We simply bind to ngModel as before.
@@ -299,9 +299,9 @@ Once again, nothing special here.  We simply bind to ngModel as before.
 #### input (type="radio")
 
 ```html
-<input type="radio" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="business" /> <label for="vehicleUseBusiness"> Business</label><br />
-<input type="radio" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="pleasure" /> <label for="vehicleUsePleasure"> Pleasure</label><br />
-<input type="radio" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="other" /> <label for="vehicleUseOther"> Other</label><br />
+<input type="radio" id="vehicleUseBusiness" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="business" /> <label for="vehicleUseBusiness"> Business</label><br />
+<input type="radio" id="vehicleUsePleasure" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="pleasure" /> <label for="vehicleUsePleasure"> Pleasure</label><br />
+<input type="radio" id="vehicleUseOther" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="other" /> <label for="vehicleUseOther"> Other</label><br />
 ```
 
 Here, we must place identical ngModel binding on each "radio" button with the same "name" attribute.
