@@ -620,6 +620,8 @@ To test this, we must insure the following series of actions yields the expected
 ![Postman Unauthorized](../media/postman-get-vehicles-error.png)
 
 <br>
+---
+<br>
 
 **Action**: Log in as user "bob" (as above) and copy the value of the returned "token" property.
 
@@ -633,6 +635,8 @@ To test this, we must insure the following series of actions yields the expected
 
 ![Postman Vehicle Data](../media/postman-get-vehicles-success.png)
 
+<br>
+---
 <br>
 
 **Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).
