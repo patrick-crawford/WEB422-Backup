@@ -613,35 +613,35 @@ To test this, we must insure the following series of actions yields the expected
 
 **Action**: Attempt to access the route /api/vehicles as before (without supplying a JWT).
 
-[SCREENSHOT]
+![Postman Get Vehicles](../media/postman-get-vehicles-1.png)
 
 **Expected Result:** Server returns a 401 error code and the text "unauthorized".
 
-[SCREENSHOT]
+![Postman Unauthorized](../media/postman-get-vehicles-error.png)
 
 <br>
 
 **Action**: Log in as user "bob" (as above) and copy the value of the returned "token" property.
 
-[SCREENSHOT]
+![Postman Login Token](../media/postman-login-token.png)
 
 **Action**: Attempt to access the route /api/vehicles as before, only this time add the header "Authorization" with the value "JWT" followed by a *space*, follwed by the returned "token" that was sent when "bob" logged in (above)
 
-[SCREENSHOT]
+![Postman Get Vehicles with Token](../media/postman-get-vehicles-token.png)
 
 **Expected Result:** Vehicle data is returned
 
-[SCREENSHOT]
+![Postman Vehicle Data](../media/postman-get-vehicles-success.png)
 
 <br>
 
 **Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).
 
-[SCREENSHOT]
+![Postman Vehicle Data - Incorrect Token](../media/postman-get-vehicles-incorrect-token.png)
 
 **Expected Result**: Server returns a 401 error code and the text "unauthorized".
 
-[SCREENSHOT]
+![Postman Unauthorized](../media/postman-get-vehicles-error.png)
 
 <br>
 
