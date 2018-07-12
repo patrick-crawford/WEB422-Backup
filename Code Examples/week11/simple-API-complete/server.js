@@ -42,12 +42,18 @@ var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
     }
 });
 
+// tell passport to use our "strategy"
+passport.use(strategy);
+
+// add passport as application-level middleware
+app.use(passport.initialize());
+
 app.use(bodyParser.json());
 app.use(cors());
 
 const HTTP_PORT = process.env.PORT || 8080;
 
-app.get("/api/vehicles", (req,res)=>{
+app.get("/api/vehicles",passport.authenticate('jwt', { session: false }), (req,res)=>{
     dataService.getAllVehicles().then((data)=>{
         res.json(data);
     }).catch(()=>{
@@ -67,7 +73,17 @@ app.post("/api/register", (req, res) => {
 app.post("/api/login", (req, res) => {
     userService.checkUser(req.body)
         .then((user) => {
-            res.json({ "message": "login successful" });
+
+            var payload = { 
+                _id: user._id,
+                userName: user.userName,
+                fullName: user.fullName,
+                role: user.role
+            };
+
+            var token = jwt.sign(payload, jwtOptions.secretOrKey);
+
+            res.json({ "message": "login successful", "token": token });
         }).catch((msg) => {
             res.status(422).json({ "message": msg });
         });
