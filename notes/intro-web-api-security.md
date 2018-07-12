@@ -304,7 +304,7 @@ This will show all of the documents in the collection, including our new "bob" u
 
 **New Route: /api/login**
 
-In addition to **adding** users to the system, we must also be able to **authenticate** users and allow them to "login" before being granted access to the data.  In this case, all of the work required for authenticating user data is done in the "dataAuth.checkUser()" method.  So (like "/api/register"), our "/api/login" route, we once again pass the posted data to the userService for processing and report back when it has completed, ie: 
+In addition to **adding** users to the system, we must also be able to **authenticate** users and allow them to "login" before being granted access to the data.  In this case, all of the work required for authenticating user data is done in the "dataAuth.checkUser()" method.  So (like "/api/register"), our "/api/login" route, will once again pass the posted data to the userService for processing and report back when it has completed, ie: 
 
 ```javascript
 app.post("api/login", (req, res) => {
