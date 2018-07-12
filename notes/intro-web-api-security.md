@@ -41,7 +41,7 @@ More details can be found on MDN under "[Cross-Origin Resource Sharing (CORS)](h
 
 ### Review User Account Management & Security
 
-Now that our extremely simple "vehicles" API is in place and produces data, we can discuss how we might *protect* this data from unwanted (unauthorized) access. 
+With extremely simple "vehicles" API in place and producing data, we can now move on to discuss how we might *protect* this data from unwanted (unauthorized) access. 
 
 Back in WEB322, we discussed a number of [security considerations](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week12-class1/) that are vital to a modern web application.  This primairly included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up an mLab DB to store our user information & credentials.
 
@@ -57,7 +57,7 @@ Be sure to keep track of your connection string, as we will be using it in the n
 
 #### Updating the "user-service"
 
-To keep our DB authentication piece clean, we will be making use of the promise-based "userService" module, defined in the   "user-service.js" file.  If you open this file, you will see a space for your MongoDB connection string - enter it now before proceeding.
+To keep our DB authentication piece clean, we will be making use of the promise-based "user-service" module, defined in the "user-service.js" file.  If you open this file, you will see a space for your MongoDB connection string - enter it now before proceeding.
 
 Next, you will notice a definition for a "user" Schema (userSchema).  In this case, it consists of 4 simple fields:
 
@@ -195,7 +195,7 @@ module.exports.checkUser = function (userData) {
 };
 ```
 
-Not much has changed here.  Instead of simply comaring userData.password with users[0].password directly, we use the **bcrypt.compare()** method.
+Not much has changed here.  Instead of simply comaring userData.password with users\[0\].password directly, we use the **bcrypt.compare()** method.
 
 <br>
 
@@ -367,7 +367,7 @@ The client must then send the identifier as part of each request and the server 
 
 > JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
 
-This is perfect for our purposes.  We can generate a JWT on the server (only) once the user has been **successfully authenticated** and send it back to the client along with the "login successful" message.  It will contain digitally-signed information about the authenticated user such as their "userName", "fullName" & "role" (but **never** their password).  The client can then read this information and **send the JWT back to the server** in the body of every subsequent request to be verified on the server. Since it is digitally signed on the server using a "secret", we can verify that the data has not been tampered with and that the JWT did indeed come from our simple API server.
+This is perfect for our purposes.  We can generate a JWT on the server (only) once the user has been **successfully authenticated** and send it back to the client along with the "login successful" message.  It will contain digitally-signed information about the authenticated user such as their "userName", "fullName" & "role" (but **never** their password).  The client can then read this information and **send the JWT back to the server** in an "Authorization" header with every subsequent request to be verified on the server. Since it is digitally signed on the server using a "secret", we can verify that the data has not been tampered with and that the JWT did indeed come from our simple API server.
 
 > **When should you use JSON Web Tokens?**<br>Here are some scenarios where JSON Web Tokens are useful:<br><br>**Authorization:** This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.<br><br>**Information Exchange:** JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
 
@@ -397,7 +397,7 @@ jwt.sign({
 }, 'secret', { expiresIn: 60 * 60 });
 ```
 
-For more information on the usage of this function including options such as additional options, methods and errors/codes, see [the documentaiton for jsonwebtoken on npm](https://www.npmjs.com/package/jsonwebtoken)
+For more information on the usage of this function including additional options, methods and errors/codes see [the documentaiton for jsonwebtoken on npm](https://www.npmjs.com/package/jsonwebtoken)
 
 <br>
 
@@ -490,6 +490,8 @@ const passport = require("passport");
 const passportJWT = require("passport-jwt");
 ```
 
+<br>
+
 #### Step 2: Configuring the "Strategy"
 
 With our modules added, we can now add the code to configure the JWT "strategy".  Recall, this involves creating a **jwtOptions** object that we can pass to the **jwtStrategy** constructor, along with a callback function that looks at the "jwt_payload" parameter. For our purposes, we can use the code exactly as it has been identified above, placed before our first "app.use()" statement.  However, a **new** "secretOrKey" property should be generated (optionally using the ["Generate Password" Tool](https://www.lastpass.com/password-generator) from LastPass). 
@@ -532,6 +534,63 @@ var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
 ```
 
 <br>
+
+#### Step 3 Set the Strategy &amp; Add the Middleware
+
+The last step needed to tell our server that we wish to use Passport (with the "JWT" strategy), by adding the function as middleware to our server using **app.use()**:
+
+```javascript
+// tell passport to use our "strategy"
+passport.use(strategy);
+
+// add passport as application-level middleware
+app.use(passport.initialize());
+```
+
+<br>
+
+#### Step 4 Generating &amp; Sending the JWT
+
+At this point, we're all set to work with JWT.  We have the correct modules added and the Passsport middleware is configured and added to our application.  However, before we can *protect* our routes (see below), we need to first **send** the token back to the client.  Currently, our api/login route simply sends the data:
+
+```json
+{ 
+    "message": "login successful" 
+}
+```
+
+along with a 200 status code, to indicate that the login was indeed successful.  If we wish to grant this user access to our (soon to be) protected routes, we will have to also provide the JWT as a means of identification.  Using the **sign()** method of the included **jsonwebtoken** module, we can generate it and send it back to the client alongside the message.  
+
+To accomplish this, we need to add the following code to our "/api/login" route at the top of our **userService.checkUser(req.body).then( ... )** callback:
+
+```javascript
+ var payload = { 
+    _id: user._id,
+    userName: user.userName,
+    fullName: user.fullName,
+    role: user.role
+};
+
+var token = jwt.sign(payload, jwtOptions.secretOrKey);
+```
+
+This will generate a JWT for us using the user's "\_id", "userName", "fullName" and "role" properties, encrypted with our "secretOrKey", identified when we configured our passport strategy (in jwtOptions).
+
+Once we have the token - it should look something like:
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjQ3ODY4MzU0MTA1Y2YzOGMzODIxODAiLCJ1c2VyTmFtZSI6InVzZXIiLCJmdWxsTmFtZSI6InVzZXIgZnVsbCBuYW1lIiwicm9sZSI6ImFkbWluaXN0cmF0b3IiLCJpYXQiOjE1MzE0MTQ3NTd9.9zJyWDaX2Sa1Lrm9VBxQo-M6wDVEm5feshqsaH00C64
+```
+
+then we can send it back along with the message to the user using **res.json()**:
+
+```javascript
+res.json({ "message": "login successful", "token": token });
+```
+
+<br>
+
+#### Step 5 Protecting Route(s) using the Passport Middleware
 
 ### Testing the New Functionality
 
