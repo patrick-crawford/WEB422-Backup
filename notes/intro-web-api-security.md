@@ -549,7 +549,7 @@ app.use(passport.initialize());
 
 <br>
 
-#### Step 4 Generating &amp; Sending the JWT
+#### Step 4 Generating &amp; Sending the JWT 
 
 At this point, we're all set to work with JWT.  We have the correct modules added and the Passsport middleware is configured and added to our application.  However, before we can *protect* our routes (see below), we need to first **send** the token back to the client.  Currently, our api/login route simply sends the data:
 
