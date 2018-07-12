@@ -617,6 +617,8 @@ To test this, we must insure the following series of actions yields the expected
 
 ![Postman Get Vehicles](../media/postman-get-vehicles-1.png)
 
+<br>
+
 **Expected Result:** Server returns a 401 error code and the text "unauthorized".
 
 ![Postman Unauthorized](../media/postman-get-vehicles-error.png)
@@ -628,9 +630,13 @@ To test this, we must insure the following series of actions yields the expected
 
 ![Postman Login Token](../media/postman-login-token.png)
 
+<br>
+
 **Action**: Attempt to access the route /api/vehicles as before, only this time add the header "Authorization" with the value "JWT" followed by a *space*, follwed by the returned "token" that was sent when "bob" logged in (above)
 
 ![Postman Get Vehicles with Token](../media/postman-get-vehicles-token.png)
+
+<br>
 
 **Expected Result:** Vehicle data is returned
 
@@ -642,6 +648,8 @@ To test this, we must insure the following series of actions yields the expected
 **Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).
 
 ![Postman Vehicle Data - Incorrect Token](../media/postman-get-vehicles-incorrect-token.png)
+
+<br>
 
 **Expected Result**: Server returns a 401 error code and the text "unauthorized".
 
