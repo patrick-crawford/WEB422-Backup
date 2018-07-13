@@ -398,7 +398,7 @@ The validation attributes currently supported are as follows:
 * [minlength](https://angular.io/api/forms/MinLengthValidator)
 * [email (experimental)](https://angular.io/api/forms/EmailValidator)
 
-Any other validation task (ie: "min" value for a type="number") will need to be created asa [Custom Validator](https://angular.io/guide/form-validation#custom-validators), however this is beyond the scope of the lecture today. 
+Any other validation task (ie: "min" value for a type="number") will need to be created as a [Custom Validator](https://angular.io/guide/form-validation#custom-validators), however this is beyond the scope of the lecture today. 
 
 Basically, if we wish to display a message for a specific type of error, we make a template reference to the element we want using "ngModel" (same procedure as above), ie:
 
