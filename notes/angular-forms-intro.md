@@ -32,9 +32,9 @@ Once this is compete, a brief summary of the highlights and dev tips are present
 ### Three ways to do forms in Angular
 
 Angular offers *three* ways to do forms:
-1. Template-driven
-2. Reactive  
-3. Dynamic  
+1. [Template-driven](https://angular.io/guide/forms#template-driven-forms)
+2. [Reactive](https://angular.io/guide/reactive-forms)  
+3. [Dynamic](https://angular.io/guide/dynamic-form)  
 
 In this course, we will work only with *Template-driven Forms*.
 
