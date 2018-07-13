@@ -32,9 +32,9 @@ Once this is compete, a brief summary of the highlights and dev tips are present
 ### Three ways to do forms in Angular
 
 Angular offers *three* ways to do forms:
-1. Template-driven
-2. Reactive  
-3. Dynamic  
+1. [Template-driven](https://angular.io/guide/forms#template-driven-forms)
+2. [Reactive](https://angular.io/guide/reactive-forms)  
+3. [Dynamic](https://angular.io/guide/dynamic-form)  
 
 In this course, we will work only with *Template-driven Forms*.
 
@@ -148,7 +148,7 @@ It's possible that you have written hundreds of these forms. It's a very well-un
 
 Before making any changes to the form, we must add the Angular forms-handling bits to the project. In the documentation's [Revise *app.module.ts*](https://angular.io/guide/forms#revise-appmodulets) section, we do a task with two related steps:
 
-1. Import the [FormsModule](https://angular.io/api/forms/FormsModule)
+1. Import the [FormsModule](https://angular.io/api/forms/FormsModule) from '@angular/forms'
 2. Add **FormsModule** to the "imports" array
 
 <br>
@@ -246,7 +246,7 @@ For example, let's see how we can update each of our form element types in our "
 #### input (type="text")
 
 ```html
-<input type="text" class="form-control" name="name" [(ngModel)]="driverData.name" required autofocus>
+<input type="text" class="form-control" id="name" name="name" [(ngModel)]="driverData.name" required autofocus>
 ```
 
 Here, we simply add the "two-way" binding syntax with ngModel to reference the "driverData.name" property
@@ -256,7 +256,7 @@ Here, we simply add the "two-way" binding syntax with ngModel to reference the "
 #### textarea
 
 ```html
-<textarea class="form-control" name="description" [(ngModel)]="driverData.description"></textarea>
+<textarea class="form-control" id="description" name="description" [(ngModel)]="driverData.description"></textarea>
 ```
 
 This is very similar to the **input** example above, ie: we simply add the two-way data binding to ngModel with the correct Component property
@@ -266,14 +266,14 @@ This is very similar to the **input** example above, ie: we simply add the two-w
 #### select / select multiple
 {% raw %}
 ```html
-<select multiple class="form-control" name="ownedTransportation" [(ngModel)]="driverData.ownedTransportation">
+<select multiple class="form-control" id="ownedTransportation" name="ownedTransportation" [(ngModel)]="driverData.ownedTransportation">
         <option *ngFor = "let transportation of transportationList" [value]="transportation.value">{{transportation.text}}</option>
 </select>
 ```
 {% endraw %}
 {% raw %}
 ```html
-<select class="form-control" name="favouriteTransportation" [(ngModel)]="driverData.favouriteTransportation">
+<select class="form-control" id="favouriteTransportation" name="favouriteTransportation" [(ngModel)]="driverData.favouriteTransportation">
           <option *ngFor = "let transportation of transportationList" [value]="transportation.value">{{transportation.text}}</option>
 </select>
 ```
@@ -289,7 +289,7 @@ Since both the "ownedTransportation" and "favouriteTransportation properties use
 #### input (type="checkbox")
 
 ```html
-<input type="checkbox" name="driverLicence" [(ngModel)]="driverData.driverLicence" />
+<input type="checkbox" id="driverLicence" name="driverLicence" [(ngModel)]="driverData.driverLicence" />
 ```
 
 Once again, nothing special here.  We simply bind to ngModel as before.
@@ -299,9 +299,9 @@ Once again, nothing special here.  We simply bind to ngModel as before.
 #### input (type="radio")
 
 ```html
-<input type="radio" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="business" /> <label for="vehicleUseBusiness"> Business</label><br />
-<input type="radio" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="pleasure" /> <label for="vehicleUsePleasure"> Pleasure</label><br />
-<input type="radio" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="other" /> <label for="vehicleUseOther"> Other</label><br />
+<input type="radio" id="vehicleUseBusiness" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="business" /> 
+<input type="radio" id="vehicleUsePleasure" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="pleasure" /> 
+<input type="radio" id="vehicleUseOther" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="other" />
 ```
 
 Here, we must place identical ngModel binding on each "radio" button with the same "name" attribute.
@@ -390,7 +390,15 @@ You will notice that there is a notion of "validity" with a form element, but wh
 > 
 > You can then inspect the control's state by exporting ngModel to a local template variable.
 
-In addition to leveraging the native HTML5 validation attributes, we can also create [Custom Validators](https://angular.io/guide/form-validation#custom-validators), however this is beyond the scope of the lecture today. 
+The validation attributes currently supported are as follows:
+
+* [required](https://angular.io/api/forms/RequiredValidator)
+* [pattern](https://angular.io/api/forms/PatternValidator)
+* [maxlength](https://angular.io/api/forms/MaxLengthValidator)
+* [minlength](https://angular.io/api/forms/MinLengthValidator)
+* [email (experimental)](https://angular.io/api/forms/EmailValidator)
+
+Any other validation task (ie: "min" value for a type="number") will need to be created as a [Custom Validator](https://angular.io/guide/form-validation#custom-validators), however this is beyond the scope of the lecture today. 
 
 Basically, if we wish to display a message for a specific type of error, we make a template reference to the element we want using "ngModel" (same procedure as above), ie:
 

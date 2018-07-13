@@ -5,9 +5,7 @@ layout: default
 
 ## Introduction to Securing a Web API with JWT
 
-**Introduction paragraph here...** 
-
-Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 12 example code](https://github.com/sictweb/web422/tree/master/Code%20Examples/week12).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
+Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 11 example code](https://github.com/sictweb/web422/tree/master/Code%20Examples/week11)).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
 
 Once you have grabbed the "simple-api" folder from gitHub, open it in Visual Studio and execute the command:
 
@@ -41,7 +39,7 @@ More details can be found on MDN under "[Cross-Origin Resource Sharing (CORS)](h
 
 ### Review User Account Management & Security
 
-Now that our extremely simple "vehicles" API is in place and produces data, we can discuss how we might *protect* this data from unwanted (unauthorized) access. 
+With extremely simple "vehicles" API in place and producing data, we can now move on to discuss how we might *protect* this data from unwanted (unauthorized) access. 
 
 Back in WEB322, we discussed a number of [security considerations](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week12-class1/) that are vital to a modern web application.  This primairly included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up an mLab DB to store our user information & credentials.
 
@@ -57,7 +55,7 @@ Be sure to keep track of your connection string, as we will be using it in the n
 
 #### Updating the "user-service"
 
-To keep our DB authentication piece clean, we will be making use of the promise-based "userService" module, defined in the   "user-service.js" file.  If you open this file, you will see a space for your MongoDB connection string - enter it now before proceeding.
+To keep our DB authentication piece clean, we will be making use of the promise-based "user-service" module, defined in the "user-service.js" file.  If you open this file, you will see a space for your MongoDB connection string - enter it now before proceeding.
 
 Next, you will notice a definition for a "user" Schema (userSchema).  In this case, it consists of 4 simple fields:
 
@@ -195,7 +193,7 @@ module.exports.checkUser = function (userData) {
 };
 ```
 
-Not much has changed here.  Instead of simply comaring userData.password with users[0].password directly, we use the **bcrypt.compare()** method.
+Not much has changed here.  Instead of simply comaring userData.password with users\[0\].password directly, we use the **bcrypt.compare()** method.
 
 <br>
 
@@ -306,7 +304,7 @@ This will show all of the documents in the collection, including our new "bob" u
 
 **New Route: /api/login**
 
-In addition to **adding** users to the system, we must also be able to **authenticate** users and allow them to "login" before being granted access to the data.  In this case, all of the work required for authenticating user data is done in the "dataAuth.checkUser()" method.  So (like "/api/register"), our "/api/login" route, we once again pass the posted data to the userService for processing and report back when it has completed, ie: 
+In addition to **adding** users to the system, we must also be able to **authenticate** users and allow them to "login" before being granted access to the data.  In this case, all of the work required for authenticating user data is done in the "dataAuth.checkUser()" method.  So (like "/api/register"), our "/api/login" route, will once again pass the posted data to the userService for processing and report back when it has completed, ie: 
 
 ```javascript
 app.post("api/login", (req, res) => {
@@ -367,7 +365,7 @@ The client must then send the identifier as part of each request and the server 
 
 > JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
 
-This is perfect for our purposes.  We can generate a JWT on the server (only) once the user has been **successfully authenticated** and send it back to the client along with the "login successful" message.  It will contain digitally-signed information about the authenticated user such as their "userName", "fullName" & "role" (but **never** their password).  The client can then read this information and **send the JWT back to the server** in the body of every subsequent request to be verified on the server. Since it is digitally signed on the server using a "secret", we can verify that the data has not been tampered with and that the JWT did indeed come from our simple API server.
+This is perfect for our purposes.  We can generate a JWT on the server (only) once the user has been **successfully authenticated** and send it back to the client along with the "login successful" message.  It will contain digitally-signed information about the authenticated user such as their "userName", "fullName" & "role" (but **never** their password).  The client can then read this information and **send the JWT back to the server** in an "Authorization" header with every subsequent request to be verified on the server. Since it is digitally signed on the server using a "secret", we can verify that the data has not been tampered with and that the JWT did indeed come from our simple API server.
 
 > **When should you use JSON Web Tokens?**<br>Here are some scenarios where JSON Web Tokens are useful:<br><br>**Authorization:** This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.<br><br>**Information Exchange:** JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
 
@@ -397,7 +395,7 @@ jwt.sign({
 }, 'secret', { expiresIn: 60 * 60 });
 ```
 
-For more information on the usage of this function including options such as additional options, methods and errors/codes, see [the documentaiton for jsonwebtoken on npm](https://www.npmjs.com/package/jsonwebtoken)
+For more information on the usage of this function including additional options, methods and errors/codes see [the documentaiton for jsonwebtoken on npm](https://www.npmjs.com/package/jsonwebtoken)
 
 <br>
 
@@ -490,6 +488,8 @@ const passport = require("passport");
 const passportJWT = require("passport-jwt");
 ```
 
+<br>
+
 #### Step 2: Configuring the "Strategy"
 
 With our modules added, we can now add the code to configure the JWT "strategy".  Recall, this involves creating a **jwtOptions** object that we can pass to the **jwtStrategy** constructor, along with a callback function that looks at the "jwt_payload" parameter. For our purposes, we can use the code exactly as it has been identified above, placed before our first "app.use()" statement.  However, a **new** "secretOrKey" property should be generated (optionally using the ["Generate Password" Tool](https://www.lastpass.com/password-generator) from LastPass). 
@@ -533,8 +533,127 @@ var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
 
 <br>
 
+#### Step 3 Set the Strategy &amp; Add the Middleware
+
+The last step needed to tell our server that we wish to use Passport (with the "JWT" strategy), by adding the function as middleware to our server using **app.use()**:
+
+```javascript
+// tell passport to use our "strategy"
+passport.use(strategy);
+
+// add passport as application-level middleware
+app.use(passport.initialize());
+```
+
+<br>
+
+#### Step 4 Generating &amp; Sending the JWT 
+
+At this point, we're all set to work with JWT.  We have the correct modules added and the Passsport middleware is configured and added to our application.  However, before we can *protect* our routes (see below), we need to first **send** the token back to the client.  Currently, our api/login route simply sends the data:
+
+```json
+{ 
+    "message": "login successful" 
+}
+```
+
+along with a 200 status code, to indicate that the login was indeed successful.  If we wish to grant this user access to our (soon to be) protected routes, we will have to also provide the JWT as a means of identification.  Using the **sign()** method of the included **jsonwebtoken** module, we can generate it and send it back to the client alongside the "message".  
+
+To accomplish this, we need to add the following code to our "/api/login" route at the top of our **userService.checkUser(req.body).then( ... )** callback:
+
+```javascript
+ var payload = { 
+    _id: user._id,
+    userName: user.userName,
+    fullName: user.fullName,
+    role: user.role
+};
+
+var token = jwt.sign(payload, jwtOptions.secretOrKey);
+```
+
+This will generate a JWT for us using the user's "\_id", "userName", "fullName" and "role" properties, encrypted with our "secretOrKey" (identified when we configured our passport strategy in jwtOptions).
+
+Once we have the token, we can send it back along with the message to the user using **res.json()** (typically using the property: "token"):
+
+```javascript
+res.json({ "message": "login successful", "token": token });
+```
+
+<br>
+
+#### Step 5 Protecting Route(s) using the Passport Middleware
+
+In order to restrict access to our /api/vehicles route, we need to employ the Passport middleware "authenticate" function (identified above in our **authenticate()** example).
+
+This simply involves adding the code: 
+
+```javascript
+passport.authenticate('jwt', { session: false })
+```
+
+as a middleware function to any routes that we wish to protecet (ie: our /api/vehicles route):
+
+```javascript
+app.get("/api/vehicles", passport.authenticate('jwt', { session: false }), (req, res) => {
+    // ... 
+}
+```
+
+You will notice that we provide the option "session: false".  This is because we require credentials to be supplied with each request, rather than set up a session.  For more information and configuration options, see the Passport.js documentation, under ["Authenticate"](http://www.passportjs.org/docs/authenticate/).
+
+
 ### Testing the New Functionality
 
-...
+We have now completed all of the changes that are required on our server.js and are ready to test our Simple API and see if this technology really works to protect our routes.
+
+To test this, we must insure the following series of actions yields the expected results (listed below):
+
+<br>
+
+**Action**: Attempt to access the route /api/vehicles as before (without supplying a JWT).
+
+![Postman Get Vehicles](../media/postman-get-vehicles-1.png)
+
+<br>
+
+**Expected Result:** Server returns a 401 error code and the text "unauthorized".
+
+![Postman Unauthorized](../media/postman-get-vehicles-error.png)
+
+<br>
+<br>
+
+**Action**: Log in as user "bob" (as above) and copy the value of the returned "token" property.
+
+![Postman Login Token](../media/postman-login-token.png)
+
+<br>
+
+**Action**: Attempt to access the route /api/vehicles as before, only this time add the header "Authorization" with the value "JWT" followed by a *space*, follwed by the returned "token" that was sent when "bob" logged in (above)
+
+![Postman Get Vehicles with Token](../media/postman-get-vehicles-token.png)
+
+<br>
+
+**Expected Result:** Vehicle data is returned
+
+![Postman Vehicle Data](../media/postman-get-vehicles-success.png)
+
+<br>
+<br>
+
+**Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).
+
+![Postman Vehicle Data - Incorrect Token](../media/postman-get-vehicles-incorrect-token.png)
+
+<br>
+
+**Expected Result**: Server returns a 401 error code and the text "unauthorized".
+
+![Postman Unauthorized](../media/postman-get-vehicles-error.png)
+
+<br>
+
 
 
