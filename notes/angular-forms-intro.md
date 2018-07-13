@@ -390,7 +390,15 @@ You will notice that there is a notion of "validity" with a form element, but wh
 > 
 > You can then inspect the control's state by exporting ngModel to a local template variable.
 
-In addition to leveraging the native HTML5 validation attributes, we can also create [Custom Validators](https://angular.io/guide/form-validation#custom-validators), however this is beyond the scope of the lecture today. 
+The validation attributes currently supported are as follows:
+
+* [required](https://angular.io/api/forms/RequiredValidator)
+* [pattern](https://angular.io/api/forms/PatternValidator)
+* [maxlength](https://angular.io/api/forms/MaxLengthValidator)
+* [minlength](https://angular.io/api/forms/MinLengthValidator)
+* [email (experimental)](https://angular.io/api/forms/EmailValidator)
+
+Any other validation task (ie: "min" value for a type="number") will need to be created asa [Custom Validator](https://angular.io/guide/form-validation#custom-validators), however this is beyond the scope of the lecture today. 
 
 Basically, if we wish to display a message for a specific type of error, we make a template reference to the element we want using "ngModel" (same procedure as above), ie:
 
