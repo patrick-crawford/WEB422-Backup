@@ -520,11 +520,11 @@ In the `<a>` element, both are used as attributes. For example:
 
 <br>
 
-Alternatively, we can navigate programmatically using the Router service:
+Alternatively, we can navigate programmatically using the "Router" service (`import {Router} from "@angular/router"`):
 
 ```js
 goToPage(pageNum) {
-  // assume that "pageNum" holds a page number value
+  // assume that "pageNum" holds a page number value & "router" is the injected Router service
   this.router.navigate(['/product-list'], { queryParams: { page: pageNum } });
 }
 ```
