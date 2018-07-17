@@ -259,7 +259,7 @@ This sounds like exactly what we need - something to "make it easier to compose 
 Observables on the other hand, allow us to watch (observe) the changing values of data over time and execute code when these changes occur.  For example:
 
 ```js
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable'; // Or, if using Angular 6, just "rxjs"
 
 var source = Observable.create(function (observer) {
   

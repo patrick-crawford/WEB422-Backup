@@ -310,7 +310,7 @@ export class User {
 Open the service for editing. Add the following near the top:
 
 ```js
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs/Observable"; // Or, if using Angular 6, just "rxjs"
 
 import { Post, Comment, Geo, Address, Company, User } from "./vm-typicode";
 ```
