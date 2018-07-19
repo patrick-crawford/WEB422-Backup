@@ -339,8 +339,8 @@ it("The 'toBeCloseTo' matcher is for precision math comparison", function () {
     var pi = 3.1415926,
         e = 2.78;
 
-    expect(pi).not.toBeCloseTo(e, 2);
-    expect(pi).toBeCloseTo(e, 0);
+    expect(pi).not.toBeCloseTo(e, 2); // rounding pi to 3.14 and e to 2.78 (2 decimal places)
+    expect(pi).toBeCloseTo(e, 0); // rounding pi to 3 and e to 3 (0 decimal places)
 });
 ```
 
