@@ -570,8 +570,8 @@ To simulate the button click and check that the value of x is updated to one (1)
 
 ```js
 it('Sets x to 1 when "myButton" is clicked', () => {
-  let button = fixture.debugElement.nativeElement.querySelector('button.myButton');
-  button.click();
+  let button = fixture.debugElement.query(By.css('button.myButton'));
+  button.nativeElement.click();
 
   fixture.whenStable().then(() => {
     expect(component.x).toBe(1);
