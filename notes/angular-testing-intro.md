@@ -537,6 +537,48 @@ If we try it now, we should see that everything works as expected and our test i
 
 <br>
 
+### Test Three - Checking a User Event ("click")
+
+Say we wish to check that a button behaves properly when clicked - ie: it updates the value of a property in the component.  How do we simulate a "click" event? How do we check the property value in the component once an event has completed?  To wire this test up, let's first create a "button" element in our `component-one.component.html` template:
+
+```
+<button class="myButton" (click)="onClick()">Click Me</button>
+```
+
+Notice how it has a "click" event that invokes an "onClick()" method?  Our next step to set this test up, is to create the "onClick()" event in the "ComponentOneComponent" class (`component-one.component.ts`).  We should also create some value in the component to be modified when "onClick()" is invoked (we'll go with "x"):
+
+```js
+export class ComponentOneComponent implements OnInit {
+
+  public x:number;
+
+  constructor() { }
+
+  ngOnInit() {
+    this.x=0;
+  }
+
+  onClick(){
+    this.x=1;
+  }
+
+};
+```
+As you can see, we've created a public property ("x") that is set to zero (0) when the component is initialized.  When the "onClick()" method is invoked, it will be increased to one (1).
+
+To simulate the button click and check that the value of x is updated to one (1) in a test, we simply grab the "native" element for the button, manually invoke the click event (using `.click()`) and write our expectation once the figure "[becomes stable](https://angular.io/api/core/testing/ComponentFixture#whenStable)":
+
+```js
+it('Sets x to 1 when "myButton" is clicked', () => {
+  let button = fixture.debugElement.nativeElement.querySelector('button.myButton');
+  button.click();
+
+  fixture.whenStable().then(() => {
+    expect(component.x).toBe(1);
+  });
+});
+```
+
 ### More Examples
 
 Angular testing is an extremely complex topic and beyond the scope of this lecture.  However, the good news is that (as we have seen) the documentation is very clear and well written.  For the full documentation on testing in Angular using the techniques mentioned above as a starting point, check out:
