@@ -566,7 +566,7 @@ export class ComponentOneComponent implements OnInit {
 ```
 As you can see, we've created a public property ("x") that is set to zero (0) when the component is initialized.  When the "onClick()" method is invoked, it will be increased to one (1).
 
-To simulate the button click and check that the value of x is updated to one (1) in a test, we simply grab the "native" element for the button, manually invoke the click event (using `.click()`) and write our expectation once the figure "[becomes stable](https://angular.io/api/core/testing/ComponentFixture#whenStable)":
+To simulate the button click and check that the value of x is updated to one (1) in a test, we simply grab the "native" element for the button, manually invoke the click event (using `.click()`) and write our expectation once the component fixture "[becomes stable](https://angular.io/api/core/testing/ComponentFixture#whenStable)":
 
 ```js
 it('Sets x to 1 when "myButton" is clicked', () => {
