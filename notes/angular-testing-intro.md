@@ -579,6 +579,8 @@ it('Sets x to 1 when "myButton" is clicked', () => {
 });
 ```
 
+<br>
+
 ### More Examples
 
 Angular testing is an extremely complex topic and beyond the scope of this lecture.  However, the good news is that (as we have seen) the documentation is very clear and well written.  For the full documentation on testing in Angular using the techniques mentioned above as a starting point, check out:
