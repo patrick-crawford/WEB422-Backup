@@ -9,6 +9,7 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { VehiclesService } from './vehicles.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [VehiclesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
