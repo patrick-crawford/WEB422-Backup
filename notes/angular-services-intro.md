@@ -124,6 +124,8 @@ The Angular CLI "generate service" command also updated the app module (`app.mod
 
 These updates enable the new service to be available to *every* component in the app. 
 
+**Note:** If using the latest version of the Angular-CLI, the `providers` array will **not** be updated automatically.  
+
 <br>
 
 ### Configure and use ( a service )
