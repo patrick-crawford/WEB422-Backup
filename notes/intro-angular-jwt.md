@@ -108,13 +108,7 @@ ng g s Auth --module app --spec false
 
 <br>
 
-#### Step 2: Adding the "AuthService" to the "providers" Array
-
-**TODO**
-
-<br>
-
-#### Step 3: Add the definition for a "User" Object
+#### Step 2: Add the definition for a "User" Object
 
 In a new file called "User.ts", add the following code (below).  This will define a "User" object with the same properties as our "userSchema" (used by the simple-API users database on MLab).
 
@@ -131,7 +125,7 @@ export class User{
 
 <br>
 
-#### Step 4: Update the Code in auth.service.ts
+#### Step 3: Update the Code in auth.service.ts
 
 ```js
 import { Injectable } from '@angular/core';
@@ -329,21 +323,18 @@ ng g s GuardAuth --module app --spec false
 
 <br>
 
-#### Step 2: Adding the "GuardAuthService" to the "providers" Array
+#### Step 2: Updating the "GuardAuthService" class:
 
-**TODO**
-
-<br>
-
-#### Step 3: Updating the "GuardAuthService" class:
+* First, add the required "import" statements:
 
 ```ts
-import { Injectable } from '@angular/core';
-
 import { Router, CanActivate } from '@angular/router';
 import { AuthService } from './auth.service';
+```
 
-@Injectable()
+* Next, update the class definition:
+
+```ts
 export class GuardAuthService implements CanActivate {
 
   // Initialization
@@ -364,7 +355,6 @@ export class GuardAuthService implements CanActivate {
     return true;
   }
 }
-
 ```
 
 **TODO: Explain the Above Code**
@@ -385,22 +375,19 @@ ng g s InterceptToken --module app --spec false
 
 <br>
 
-#### Step 2: Adding the "InterceptTokenService" to the "providers" Array
+#### Step 2: Updating the "InterceptTokenService" class:
 
-**TODO**
-
-<br>
-
-#### Step 3: Updating the "InterceptTokenService" class:
+* First, add the required "import" statements:
 
 ```ts
-import { Injectable } from '@angular/core';
-
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
+```
 
-@Injectable()
+* Next, update the class definition:
+
+```ts
 export class InterceptTokenService implements HttpInterceptor {
 
   // Initialization
@@ -422,7 +409,6 @@ export class InterceptTokenService implements HttpInterceptor {
   }
 
 }
-
 ```
 
 **TODO: Explain the Above Code**
