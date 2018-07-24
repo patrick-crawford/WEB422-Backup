@@ -178,24 +178,94 @@ export class AuthService {
 
 <br>
 
-#### LOGIN COMPONENT
+### Creating the "Register" Component / Route
 
-Ceated my own "loginComponent"
+**NOTE: Only add this in if we have time... otherwise, we can use the "bob" user from part 1 ... We could also do a "logout", that removes the token??**
 
+<br>
+
+### Creating the "Login" Component / Route
+
+Now that our "Authentication" service is complete, we can add a new "Login" component to provide an interface to the "/api/login" endpoint of our "simple-API".  If the user's login attempt was successful, we will then store the returned JWT in "[local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)".
+
+<br>
+
+#### Step 1: Use the Angular-CLI to generate our "LoginComponent"
+
+```
 ng g c Login
-
-added Login as a route path:"login", component: LoginComponent
-
-Added login to nav.component.html
-
-```
-<li routerLinkActive="active"><a routerLink="login">Login</a></li>
 ```
 
+<br>
 
+#### Step 2: Adding the "LoginComponent" to the list of "Routes"
 
+In "app.routing.module.ts", add the following route to the "Routes" array under "vehicles".   **Note:** You will have to "import" the "LoginComponent" (`import { LoginComponent } from './login/login.component';`):
 
-Added this to the login template:
+```js
+{ path: 'login', component: LoginComponent }
+```
+
+<br>
+
+#### Step 3: Adding a link to "Login" in the NavComponent template
+
+In the "navbar-collapse" &lt;div&gt;...&lt;\/div&gt;, just above "home" link, add the code:
+
+```html
+<li routerLinkActive="active"><a routerLink="Login">Login</a></li>
+```
+
+<br>
+
+#### Step 4: Updating the "LoginComponent" class:
+
+```ts
+import { Component, OnInit } from '@angular/core';
+import { User } from '../User';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import {Router} from "@angular/router"
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+
+  public user:User;
+  public warning:string;
+
+  constructor(private auth:AuthService, private router:Router) { }
+
+  ngOnInit() {
+    this.user = new User;
+  }
+
+  onSubmit(f: NgForm): void {
+
+    this.auth.login(this.user).subscribe(
+      (success) => {
+        // store the returned token in local storage as 'access_token'
+        localStorage.setItem('access_token',success.token);
+        // redirect to the "vehicles" route
+        this.router.navigate(['/vehicles']);
+      },
+      (err) => {
+        this.warning = err.error.message;
+      }
+    );
+
+  }
+}
+```
+
+**TODO: Explain the above Code**
+
+<br>
+
+#### Step 5: Updating the "LoginComponent" template:
 
 ```html
 <div class="row">
@@ -227,73 +297,14 @@ Added this to the login template:
 </div>
 ```
 
+**TODO: Explain the above Code**
 
-Added this to the login.component.ts
+<br>
 
-```js
-import { Component, OnInit } from '@angular/core';
-import { User } from '../User';
-import { NgForm } from '@angular/forms';
+#### Step 6: Previewing the form 
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
-export class LoginComponent implements OnInit {
+**TODO: Screenshot of Form working**
 
-  public user:User;
-  public warning:string;
-
-  constructor() { }
-
-  ngOnInit() {
-    this.user = new User;
-  }
-
-  onSubmit(f: NgForm): void { 
-    console.log(this.user);
-  }
-}
-```
-
-ADD AUTH SERVICE TO LOGIN COMPONENT...
-
-```
-import { AuthService } from '../auth.service';
-```
-
-ADD ROUTER SERVICE TO LOGIN COMPONENT
-
-```
-import {Router} from "@angular/router"
-```
-
-...
-
-```
-  constructor(private auth:AuthService, private router:Router) { }
-```
-
-update onSubmit to use the "auth" service:
-
-```js
-onSubmit(f: NgForm): void {
-
-    this.auth.login(this.user).subscribe(
-      (success) => {
-        // store the returned token in local storage as 'access_token'
-        localStorage.setItem('access_token',success.token);
-        // redirect to the "vehicles" route
-        this.router.navigate(['/vehicles']);
-      },
-      (err) => {
-        this.warning = err.error.message;
-      }
-    );
-
-  }
-```
 
 
 
