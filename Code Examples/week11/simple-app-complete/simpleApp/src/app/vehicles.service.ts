@@ -15,3 +15,4 @@ export class VehiclesService {
     return this.http.get<Vehicle[]>("http://localhost:8080/api/vehicles")
   }
 }
+
