@@ -108,7 +108,13 @@ ng g s Auth --module app --spec false
 
 <br>
 
-#### Step 2: Add the definition for a "User" Object
+#### Step 2: Adding the "AuthService" to the "providers" Array
+
+**TODO**
+
+<br>
+
+#### Step 3: Add the definition for a "User" Object
 
 In a new file called "User.ts", add the following code (below).  This will define a "User" object with the same properties as our "userSchema" (used by the simple-API users database on MLab).
 
@@ -125,7 +131,7 @@ export class User{
 
 <br>
 
-#### Step 3: Update the Code in auth.service.ts
+#### Step 4: Update the Code in auth.service.ts
 
 ```js
 import { Injectable } from '@angular/core';
@@ -175,6 +181,8 @@ export class AuthService {
   }
 }
 ```
+
+**TODO: Explain the above code**
 
 <br>
 
@@ -303,7 +311,126 @@ export class LoginComponent implements OnInit {
 
 #### Step 6: Previewing the form 
 
-**TODO: Screenshot of Form working**
+**TODO: Screenshot of Form working - Maybe also add "local storage" showing the JWT**
+
+<br>
+
+### Generating a "GuardAuthService" (TODO: Change this Step Title)
+
+**TODO: Explanation of what this is and why we're doing it**
+
+<br>
+
+#### Step 1: Use the Angular-CLI to generate our "GuardAuthService
+
+```
+ng g s GuardAuth --module app --spec false
+```
+
+<br>
+
+#### Step 2: Adding the "GuardAuthService" to the "providers" Array
+
+**TODO**
+
+<br>
+
+#### Step 3: Updating the "GuardAuthService" class:
+
+```ts
+import { Injectable } from '@angular/core';
+
+import { Router, CanActivate } from '@angular/router';
+import { AuthService } from './auth.service';
+
+@Injectable()
+export class GuardAuthService implements CanActivate {
+
+  // Initialization
+
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) { }
+
+  // Methods
+
+  canActivate(): boolean {
+
+    if (!this.auth.isAuthenticated()) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+    return true;
+  }
+}
+
+```
+
+**TODO: Explain the Above Code**
+
+<br>
+
+### Generating an "InterceptTokenService" (TODO: Change this Step Title)
+
+**TODO: Explanation of what this is and why we're doing it**
+
+<br>
+
+#### Step 1: Use the Angular-CLI to generate our "InterceptTokenService
+
+```
+ng g s InterceptToken --module app --spec false
+```
+
+<br>
+
+#### Step 2: Adding the "InterceptTokenService" to the "providers" Array
+
+**TODO**
+
+<br>
+
+#### Step 3: Updating the "InterceptTokenService" class:
+
+```ts
+import { Injectable } from '@angular/core';
+
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class InterceptTokenService implements HttpInterceptor {
+
+  // Initialization
+
+  constructor(private a: AuthService) { }
+
+  // Methods
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    
+    // Clone the existing request, and add the authorization header
+    request = request.clone({
+      setHeaders: {
+        Authorization: `JWT ${this.a.getToken()}`
+      }
+    });
+    // Pass the request on to the next handler
+    return next.handle(request);
+  }
+
+}
+
+```
+
+**TODO: Explain the Above Code**
+
+<br>
+
+
+
 
 
 
