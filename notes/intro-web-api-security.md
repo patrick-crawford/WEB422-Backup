@@ -39,7 +39,7 @@ More details can be found on MDN under "[Cross-Origin Resource Sharing (CORS)](h
 
 ### Review User Account Management & Security
 
-With extremely simple "vehicles" API in place and producing data, we can now move on to discuss how we might *protect* this data from unwanted (unauthorized) access. 
+With our extremely simple "vehicles" API in place and producing data, we can now move on to discuss how we might *protect* this data from unwanted (unauthorized) access. 
 
 Back in WEB322, we discussed a number of [security considerations](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week12-class1/) that are vital to a modern web application.  This primairly included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up an mLab DB to store our user information & credentials.
 
@@ -65,6 +65,7 @@ Next, you will notice a definition for a "user" Schema (userSchema).  In this ca
 * **role:** <br>The user's role, ie "administrator", "data-entry", "maintenance", etc. (the user's role will define exactly what in the API the user has access to.  For our example we will not be using this field, as every user will have access to all vehicles)
 
 Below this, you should note that there are 3 exported functions:
+
 * **connect():** <br>This function simply ensures that we can connect to the DB and if successful, assign the "User" object as a "User" model, using the "users" collection (specified by userSchema).<br><br>
 * **registerUser(userData):** <br>Ensures that the provided passwords match and that the user name is not already taken.  If the userData provided meets this criteria, add the user to the system.<br><br> 
 * **checkUser(userData):** <br>This function ensures that the user specified by "userData" is in the system and has the correct password (used for logging in)
