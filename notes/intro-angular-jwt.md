@@ -13,6 +13,8 @@ If our Web API provides security features (register/login routes, stored user na
 * "Route Guards" to stop the user from navigating to "protected" routes
 * "Http Interceptor" to automatically attach an "Authorization" header (containing the user's JWT) to requests for data.
 
+<br>
+
 ### Getting Started
 
 **Note:** If you have not yet completed "[Introduction to Securing a Web API with JWT](https://sictweb.github.io/web422/notes/intro-web-api-security)", please go back and complete it now.  We will be using the secure "simple-API" as a source of data for our App.
@@ -87,7 +89,14 @@ Finally, we will add the JwtModule to the 'imports' array using the following co
 
 ### Building an "Authentication" Service:
 
-Since we will be working with JWT and protected routes, it makes the most sense to have all of our "Authentication" related code in one place (ie: a "service"):
+Since we will be working with JWT and protected routes, it makes the most sense to have all of our "Authentication" related code in one place (ie: a "service").  This service will be responsible for:
+
+* Fetching the token from "local storage"
+* Reading the contents of the token
+* Determining whether or not the user is "authenticated" - ie: does the token exist in local storage?
+* Make an AJAX "POST" call using the "HttpClient" service to the "api/login" route of our server.  We will provide a "user" object as credentials
+
+To create this service, follow along with the instructions below:
 
 <br>
 
@@ -99,13 +108,27 @@ ng g s Auth --module app --spec false
 
 <br>
 
-This will need the HTTPClient Module.... (already in simple-app) 
+#### Step 2: Add the definition for a "User" Object
 
-Added the following code to auth.service.ts
+In a new file called "User.ts", add the following code (below).  This will define a "User" object with the same properties as our "userSchema" (used by the simple-API users database on MLab).
+
+```
+export class User{
+    "_id": string;
+    "userName": string;
+    "password": string;
+    "fullName": string;
+    "role": string;
+    __v: 0;
+}
+```
+
+<br>
+
+#### Step 3: Update the Code in auth.service.ts
 
 ```js
 import { Injectable } from '@angular/core';
-
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -126,8 +149,16 @@ export class AuthService {
     return localStorage.getItem('access_token');
   }
 
+  public readToken(): any{
+    const token = localStorage.getItem('access_token');
+    return this.jwtHelper.decodeToken(token);
+  }
+
   isAuthenticated(): boolean {
     const token = localStorage.getItem('access_token');
+
+    // Note: We can also use this.jwtHelper.isTokenExpired(token) 
+    // to see if the token is expired
 
     if (token) {
       console.log('token exists');
@@ -162,18 +193,7 @@ Added login to nav.component.html
 ```
 
 
-added a "user" in a new "User.ts"
 
-```
-export class User{
-    "_id": string;
-    "userName": string;
-    "password": string;
-    "fullName": string;
-    "role": string;
-    __v: 0;
-}
-```
 
 Added this to the login template:
 
