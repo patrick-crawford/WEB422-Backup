@@ -453,7 +453,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 }
 ```
 
-**TODO: Look into adding this code to NavComponent to Update it whenever the route changes (to display something like "welcome Bob" and show/hide routes (NOTE: there may be a better way... setting an application-wide variable or service or something...):
+**TODO: Look into adding this code to NavComponent to Update it whenever the route changes (to display something like "welcome Bob" and show/hide routes (NOTE: there may be a better way... maybe add a loginNotifier method of the authService or that we can call when logged in and any "subscribers" will be notified?):
 
 ```ts
 ngOnInit() {
