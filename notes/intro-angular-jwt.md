@@ -5,12 +5,23 @@ layout: default
 
 ## Incorporating JWT in an Angular Application
 
-**Introduction paragraph here...** 
+If our Web API provides security features (register/login routes, stored user names with hashed passwords and JWT for authenticating requests), we will have to design our Angular application to work with the security mechanisms of the API.  Specifically, we will need:
 
-* Route Guards
-* Http Interceptors
+* A "JWT" module to help us work with JSON Web Tokens
+* An "Authentication" service to manage the authentication tasks and JWT
+* "User Registration" and "Login" components / routes
+* "Route Guards" to stop the user from navigating to "protected" routes
+* "Http Interceptor" to automatically attach an "Authorization" header (containing the user's JWT) to requests for data.
+
+### Getting Started
+
+
+
+... download the starter app..
 
 ### (Notes, going from simple-app to simple-app-complete)
+
+NOTE... (Route Guards)[https://angular.io/guide/router#milestone-5-route-guards]
 
 Created a new Angular App "simpleApp"
 
