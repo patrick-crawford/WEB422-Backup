@@ -15,53 +15,137 @@ If our Web API provides security features (register/login routes, stored user na
 
 ### Getting Started
 
+**Note:** If you have not yet completed "[Introduction to Securing a Web API with JWT](https://sictweb.github.io/web422/notes/intro-web-api-security)", please go back and complete it now.  We will be using the secure "simple-API" as a source of data for our App.
 
+If your "simple-API" (from "[Introduction to Securing a Web API with JWT](https://sictweb.github.io/web422/notes/intro-web-api-security)" is not currently running on port 8080, please start it up now. 
 
-... download the starter app..
+<br>
 
-### (Notes, going from simple-app to simple-app-complete)
+#### Obtaining &amp; Running the "simple-app"
 
-NOTE... (Route Guards)[https://angular.io/guide/router#milestone-5-route-guards]
+We have provided a "starting point" in the form of a simple Angular application containing a Navbar and two routes: "Home" and "Vehicles".  This Angular application is located in the "simple-app" folder from the [Week 11 example code](https://github.com/sictweb/web422/tree/master/Code%20Examples/week11)); download it and open it in Visual Studio Code before we proceed.
 
-Created a new Angular App "simpleApp"
+You will notice that our "simpleApp" will not run as downloaded.  This is because the all-important "node_modules' folder containing all of our dependencies is missing.  To rebuild this folder and get the app running, we will need to execute the familiar `npm install` command.
 
-installed bootstrap css, js & jquery js (index.html)
+With the dependencies fetched, we can now start up our app with `ng serve`.  You will see that we only have two routes (excluding the "not found" route) available to the user: "Home" and "Vehicles".  If we try to access the "Vehicles" route, we will not see any data due to a **401 - Unauthorized** error returned from our "simple-API" (this can be confirmed in the browser console). 
 
-created navbar component & added the bootstrap navbar in there
+<br>
 
+### Adding support for JWT (JwtModule)
 
-Note... the vehicles route won't fetch data (missing JWT)... so here's where our code steps in
+If we wish to work with JWT in our Angular application, we will need to obtain the ([`@auth0/angular-jwt`](https://www.npmjs.com/package/@auth0/angular-jwt) package) - this will give us access to the "JwtModule". 
 
-#### Modifications to app.module.ts before we begin (we need angular-jwt): 
+<br>
 
-Installed angular-jwt from @auth0:
-
-```
-npm i @auth0/angular-jwt
-```
-
-Imported it in app.module:
+#### Step 1: Install the \@auth0angular-jwt package 
 
 ```
+npm install @auth0/angular-jwt
+```
+
+<br>
+
+#### Step 2: Import JwtModule in app.module.ts
+
+```ts
 import { JwtModule } from "@auth0/angular-jwt";
 ```
 
-Next, just below all of the import statements, and before the @NgModule decorator, add this function:
+<br>
 
+#### Step 3: Define a "tokenGetter" Function
+
+Next, we must define a "tokenGetter" function, to be used in the configuration of the JwtModule.  This function will be responsible for actually obtaining the locally stored "JWT".  In our application, we will simply store the JWT in "[local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)" using the identifier: "access_token". 
+
+This function will be defined in **app.module.ts** just *below* all of the `import` statments, and *before* the `@NgModule` decorator:
+
+```ts
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
-
-Finally, in the imports array of the @NgModule decorator, add the JwtModule... object:
-
 ```
-JwtModule.forRoot({
+
+<br>
+
+#### Step 4: Add the JwtModule to the 'imports' Array:
+
+Finally, we will add the JwtModule to the 'imports' array using the following configuration:
+
+```ts
+  imports: [
+    ...,
+    JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         authScheme: 'JWT'
       }
     })
+  ],
 ```
+
+<br>
+
+### Building an "Authentication" Service:
+
+Since we will be working with JWT and protected routes, it makes the most sense to have all of our "Authentication" related code in one place (ie: a "service"):
+
+<br>
+
+#### Step 1: Use the Angular-CLI to generate our "AuthService"
+
+```
+ng g s Auth --module app --spec false
+```
+
+<br>
+
+This will need the HTTPClient Module.... (already in simple-app) 
+
+Added the following code to auth.service.ts
+
+```js
+import { Injectable } from '@angular/core';
+
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+import {User} from './User';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  constructor(
+    private http: HttpClient,
+    private jwtHelper: JwtHelperService
+  ) { }
+
+  public getToken(): string {
+    return localStorage.getItem('access_token');
+  }
+
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('access_token');
+
+    if (token) {
+      console.log('token exists');
+      return true;
+    } else {
+      console.log('no token');
+      return false;
+    }
+  }
+
+  login(user: User): Observable<any> {
+    // Attempt to login
+    return this.http.post<any>('http://localhost:8080/api/login', user);
+  }
+}
+```
+
+<br>
 
 #### LOGIN COMPONENT
 
@@ -77,10 +161,6 @@ Added login to nav.component.html
 <li routerLinkActive="active"><a routerLink="login">Login</a></li>
 ```
 
-Added the "FormsModule" (see "angular-forms-intro" for editing app.module.ts:
-
-Import the FormsModule from ‘@angular/forms’
-Add FormsModule to the “imports” array
 
 added a "user" in a new "User.ts"
 
@@ -153,59 +233,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(f: NgForm): void { 
     console.log(this.user);
-  }
-}
-```
-#### AUTH SERVICE...
-
-Next, we need to crate an auth service:
-
-```
-ng g s Auth --module app --spec false
-```
-
-This will need the HTTPClient Module.... (already in simple-app) NOTE!!! Maybe add the FormsModule to simple-app as well to save time???
-
-Added the following code to auth.service.ts
-
-```js
-import { Injectable } from '@angular/core';
-
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { JwtHelperService } from '@auth0/angular-jwt';
-
-import {User} from './User';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthService {
-
-  constructor(
-    private http: HttpClient,
-    private jwtHelper: JwtHelperService
-  ) { }
-
-  public getToken(): string {
-    return localStorage.getItem('access_token');
-  }
-
-  isAuthenticated(): boolean {
-    const token = localStorage.getItem('access_token');
-
-    if (token) {
-      console.log('token exists');
-      return true;
-    } else {
-      console.log('no token');
-      return false;
-    }
-  }
-
-  login(user: User): Observable<any> {
-    // Attempt to login
-    return this.http.post<any>('http://localhost:8080/api/login', user);
   }
 }
 ```
