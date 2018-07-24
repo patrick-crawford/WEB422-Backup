@@ -433,7 +433,42 @@ export class InterceptTokenService implements HttpInterceptor {
 
 <br>
 
+### Adding "HTTP_INTERCEPTORS" to the "providers" Array (TODO: Change this Step Title)
 
+**TODO: Explanation of what this is and why we're doing it**
+
+* First, add the required "import" statement next to "HttpClientModule", ie:
+
+```ts
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+```
+
+* Next, add the following to the providers array:
+
+```ts
+{
+  provide: HTTP_INTERCEPTORS,
+  useClass: InterceptTokenService,
+  multi: true
+}
+```
+
+**TODO: Look into adding this code to NavComponent to Update it whenever the route changes (to display something like "welcome Bob":
+
+```ts
+ngOnInit() {
+  this.router.events.subscribe((event) => {
+    let token = this.auth.readToken();
+
+    if (token)
+      console.log(token);
+    else {
+      console.log("Unable to read token")
+    }
+  });
+}
+
+```
 
 
 
