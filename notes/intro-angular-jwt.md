@@ -213,7 +213,7 @@ In "app.routing.module.ts", add the following route to the "Routes" array under 
 In the "navbar-collapse" &lt;div&gt;...&lt;\/div&gt;, just above "home" link, add the code:
 
 ```html
-<li routerLinkActive="active"><a routerLink="Login">Login</a></li>
+<li routerLinkActive="active"><a routerLink="login">Login</a></li>
 ```
 
 <br>
