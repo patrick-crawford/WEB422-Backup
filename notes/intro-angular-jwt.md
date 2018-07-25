@@ -455,21 +455,48 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 **TODO: Look into adding this code to NavComponent to Update it whenever the route changes (to display something like "welcome Bob" and show/hide routes (NOTE: there may be a better way... maybe add a loginNotifier method of the authService or that we can call when logged in and any "subscribers" will be notified? - see "Shared Service" [here](https://sharpten.com/blog/2016/03/23/using-eventemitters-notify-component-changes-angular-2.html) for ideas):
 
+In NavComponent, add the property:
+
+```ts
+public token: any;
+```
+
+Constructor should look like:
+
+```ts
+constructor(private router: Router, private auth:AuthService) { }
+```
+
+ngOnInit should look like:
+
 ```ts
 ngOnInit() {
   this.router.events.subscribe((event) => {
-    let token = this.auth.readToken();
-
-    if (token)
-      console.log(token);
-    else {
-      console.log("Unable to read token")
-    }
+    this.token = this.auth.readToken();
   });
 }
 
 ```
 
+Then, in our template, we can add:
+
+ngIf for our "vehicles" link
+
+```html
+<li *ngIf="token" routerLinkActive="active"><a routerLink="vehicles">Vehicles</a></li>
+```
+
+ngIf for our "home" link
+
+```html
+ <li *ngIf="!(token)" routerLinkActive="active"><a routerLink="login">Login</a></li>
+```
+
+Additionally, in the menu, we can conditionally change the "Home" to a "Welcome" message if the user is logged in:
+
+```html
+<li routerLinkActive="active"><a routerLink="home"><span *ngIf="token">Welcome {{token.userName}}</span><span *ngIf="!(token)">Home</span></a></li>
+```
 
 
 
