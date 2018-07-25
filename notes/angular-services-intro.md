@@ -493,6 +493,10 @@ ngOnInit() {
      // In a real app: dispatch action to load the details here.
   });
 }
+
+ngOnDestroy() {
+  this.sub.unsubscribe();
+}
 ```
 <br>
 
@@ -566,6 +570,10 @@ ngOnInit() {
     // Defaults to 0 if no query param provided.
     this.page = +params['page'] || 0;
   });
+}
+
+ngOnDestroy() {
+  this.sub.unsubscribe();
 }
 ```
 
