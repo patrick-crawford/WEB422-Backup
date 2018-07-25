@@ -108,13 +108,7 @@ ng g s Auth --module app --spec false
 
 <br>
 
-#### Step 2: Add "AuthService" to the "providers" array in app.module.ts
-
-**TODO**
-
-<br>
-
-#### Step 3: Add the definition for a "User" Object
+#### Step 2: Add the definition for a "User" Object
 
 In a new file called "User.ts", add the following code (below).  This will define a "User" object with the same properties as our "userSchema" (used by the simple-API users database on MLab).
 
@@ -131,7 +125,7 @@ export class User{
 
 <br>
 
-#### Step 4: Update the Code in auth.service.ts
+#### Step 3: Update the Code in auth.service.ts
 
 ```js
 import { Injectable } from '@angular/core';
@@ -329,13 +323,7 @@ ng g s GuardAuth --module app --spec false
 
 <br>
 
-#### Step 2: Add "GuardAuthService" to the "providers" array in app.module.ts
-
-**TODO**
-
-<br>
-
-#### Step 3: Updating the "GuardAuthService" class:
+#### Step 2: Updating the "GuardAuthService" class:
 
 * First, add the required "import" statements:
 
@@ -387,13 +375,7 @@ ng g s InterceptToken --module app --spec false
 
 <br>
 
-#### Step 2: Add "InterceptTokenService" to the "providers" array in app.module.ts
-
-**TODO**
-
-<br>
-
-#### Step 3: Updating the "InterceptTokenService" class:
+#### Step 2: Updating the "InterceptTokenService" class:
 
 * First, add the required "import" statements:
 
