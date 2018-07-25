@@ -419,10 +419,16 @@ export class InterceptTokenService implements HttpInterceptor {
 
 **TODO: Explanation of what this is and why we're doing it**
 
-* First, add the required "import" statement next to "HttpClientModule", ie:
+* First, add the required "import" statements next to "HttpClientModule", ie:
 
 ```ts
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+```
+
+and
+
+```ts
+import { InterceptTokenService } from './intercept-token.service';
 ```
 
 * Next, add the following to the providers array:
