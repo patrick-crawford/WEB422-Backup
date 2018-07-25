@@ -124,7 +124,7 @@ The Angular CLI "generate service" command also updated the app module (`app.mod
 
 These updates enable the new service to be available to *every* component in the app. 
 
-**Note:** If you're using the latest version of the Angular-CLI, the `providers` array will **not** be updated automatically.
+**Note:** If you're using the latest version of the Angular-CLI, the `providers` array will **not** be updated, as providers are registered directly inside the @Injectable() decorator, using the new providedIn attribute.
 
 <br>
 
