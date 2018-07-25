@@ -11,17 +11,13 @@ import { AuthService } from '../auth.service';
 })
 export class NavComponent implements OnInit {
 
+  public token
+
   constructor(private router: Router, private auth:AuthService) { }
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
-      let token = this.auth.readToken();
-
-      if (token)
-        console.log(token);
-      else {
-        console.log("Unable to read token")
-      }
+      this.token = this.auth.readToken();
     });
   }
 }
