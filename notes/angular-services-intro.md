@@ -484,8 +484,16 @@ let id = this.route.snapshot.params['id'];
 let p = this.m.getProduct(id);
 ```
 
-> Note: During the viewing of the component, if it is possible that the app's user will navigate to the same component/view but with a different parameter value, then this task becomes a bit more complicated. See [this note](angular-routing-parameters-more) for a possible solution. 
+> Note: During the viewing of the component, if it is possible that the app's user will navigate to the same component/view but with a different parameter value, then this task becomes a bit more complicated, ie:
 
+```ts
+ngOnInit() {
+  this.sub = this.route.params.subscribe(params => {
+     this.id = +params['id']; // (+) converts string 'id' to a number
+     // In a real app: dispatch action to load the details here.
+  });
+}
+```
 <br>
 
 ### Query parameters
@@ -550,7 +558,16 @@ let pg = this.route.snapshot.queryParams['page'];
 let products = this.m.getPageOfProducts(pg);
 ```
 
-> Note: During the viewing of the component, if it is possible that the app's user will navigate to the same component/view but with a different parameter value, then this task becomes a bit more complicated. See [this note](angular-routing-parameters-more) for a possible solution. 
+> Note: During the viewing of the component, if it is possible that the app's user will navigate to the same component/view but with a different parameter value, then this task becomes a bit more complicated, ie:
+
+```ts
+ngOnInit() {
+  this.sub = this.route.queryParams.subscribe(params => {
+    // Defaults to 0 if no query param provided.
+    this.page = +params['page'] || 0;
+  });
+}
+```
 
 <br>
 
