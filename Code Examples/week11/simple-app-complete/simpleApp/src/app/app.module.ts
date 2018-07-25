@@ -11,10 +11,8 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { JwtModule } from "@auth0/angular-jwt";
 import { LoginComponent } from './login/login.component'
-import { GuardAuthService } from './guard-auth.service';
-import { VehiclesService } from './vehicles.service';
 import { InterceptTokenService } from './intercept-token.service';
-import { AuthService } from './auth.service';
+
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -41,7 +39,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [VehiclesService, AuthService, GuardAuthService, InterceptTokenService,
+  providers: [
 {
   provide: HTTP_INTERCEPTORS,
   useClass: InterceptTokenService,
