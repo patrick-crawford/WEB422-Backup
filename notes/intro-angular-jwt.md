@@ -393,6 +393,8 @@ and
 import { InterceptTokenService } from './intercept-token.service';
 ```
 
+<br> 
+
 #### Step 2: Add the "InterceptTokenService" to the "providers" array.
 
 ```ts
@@ -403,7 +405,11 @@ import { InterceptTokenService } from './intercept-token.service';
 }
 ```
 
+<br>
+
 You will notice that we do not add the "InterceptTokenService" directly.  Instead, it is identified in the "userClass" property of an anonymous object, added to the array of providers. The "provide" property allows us to register our "InterceptTokenService" with the [array of "HttpInterceptors"](https://angular.io/api/common/http/HTTP_INTERCEPTORS), while the "multi" property indicates that there could be more than one Interceptor.
+
+<br>
 
 #### Step 3: Testing the "/vehicles" Route.
 
@@ -413,9 +419,15 @@ If we refresh the "/vehicles" route, we should now see our list of vehicles!  Th
 
 <br>
 
-### Generating a "GuardAuthService" to 
+### Generating a "GuardAuthService" to "Guard" our Routes
 
-**TODO: Explanation of what this is and why we're doing it**
+So far, everything is running smoothly: we are able to enter user credentials that (if valid) result in a JWT that we store locally.  With every request, our application fetches the JWT and provides it to the server to prove the user's identity.  
+
+There are only a few small usability and security concerns left.  For example, the user should not really be permitted to access the "/vehicles" route without being authenticated.  What if there were some sensitive *static* information on the "vehicles" template? Does it make sense to allow an unauthenticated user to visit a view, if they're guaranteed to not see any data? if It would be better for usability and security, if we did not enable the user to travel to that route, unless they are authenticated.  
+
+To solve this issue, Angular has the concept of "[Route Guards](https://angular.io/guide/router#milestone-5-route-guards)".  Essentially, a "Route Guard" is a special service that implements "[CanActivate](https://angular.io/api/router/CanActivate)"; which specifies a "[canActivate()](https://angular.io/api/router/CanActivate#canactivate-1)" method that controls access to a route by returning **true** or **false**.  We can also use this method to redirect the user to a specific route.  For example, if a user is not authenticated, we can redirect them back to the "/login" route.  
+
+To assign a "Route Guard" to a specific route, we will add it to an existing Route definition in **app-routing.module.ts** (see below)
 
 <br>
 
@@ -461,15 +473,43 @@ export class GuardAuthService implements CanActivate {
 }
 ```
 
-**TODO: Explain the Above Code**
+You will notice that the class definition is fairly boilerplate, with the exception of the "canActivate()" method.  Here, we use the AuthService "isAuthenticated()" method to determine whether or not the user is authenticated. If the user is not currently authenticated (the JWT is missing from local storage), redirect them to the "/login" route and prevent access to the route by returning **false**.  If "isAuthenticated()" returns true, grant access to the route by returning **true**.
+
+**Note:** We can create multiple guards (ie: "GuardAuthAdminService", or "GuardAuthDataService") that work by looking for a specific "role" in the JWT.  If the user is authenticated, but their role (obtained using **this.auth.readToken()** doesn't match the required minimum, then deny access.  We can place these guards on different routes within our application (see below).
 
 <br>
 
 #### Step 3: Updating our "vehicles" Route with the "Guard":
 
-...
+As mentioned above, we must **assign** our guard to a specific route to control it's access.  In our case, we will be "guarding" the "vehicles" route.  Add the following code to the **app-routing.module.ts** file:
+
+* First, add the required "import" statement:
+
+```ts
+import { GuardAuthService } from './guard-auth.service';
+```
+
+* Next, update the "vehicles" route using the "canActivate" property with the "Guard" service:
+
+```ts
+{ path: 'vehicles', component: VehiclesComponent, canActivate: [GuardAuthService] },
+```
 
 <br>
+
+#### Step 4: Removing the Token and Testing the Guard:
+
+If we test our app now, we shouldn't really notice any difference.  We can navigate from/to the "vehicles" route without a problem.  This is because our JWT is still stored in local storage as "access_token".  Since we do not have a "logout" component to remove the token using the User Interface, we will have to manually delete it.
+
+If you're using the Chrome web browser, all of the "local storage" data can be accessed from the **Developer Tools** under the **Application** tab.  On the left sidebar, you should see "Local Storage" with an entry for **http:\/\/localhost:4200**.  Here, you will see "access_token" (simply click on the entry "Clear All" icon above to remove it).
+
+<br>
+
+### Updating the NavComponent using JWT Data
+
+
+
+
 
 **TODO: Look into adding this code to NavComponent to Update it whenever the route changes (to display something like "welcome Bob" and show/hide routes (NOTE: there may be a better way... maybe add a loginNotifier method of the authService or that we can call when logged in and any "subscribers" will be notified? - see "Shared Service" [here](https://sharpten.com/blog/2016/03/23/using-eventemitters-notify-component-changes-angular-2.html) for ideas):
 
