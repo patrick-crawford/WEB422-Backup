@@ -39,7 +39,7 @@ If we wish to work with JWT in our Angular application, we will need to obtain t
 
 <br>
 
-#### Step 1: Install the \@auth0angular-jwt package 
+#### Step 1: Install the @auth\/0angular-jwt package 
 
 ```
 npm install @auth0/angular-jwt
