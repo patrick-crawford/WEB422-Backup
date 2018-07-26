@@ -501,7 +501,7 @@ import { GuardAuthService } from './guard-auth.service';
 
 If we test our app now, we shouldn't really notice any difference.  We can navigate from/to the "vehicles" route without a problem.  This is because our JWT is still stored in local storage as "access_token".  Since we do not have a "logout" component to remove the token using the User Interface, we will have to manually delete it.
 
-If you're using the Chrome web browser, all of the "local storage" data can be accessed from the **Developer Tools** under the **Application** tab.  On the left sidebar, you should see "Local Storage" with an entry for **http:\/\/localhost:4200**.  Here, you will see "access_token" (simply click on the entry "Clear All" icon above to remove it).
+If you're using the Chrome web browser, all of the "local storage" data can be accessed from the **Developer Tools** under the **Application** tab.  On the left sidebar, you should see "Local Storage" with an entry for `http://localhost:4200`.  Here, you will see "access_token" (simply click on the entry "Clear All" icon above to remove it).
 
 If we refresh the route with the access token removed, you will see that the user is redirected back to the "/login" route!
 
