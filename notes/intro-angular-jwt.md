@@ -136,7 +136,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import {User} from './User';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Note: "providedIn" not added in versions < 6
 })
 export class AuthService {
 
@@ -323,11 +323,11 @@ Unfortunately, even though we have stored the JWT in local storage as "access_to
 
 ### Generating an "InterceptTokenService"
 
-**TODO: Explanation of what this is and why we're doing it**
+To automatically send our JWT (located in local storage as "access_token") using the correct "Authorization" header and scheme (ie: "JWT" + *space* + token), we need to write a special [HttpInterceptor](https://angular.io/api/common/http/HttpInterceptor) service.  For our purposes, it's just a regular service that **implements** "HttpInterceptor" (from "@angular/common/http") and has a special method called **intercept**, that performs the work.
 
 <br>
 
-#### Step 1: Use the Angular-CLI to generate our "InterceptTokenService
+#### Step 1: Use the Angular-CLI to generate our "InterceptTokenService"
 
 ```
 ng g s InterceptToken --module app --spec false
@@ -371,11 +371,13 @@ export class InterceptTokenService implements HttpInterceptor {
 }
 ```
 
-**TODO: Explain the Above Code**
+You can see from the above code, that our "intercept" method has a very specific definition.  It's function is to "intercept" the request (available as the "request" property), perform some work on the request, and finally pass the request on to the "next" request handler (available as the "next" property).
+
+For our purposes, this is all fairly boilerplate except for the "setHeaders" property.  This is where we identify which header we would like to set (ie: "Authorization") and what the data should be ( ie: "JWT" + *space* + token).  We use the "AuthService" to pull the token from local storage.
 
 <br>
 
-### Adding "HTTP_INTERCEPTORS" to the "providers" Array (TODO: Change this Step Title)
+### Adding "HTTP_INTERCEPTORS" to the "providers" Array in app.module.ts
 
 **TODO: Explanation of what this is and why we're doing it**
 
