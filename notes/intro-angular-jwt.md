@@ -381,6 +381,8 @@ For our purposes, this is all fairly boilerplate except for the "setHeaders" pro
 
 Once our special "HttpInterceptor" service is complete, the final step is to add it to our application so that it can be applied to our HTTP requests.  This involves updating the **providers** array in **app.module.ts** using a slightly different definition (see below)
 
+<br>
+
 #### Step 1: Add the Correct "import" Statements to app.module.ts
 
 ```ts
@@ -404,8 +406,6 @@ import { InterceptTokenService } from './intercept-token.service';
   multi: true
 }
 ```
-
-<br>
 
 You will notice that we do not add the "InterceptTokenService" directly.  Instead, it is identified in the "userClass" property of an anonymous object, added to the array of providers. The "provide" property allows us to register our "InterceptTokenService" with the [array of "HttpInterceptors"](https://angular.io/api/common/http/HTTP_INTERCEPTORS), while the "multi" property indicates that there could be more than one Interceptor.
 
