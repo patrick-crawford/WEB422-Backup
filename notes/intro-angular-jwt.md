@@ -311,65 +311,17 @@ Here, we have a simple form that captures the **userName** and **password** prop
 
 <br>
 
-#### Step 6: Previewing the form 
+#### Step 6: Previewing / Testing the Component 
 
-**TODO: Screenshot of Form working - Maybe also add "local storage" showing the JWT**
+If we try to log in now, we should see everything functioning as expected: the errors show up correctly, and the user is redirected to the "/vehicles" route once correctly identified (authenticated).  
 
-<br>
+![Simple App Login Error](../media/simple-app-login-error.png)
 
-### Generating a "GuardAuthService" (TODO: Change this Step Title)
-
-**TODO: Explanation of what this is and why we're doing it**
+Unfortunately, even though we have stored the JWT in local storage as "access_token" (this can be verified using the Chrome dev tools under the "Application" tab) we still are not getting any **vehicle** data back from the server.  This is because we are still **not sending the JWT** with the request.  To remedy this and *automatically* send the JWT with our requests, we need to create another service:  
 
 <br>
 
-#### Step 1: Use the Angular-CLI to generate our "GuardAuthService
-
-```
-ng g s GuardAuth --module app --spec false
-```
-
-<br>
-
-#### Step 2: Updating the "GuardAuthService" class:
-
-* First, add the required "import" statements:
-
-```ts
-import { Router, CanActivate } from '@angular/router';
-import { AuthService } from './auth.service';
-```
-
-* Next, update the class definition:
-
-```ts
-export class GuardAuthService implements CanActivate {
-
-  // Initialization
-
-  constructor(
-    private auth: AuthService,
-    private router: Router
-  ) { }
-
-  // Methods
-
-  canActivate(): boolean {
-
-    if (!this.auth.isAuthenticated()) {
-      this.router.navigate(['/login']);
-      return false;
-    }
-    return true;
-  }
-}
-```
-
-**TODO: Explain the Above Code**
-
-<br>
-
-### Generating an "InterceptTokenService" (TODO: Change this Step Title)
+### Generating an "InterceptTokenService"
 
 **TODO: Explanation of what this is and why we're doing it**
 
@@ -448,6 +400,62 @@ import { InterceptTokenService } from './intercept-token.service';
   multi: true
 }
 ```
+
+<br>
+
+### Generating a "GuardAuthService" (TODO: Change this Step Title)
+
+**TODO: Explanation of what this is and why we're doing it**
+
+<br>
+
+#### Step 1: Use the Angular-CLI to generate our "GuardAuthService
+
+```
+ng g s GuardAuth --module app --spec false
+```
+
+<br>
+
+#### Step 2: Updating the "GuardAuthService" class:
+
+* First, add the required "import" statements:
+
+```ts
+import { Router, CanActivate } from '@angular/router';
+import { AuthService } from './auth.service';
+```
+
+* Next, update the class definition:
+
+```ts
+export class GuardAuthService implements CanActivate {
+
+  // Initialization
+
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) { }
+
+  // Methods
+
+  canActivate(): boolean {
+
+    if (!this.auth.isAuthenticated()) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+    return true;
+  }
+}
+```
+
+**TODO: Explain the Above Code**
+
+<br>
+
+
 
 **TODO: Look into adding this code to NavComponent to Update it whenever the route changes (to display something like "welcome Bob" and show/hide routes (NOTE: there may be a better way... maybe add a loginNotifier method of the authService or that we can call when logged in and any "subscribers" will be notified? - see "Shared Service" [here](https://sharpten.com/blog/2016/03/23/using-eventemitters-notify-component-changes-angular-2.html) for ideas):
 
