@@ -376,7 +376,7 @@ For more information about JWT, including the signature &amp; structure of the p
 
 ### Securing routes with JWT
 
-We have now identified that we would like to work with JWT to secure our routes.  However, how to we go about implementing JWT generation and verification in our server.js?  This will involve 3 key modules, obtained from NPM:
+We have now identified that we would like to work with JWT to secure our routes.  However, how do we go about implementing JWT generation and verification in our server.js?  This will involve 3 key modules, obtained from NPM:
 
 <br>
 
