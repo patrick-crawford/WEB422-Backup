@@ -318,7 +318,7 @@ error: encountered an Error
 
 In addition to simply "subscribing" to any changes identified using the "next" function, RxJS also provides additional methods to control the flow/output of observed data, ie:
 
-* [take()](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-take)
+* [map()](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-map)
 * [filter()](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-filter)
 * [delay()](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-delay)
 * [distinct()](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-distinct)
@@ -326,10 +326,10 @@ In addition to simply "subscribing" to any changes identified using the "next" f
 Note: To use the above mehods, we need to import each individual method using the syntax:
 
 ```
-import "rxjs/add/operator/map"; 
-import "rxjs/add/operator/filter";
-import "rxjs/add/operator/delay";
-import "rxjs/add/operator/distinct";
+import "rxjs/add/operator/map"; // or if using Angular 6: import { map } from 'rxjs/operators';
+import "rxjs/add/operator/filter"; // or if using Angular 6: import { filter } from 'rxjs/operators';
+import "rxjs/add/operator/delay"; // or if using Angular 6: import { delay } from 'rxjs/operators';
+import "rxjs/add/operator/distinct"; // or if using Angular 6: import { distinct } from 'rxjs/operators';
 ```
 
 For a full reference of all methods available on the Observable object, see: [the official documentation here](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html).
