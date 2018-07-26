@@ -519,7 +519,7 @@ In our case, we will ensure that the NavComponent template shows the following i
 
 If the user **is** authenticated, then we will show the following (ie: the text for "Home" contains a welcome message for the user, the "Login" link is removed and finally, the "Vehicles" link is made available) 
 
-![Simple App Nav Unauthenticated](../media/simple-app-nav-unauthenticated.png)
+![Simple App Nav Authenticated](../media/simple-app-nav-authenticated.png)
 
 <br>
 
