@@ -562,23 +562,25 @@ ngOnInit() {
 }
 ```
 
-... TODO, explain the above
+Here, we are "subscribing" to all router events.  The "event" that occurs will be one of the [many events](https://angular.io/api/router/Event) triggered in the router lifecycle, however we are only interested in attempting to read the token once the navigation "starts" (ie: "NavigationStart").  
 
-Then, in our template, we can add:
+<br>
 
-ngIf for our "vehicles" link
+#### Step 4: Updating the NavContainer Template: nav.component.html
+
+* Our "Vehicles" link must be updated to the following (ie: only displays if there is a token present):
 
 ```html
 <li *ngIf="token" routerLinkActive="active"><a routerLink="vehicles">Vehicles</a></li>
 ```
 
-ngIf for our "home" link
+* Our "Login" link must be updated to the following (ie: only displays if there is no token present):
 
 ```html
  <li *ngIf="!(token)" routerLinkActive="active"><a routerLink="login">Login</a></li>
 ```
 
-Additionally, in the menu, we can conditionally change the "Home" to a "Welcome" message if the user is logged in:
+* Finally, our "Home" link needs to be updated as follows (ie: conditionally change the text "Home" to a "Welcome" message if the user is logged in:)
 
 ```html
 <li routerLinkActive="active"><a routerLink="home"><span *ngIf="token">Welcome {{token.userName}}</span><span *ngIf="!(token)">Home</span></a></li>
