@@ -315,7 +315,7 @@ Here, we have a simple form that captures the **userName** and **password** prop
 
 If we try to log in now, we should see everything functioning as expected: the errors show up correctly, and the user is redirected to the "/vehicles" route once correctly identified (authenticated).  
 
-![Simple App Login Error](../media/simple-app-login-error.png)
+![Simple App Login Error](../media/simple-app-login-error-bob.png)
 
 Unfortunately, even though we have stored the JWT in local storage as "access_token" (this can be verified using the Chrome dev tools under the "Application" tab) we still are not getting any **vehicle** data back from the server.  This is because we are still **not sending the JWT** with the request.  To remedy this and *automatically* send the JWT with our requests, we need to create another service:  
 
@@ -403,7 +403,13 @@ import { InterceptTokenService } from './intercept-token.service';
 }
 ```
 
-You will notice that we do not add the "InterceptTokenService" directly.  Instead, it is identified in the "userClass" property of an anonymous object, added to the array of providers. The "provide" property allows us to register our "InterceptTokenService" with the [array of "HttpInterceptors"](https://angular.io/api/common/http/HTTP_INTERCEPTORS), while the "multi" property indicates that there could be more than one Interceptors 
+You will notice that we do not add the "InterceptTokenService" directly.  Instead, it is identified in the "userClass" property of an anonymous object, added to the array of providers. The "provide" property allows us to register our "InterceptTokenService" with the [array of "HttpInterceptors"](https://angular.io/api/common/http/HTTP_INTERCEPTORS), while the "multi" property indicates that there could be more than one Interceptor.
+
+#### Step 3: Testing the "/vehicles" Route.
+
+If we refresh the "/vehicles" route, we should now see our list of vehicles!  This is because our "Authorization" header was correctly added to the request (thanks to our "InterceptTokenService") and the simple-API accepted our token (stored in local storage after login).
+
+![Simple App Vehicles Populated](../media/simple-app-vehicles-populated.png)
 
 <br>
 
