@@ -503,38 +503,66 @@ If we test our app now, we shouldn't really notice any difference.  We can navig
 
 If you're using the Chrome web browser, all of the "local storage" data can be accessed from the **Developer Tools** under the **Application** tab.  On the left sidebar, you should see "Local Storage" with an entry for **http:\/\/localhost:4200**.  Here, you will see "access_token" (simply click on the entry "Clear All" icon above to remove it).
 
+If we refresh the route with the access token removed, you will see that the user is redirected back to the "/login" route!
+
 <br>
 
 ### Updating the NavComponent using JWT Data
 
+Everything is now working nicely in our application; the user must be authenticated to view the "/vehicles" route and the JWT (obtained from our LoginComponent) is correctly sent to the server to allow access to the data. There is only one small usability concern left; the NavComponent template still shows the "Vehicles" menu item, even when the user is **not** authorized to view the route.  
 
+There are a number of ways to address this problem, however the simplest method is simply to try to "read" the token (using the "**readToken()**" method of our **AuthService**) every time the route changes (this will occur when the application is first loaded as well).  If the method returns **null** then we do not have a token and the user is not authorized to view the protected menu items.  If a token does exist, we can read the values and determine (optionally based on the "role" property), whether or not to show or hide different UI elements!
 
+In our case, we will ensure that the NavComponent template shows the following if the user is **not** authenticated (ie: the "Home" and "Login" Links):
 
+![Simple App Nav Unauthenticated](../media/simple-app-nav-unauthenticated.png)
 
-**TODO: Look into adding this code to NavComponent to Update it whenever the route changes (to display something like "welcome Bob" and show/hide routes (NOTE: there may be a better way... maybe add a loginNotifier method of the authService or that we can call when logged in and any "subscribers" will be notified? - see "Shared Service" [here](https://sharpten.com/blog/2016/03/23/using-eventemitters-notify-component-changes-angular-2.html) for ideas):
+If the user **is** authenticated, then we will show the following (ie: the text for "Home" contains a welcome message for the user, the "Login" link is removed and finally, the "Vehicles" link is made available) 
 
-In NavComponent, add the property:
+![Simple App Nav Unauthenticated](../media/simple-app-nav-unauthenticated.png)
+
+<br>
+
+To accomplish this, we will need to make a few small alterations to the NavComponent class &amp; template files:
+
+#### Step 1: Add the Required "import" Statements:
 
 ```ts
-public token: any;
+import { Router, Event, NavigationStart } from '@angular/router';
+import { AuthService } from '../auth.service';
 ```
 
-Constructor should look like:
+<br>
+
+#### Step 2: Update the Constructor and Add a "token" Property 
+
+* To use the Router and AuthService Services, we must inject them using the constructor:
 
 ```ts
 constructor(private router: Router, private auth:AuthService) { }
 ```
 
-ngOnInit should look like:
+*  In the NavComponent class add a "token" property:
+
+```ts
+public token: any;
+```
+
+<br>
+
+#### Step 3: Update the ngOnInit() Method 
 
 ```ts
 ngOnInit() {
-  this.router.events.subscribe((event) => {
-    this.token = this.auth.readToken();
+  this.router.events.subscribe((event: Event) => {
+    if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
+      this.token = this.auth.readToken();
+    }
   });
 }
-
 ```
+
+... TODO, explain the above
 
 Then, in our template, we can add:
 
