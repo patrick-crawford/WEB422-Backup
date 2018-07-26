@@ -521,9 +521,9 @@ If the user **is** authenticated, then we will show the following (ie: the text 
 
 ![Simple App Nav Authenticated](../media/simple-app-nav-authenticated.png)
 
-<br>
-
 To accomplish this, we will need to make a few small alterations to the NavComponent class &amp; template files:
+
+<br>
 
 #### Step 1: Add the Required "import" Statements:
 
