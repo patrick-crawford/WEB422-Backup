@@ -188,7 +188,7 @@ After injecting our required services in the constructor, we see the following m
 
 * **isAuthenticated()** ...The isAuthenticated() method really only checks to see if there's a token available in local storage.  If there is a token, return **true**, otherwise return **false**.  This will be used by a future "GuardAuthService" to prevent the user from accessing a specific route, if the token is unavailable.
 
-* **login()** The all-import login() method simply makes "POST" request to our "simple-api" (currently running on localhost), and passes it the user's credentials.  These will be obtained from the below "Login" Component.
+* **login()** The all-import login() method simply makes "POST" request to our "simple-api" (currently running on localhost), and passes it the user's credentials (defined as type "User".  These will be obtained from the below "Login" Component.
 
 <br>
 
@@ -269,7 +269,9 @@ export class LoginComponent implements OnInit {
 }
 ```
 
-**TODO: Explain the above Code**
+If we examine the above code, we can see that there's nothing too new happening here, with the exception of the "onSubmit()" method.  In **onSubmit()**, the **user** property (modified using the form in the compoment template - see below) is passed ot the **login** method, which (as we have seen) will pass the data on to the "/api/login" route of our "simple-api".  If our simple-API successfully authenticates the user based on these credentials, the Observable will pass the message back (success), containing the JWT (in the "token" property).  We then take this "token" (JWT) and store it in local storage as "access_token" for later use. Additionally, we will redirect the user to the "/vehicles" route.  
+
+If the simple-API sends an error back stating that there's an issue with the credentials, we can catch this error (err) in the 2nd "subscribe" callback and set the "warning" property of the component with the returned message.  This will provide appropriate feedback to the user in the event that they have made a mistake entering their login credentials. 
 
 <br>
 
@@ -305,7 +307,7 @@ export class LoginComponent implements OnInit {
 </div>
 ```
 
-**TODO: Explain the above Code**
+Here, we have a simple form that captures the **userName** and **password** properties of the public **user** (type: "User") property in the component.  If the "warning" property is set (as we have seen from above), then the warning will be displayed to the user.
 
 <br>
 
