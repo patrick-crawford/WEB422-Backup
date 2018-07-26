@@ -413,7 +413,7 @@ If we refresh the "/vehicles" route, we should now see our list of vehicles!  Th
 
 <br>
 
-### Generating a "GuardAuthService" (TODO: Change this Step Title)
+### Generating a "GuardAuthService" to 
 
 **TODO: Explanation of what this is and why we're doing it**
 
@@ -465,7 +465,11 @@ export class GuardAuthService implements CanActivate {
 
 <br>
 
+#### Step 3: Updating our "vehicles" Route with the "Guard":
 
+...
+
+<br>
 
 **TODO: Look into adding this code to NavComponent to Update it whenever the route changes (to display something like "welcome Bob" and show/hide routes (NOTE: there may be a better way... maybe add a loginNotifier method of the authService or that we can call when logged in and any "subscribers" will be notified? - see "Shared Service" [here](https://sharpten.com/blog/2016/03/23/using-eventemitters-notify-component-changes-angular-2.html) for ideas):
 
