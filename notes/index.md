@@ -131,7 +131,7 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </td>
 </tr>
     <tr>
-<td>11 - Notes (Coming Soon...)</td>
+<td><a href="/web422/notes/week11">11 - Notes</a></td>
 <td>
   Introduction to Securing a Web API with JWT <br><br>
 <ul>
