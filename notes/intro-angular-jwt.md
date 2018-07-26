@@ -9,7 +9,7 @@ If our Web API provides security features (register/login routes, stored user na
 
 * A "JWT" module to help us work with JSON Web Tokens
 * An "Authentication" service to manage the authentication tasks and JWT
-* "User Registration" and "Login" components / routes
+* A "Login" component / route
 * "Route Guards" to stop the user from navigating to "protected" routes
 * "Http Interceptor" to automatically attach an "Authorization" header (containing the user's JWT) to requests for data.
 
@@ -176,13 +176,19 @@ export class AuthService {
 }
 ```
 
-**TODO: Explain the above code**
+There's a lot going on in the above code, so let's break it down *piece by piece* to understand how everything works.  To begin, all of the import statements are fairly standard:  We will be using an Observable, so we must fetch it from "rxjs" (in previous versions of Angular, it was located in "rxjs/Observable").  The HTTPClient comes from "@angular/common/http" (which we will need to communicate with our simple-api) and the JwtHelperService (used to decode the contents of the JWT) comes, once again from "@auth0/angular-jwt".
 
-<br>
+Next, you will notice that we have our @Injectable decorator.  If the app was built using an earlier version of Angular (ie: before version 6), it would have looked like this: `@Injectable()`.
 
-### Creating the "Register" Component / Route
+After injecting our required services in the constructor, we see the following methods:
 
-**NOTE: Only add this in if we have time... otherwise, we can use the "bob" user from part 1 ... We could also do a "logout", that removes the token??**
+* **getToken()** The get token method simply pulls the token from "local storage".  It will return **null** if the token does not exist
+
+* **readToken()** This method is designed to return the data from the JWT stored in "local storage".  It uses the [decodeToken()](https://www.npmjs.com/package/@auth0/angular-jwt#decodetoken) method from the JwtHelperService.
+
+* **isAuthenticated()** ...The isAuthenticated() method really only checks to see if there's a token available in local storage.  If there is a token, return **true**, otherwise return **false**.  This will be used by a future "GuardAuthService" to prevent the user from accessing a specific route, if the token is unavailable.
+
+* **login()** The all-import login() method simply makes "POST" request to our "simple-api" (currently running on localhost), and passes it the user's credentials.  These will be obtained from the below "Login" Component.
 
 <br>
 
