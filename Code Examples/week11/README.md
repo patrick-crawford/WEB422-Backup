@@ -10,5 +10,5 @@ The code example this week contains Four (4) separate solutions used to accompan
 ### Simple-app
 
 * simple-app (this is the starting point for the "Incorporating JWT in an Angular Application" topic - it contains an Angular app)
-* simple-app-complete (this is the completed version of the "simple-app" - used for reference)
+* simple-app-complete (this is the completed version of the "simple-app" - used for reference) 
 
