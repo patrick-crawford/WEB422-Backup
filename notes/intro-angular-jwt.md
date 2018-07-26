@@ -371,17 +371,17 @@ export class InterceptTokenService implements HttpInterceptor {
 }
 ```
 
-You can see from the above code, that our "intercept" method has a very specific definition.  It's function is to "intercept" the request (available as the "request" property), perform some work on the request, and finally pass the request on to the "next" request handler (available as the "next" property).
+You can see from the above code, that our ["intercept" method](https://angular.io/api/common/http/HttpInterceptor#intercept) has a very specific definition.  It's function is to "intercept" the request (available as the "request" property), perform some work on the request, and finally pass the request on to the "next" request handler (available as the "next" property).
 
-For our purposes, this is all fairly boilerplate except for the "setHeaders" property.  This is where we identify which header we would like to set (ie: "Authorization") and what the data should be ( ie: "JWT" + *space* + token).  We use the "AuthService" to pull the token from local storage.
+For our purposes, this is all fairly boilerplate except for the "setHeaders" property.  This is where we identify which header we would like to set (ie: "Authorization") and what the data should be (ie: "JWT" + *space* + token).  We use the "AuthService" to pull the token from local storage.
 
 <br>
 
 ### Adding "HTTP_INTERCEPTORS" to the "providers" Array in app.module.ts
 
-**TODO: Explanation of what this is and why we're doing it**
+Once our special "HttpInterceptor" service is complete, the final step is to add it to our application so that it can be applied to our HTTP requests.  This involves updating the **providers** array in **app.module.ts** using a slightly different definition (see below)
 
-* First, add the required "import" statements next to "HttpClientModule", ie:
+#### Step 1: Add the Correct "import" Statements to app.module.ts
 
 ```ts
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -393,7 +393,7 @@ and
 import { InterceptTokenService } from './intercept-token.service';
 ```
 
-* Next, add the following to the providers array:
+#### Step 2: Add the "InterceptTokenService" to the "providers" array.
 
 ```ts
 {
@@ -402,6 +402,8 @@ import { InterceptTokenService } from './intercept-token.service';
   multi: true
 }
 ```
+
+You will notice that we do not add the "InterceptTokenService" directly.  Instead, it is identified in the "userClass" property of an anonymous object, added to the array of providers. The "provide" property allows us to register our "InterceptTokenService" with the [array of "HttpInterceptors"](https://angular.io/api/common/http/HTTP_INTERCEPTORS), while the "multi" property indicates that there could be more than one Interceptors 
 
 <br>
 
