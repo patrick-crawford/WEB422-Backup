@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-
-import { Router } from '@angular/router';
+import { Router, Event, NavigationStart } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -11,13 +10,15 @@ import { AuthService } from '../auth.service';
 })
 export class NavComponent implements OnInit {
 
-  public token
+  public token: any;
 
   constructor(private router: Router, private auth:AuthService) { }
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
-      this.token = this.auth.readToken();
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
+        this.token = this.auth.readToken();
+      }
     });
   }
 }
