@@ -391,7 +391,9 @@ Once our special "HttpInterceptor" service is complete, the final step is to add
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 ```
 
-and
+**Note:** the above will replace the *existing* import statement.  
+
+Next, add:
 
 ```ts
 import { InterceptTokenService } from './intercept-token.service';
