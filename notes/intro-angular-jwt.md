@@ -188,7 +188,7 @@ After injecting our required services in the constructor, we see the following m
 
 * **isAuthenticated()** The isAuthenticated() method really only checks to see if there's a token available in local storage.  If there is a token, return **true**, otherwise return **false**.  This will be used by a future "GuardAuthService" to prevent the user from accessing a specific route, if the token is unavailable.
 
-* **login()** Finally, the login() method simply makes "POST" request to our "simple-api" (currently running on localhost), and passes it the user's credentials (defined as type "User".  These will be obtained from the below "Login" Component.
+* **login()** Finally, the login() method simply makes "POST" request to our "simple-api" (currently running on localhost), and passes it the user's credentials (defined as type "User").  These will be obtained from the below "Login" Component.
 
 <br>
 
