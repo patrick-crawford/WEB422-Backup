@@ -176,7 +176,7 @@ export class AuthService {
 }
 ```
 
-There's a lot going on in the above code, so let's break it down *piece by piece* to understand how everything works.  To begin, all of the import statements are fairly standard:  We will be using an Observable, so we must fetch it from "rxjs" (in previous versions of Angular, it was located in "rxjs/Observable").  The HTTPClient comes from "@angular/common/http" (which we will need to communicate with our simple-api) and the JwtHelperService (used to decode the contents of the JWT) comes, once again from "@auth0/angular-jwt".
+There's a lot going on in the above code, so let's break it down *piece by piece* to understand how everything works.  To begin, all of the import statements are fairly standard:  We will be using an Observable, so we must fetch it from "rxjs" (in previous versions of Angular, it was located in "rxjs/Observable").  The HTTPClient comes from "@angular/common/http" (which we will need to communicate with our simple-API) and the JwtHelperService (used to decode the contents of the JWT) comes, once again from "@auth0/angular-jwt".
 
 Next, you will notice that we have our @Injectable decorator.  If the app was built using an earlier version of Angular (ie: before version 6), it would have looked like this: `@Injectable()`.
 
@@ -188,7 +188,7 @@ After injecting our required services in the constructor, we see the following m
 
 * **isAuthenticated()** The isAuthenticated() method really only checks to see if there's a token available in local storage.  If there is a token, return **true**, otherwise return **false**.  This will be used by a future "GuardAuthService" to prevent the user from accessing a specific route, if the token is unavailable.
 
-* **login()** Finally, the login() method simply makes "POST" request to our "simple-api" (currently running on localhost), and passes it the user's credentials (defined as type "User").  These will be obtained from the below "Login" Component.
+* **login()** Finally, the login() method simply makes "POST" request to our "simple-API" (currently running on localhost), and passes it the user's credentials (defined as type "User").  These will be obtained from the below "Login" Component.
 
 <br>
 
@@ -269,7 +269,7 @@ export class LoginComponent implements OnInit {
 }
 ```
 
-If we examine the above code, we can see that there's nothing too new happening here, with the exception of the "onSubmit()" method.  In **onSubmit()**, the **user** property (modified using the form in the compoment template - see below) is passed ot the **login** method, which (as we have seen) will pass the data on to the "/api/login" route of our "simple-api".  If our simple-API successfully authenticates the user based on these credentials, the Observable will pass the message back (success), containing the JWT (in the "token" property).  We then take this "token" (JWT) and store it in local storage as "access_token" for later use. Additionally, we will redirect the user to the "/vehicles" route.  
+If we examine the above code, we can see that there's nothing too new happening here, with the exception of the "onSubmit()" method.  In **onSubmit()**, the **user** property (modified using the form in the compoment template - see below) is passed ot the **login** method, which (as we have seen) will pass the data on to the "/api/login" route of our "simple-API".  If our simple-API successfully authenticates the user based on these credentials, the Observable will pass the message back (success), containing the JWT (in the "token" property).  We then take this "token" (JWT) and store it in local storage as "access_token" for later use. Additionally, we will redirect the user to the "/vehicles" route.  
 
 If the simple-API sends an error back stating that there's an issue with the credentials, we can catch this error (err) in the 2nd "subscribe" callback and set the "warning" property of the component with the returned message.  This will provide appropriate feedback to the user in the event that they have made a mistake entering their login credentials. 
 
@@ -585,10 +585,3 @@ Here, we are "subscribing" to all router events.  The "event" that occurs will b
 ```html
 <li routerLinkActive="active"><a routerLink="home"><span *ngIf="token">Welcome {{token.userName}}</span><span *ngIf="!(token)">Home</span></a></li>
 ```
-
-
-
-
-
-
-
