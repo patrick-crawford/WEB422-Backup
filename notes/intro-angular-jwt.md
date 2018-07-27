@@ -586,6 +586,9 @@ Here, we are "subscribing" to all router events.  The "event" that occurs will b
 
 * Finally, our "Home" link needs to be updated as follows (ie: conditionally change the text "Home" to a "Welcome" message if the user is logged in:)
 
+{% raw %}
 ```html
 <li routerLinkActive="active"><a routerLink="home"><span *ngIf="token">Welcome {{token.userName}}</span><span *ngIf="!(token)">Home</span></a></li>
 ```
+{% endraw %}
+
