@@ -277,6 +277,7 @@ If the simple-API sends an error back stating that there's an issue with the cre
 
 #### Step 5: Updating the "LoginComponent" template:
 
+{% raw %}
 ```html
 <div class="row">
   <div class="col-md-12">
@@ -306,6 +307,7 @@ If the simple-API sends an error back stating that there's an issue with the cre
   </div>
 </div>
 ```
+{% endraw %}
 
 Here, we have a simple form that captures the **userName** and **password** properties of the public **user** (type: "User") property in the component.  If the "warning" property is set (as we have seen from above), then the warning will be displayed to the user.
 
