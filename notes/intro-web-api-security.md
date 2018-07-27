@@ -237,7 +237,7 @@ This route simply collects user registration information sent using POST to the 
 Fortunately, our **userService.registerUser()** function is perfectly set up to handle this type of data.  It will validate whether password & password2 match and check that the user name "bob" is not taken.  If the data meets these requirements, the provided password will be hashed and the user will be entered into the system.  Therefore, our new /api/register route is very simple; it must simply pass the posted data to the userService for processing and report back when it has completed, ie:
 
 ```javascript
-app.post("api/register", (req, res) => {
+app.post("/api/register", (req, res) => {
     userService.registerUser(req.body)
         .then((msg) => {
             res.json({ "message": msg });
@@ -308,7 +308,7 @@ This will show all of the documents in the collection, including our new "bob" u
 In addition to **adding** users to the system, we must also be able to **authenticate** users and allow them to "login" before being granted access to the data.  In this case, all of the work required for authenticating user data is done in the "dataAuth.checkUser()" method.  So (like "/api/register"), our "/api/login" route, will once again pass the posted data to the userService for processing and report back when it has completed, ie: 
 
 ```javascript
-app.post("api/login", (req, res) => {
+app.post("/api/login", (req, res) => {
     userService.checkUser(req.body)
         .then((user) => {
             res.json({ "message": "login successful" });
