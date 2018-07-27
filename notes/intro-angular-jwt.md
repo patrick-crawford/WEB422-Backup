@@ -8,7 +8,7 @@ layout: default
 If our Web API provides security features (register/login routes, stored user names with hashed passwords and JWT for authenticating requests), we will have to design our Angular application to work with the security mechanisms of the API.  Specifically, we will need:
 
 * A "JWT" module to help us work with JSON Web Tokens
-* An "Authentication" service to manage the authentication tasks and JWT!
+* An "Authentication" service to manage the authentication tasks and JWT
 * A "Login" component / route
 * "Route Guards" to stop the user from navigating to "protected" routes
 * "Http Interceptor" to automatically attach an "Authorization" header (containing the user's JWT) to requests for data.
