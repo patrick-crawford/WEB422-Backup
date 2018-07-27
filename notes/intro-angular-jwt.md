@@ -391,7 +391,7 @@ Once our special "HttpInterceptor" service is complete, the final step is to add
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 ```
 
-**Note:** the above will replace the *existing* import statement.  
+**Note:** the above will replace the *existing* import statement for `HttpClientModule`.  
 
 Next, add:
 
