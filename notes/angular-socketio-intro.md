@@ -272,7 +272,7 @@ With our new ChatService created, we can update chat.service.ts to use the follo
 ```js
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
-import { Subject } from "rxjs/Subject";  
+import { Subject } from "rxjs"; // or "rxjs/Subject in versions < 6  
 
 @Injectable({
   providedIn: 'root' // Note: "providedIn" not added in versions < 6
