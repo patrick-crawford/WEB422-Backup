@@ -274,7 +274,9 @@ import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import { Subject } from "rxjs/Subject";  
 
-@Injectable()
+@Injectable({
+  providedIn: 'root' // Note: "providedIn" not added in versions < 6
+})
 export class ChatService {
 
   private socket: SocketIOClient.Socket; // The client instance of socket.io
