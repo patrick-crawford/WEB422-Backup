@@ -29,8 +29,8 @@ Creating any application that makes use of socket.io, requires two parts: a **cl
 4. We will create a Node/Express server using our usual steps, ie:
     - Create a file **server.js** but leave it empty for now.
     - Run the command "npm init" in the Integrated Terminal
-    - Install & Save "express" - `npm install --save express`
-    - Install & Save "socket.io" - `npm install --save socket.io`
+    - Install & Save "express" - `npm install express --save`
+    - Install & Save "socket.io" - `npm install socket.io --save`
 5. Enter the following code for "server.js":
 
 ```js
