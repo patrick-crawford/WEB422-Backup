@@ -310,9 +310,9 @@ Lastly, we include a "sendMessage()" method that simply sends a given message to
 
 #### Step 4: Adding a new ChatWindowComponent
 
-For our example, we will place all of the code within a single "ChatWindowCompoment".  To create this Component, execute the usual Angular CLI code: `ng g c chatWindow`
+For our example, we will place all of the code within a single "ChatWindowComponent".  To create this Component, execute the usual Angular CLI code: `ng g c chatWindow`
 
-With our new ChatWindowComponent created, we can update chat-window.compoment.ts to use the following code: 
+With our new ChatWindowComponent created, we can update chat-window.component.ts to use the following code: 
 
 ```js
 import { Component, OnInit } from '@angular/core';
@@ -350,7 +350,7 @@ export class ChatWindowComponent implements OnInit {
 
 ```
 
-At first glance, it looks like there's a lot going on in this Compoment, but really we're following along with the Angular Service design pattern that we've been working with for the past few weeks.  In this case, we:
+At first glance, it looks like there's a lot going on in this Component, but really we're following along with the Angular Service design pattern that we've been working with for the past few weeks.  In this case, we:
 
 - Declare a **getMessagesSub** to hold a reference to the subscription to **chatService.getMessages** (so that we can "unsubscribe" to it in the **ngOnDestroy** lifecycle method
 
@@ -370,7 +370,7 @@ At first glance, it looks like there's a lot going on in this Compoment, but rea
 
 #### Step 5: Updating ChatWindowComponent Template
 
-We now have everything in place to create the template for our ChatWindow Component.  Enter the following code in the "chat-window.compoment.html" file:
+We now have everything in place to create the template for our ChatWindow Component.  Enter the following code in the "chat-window.component.html" file:
 {% raw %}
 ```html
 <div class="well" style="height: 300px; overflow-y: scroll; margin-top:15px">
@@ -389,7 +389,7 @@ Here, we have a "well" with a few simple inline styles added (these should be mo
 
 <br>
 
-#### Step 6: Updating app.compoment.html
+#### Step 6: Updating app.component.html
 
 Everything is nearly ready for testing, the only thing left is to update app.component.html to include our ChatWindowComponent (`<app-chat-window></app-chat-window>`).  Since we're using Bootstrap 3, we will ensure that this component sits within the responsive grid system:
 
