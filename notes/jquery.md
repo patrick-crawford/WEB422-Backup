@@ -268,7 +268,7 @@ As we have seen, we don't necessairly need to touch any JS code to make use of s
 </button>
 ```
 
-However, what if we wish to launch a modal window at a different (unknown) time? For example; when an Ajax request completes?  This is where the [Programmatic API](https://getbootstrap.com/docs/3.3/javascript/#js-programmatic-api) comes in to play. It gives us more power and flexability to work with the compoments.
+However, what if we wish to launch a modal window at a different (unknown) time? For example; when an Ajax request completes?  This is where the [Programmatic API](https://getbootstrap.com/docs/3.3/javascript/#js-programmatic-api) comes in to play. It gives us more power and flexability to work with the components.
 
 Using the API we can interact with all of Bootstrap's JavaScript components programmatically (from JavaScript).  The following examples illustrate how we can use the API to take advantage of some of Bootstraps most useful components:
 
