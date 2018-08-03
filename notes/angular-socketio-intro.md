@@ -5,7 +5,7 @@ layout: default
 
 ## Socket.io Introduction
 
-We have now reached a point in our Angular learning where we can start to play with some of the more interesting tools and libraries.  We are familiar with the basics of how to create Compoments, Services, Routes, Forms with Two-Way Binding and even how to use some of the testing frameworks used by Angular. However, one common tool that is often used in modern applications is still missing from our skillset: Sockets, specifically the "Socket.io" library.
+We have now reached a point in our Angular learning where we can start to play with some of the more interesting tools and libraries.  We are familiar with the basics of how to create Components, Services, Routes, Forms with Two-Way Binding and even how to use some of the testing frameworks used by Angular. However, one common tool that is often used in modern applications is still missing from our skillset: Sockets, specifically the "Socket.io" library.
 
 Essentially, Socket.io enables "realtime, bi-directional communication between web clients and servers".  It can be extremely useful for pushing messages to the client.  As an example use case, we will discuss how we can leverage this to create realtime "chat" functionality.
 
