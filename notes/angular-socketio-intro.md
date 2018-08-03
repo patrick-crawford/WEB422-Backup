@@ -407,7 +407,7 @@ Everything is nearly ready for testing, the only thing left is to update app.com
 
 #### Step 7: Updating polyfills.ts if using Angular 6
 
-If you're using Angular 6, there is an issue with "global" that causes our code to break with: `Uncaught ReferenceError: global is not defined` (see: [https://github.com/socketio/socket.io-client/issues/1166](https://github.com/socketio/socket.io-client/issues/1166).  The current fix for this issue is to add the line:
+If you're using Angular 6, there is an issue with "global" that causes our code to break with: `Uncaught ReferenceError: global is not defined` (see: [https://github.com/socketio/socket.io-client/issues/1166](https://github.com/socketio/socket.io-client/issues/1166)).  The current fix for this issue is to add the line:
 
 ```ts
 (window as any).global = window;
