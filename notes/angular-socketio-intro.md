@@ -285,7 +285,7 @@ export class ChatService {
   constructor() {
     this.getMessages = new Subject(); 
     
-    this.socket = io.connect('http://localhost:8080');
+    this.socket = io.connect('http://localhost:8080'); // we can also use io.connect() to connect to the current host
 
     this.socket.on('chat message', (msg) => {
       this.getMessages.next(msg); // send the new message
