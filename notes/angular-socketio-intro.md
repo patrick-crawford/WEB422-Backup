@@ -111,7 +111,7 @@ This block of code specifies a callback function to be executed when a client "c
     let tempUserName = "User-" + Math.floor(Math.random() * (100000 - 1 + 1)) + 1; 
 ```
 
-To help distinguish which user wrote which message, we simply create a "tempUserName" that consists of the text "User-" followed by a random number between 1 and 100000 inclusive.
+To help distinguish which user wrote which message, we simply create a "tempUserName" that consists of the text "User-" followed by a random number between 1 and 100000 inclusive using the formula `Math.floor( Math.random () * (max - min + 1)) + min)`.
 
 <br>
 
