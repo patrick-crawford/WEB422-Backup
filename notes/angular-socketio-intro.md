@@ -316,7 +316,7 @@ With our new ChatWindowComponent created, we can update chat-window.component.ts
 
 ```js
 import { Component, OnInit } from '@angular/core';
-import {ChatService} from '../chat.service';
+import { ChatService } from '../chat.service';
 
 @Component({
   selector: 'app-chat-window',
