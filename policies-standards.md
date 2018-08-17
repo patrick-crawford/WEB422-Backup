@@ -63,7 +63,7 @@ Each assignment will be worth 9% of your final course grade, exept the first ass
 ### Summary
 
 6 Tests - 50% (10%/ea)<br>
-6 Assignments - 50% ([A1] = 5%, [A2-A6] = 10%)  
+6 Assignments - 50% ([A1] = 5%, [A2-A6] = 9%/ea)  
 
 <br>
 
