@@ -7,7 +7,7 @@ layout: default
 
 Please note that all Assignments will be released on the **Friday** of the week indicated and will similairly be due on the **Friday** one or two weeks later (see below).
 
-We will have a test at the start of every **Lecture** starting on **Week 2** (we will not have the tests during the lab period)
+Each test will commence at the start of the corresponding **Lecture** period (we will not have tests during the lab period)
 
 <br>
 
