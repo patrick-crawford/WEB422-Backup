@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from "@angular/common/http";
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from "./app-routing.module";
 import { HeaderComponent } from './header.component';
 import { NavmainComponent } from './navmain.component';
 import { ContentComponent } from './content.component';
@@ -17,7 +17,6 @@ import { GuideComponent } from './guide.component';
 import { BearComponent } from './bear.component';
 import { EagleComponent } from './eagle.component';
 import { DolphinComponent } from './dolphin.component';
-import { DataManagerService } from './data-manager.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,7 @@ import { DataManagerService } from './data-manager.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [DataManagerService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
