@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 //import { of } from "rxjs/observable/of";
 //import { catchError, map, tap } from "rxjs/operators";
 
@@ -9,7 +9,9 @@ import { Observable } from "rxjs/Observable";
 
 import { Post, Comment, Geo, Address, Company, User } from "./vm-typicode";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataManagerService {
 
   // Fields
@@ -46,3 +48,4 @@ export class DataManagerService {
   }
 
 }
+
