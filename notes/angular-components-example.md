@@ -32,28 +32,14 @@ For our example app, here's what we're trying to do. Each rectangle will (or cou
 At this point, we will assume that you are comfortable using the Angular CLI to create a new project. For example, this command will create a new "animals" project:
 
 ```
-ng new animals --routing -st -sg
+ng new animals --routing -S
 ```
   
 **Recall:** 
   
 The `--routing` option adds the code we need for "routing", which is a topic that will be covered in detail next week. Adding routing now (when the new project is created) is a *best practice*. 
 
-The `-st` option does not add "testing" code. One of the effects is that it reduces the size of the project, and makes it slightly faster in the change detection and build processes.
-
-The `-sg` option does not create a Git repository for the project. That simplifies the configuration for us. 
-
-**IMPORTANT NOTE:**
-
-The latest version of the Angular CLI confuses the `-st` and `-sg` options with the new `-s` and `-t` options, which indicate that we **do not** wish to have external template (.html) and style (.css) files.  
-
-If you have created an app using the above `ng new animals --routing -st -sg` command and your solution **does not contain app.component.html** then use the following command instead:
-
-```
-ng new animals --routing -S
-```
-
-This will skip the testing, while still keeping the .html &amp;.css files intact.  Unfortunately, it will still generate a .git directory inside your newly created "animals" directory.  Simply remove the .git directory to avoid using git in our solution.
+The `-S` option does not add "testing" code. One of the effects is that it reduces the size of the project, and makes it slightly faster in the change detection and build processes.
 
 <br>
 

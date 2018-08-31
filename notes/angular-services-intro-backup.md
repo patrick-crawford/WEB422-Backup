@@ -107,7 +107,9 @@ A new source code file is created, named `data-manager.service.ts`. Its contents
 ```js
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataManagerService {
 
   constructor() { }
@@ -116,14 +118,6 @@ export class DataManagerService {
 ```
 
 The `@Injectable()` decorator indicates that this service is intended to be "injected" into another component or service at runtime. We'll have more to day about "injection" soon. 
-
-In the class code, we will add members: Properties to hold state information, and functions to perform tasks. 
-
-The Angular CLI "generate service" command also updated the app module (`app.module.ts`) source code, in two related and important ways:
-1. A new `import` statement near the top
-2. A declaration in the `providers` array of the `@NgModule` decorator
-
-These updates enable the new service to be available to *every* component in the app. 
 
 <br>
 
@@ -241,7 +235,7 @@ Observable is one of the key classes in the RxJS library.
 
 In a later tutorial on HTTP, you'll learn that Angular's HttpClient methods return RxJS Observables. In this tutorial, you'll simulate getting data from the server with the RxJS of() function.
 
-[Learn about Observables](http://reactivex.io/rxjs/manual/overview.html)
+[Learn about Observables](http://reactivex.io/rxjs/manual/overview.html#observable)
 
 Observable.subscribe() is the critical difference.
 

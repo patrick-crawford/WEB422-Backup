@@ -69,8 +69,6 @@ More info about a directive: Can be one of three kinds:
 
 More about dependency injection: During compilation, Angular looks at constructor types. And "providers", which are declarations. Together, those are the services that the injector maintains.
 
-Add providers to the root module, which makes the same instance available everywhere in the app. Or add to a component, and the service will exist only for the use of that component.
-
 <br>
 
 #### Defining input and output properties

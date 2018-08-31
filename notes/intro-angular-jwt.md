@@ -136,7 +136,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import {User} from './User';
 
 @Injectable({
-  providedIn: 'root' // Note: "providedIn" not added in versions < 6
+  providedIn: 'root'
 })
 export class AuthService {
 
@@ -176,9 +176,7 @@ export class AuthService {
 }
 ```
 
-There's a lot going on in the above code, so let's break it down *piece by piece* to understand how everything works.  To begin, all of the import statements are fairly standard:  We will be using an Observable, so we must fetch it from "rxjs" (in previous versions of Angular, it was located in "rxjs/Observable").  The HTTPClient comes from "@angular/common/http" (which we will need to communicate with our simple-API) and the JwtHelperService (used to decode the contents of the JWT) comes, once again from "@auth0/angular-jwt".
-
-Next, you will notice that we have our @Injectable decorator.  If the app was built using an earlier version of Angular (ie: before version 6), it would have looked like this: `@Injectable()`.
+There's a lot going on in the above code, so let's break it down *piece by piece* to understand how everything works.  To begin, all of the import statements are fairly standard:  We will be using an Observable, so we must fetch it from "rxjs".  The HTTPClient comes from "@angular/common/http" (which we will need to communicate with our simple-API) and the JwtHelperService (used to decode the contents of the JWT) comes, once again from "@auth0/angular-jwt".
 
 After injecting our required services in the constructor, we see the following methods:
 

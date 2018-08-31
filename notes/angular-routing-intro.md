@@ -51,20 +51,7 @@ The best and easiest way to add the routing feature to an app is to make sure th
 
 As you have learned, when learning more about components, we should (must) use the `--routing` option when creating a new project:
 
-`ng new animals --routing -st -sg`
-
-
-**IMPORTANT NOTE:**
-
-The latest version of the Angular CLI confuses the `-st` and `-sg` options with the new `-s` and `-t` options, which indicate that we **do not** wish to have external template (.html) and style (.css) files.  
-
-If you have created an app using the above `ng new animals --routing -st -sg` command and your solution **does not contain app.component.html** then use the following command instead:
-
-```
-ng new animals --routing -S
-```
-
-This will skip the testing, while still keeping the .html &amp;.css files intact.  Unfortunately, it will still generate a .git directory inside your newly created "animals" directory.  Simply remove the .git directory to avoid using git in our solution.
+`ng new animals --routing -S`
 
 The remainder of this document teaches you how to configure and use routing. 
 

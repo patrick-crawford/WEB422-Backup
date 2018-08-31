@@ -106,7 +106,9 @@ A new source code file is created, named `data-manager.service.ts`. Its contents
 ```js
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataManagerService {
 
   constructor() { }
@@ -115,16 +117,6 @@ export class DataManagerService {
 ```
 
 The `@Injectable()` decorator indicates that this service is intended to be "injected" into another component or service at runtime. We'll have more to say about "injection" soon. 
-
-In the class code, we will add members: Properties to hold state information, and functions to perform tasks. 
-
-The Angular CLI "generate service" command also updated the app module (`app.module.ts`) source code, in two related and important ways:
-1. A new `import` statement near the top
-2. A declaration in the `providers` array of the `@NgModule` decorator
-
-These updates enable the new service to be available to *every* component in the app. 
-
-**Note:** If you're using the latest version of the Angular-CLI, the `providers` array will **not** be updated, as providers are registered directly inside the @Injectable() decorator, using the new providedIn attribute.
 
 <br>
 
@@ -261,7 +253,7 @@ This sounds like exactly what we need - something to "make it easier to compose 
 Observables on the other hand, allow us to watch (observe) the changing values of data over time and execute code when these changes occur.  For example:
 
 ```js
-import { Observable } from 'rxjs/Observable'; // Or, if using Angular 6, just "rxjs"
+import { Observable } from 'rxjs';
 
 var source = Observable.create(function (observer) {
   
@@ -326,10 +318,10 @@ In addition to simply "subscribing" to any changes identified using the "next" f
 Note: To use the above mehods, we need to import each individual method using the syntax:
 
 ```
-import "rxjs/add/operator/map"; // or if using Angular 6: import { map } from 'rxjs/operators';
-import "rxjs/add/operator/filter"; // or if using Angular 6: import { filter } from 'rxjs/operators';
-import "rxjs/add/operator/delay"; // or if using Angular 6: import { delay } from 'rxjs/operators';
-import "rxjs/add/operator/distinct"; // or if using Angular 6: import { distinct } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
+import { distinct } from 'rxjs/operators';
 ```
 
 For a full reference of all methods available on the Observable object, see: [the official documentation here](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html).

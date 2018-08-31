@@ -55,7 +55,9 @@ At the end, the source code will look something like this:
 ```js
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataManagerService {
 
   // Fields
@@ -310,7 +312,7 @@ export class User {
 Open the service for editing. Add the following near the top:
 
 ```js
-import { Observable } from "rxjs/Observable"; // Or, if using Angular 6, just "rxjs"
+import { Observable } from "rxjs";
 
 import { Post, Comment, Geo, Address, Company, User } from "./vm-typicode";
 ```
