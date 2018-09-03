@@ -32,7 +32,7 @@
 
             {% assign current = page.url | downcase | split: '/' %}
 
-            <p>current - {{ current[1] }}</p>
+            <!-- <p>current - {{ current[1] }}</p> -->
 
                     <a href="https://sictweb.github.io/web422/weekly-schedule" {% if current[1] == 'weekly-schedule.html' %}class='btn active'{% else %}class='btn'{% endif %}>Schedule</a>
         <a href="https://sictweb.github.io/web422/notes/" {% if current[1] == 'notes' %}class='btn active'{% else %}class='btn'{% endif %}>Notes</a>
