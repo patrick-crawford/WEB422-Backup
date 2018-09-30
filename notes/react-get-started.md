@@ -98,10 +98,18 @@ Recall [from WEB322](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web3
 
 ```javascript
 var express = require("express");
+var path = require("path");
+
 var app = express();
+
 var HTTP_PORT = process.env.PORT || 8080
 
 app.use(express.static("public"));
+
+// Redirect Users to "index.html" if route not accessed using client side routing
+app.use((req, res) => {
+    res.sendFile(path.join(__dirname + "/public/index.html"));
+});
 
 app.listen(HTTP_PORT, ()=>{
     console.log("listening on port: " + HTTP_PORT);
@@ -109,6 +117,8 @@ app.listen(HTTP_PORT, ()=>{
 ```
 
 will treat a local "public" directory as a "static" directory!  All we have to do is create a new web server using the above code, and place **all** of our React.js production code from the "build" directory, into our new server's "public" directory. 
+
+**Note:** We must redirect users to /public/index.html if a route is accessed directly without going through "client side routing" (This will make more sense when we discuss routing next week)
 
 Once this is complete, we can run our new Express server.js file (`node server.js`) in the browser to see our production React.js code (we can even push this to Heroku).
 
