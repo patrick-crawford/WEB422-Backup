@@ -293,14 +293,6 @@ You can see this in Postman by scrolling down and selecting "body" in the respon
 
 ![Postman Response](../media/Postman-response.png)
 
-You can also confirm that the user was added by clicking on the "users" collection in mLab:
-
-![mLab collections](../media/mLab-collections.png)
-
-This will show all of the documents in the collection, including our new "bob" user: 
-
-![mLab Users](../media/mLab-users.png)
-
 <br>
 
 **New Route: /api/login**
