@@ -70,7 +70,7 @@ mongodb://userName:password@senecaweb-shard-00-00-abcd.mongodb.net:27017,senecaw
 
 3. Save the changes and run the server from the integrated terminal using the familiar command "node server.js"
 
-4. If the server starts successfully (ie: you see the output: "API listening on: 8081", then the connection to your MLab Account has succeeded!  
+4. If the server starts successfully (ie: you see the output: "API listening on: 8081", then the connection to your MongoDB Atlass Account has succeeded!  
 
 5.  At this point, it will be easiest if you push this server to Heroku, so that you can easily use it in all of your projects, without having to start up a local copy of the API server every time we want access to the data.  
 
