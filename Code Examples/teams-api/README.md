@@ -66,7 +66,7 @@ mongodb://userName:password@senecaweb-shard-00-00-abcd.mongodb.net:27017,senecaw
 
 1. First, switch back to the previous directory using the integrated terminal (cd ..) so that our working directory has the "server.js" file in it.
 
-2. Next, open the server.js file and using the credentials identified above, modify the mongoDBConnectionString value to the one that you 
+2. Next, open the server.js file and using the credentials identified above, modify the mongoDBConnectionString value your newly completed connection string (from above)
 
 3. Save the changes and run the server from the integrated terminal using the familiar command "node server.js"
 
