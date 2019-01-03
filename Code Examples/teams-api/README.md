@@ -38,19 +38,35 @@ For this course we will be continuing to use MongoDB Atlas (If you're new to Mon
 
 11. If you go back to MongoDB Atlas online (Under the "Collections" tab) and hit "REFRESH", you should now see that your "teams-api-data" database contains 5 collections (including "tbd").  You may now remove the "tbd" collection.
 
-### UPDATING The mongoDBConnectionString:
+### OBTAINING The mongoDBConnectionString:
 
 Now that we have our back-end MongoDB all set up and populated with data, we just have to make that all-important update to the mongoDBConnectionString constant.
 
+To obtain the connection string:
+
+1. Go back to mongoDB Atlas online and click the "Command Line Tools" tab once again.
+
+2. Under "Connect To Your Cluster", you should see a "Connect Instructions" button - click this to open a "Connect to SenecaWeb" modal window.
+
+3. Click the "Connect Your Application" button
+
+4. Under the first option, click the "Standard connection string (For drivers compatible with MongoDB 3.4+)" button and copy the URI connection string and paste it in a text file for now. You will notice that there's a space for <PASSWORD> - simply replace this with the actual password that you used as your "MongoDB User" when setting up your SenecaWeb Cluster
+
+5. Search the connection string for the text "mongodb.net:27017/test" - it should be in there somewhere. To connect to a specific database, simply replace the string "test" with the actual database name, ie: "teams-api-data" (mongodb.net:27017/teams-api-data).
+
+**Sample Connection String**
+
+When complete, your connection string should look something like this:
+
+```
+mongodb://userName:password@senecaweb-shard-00-00-abcd.mongodb.net:27017,senecaweb-shard-00-01-abcd.mongodb.net:27017,senecaweb-shard-00-02-fe4bt.mongodb.net:27017/teams-api-db?ssl=true&replicaSet=SenecaWeb-shard-0&authSource=admin&retryWrites=true
+```
+
+### UPDATING The mongoDBConnectionString in server.js:
+
 1. First, switch back to the previous directory using the integrated terminal (cd ..) so that our working directory has the "server.js" file in it.
 
-2. Next, open the server.js file and using the credentials identified above, modify the mongoDBConnectionString value to use the following format:
-
-`mongodb://<dbuser>:<dbpassword>@ds######.mlab.com:#####/<dbname>`
-
-using the information identified above - it should look something like: 
-
-`mongodb://user:password@ds123456.mlab.com:23456/teams-api-db`
+2. Next, open the server.js file and using the credentials identified above, modify the mongoDBConnectionString value to the one that you 
 
 3. Save the changes and run the server from the integrated terminal using the familiar command "node server.js"
 
