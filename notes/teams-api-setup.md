@@ -21,70 +21,69 @@ If you open the "server.js" file, you will notice that the top 2 lines define th
 
 ### MongoDB Database:
 
-For this course we will be continuing to use MLab:
+For this course we will be continuing to use MongoDB Atlas (If you're new to MongoDB Atlas, See the [WEB322 Notes (Week 8)](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) on how to create an account and get started):
 
-1. Log into your MLab Account here: [https://mlab.com/login/](https://mlab.com/login/)
+1. Log into your Atlas Account here: [https://cloud.mongodb.com/user#/atlas/login](https://cloud.mongodb.com/user#/atlas/login)
 
-2. Create a new "MongoDB Deployment" by clicking on the "Create new" button on the top right of the table of existing deployments (you should see a few from your WEB322 assignments)
+2. Click on the "Collections" Tab for your SenecaWeb Cluster
 
-3. Be sure you select a "Sandbox" Plan Type and click the blue "Continue" button
+3. Click "Create Database" and name it something that you will remember, i.e. "teams-api-db" and enter "tbd" for the collection name (we will be deleting this collection once the database is populated - see below).
 
-4. Select "US East" and click the blue "Continue" button
+4. Click "Create" to create the new database and close the modal window
 
-5. On the next screen, name your database something that you will remember, i.e. "teams-api-db" and click the blue "Continue" button
+5. Click on the "Command Line Tools" tab (next to the "Collections" tab)
 
-6. Click the "Submit Order" button - your "Total Price" should read "FREE"
+6. Copy the the "mongorestore" command and paste it into a text editor (textEdit, notepad, etc)
 
-### Adding a New User:
+7. Change the "&lt;PASSWORD&gt;" value to the value that you used as your "MongoDB User" when setting up your SenecaWeb Cluster
 
-As you will recall from WEB322, we aren't done yet - we still need to add a user to the new deployment:
+8. Once you have the completed mongorestore command (with a valid "&lt;PASSWORD&gt;"), go back to the integrated terminal in Visual Studio code and Change the working directory ("cd") in the integrated terminal to "API-data-restore"
 
-1. Click on your newly created deployment in the list. This will take you to a separate screen with the "Collections" tab selected.
+9. Once this is done and your working directory is "API-data-restore", paste the completed mongorestore command into the terminal and press enter to execute it
+  
+  **Important Note** For the mongorestore command to work correctly (and not display SSL errors), you will need an up-to-date version of the [MongoDB Community Server](https://www.mongodb.com/download-center/community) - See the [WEB322 Notes (Week 8)](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) for a refresher on installing the community server. 
 
-2. Click on the "Users" tab and click the button "Add database user"
+10. You should see a number of lines output to the terminal indicating the progress, and then finally a "done" message
 
-3. This will prompt you to enter a username and password - pick something you will remember, as you will need it for the connection string and mongorestore.  (Leave the "Make read-only" checkbox unchecked)
+11. If you go back to MongoDB Atlas online (Under the "Collections" tab) and hit "REFRESH", you should now see that your "teams-api-data" database contains 5 collections (including "tbd").  You may now remove the "tbd" collection.
 
-4. Click "Create".  This will close the modal and your new user will be listed at the bottom under "Database Users".
-
-5. Next - make note of the string beneath the text "To connect using the mongo shell:" at the top of the screen... it should look something like:
-
-`% mongo ds######.mlab.com:#####/<dbname> -u <dbuser> -p <dbpassword>`
-
-where 
-	
-* ds######.mlab.com:##### is the address of the newly created deployment
-* &lt;dbname&gt; is the name of the database (should be something like "teams-api-db")
-* &lt;dbuser&gt; will be the user name that you just created to access the new database
-* &lt;dbpassword&gt; will be the password that you created for the above user
-
-6. Once you have recorded all of that information, go back to the integrated terminal in Visual Studio code and Change the working directory ("cd") in the integrated terminal to "API-data-restore"
-
-7. Once this is done and your working directory is "API-data-restore", execute the command:
-
-`mongorestore -h ds######.mlab.com:##### -d <dbname> -u <dbuser> -p <dbpassword>`
-
-using the information identified above - it should look something like: 
-
-`mongorestore -h ds123456.mlab.com:23456 -d teams-api-db -u user -p pass`
-
-Finally, you should see a number of lines output to the terminal indicating the progress, and then finally a "done" message
-
-### UPDATING The mongoDBConnectionString:
+### OBTAINING The mongoDBConnectionString:
 
 Now that we have our back-end MongoDB all set up and populated with data, we just have to make that all-important update to the mongoDBConnectionString constant.
 
+To obtain the connection string:
+
+1. Go back to mongoDB Atlas online and click the "Command Line Tools" tab once again.
+
+2. Under "Connect To Your Cluster", you should see a "Connect Instructions" button - click this to open a "Connect to SenecaWeb" modal window.
+
+3. Click the "Connect Your Application" button
+
+4. Under the first option, click the "Standard connection string (For drivers compatible with MongoDB 3.4+)" button and copy the URI connection string and paste it in a text file for now. You will notice that there's a space for &lt;PASSWORD&gt; - simply replace this with the actual password that you used as your "MongoDB User" when setting up your SenecaWeb Cluster
+
+5. Search the connection string for the text "mongodb.net:27017/test" - it should be in there somewhere. To connect to a specific database, simply replace the string "test" with the actual database name, ie: "teams-api-data" (mongodb.net:27017/teams-api-data).
+
+**Sample Connection String**
+
+When complete, your connection string should look something like this:
+
+```
+mongodb://userName:password@senecaweb-shard-00-00-abcd.mongodb.net:27017,senecaweb-shard-00-01-abcd.mongodb.net:27017,senecaweb-shard-00-02-fe4bt.mongodb.net:27017/teams-api-db?ssl=true&replicaSet=SenecaWeb-shard-0&authSource=admin&retryWrites=true
+```
+
+### UPDATING The mongoDBConnectionString in server.js:
+
 1. First, switch back to the previous directory using the integrated terminal (cd ..) so that our working directory has the "server.js" file in it.
 
-2. Next, open the server.js file and using the credentials identified above, modify the mongoDBConnectionString value to use the following format:
+2. Next, open the server.js file and using the credentials identified above, modify the mongoDBConnectionString value your newly completed connection string (from above)
 
-`mongodb://<dbuser>:<dbpassword>@ds######.mlab.com:#####/<dbname>`
+3. Save the changes and run the server from the integrated terminal using the familiar command "node server.js"
 
-using the information identified above - it should look something like: 
+4. If the server starts successfully (ie: you see the output: "API listening on: 8081", then the connection to your MLab Account has succeeded!  
 
-`mongodb://user:password@ds123456.mlab.com:23456/teams-api-db`
+5.  At this point, it will be easiest if you push this server to Heroku, so that you can easily use it in all of your projects, without having to start up a local copy of the API server every time we want access to the data.  
 
-Lastly, save the changes and run the server from the integrated terminal using the familiar command "node server.js"
+**Note:** For a refresher on how initialize the folder with a .git repository, create an App with the Heroku CLI, and publish the App to Heroku, refer to the WEB322 notes on ["Getting Started with Heroku"](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/getting-started-with-heroku).
 
 ## USING THE API
 
@@ -107,22 +106,22 @@ You can access Create, Read and Update (no Delete) operations on each of the col
 
 * GET /employees (returns all employees with all foreign keys populated)
 * GET /employees-raw (returns all "raw" employees, ie: foreign keys not populated)
-* GET /employee/:employeeId (returns a single employee with all foreign keys populated)
-* GET /employee-raw/:employeeId (returns a single "raw" employee, ie: foreign keys not populated)
+* GET /employee/:employeeId (returns an array containing a single employee with all foreign keys populated)
+* GET /employee-raw/:employeeId (returns an array containing a single "raw" employee, ie: foreign keys not populated)
 * PUT /employee/:employeeId (updates a single employee)
 * POST /employees (adds an employee to the system)
 
 #### Positions
 
 * GET /positions (returns all positions)
-* GET /position/:positionId (returns a single position)
+* GET /position/:positionId (returns an array containing a single position)
 * PUT /position/:positionId (updates a single position)
 * POST /positions (adds a position to the system)
 
 #### Projects
 
 * GET /projects (returns all projects)
-* GET /project/:projectId (returns a single project)
+* GET /project/:projectId (returns an array containing a single project)
 * PUT /project/:projectId (updates a single project)
 * POST /projects (adds a project to the system)
 
@@ -130,7 +129,7 @@ You can access Create, Read and Update (no Delete) operations on each of the col
 
 * GET /teams (returns all teams with all foreign keys populated)
 * GET /teams-raw (returns all "raw" teams, ie: foreign keys not populated)
-* GET /team/:teamId (returns a single team with all foreign keys populated)
-* GET /team-raw/:teamId (returns a single "raw" team, ie: foreign keys not populated)
+* GET /team/:teamId (returns an array containing a single team with all foreign keys populated)
+* GET /team-raw/:teamId (returns an array containing a single "raw" team, ie: foreign keys not populated)
 * PUT /team/:teamId (updates a single team)
 * POST /teams (adds a team to the system)

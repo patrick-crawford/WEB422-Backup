@@ -110,7 +110,7 @@ ng g s Auth --module app --spec false
 
 #### Step 2: Add the definition for a "User" Object
 
-In a new file called "User.ts", add the following code (below).  This will define a "User" object with the same properties as our "userSchema" (used by the simple-API users database on MLab).
+In a new file called "User.ts", add the following code (below).  This will define a "User" object with the same properties as our "userSchema" (used by the simple-API users database on MongoDB Atlas).
 
 ```
 export class User{

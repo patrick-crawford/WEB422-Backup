@@ -41,15 +41,21 @@ More details can be found on MDN under "[Cross-Origin Resource Sharing (CORS)](h
 
 With our extremely simple "vehicles" API in place and producing data, we can now move on to discuss how we might *protect* this data from unwanted (unauthorized) access. 
 
-Back in WEB322, we discussed a number of [security considerations](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week12-class1/) that are vital to a modern web application.  This primairly included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up an mLab DB to store our user information & credentials.
+Back in WEB322, we discussed a number of [security considerations](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week12-class1/) that are vital to a modern web application.  This primairly included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up a MongoDB Atlas DB to store our user information & credentials.
 
 <br>
 
-#### mLab & MongoDB
+#### MongoDB Atlas & MongoDB
 
-You should be familiar with mLab from our [experience in WEB322](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) as well as the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup).  mLab will be responsible for hosting our separate (MongoDB) "users" database.
+You should be familiar with MongoDB Atlas from our [experience in WEB322](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) as well as the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup).  MongoDB Atlas will be responsible for hosting our separate (MongoDB) "users" database.
 
-To set up a new "users" database for the simple API, follow along with the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup) starting with "**MongoDB Database**" and continuing until you have a valid **Connection String** (This should look something like: `mongodb://user:password@ds123456.mlab.com:23456/simple-api-users`.  **Note:** Instead of naming your collection "teams-api-db", name it "simple-api-users" to keep everything separate and clear.
+To set up a new "users" database for the simple API, follow along with the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup) starting with "**MongoDB Database**" and continuing until you have a valid **Connection String** - this should look something like: 
+
+```
+mongodb://userName:password@senecaweb-shard-00-00-abcd.mongodb.net:27017,senecaweb-shard-00-01-abcd.mongodb.net:27017,senecaweb-shard-00-02-fe4bt.mongodb.net:27017/simple-api-users?ssl=true&replicaSet=SenecaWeb-shard-0&authSource=admin&retryWrites=true
+```
+
+**Note:** Instead of naming your collection "teams-api-db", name it "simple-api-users" to keep everything separate and clear.
 
 Be sure to keep track of your connection string, as we will be using it in the next piece:
 
