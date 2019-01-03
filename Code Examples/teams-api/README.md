@@ -81,22 +81,22 @@ You can access Create, Read and Update (no Delete) operations on each of the col
 
 * GET /employees (returns all employees with all foreign keys populated)
 * GET /employees-raw (returns all "raw" employees, ie: foreign keys not populated)
-* GET /employee/:employeeId (returns a single employee with all foreign keys populated)
-* GET /employee-raw/:employeeId (returns a single "raw" employee, ie: foreign keys not populated)
+* GET /employee/:employeeId (returns an array containing a single employee with all foreign keys populated)
+* GET /employee-raw/:employeeId (returns an array containing a single "raw" employee, ie: foreign keys not populated)
 * PUT /employee/:employeeId (updates a single employee)
 * POST /employees (adds an employee to the system)
 
 #### Positions
 
 * GET /positions (returns all positions)
-* GET /position/:positionId (returns a single position)
+* GET /position/:positionId (returns an array containing a single position)
 * PUT /position/:positionId (updates a single position)
 * POST /positions (adds a position to the system)
 
 #### Projects
 
 * GET /projects (returns all projects)
-* GET /project/:projectId (returns a single project)
+* GET /project/:projectId (returns an array containing a single project)
 * PUT /project/:projectId (updates a single project)
 * POST /projects (adds a project to the system)
 
@@ -104,7 +104,7 @@ You can access Create, Read and Update (no Delete) operations on each of the col
 
 * GET /teams (returns all teams with all foreign keys populated)
 * GET /teams-raw (returns all "raw" teams, ie: foreign keys not populated)
-* GET /team/:teamId (returns a single team with all foreign keys populated)
-* GET /team-raw/:teamId (returns a single "raw" team, ie: foreign keys not populated)
+* GET /team/:teamId (returns an array containing a single team with all foreign keys populated)
+* GET /team-raw/:teamId (returns an array containing a single "raw" team, ie: foreign keys not populated)
 * PUT /team/:teamId (updates a single team)
 * POST /teams (adds a team to the system)
