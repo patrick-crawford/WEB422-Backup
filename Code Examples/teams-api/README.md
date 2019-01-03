@@ -26,9 +26,9 @@ For this course we will be continuing to use MongoDB Atlas (If you're new to Mon
 
 6. Copy the the "mongorestore" command and paste it into a text editor (textEdit, notepad, etc)
 
-7. Change the "<PASSWORD>" value to the value that you used as your "MongoDB User" when setting up your SenecaWeb Cluster
+7. Change the "&lt;PASSWORD&gt;" value to the value that you used as your "MongoDB User" when setting up your SenecaWeb Cluster
 
-8. Once you have the completed mongorestore command (with a valid "<PASSWORD>"), go back to the integrated terminal in Visual Studio code and Change the working directory ("cd") in the integrated terminal to "API-data-restore"
+8. Once you have the completed mongorestore command (with a valid "&lt;PASSWORD&gt;"), go back to the integrated terminal in Visual Studio code and Change the working directory ("cd") in the integrated terminal to "API-data-restore"
 
 9. Once this is done and your working directory is "API-data-restore", paste the completed mongorestore command into the terminal and press enter to execute it
   
@@ -50,7 +50,7 @@ To obtain the connection string:
 
 3. Click the "Connect Your Application" button
 
-4. Under the first option, click the "Standard connection string (For drivers compatible with MongoDB 3.4+)" button and copy the URI connection string and paste it in a text file for now. You will notice that there's a space for <PASSWORD> - simply replace this with the actual password that you used as your "MongoDB User" when setting up your SenecaWeb Cluster
+4. Under the first option, click the "Standard connection string (For drivers compatible with MongoDB 3.4+)" button and copy the URI connection string and paste it in a text file for now. You will notice that there's a space for &lt;PASSWORD&gt; - simply replace this with the actual password that you used as your "MongoDB User" when setting up your SenecaWeb Cluster
 
 5. Search the connection string for the text "mongodb.net:27017/test" - it should be in there somewhere. To connect to a specific database, simply replace the string "test" with the actual database name, ie: "teams-api-data" (mongodb.net:27017/teams-api-data).
 
