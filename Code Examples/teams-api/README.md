@@ -18,7 +18,7 @@ For this course we will be continuing to use MongoDB Atlas (If you're new to Mon
 
 2. Click on the "Collections" Tab for your SenecaWeb Cluster
 
-3. Click "Create Database" and name it something that you will remember, i.e. "teams-api-db" and enter "tbd" for the collection name (we will be deleting this collection once the database is populated - see below).
+3. Click "Create Database" and name it "teams-api-db" and enter "tbd" for the collection name (we will be deleting this collection once the database is populated - see below).
 
 4. Click "Create" to create the new database and close the modal window
 
