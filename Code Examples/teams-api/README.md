@@ -26,7 +26,9 @@ For this course we will be continuing to use MongoDB Atlas (If you're new to Mon
 
 6. Copy the the "mongorestore" command and paste it into a text editor (textEdit, notepad, etc)
 
-7. Change the "&lt;PASSWORD&gt;" value to the value that you used as your "MongoDB User" when setting up your SenecaWeb Cluster
+7. Change the "&lt;PASSWORD&gt;" value to the value that you used as your "MongoDB User" when setting up your SenecaWeb Cluster.
+  
+  **Important Note:** If your password contains special characters, you will need to enclose your password in single quotes, ie 'myPassword' for the mongorestore command to function properly.
 
 8. Add the following flag to the end of the command: **-d teams-api-data**
 
