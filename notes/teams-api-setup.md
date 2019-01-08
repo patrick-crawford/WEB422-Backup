@@ -36,16 +36,16 @@ For this course we will be continuing to use MongoDB Atlas (If you're new to Mon
 6. Copy the the "mongorestore" command and paste it into a text editor (textEdit, notepad, etc)
 
 7. Change the "&lt;PASSWORD&gt;" value to the value that you used as your "MongoDB User" when setting up your SenecaWeb Cluster
-  
-  **Important Note:** If your password contains special characters, you will need to enclose your password in single quotes, ie 'myPassword' for the mongorestore command to function properly.
+    
+    **Important Note:** If your password contains special characters, you will need to enclose your password in single quotes, ie 'myPassword' for the mongorestore command to function properly.
 
 8. Add the following flag to the end of the command: **-d teams-api-data**
 
 9. Once you have the completed mongorestore command (with a valid "&lt;PASSWORD&gt;"), go back to the integrated terminal in Visual Studio code and Change the working directory ("cd") in the integrated terminal to "API-data-restore"
 
 10. Once this is done and your working directory is "API-data-restore", paste the completed mongorestore command into the terminal and press enter to execute it
-  
-  **Important Note** For the mongorestore command to work correctly (and not display SSL errors), you will need an up-to-date version of the [MongoDB Community Server](https://www.mongodb.com/download-center/community) - See the [WEB322 Notes (Week 8)](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) for a refresher on installing the community server. 
+    
+    **Important Note** For the mongorestore command to work correctly (and not display SSL errors), you will need an up-to-date version of the [MongoDB Community Server](https://www.mongodb.com/download-center/community) - See the [WEB322 Notes (Week 8)](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) for a refresher on installing the community server. 
 
 11. You should see a number of lines output to the terminal indicating the progress, and then finally a "done" message
 
