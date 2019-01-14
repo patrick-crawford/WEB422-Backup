@@ -16,7 +16,7 @@ module.exports = function(mongoDBConnectionString){
     return {
         connect: function(){
             return new Promise(function(resolve,reject){
-                let db = mongoose.createConnection(mongoDBConnectionString);
+                let db = mongoose.createConnection(mongoDBConnectionString, {useMongoClient: true});
                 
                 db.on('error', (err)=>{
                     reject(err);
