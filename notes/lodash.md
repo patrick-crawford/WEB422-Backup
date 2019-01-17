@@ -95,7 +95,7 @@ let take1 = _.take(users,2) // => objects for ['fred, pebbles']
 
 ### \_.filter(collection, [predicate=_.identity])
 
-Iterates over elements of **collection**, returning an array of all elements **predicate** returns truthy for. The predicate is invoked with three arguments: (value, index|key, collection).
+Iterates over elements of **collection**, returning an array of all elements **predicate** returns truthy for. The predicate is invoked with three arguments: ( value, index | key, collection ).
  
 See: [https://lodash.com/docs/4.17.4#filter](https://lodash.com/docs/4.17.4#filter) and also: [https://lodash.com/docs/4.17.4#find](https://lodash.com/docs/4.17.4#find)
 
