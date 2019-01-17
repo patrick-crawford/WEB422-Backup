@@ -19,8 +19,7 @@ $(function() { // this is the same as: $(document).ready(function(){
             let fNameTD = $('<td>').text(employees[i].FirstName);
             let lNameTD = $('<td>').text(employees[i].LastName);
             
-            let hireDate = moment.utc(employees[i].HireDate)
-            hireDate.local(); // switch to "local" time
+            let hireDate = moment(employees[i].HireDate); //parses the UTC Hiredate and uses "local" mode by default
             let hireDateTD = $('<td>').text(hireDate.format("L [( ]LL[ )]"));
 
             // append all table cells to a new row
