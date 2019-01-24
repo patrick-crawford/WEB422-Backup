@@ -152,7 +152,7 @@ $(function(){
 
 Here, we're telling Knockout (ko) to use the **"myViewModel"** object with all of the bindings (ie: "data-bind") in the **&lt;body&gt;** element. 
 
-(Quick Note: We use the syntax <a href="https://learn.jquery.com/using-jquery-core/faq/how-do-i-pull-a-native-dom-element-from-a-jquery-object/">$(selector)[0]</a> to fetch the raw DOM element.)
+(Quick Note: We use the syntax <a href="https://learn.jquery.com/using-jquery-core/faq/how-do-i-pull-a-native-dom-element-from-a-jquery-object/">$(selector)[0]</a> to fetch the raw DOM element.  If you wish to fetch a jQuery element at a given index, you can use <a href="https://api.jquery.com/eq/">eq()</a>, ie: $(selector).eq(0))
 
 Since we have placed our `<span data-bind="text: personName"></span>` code within the &lt;body&gt;, the "text: personName" binding makes sense (it's pulling it from "myViewModel").
 
