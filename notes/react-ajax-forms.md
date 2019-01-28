@@ -22,6 +22,7 @@ If a component is going to fetch data from an external API, such as our Teams AP
 
 In React there's nothing built in that supports making an Ajax request, however we can leverage either the native [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) Object, or the much more straightforward [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).  
 
+<br>
 
 ### Fetching the Data
 
@@ -41,6 +42,7 @@ componentDidMount() {
 }
 ```
 
+<br>
 
 ### Updating the Data
 
