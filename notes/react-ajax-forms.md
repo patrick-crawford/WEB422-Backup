@@ -49,7 +49,7 @@ componentDidMount() {
 If we wish to update data, things become slightly more complicated, as we must use "PUT" and provide the API with actual data.  For example, if we wish to update "user 2" using [https://reqres.in](https://reqres.in), we can use the following code:
 
 ```javascript
-fetch("https://reqres.in/api/users/2",{
+fetch("https://reqres.in/api/users/2",{ // this would be a URI from your "Teams API"
     method: 'PUT',
     body: JSON.stringify({
         name: "morpheus",
