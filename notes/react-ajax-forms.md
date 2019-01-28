@@ -20,36 +20,47 @@ This will give us a complete introduction on using forms within and how we can u
 
 If a component is going to fetch data from an external API, such as our Teams API, it is typically done in the **"componentDidMount()"** lifecycle method in order to populate the component's "state" with the results.  
 
-In React there's nothing built in that supports making an Ajax request, however we have a number of JavaScript (e.g. XmlHttpRequest, the new fetch API) and third-party modules to choose from (e.g. [axios](https://github.com/axios/axios), [superagent](https://github.com/visionmedia/superagent), [fetch](https://github.com/github/fetch), etc.).
+In React there's nothing built in that supports making an Ajax request, however we can leverage either the native [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) Object, or the much more straightforward [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).  
 
-For our purposes, we will go with "axios", since it works with the familiar **promise** pattern.  To add axios to the app, simply execute the command (after terminating the development server with ctrl+c)
-
-```
-npm install --save axios
-```
-
-Once it's installed, we simply have to "import" it wherever we wish to use it:
-
-```javascript
-import axios from 'axios';
-```
-
-<br>
 
 ### Fetching the Data
 
-The following example shows how a "componentDidMount()" lifecycle method can be used to make a request for data using "axios" and store the results in the "state" of the component as "data".  This example uses the popular [https://reqres.in](https://reqres.in) testing service as an example of how we can fetch the data.  This can easily be swapped out for your "Teams" API running on Heroku:
+The following example shows how a "componentDidMount()" lifecycle method can be used to make a request for data using the Fetch API.  This example uses the popular [https://reqres.in](https://reqres.in) testing service as an example of how we can fetch the data.  This can easily be swapped out for your "Teams" API running on Heroku:
 
 ```javascript
 componentDidMount() {
-  axios.get("https://reqres.in/api/users").then((res) => { // this would be a URI from your "Teams API"
-    this.setState({
-      data: res.data
-    });
-  }).catch((err) => {
-    console.log("error")
+  fetch("https://reqres.in/api/users") // this would be a URI from your "Teams API"
+  .then(res => res.json())
+  .then(data => {
+      this.setState({ 
+          users: data 
+      });
+  }).catch(err => {
+      console.log(err);
   });
 }
+```
+
+
+### Updating the Data
+
+If we wish to update data, things become slightly more complicated, as we must use "PUT" and provide the API with actual data.  For example, if we wish to update "user 2" using [https://reqres.in](https://reqres.in), we can use the following code:
+
+```javascript
+fetch("https://reqres.in/api/users/2",{
+    method: 'PUT',
+    body: JSON.stringify({
+        name: "morpheus",
+        job: "zion resident"
+    }),
+    headers: { 'Content-Type': 'application/json' } 
+})
+.then(res => res.json())
+.then(data => {
+    console.log(data);
+}).catch(err => {
+    console.log(err)
+});
 ```
 
 <br>
