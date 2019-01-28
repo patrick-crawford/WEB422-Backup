@@ -2,13 +2,13 @@ import React from 'react';
 import MenuBar from '../MenuBar';
 import MainGrid from '../MainGrid';
 import Alert from '../Alert';
-import axios from 'axios';
 import _ from 'lodash';
 
 class Employee extends React.Component {
 
     constructor(props) {
         super(props);
+        this.dataSource = this.props.dataSource;
         this.state = {
             employee: {}, 
             dataLoaded: false,
@@ -22,12 +22,15 @@ class Employee extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(this.props.dataSource).then((res) => {
+
+        fetch(this.dataSource)
+        .then(res => res.json())
+        .then(data => {
             this.setState({ 
-                employee: res.data[0],
+                employee: data[0],
                 dataLoaded: true 
             });
-        }).catch((err) => {
+        }).catch(err => {
             this.setState({ 
                 dataLoaded: true 
             });
@@ -55,24 +58,26 @@ class Employee extends React.Component {
 
         event.preventDefault();
 
-        axios.put(this.props.dataSource, this.state.employee).then((res) => {
+        fetch(this.dataSource,{
+            method: 'PUT',
+            body: JSON.stringify(this.state.employee),
+            headers: { 'Content-Type': 'application/json' } 
+        }).then(res => {
             this.setState({
                 alertVisible: true,
                 alertStatus: "success",
                 alertMessage: "Data Saved!"
             });
-
             setTimeout(()=>{this.setState({alertVisible: false})},1200); // hide the alert after 1200 seconds
-        }).catch((err) => {
-           
+        }).catch(err => {
             this.setState({
                 alertVisible: true,
                 alertStatus: "danger",
                 alertMessage: "Could Not Save the data"
             });
-
            setTimeout(()=>{this.setState({alertVisible: false})},1200); // hide the alert after 1200 seconds
         });
+
     }
 
     // NOTE: This code could be better optomized by writing Components for the "row", "column" and form input elements

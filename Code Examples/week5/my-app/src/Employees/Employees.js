@@ -2,8 +2,6 @@ import React from 'react';
 import MenuBar from '../MenuBar';
 import MainGrid from '../MainGrid';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
-
 
 class Employees extends React.Component {
     constructor(props) {
@@ -17,9 +15,14 @@ class Employees extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(this.dataSource).then((res) => {
-            this.setState({ employees: res.data });
-        }).catch((err) => {
+
+        fetch(this.dataSource)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({ 
+                employees: data 
+            });
+        }).catch(err => {
             console.log("error");
         });
     }
