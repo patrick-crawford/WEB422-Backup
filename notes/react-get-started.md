@@ -59,7 +59,7 @@ Start Visual Studio Code. Open the "my-app" folder.
 
 Alternatively, you can use the command line. However, as you probably noticed in your Terminal window, the on-demand web server is blocking it from further interaction. So, open a new Terminal window (Shell > New Window). Then you can make "my-app" your current folder, and run the `code .` command (**Note**: this option requires you to have added 'code' to your PATH - see: [https://code.visualstudio.com/docs/setup/mac](https://code.visualstudio.com/docs/setup/mac)). 
 
-An easy edit, just to prove that you can do so, is to edit the `App.js` file in the `src` folder. Change the text in the HTML h2 element. After you save your changes, switch over to the browser window. It should show the new content. Behind the scenes, the Terminal process will regenerate the content, making changes where necessary to the deployment assets. As part of the process, the browser will refresh the visible content.
+An easy edit, just to prove that you can do so, is to edit the `App.js` file in the `src` folder. Change the text "Learn React" to anything else (ie: your name). After you save your changes, switch over to the browser window. It should show the new content. Behind the scenes, the Terminal process will regenerate the content, making changes where necessary to the deployment assets. As part of the process, the browser will refresh the visible content.
 
 <br>
 
