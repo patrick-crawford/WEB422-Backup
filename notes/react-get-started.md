@@ -75,7 +75,6 @@ Therefore, spend a few hours (before, during, and after class) to go through the
 [Rendering Elements](https://reactjs.org/docs/rendering-elements.html)  
 [Components and Props](https://reactjs.org/docs/components-and-props.html)  
 [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)  
-[Handling Events](https://reactjs.org/docs/handling-events.html)  
 
 <br>
 
