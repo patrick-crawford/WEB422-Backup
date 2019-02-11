@@ -16,10 +16,10 @@ To learn about how we can use form elements in React, we will be referencing the
 
 ```jsx
 <label>
-  Green: <input name="favColor" type="radio" checked = {this.state.favColor === "green"} value="green" onChange {this.handleInputChange} />
+  Green: <input name="favColor" type="radio" checked={this.state.favColor === "green"} value="green" onChange={this.handleInputChange} />
 </label>
 <label>
-  Blue: <input name="favColor" type="radio" checked = {this.state.favColor === "blue"} value="blue" onChange {this.handleInputChange} />
+  Blue: <input name="favColor" type="radio" checked={this.state.favColor === "blue"} value="blue" onChange={this.handleInputChange} />
 </label>
 ```
 
