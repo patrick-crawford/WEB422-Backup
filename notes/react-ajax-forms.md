@@ -14,7 +14,7 @@ To learn about how we can use form elements in React, we will be referencing the
 
 **Note:** the above examples do not go into how to handle radio buttons.  They're almost identical to how "checkbox" elements are handled, except a comparison operation (checking if the state matches the "value" of the radio button) is necessary in the "checked" property, ie:
 
-```js
+```jsx
 <label>
   Green: <input name="favColor" type="radio" checked={this.state.favColor === "green"} value="green" onChange {this.handleInputChange} />
 </label>
