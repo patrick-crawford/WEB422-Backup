@@ -43,9 +43,9 @@ The following example shows how a "componentDidMount()" lifecycle method can be 
 componentDidMount() {
   fetch("https://reqres.in/api/users") // this would be a URI from your "Teams API"
   .then(res => res.json())
-  .then(data => {
+  .then(returnedData => {
       this.setState({ 
-          users: data 
+          users: returnedData.data 
       });
   }).catch(err => {
       console.log(err);
