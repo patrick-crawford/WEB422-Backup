@@ -32,14 +32,14 @@ For our example app, here's what we're trying to do. Each rectangle will (or cou
 At this point, we will assume that you are comftorable using the Angular CLI to create a new project, ie:
 
   ```
-  ng new my-dream-app --routing -st
+  ng new my-dream-app --routing -S
   ```
   
   **Recall:** 
   
   The `--routing` option adds the code we need for "routing", which is a topic that will be covered in detail next week. Adding routing now (when the new project is created) is a *best practice*. 
 
-The `-st` option does not add "testing" code. One of the effects is that it reduces the size of the project, and makes it slightly faster in the change detection and build processes.
+The `-S` option does not add "testing" code. One of the effects is that it reduces the size of the project, and makes it slightly faster in the change detection and build processes.
 
 ### Adding Bootstrap (3.3.7)
 

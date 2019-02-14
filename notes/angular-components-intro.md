@@ -48,12 +48,12 @@ Before we start writing components, we should get a new Angular project going.  
 2. Using the "Integrated Terminal", create a new app (assuming that you want to create a new app (and folder) named “my-dream-app”), ie:
 
   ```
-  ng new my-dream-app --routing -st
+  ng new my-dream-app --routing -S
   ```
   
   **Note:**   
 > The `--routing` option adds the code we need for "routing", which is a topic that will be covered in detail soon. Adding routing now (when the new project is created) is a *best practice*.  
-> The `-st` option does not add "testing" code. One of the effects is that it reduces the size of the project, and makes it slightly faster in the change detection and build processes.
+> The `-S` option does not add "testing" code. One of the effects is that it reduces the size of the project, and makes it slightly faster in the change detection and build processes.
 
 <br>
 
@@ -82,7 +82,7 @@ ng generate component foo --flat
 
 Using "ng generate" to create the "foo" component for us has saved us time by automating the following (necessary) steps:
 
-* Created the files: **foo.component.css**, **foo.component.html**, **foo.component.ts** (including the correct class, and "@Component" decorator to make use of the .html &amp; .css files / providing a default "app-" selector property) and lastly, **foo.component.spec.ts** (we can remove this file if we used the "-st" (or "-S", if we're using the latest version of the Angular CLI) option when creating the project, since we are not interested in testing at the moment)
+* Created the files: **foo.component.css**, **foo.component.html**, **foo.component.ts** (including the correct class, and "@Component" decorator to make use of the .html &amp; .css files / providing a default "app-" selector property) and lastly, **foo.component.spec.ts** (we can remove this file if we used the "-S" option since we are not interested in testing at the moment)
 
 * Added the correct "import" statement to app.module.ts, ie:
 
