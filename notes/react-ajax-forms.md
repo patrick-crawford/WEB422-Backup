@@ -12,6 +12,17 @@ To learn about how we can use form elements in React, we will be referencing the
 * [The select Tag](https://reactjs.org/docs/forms.html#the-select-tag)
 * [Handling Multiple Inputs](https://reactjs.org/docs/forms.html#handling-multiple-inputs)
 
+**Note:** the above examples do not go into how to handle radio buttons.  They're almost identical to how "checkbox" elements are handled, except a comparison operation (checking if the state matches the "value" of the radio button) is necessary in the "checked" property, ie:
+
+```jsx
+<label>
+  Green: <input name="favColor" type="radio" checked={this.state.favColor === "green"} value="green" onChange={this.handleInputChange} />
+</label>
+<label>
+  Blue: <input name="favColor" type="radio" checked={this.state.favColor === "blue"} value="blue" onChange={this.handleInputChange} />
+</label>
+```
+
 This will give us a complete introduction on using forms within and how we can use "state" to achieve a two-way "stateful" binding relationship to properties within the component.
 
 <br>
@@ -32,9 +43,9 @@ The following example shows how a "componentDidMount()" lifecycle method can be 
 componentDidMount() {
   fetch("https://reqres.in/api/users") // this would be a URI from your "Teams API"
   .then(res => res.json())
-  .then(data => {
+  .then(returnedData => {
       this.setState({ 
-          users: data 
+          users: returnedData.data 
       });
   }).catch(err => {
       console.log(err);
