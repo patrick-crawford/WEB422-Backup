@@ -79,7 +79,7 @@ This includes topics such as:
 * ["Binding Targets"](https://angular.io/guide/template-syntax#binding-targets) - Syntax that we can use in "templates" 
 * ["One-way in"](https://angular.io/guide/template-syntax#one-way-in) - Describes how property binding "flows in one direction"
 * ["Property binding or interpolation?"](https://angular.io/guide/template-syntax#property-binding-or-interpolation)
-* ["Template statements / event binding"](https://angular.io/guide/template-syntax#template-statements)
+* [Template Statements](https://angular.io/guide/template-syntax#template-statements) / [Event binding](https://angular.io/guide/template-syntax#event-binding---event-)
 * ["Attribute, class, and style bindings"](https://angular.io/guide/template-syntax#attribute-class-and-style-bindings)
 
 ### Built-In Structural Directives 
