@@ -97,12 +97,10 @@ Now that we are familiar with the syntax of data binding (specifically property 
 
 For example, say we used the Angular CLI to create both the "RedBoxComponent" and the "BlueBoxComponent". 
 
-We then decide that "BlueBoxComponent will be a child of the "RedBoxComponent", ie: the "RedBoxComponent" template contains html to render the "BlueBoxComponent", and "BlueBoxComponent" will simply render plain text that is *passed to it* from the parent component - in this case `<app-red-box>`. This will form a parent-child relationship, with the "Red Box" being the parent:
+We then decide that "BlueBoxComponent will be a child of the "RedBoxComponent", ie: the "RedBoxComponent" template contains html to render the "BlueBoxComponent", and "BlueBoxComponent" will simply render plain text that is *passed to it* from the parent component - in this case `<app-red-box>`. This will form a parent-child relationship, with the "Red Box" being the parent (ie: inside your "**red-box-component.html**" template file, add the code to show `<app-blue-box>`):
 
 ```html
-<app-red-box>
   <app-blue-box></app-blue-box>
-</app-red-box>
 ```
 
 To enable communication between "RedBoxComponent" and "BlueBoxComponent", we must add a **property** (let's call it: "message") to "BlueBoxComponent" that accepts a value sent from a parent (ie: "RedBoxComponent").  From our "property binding" above, this would look something like this (**NOTE**: It is important for the "message" property to be in hard brackets - [ ], otherwise "redMessage" will be interpreted as a string, not a value from a property in the parent Component):
@@ -157,5 +155,30 @@ For example, while composing the component template, assume that we already know
 ```html
 <app-blue-box message="{%raw%}{{ 'Hello, world!' }}{%endraw%}"></app-blue-box>
 ```
+
+<br>
+
+#### Rendering the "Content" (Between the Tags) of a Component 
+
+While it's not that common, sometimes we wish to render the "content" (between the tags) of a component alongside it's own template.  To accomplish this, we can use a special `<ng-content></ng-content>` component.  For example, if we create two more components - "GreenBoxComponent" and "OrangeBoxComponent" and arrange them like this in another template (ie: "app.component.html"):
+
+```html
+<app-green-box>
+  <app-orange-box></app-orange-box>
+</app-green-box>
+```
+
+we will only see the template for `<app-green-box></app-green-box>`, ie "green-box works!".  By adding `<ng-content></ng-content>` to the template for the parent (in this case, GreenBoxComponent, ie: green-box-component.html):
+
+```html
+<p>
+  green-box works!
+  <ng-content></ng-content>
+</p>
+```
+
+we will see the template for `<app-orange-box></app-orange-box>` as well, since it's placed inside the tags of `<app-green-box></app-green-box>`. 
+
+Essentially, you can think of the `<ng-content></ng-content>` component as a **placeholder** for the content "between the tags".
 
 <br>
