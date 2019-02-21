@@ -97,7 +97,9 @@ Now that we are familiar with the syntax of data binding (specifically property 
 
 For example, say we used the Angular CLI to create both the "RedBoxComponent" and the "BlueBoxComponent". 
 
-We then decide that "BlueBoxComponent will be a child of the "RedBoxComponent", ie: the "RedBoxComponent" template contains html to render the "BlueBoxComponent", and "BlueBoxComponent" will simply render plain text that is *passed to it* from the parent component - in this case `<app-red-box>`. This will form a parent-child relationship, with the "Red Box" being the parent (ie: inside your "**red-box-component.html**" template file, add the code to show `<app-blue-box>`):
+We then decide that "BlueBoxComponent will be a child of the "RedBoxComponent", ie: the "RedBoxComponent" template contains html to render the "BlueBoxComponent", and "BlueBoxComponent" will simply render the value that is *passed to it* from the parent component - in this case `<app-red-box>`. This will form a parent-child relationship, with the "Red Box" being the parent.
+
+To try this out, add the code to show `<app-blue-box>` inside your "**red-box-component.html**" template file:
 
 ```html
 <app-blue-box></app-blue-box>
