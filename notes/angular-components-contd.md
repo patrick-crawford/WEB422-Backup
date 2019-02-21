@@ -82,10 +82,11 @@ This includes topics such as:
 * ["Template Statements"](https://angular.io/guide/template-syntax#template-statements) / [Event binding](https://angular.io/guide/template-syntax#event-binding---event-)
 * ["Attribute, class, and style bindings"](https://angular.io/guide/template-syntax#attribute-class-and-style-bindings)
 
-### Built-In Structural Directives 
+### Built-In Attribute and Structural Directives 
 
-We must not forget to include the extremely useful built-in structural directives in our list.  Using built-in directives like \*ngIf, \*ngFor, and \[ngSwitch] / \*ngSwitchCase, we can control how our data is displayed, based on it's current value:
+We must not forget to include the extremely useful built-in attribute and structural directives in our list.  Using built-in directives like \[ngClass\], \*ngIf, \*ngFor, and \[ngSwitch] / \*ngSwitchCase, we can control how our data is displayed, based on it's current value:
 
+* ["Built-in Attribute Directives"](https://angular.io/guide/template-syntax#built-in-attribute-directives)
 * ["Built in Structural Directives"](https://angular.io/guide/template-syntax#built-in-structural-directives)
 
 <br>
