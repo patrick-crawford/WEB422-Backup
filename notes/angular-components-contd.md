@@ -142,7 +142,7 @@ Now the "BlueBoxComponent" can accept a string value as a property. To continue 
 
 #### Passing string literals from one component to another
 
-If the value is static and can be entered in the component template, then we do not need a property in the component class. 
+If the value is static and can be entered in the parent component template, then we do not need a property in the parent component class. 
 
 For example, while composing the component template, assume that we already know that the message (from above) is "Hello, world!". We can pass this string literal to another component in any of three ways. The important thing to know is that the right side of the attribute-value pair must be an *expression*. If we enclose a string literal in quote-delimiters, it becomes an expression (magically) (well, not really magically).
 
