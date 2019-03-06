@@ -103,7 +103,7 @@ To create this service, follow along with the instructions below:
 #### Step 1: Use the Angular-CLI to generate our "AuthService"
 
 ```
-ng g s Auth --module app --spec false
+ng g s Auth --module app
 ```
 
 <br>
@@ -330,7 +330,7 @@ To automatically send our JWT (located in local storage as "access_token") using
 #### Step 1: Use the Angular-CLI to generate our "InterceptTokenService"
 
 ```
-ng g s InterceptToken --module app --spec false
+ng g s InterceptToken --module app
 ```
 
 <br>
@@ -436,7 +436,7 @@ To assign a "Route Guard" to a specific route, we will add it to an existing Rou
 #### Step 1: Use the Angular-CLI to generate our "GuardAuthService
 
 ```
-ng g s GuardAuth --module app --spec false
+ng g s GuardAuth --module app
 ```
 
 <br>
