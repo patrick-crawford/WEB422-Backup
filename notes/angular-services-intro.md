@@ -326,7 +326,7 @@ import { distinct } from 'rxjs/operators';
 
 As well as incorporating the "pipe" method, ie: 
 
-```
+```js
 someObservable.pipe(delay(1000)).subscribe(()=>{
   // callback for 'next' delayed by 1 second
 })
