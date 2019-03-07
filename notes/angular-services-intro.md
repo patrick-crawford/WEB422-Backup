@@ -324,6 +324,14 @@ import { delay } from 'rxjs/operators';
 import { distinct } from 'rxjs/operators';
 ```
 
+As well as incorporating the "pipe" method, ie: 
+
+```
+someObservable.pipe(delay(1000)).subscribe(()=>{
+  // callback for 'next' delayed by 1 second
+})
+```
+
 For a full reference of all methods available on the Observable object, see: [the official documentation here](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html).
 
 <br>
