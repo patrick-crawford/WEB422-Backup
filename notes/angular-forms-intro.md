@@ -360,18 +360,18 @@ If we use the integrated Developer tools in the browser when testing our form, w
 </tr>
 <tr>
 <td>The control has been visited.</td>
-<td>`ng-touched`</td>
-<td>`ng-untouched`</td>
+<td>ng-touched</td>
+<td>ng-untouched</td>
 </tr>
 <tr>
 <td>The control's value has changed.</td>
-<td>`ng-dirty`</td>
-<td>`ng-pristine`</td>
+<td>ng-dirty</td>
+<td>ng-pristine</td>
 </tr>
 <tr>
 <td>The control's value is valid.</td>
-<td>`ng-valid`</td>
-<td>`ng-invalid`</td>
+<td>ng-valid</td>
+<td>ng-invalid</td>
 </tr>
 </tbody>
 </table>
