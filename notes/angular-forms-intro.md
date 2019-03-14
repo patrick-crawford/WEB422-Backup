@@ -171,7 +171,7 @@ export class Driver{
     vehicleUse: string; 
 }
 
-export class option{
+export class Option{
   value: string;
   text: string;
 }
@@ -189,7 +189,7 @@ export class DriverComponent implements OnInit {
   driverData: Driver;
 
   // Define the preset list of "transportation" options
-  transportationList: option[] = [
+  transportationList: Option[] = [
     {value: "C", text: "Car"},
     {value: "B", text: "Bus"},
     {value: "M", text: "Motorcycle"},
