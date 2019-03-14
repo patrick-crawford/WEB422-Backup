@@ -396,7 +396,7 @@ The validation attributes currently supported are as follows:
 * [pattern](https://angular.io/api/forms/PatternValidator)
 * [maxlength](https://angular.io/api/forms/MaxLengthValidator)
 * [minlength](https://angular.io/api/forms/MinLengthValidator)
-* [email (experimental)](https://angular.io/api/forms/EmailValidator)
+* [email](https://angular.io/api/forms/EmailValidator)
 
 Any other validation task (ie: "min" value for a type="number") will need to be created as a [Custom Validator](https://angular.io/guide/form-validation#custom-validators), however this is beyond the scope of the lecture today. 
 
