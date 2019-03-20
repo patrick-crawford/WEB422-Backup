@@ -23,8 +23,7 @@ For the simplest deployment, build for development and copy the output directory
 ng build
 ```
 
-* Copy everything within the output folder (**dist/*** by default) to a folder on the server.
-If you copy the files into a server sub-folder, append the build flag, `--base-href` and set the `<base href...` (in the index.html file) appropriately.
+* Copy everything within the app folder (ie "myApp") inside output folder (**dist/** by default) to a folder on the server (**NOTE**: do not include the app folder (ie "myApp") - only it's contents).  If you copy the files into a server sub-folder, append the build flag, `--base-href` and set the `<base href...` (in the index.html file) appropriately.
 
   For example, if the index.html is on the server at `/my/app/index.html`, set the base href to `<base href="/my/app/">`, and the build command is:
 
@@ -32,7 +31,7 @@ If you copy the files into a server sub-folder, append the build flag, `--base-h
   ng build --base-href=/my/app/
   ```
 
-  You'll see that the `<base href...` is set properly in the generated dist/index.html.
+  You'll see that the `<base href...` is set properly in the generated dist/myApp/index.html file (assuming your app is "myApp").
   
   If you copy to the server's root directory (*which we will be doing*), omit this step and leave the `<base href...` alone.
   
@@ -82,24 +81,24 @@ app.listen(HTTP_PORT, function(){
 });
 ```
 
-This "public" directory will serve up all of the files from our newly built Angular app, ie the "dist" directory (the files should resemble the following list):
+This "public" directory will serve up all of the files from our newly built Angular app, ie the "/dist/myApp" directory (the files should resemble the following list):
 
 ```
 favicon.ico
 index.html
-inline.bundle.js
-inline.bundle.js.map
-main.bundle.js
-main.bundle.js.map
-polyfills.bundle.js
-polyfills.bundle.js.map
-styles.bundle.js
-styles.bundle.js.map
-vendor.bundle.js
-vendor.bundle.js.map
+inline.js
+inline.js.map
+main.js
+main.js.map
+polyfills.js
+polyfills.js.map
+styles.js
+styles.js.map
+vendor.js
+vendor.js.map
 ```
 
-Now, we can simply place the entire *contents* of the "dist" directory (not the folder itself), into a "public" folder for our Node.js server (the "public" directory should be placed beside the server.js file, ie: in the same directory).
+Now, we can simply place the entire *contents* of the "dist/myApp" directory (not the folder itself), into a "public" folder for our Node.js server (the "public" directory should be placed beside the server.js file, ie: in the same directory).
 
 If we now run our updated server, we should see our Angular application running!
 
@@ -165,17 +164,16 @@ The `--prod` meta-flag engages the following optimization features.
 * Dead code elimination: removes unreferenced modules and much unused code.
 * The remaining copy deployment steps are the same as before.
 
-**Note:** if we try building our app with the `--prod` flag, we will see that the files generated in the "dist" folder are very different, ie:
+**Note:** if we try building our app with the `--prod` flag, we will see that the files generated in the "dist/myApp" folder are very different, ie:
 
 ```
 3rdpartylicenses.txt
 favicon.ico
 index.html
-inline.975d4158716a8b79f2cd.bundle.js
-main.09fa7588e0f35133f8b0.bundle.js
-polyfills.0f52673dc7e4a9584220.bundle.js
-styles.c6579778e645a191babc.bundle.css
-vendor.e609b78c2bd8545031ef.bundle.js
+main.98bd75b2641a70e7f292.js
+polyfills.9d3a8743be9f041e6ba8.js
+runtime.ec2944dd8b20ec099bf3.js
+styles.3ff695c00d717f2d2a11.css
 ```
 
 You may further reduce bundle sizes by adding the build-optimizer flag.
