@@ -458,7 +458,7 @@ The createComponent method returns a **ComponentFixture**, a handle on the test 
 
 ### async
 
-We simply need this to envoke the first of two [beforeEach()](https://jasmine.github.io/2.4/introduction.html#section-Setup_and_Teardown) setup methods "asynchronously", ie: the test setup for ComponentOne must give the Angular template compiler [time to read &amp; compile the files](hhttps://angular.io/guide/testing#compilecomponents-is-async).
+We simply need this to envoke the first of two [beforeEach()](https://jasmine.github.io/2.4/introduction.html#section-Setup_and_Teardown) setup methods "asynchronously", ie: the test setup for ComponentOne must give the Angular template compiler [time to read &amp; compile the files](https://angular.io/guide/testing#compilecomponents-is-async).
 
 A second (synchronous) beforeeach is used to actually **create** the component using the TestBed.
 
