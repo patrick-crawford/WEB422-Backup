@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-let mongoDBConnectionString = "Enter your MongoDB Connection String Here";
+let mongoDBConnectionString = "Enter your MongoDB Connection String Here"";
 
 let Schema = mongoose.Schema;
 
@@ -32,48 +32,36 @@ module.exports.connect = function () {
     });
 };
 
-module.exports.registerUser =  function (userData) {
+module.exports.registerUser =  async function (userData) {
     return new Promise(function (resolve, reject) {
 
         if (userData.password != userData.password2) {
             reject("Passwords do not match");
         } else {
 
-            // Generate a "salt" using 10 rounds
-            bcrypt.genSalt(10, function (err, salt) {
-                if (err) {
-                    reject("There was an error encrypting the password");
-                } else {
+            bcrypt.genSalt(10)
+            .then(salt=>bcrypt.hash(userData.password, salt))
+            .then(hash=>{
+                userData.password = hash;
 
-                    // Encrypt the password: userData.password
-                    bcrypt.hash(userData.password, salt, function (err, hash) {
+                let newUser = new User(userData);
 
-                        if (err) {
-                            reject("There was an error encrypting the password");
+                newUser.save((err) => {
+                    if (err) {
+                        if (err.code == 11000 || err.code == 11001) {
+                            reject("User Name already taken");
                         } else {
-
-                            userData.password = hash;
-
-                            let newUser = new User(userData);
-
-                            newUser.save((err) => {
-                                if (err) {
-                                    if (err.code == 11000) {
-                                        reject("User Name already taken");
-                                    } else {
-                                        reject("There was an error creating the user: " + err);
-                                    }
-
-                                } else {
-                                    resolve("User " + userData.userName + " successfully registered");
-                                }
-                            });
+                            reject("There was an error creating the user: " + err);
                         }
-                    });
-                }
-            });
+
+                    } else {
+                        resolve("User " + userData.userName + " successfully registered");
+                    }
+                });
+            })
+            .catch(err=>reject(err));
         }
-    });
+    });      
 };
 
 module.exports.checkUser = function (userData) {
@@ -87,7 +75,7 @@ module.exports.checkUser = function (userData) {
                 if (users.length == 0) {
                     reject("Unable to find user " + userData.userName);
                 } else {
-                    bcrypt.compare(userData.password, users[0].password).then((res) => {
+                    bcrypt.compare(userData.password, users[0].password).then(res => {
                         if (res === true) {
                             resolve(users[0]);
                         } else {
