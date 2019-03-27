@@ -39,9 +39,8 @@ module.exports.registerUser =  async function (userData) {
             reject("Passwords do not match");
         } else {
 
-            bcrypt.genSalt(10)
-            .then(salt=>bcrypt.hash(userData.password, salt))
-            .then(hash=>{
+            bcrypt.hash(userData.password, 10).then(hash=>{ // Hash the password using a Salt that was generated using 10 rounds
+                
                 userData.password = hash;
 
                 let newUser = new User(userData);
