@@ -100,13 +100,11 @@ Recall: To include bcrypt, we must install bcryptjs it using **npm** and "requir
 const bcrypt = require('bcryptjs');
 ```
 
-Once we have the module, we can use the following logic to **hash** a password using bcrypt's **genSalt()** and **hash()** methods, ie:
+Once we have the module, we can use the following logic to **hash** a password using bcrypt's **hash()** method, ie:
 
 ```javascript
 // Encrypt the plain text: "myPassword123"
- bcrypt.genSalt(10) // Generate a "salt" using 10 rounds
-.then(salt=>bcrypt.hash("myPassword123", salt)) // encrypt the password: "myPassword123 using the generated "salt"
-.then(hash=>{
+ bcrypt.hash("myPassword123", 10).then(hash=>{ // Hash the password using a Salt that was generated using 10 rounds
     // TODO: Store the resulting "hash" value in the DB
 });
 ```
@@ -121,9 +119,7 @@ module.exports.registerUser =  async function (userData) {
             reject("Passwords do not match");
         } else {
 
-            bcrypt.genSalt(10)
-            .then(salt=>bcrypt.hash(userData.password, salt))
-            .then(hash=>{
+            bcrypt.hash(userData.password, 10).then(hash=>{ // Hash the password using a Salt that was generated using 10 rounds
                 
                 userData.password = hash;
 
