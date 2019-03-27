@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-let mongoDBConnectionString = "Enter your MongoDB Connection String Here"";
+let mongoDBConnectionString = "Enter your MongoDB Connection String Here";
 
 let Schema = mongoose.Schema;
 
@@ -48,7 +48,7 @@ module.exports.registerUser =  async function (userData) {
 
                 newUser.save((err) => {
                     if (err) {
-                        if (err.code == 11000 || err.code == 11001) {
+                        if (err.code == 11000) {
                             reject("User Name already taken");
                         } else {
                             reject("There was an error creating the user: " + err);
