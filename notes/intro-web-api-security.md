@@ -52,7 +52,7 @@ You should be familiar with MongoDB Atlas from our [experience in WEB322](http:/
 To set up a new "users" database for the simple API, follow along with the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup) starting with "**MongoDB Database**" and continuing until you have a valid **Connection String** - this should look something like: 
 
 ```
-mongodb://userName:password@senecaweb-shard-00-00-abcd.mongodb.net:27017,senecaweb-shard-00-01-abcd.mongodb.net:27017,senecaweb-shard-00-02-fe4bt.mongodb.net:27017/simple-api-users?ssl=true&replicaSet=SenecaWeb-shard-0&authSource=admin&retryWrites=true
+mongodb+srv://userName:password@senecaweb-ab0cd.mongodb.net/teams-api-data?retryWrites=true
 ```
 
 **Note:** Instead of naming your collection "teams-api-db", name it "simple-api-users" to keep everything separate and clear.

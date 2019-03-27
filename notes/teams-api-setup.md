@@ -72,7 +72,7 @@ To obtain the connection string:
 When complete, your connection string should look something like this:
 
 ```
-mongodb://userName:password@senecaweb-shard-00-00-abcd.mongodb.net:27017,senecaweb-shard-00-01-abcd.mongodb.net:27017,senecaweb-shard-00-02-fe4bt.mongodb.net:27017/teams-api-data?ssl=true&replicaSet=SenecaWeb-shard-0&authSource=admin&retryWrites=true
+mongodb+srv://userName:password@senecaweb-ab0cd.mongodb.net/teams-api-data?retryWrites=true
 ```
 
 ### UPDATING The mongoDBConnectionString in server.js:
