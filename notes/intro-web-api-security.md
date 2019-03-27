@@ -104,59 +104,47 @@ Once we have the module, we can use the following logic to **hash** a password u
 
 ```javascript
 // Encrypt the plain text: "myPassword123"
-bcrypt.genSalt(10, function(err, salt) { // Generate a "salt" using 10 rounds
-    bcrypt.hash("myPassword123", salt, function(err, hash) { // encrypt the password: "myPassword123"
-        // TODO: Store the resulting "hash" value in the DB
-    });
+ bcrypt.genSalt(10) // Generate a "salt" using 10 rounds
+.then(salt=>bcrypt.hash("myPassword123", salt)) // encrypt the password: "myPassword123 using the generated "salt"
+.then(hash=>{
+    // TODO: Store the resulting "hash" value in the DB
 });
-
 ```
 
 If we apply this process to our "registerUser" function (thereby *hashing* the provided password when registering the user), our code will look like this:
 
 ```javascript
-module.exports.registerUser =  function (userData) {
+module.exports.registerUser =  async function (userData) {
     return new Promise(function (resolve, reject) {
 
         if (userData.password != userData.password2) {
             reject("Passwords do not match");
         } else {
 
-            // Generate a "salt" using 10 rounds
-            bcrypt.genSalt(10, function (err, salt) {
-                if (err) {
-                    reject("There was an error encrypting the password");
-                } else {
+            bcrypt.genSalt(10)
+            .then(salt=>bcrypt.hash(userData.password, salt))
+            .then(hash=>{
+                
+                userData.password = hash;
 
-                    // Encrypt the password: userData.password
-                    bcrypt.hash(userData.password, salt, function (err, hash) {
+                let newUser = new User(userData);
 
-                        if (err) {
-                            reject("There was an error encrypting the password");
+                newUser.save((err) => {
+                    if (err) {
+                        if (err.code == 11000) {
+                            reject("User Name already taken");
                         } else {
-
-                            userData.password = hash;
-
-                            let newUser = new User(userData);
-
-                            newUser.save((err) => {
-                                if (err) {
-                                    if (err.code == 11000) {
-                                        reject("User Name already taken");
-                                    } else {
-                                        reject("There was an error creating the user: " + err);
-                                    }
-
-                                } else {
-                                    resolve("User " + userData.userName + " successfully registered");
-                                }
-                            });
+                            reject("There was an error creating the user: " + err);
                         }
-                    });
-                }
-            });
+
+                    } else {
+                        resolve("User " + userData.userName + " successfully registered");
+                    }
+                });
+            })
+            .catch(err=>reject(err));
         }
-    });
+    });      
 };
 ```
 
@@ -178,24 +166,24 @@ module.exports.checkUser = function (userData) {
     return new Promise(function (resolve, reject) {
 
         User.find({ userName: userData.userName })
-            .limit(1)
-            .exec()
-            .then((users) => {
+        .limit(1)
+        .exec()
+        .then((users) => {
 
-                if (users.length == 0) {
-                    reject("Unable to find user " + userData.userName);
-                } else {
-                    bcrypt.compare(userData.password, users[0].password).then((res) => {
-                        if (res === true) {
-                            resolve(users[0]);
-                        } else {
-                            reject("Incorrect password for user " + userData.userName);
-                        }
-                    });
-                }
-            }).catch((err) => {
+            if (users.length == 0) {
                 reject("Unable to find user " + userData.userName);
-            });
+            } else {
+                bcrypt.compare(userData.password, users[0].password).then((res) => {
+                    if (res === true) {
+                        resolve(users[0]);
+                    } else {
+                        reject("Incorrect password for user " + userData.userName);
+                    }
+                });
+            }
+        }).catch((err) => {
+            reject("Unable to find user " + userData.userName);
+        });
     });
 };
 ```
