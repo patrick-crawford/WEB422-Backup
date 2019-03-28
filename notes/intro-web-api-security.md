@@ -144,7 +144,7 @@ module.exports.registerUser =  async function (userData) {
 };
 ```
 
-This makes the code a little longer and harder to follow, but we are really only adding the **bcrypt.genSalt()** & **bcrypt.hash()** methods to our existing function.
+This makes the code a little longer and harder to follow, but we are really only adding the **bcrypt.hash()** method to our existing function.
 
 If we wish to **compare** a plain text password to a **hashed** password, we can use bcrypt's **compare()** method with the following logic:
 
