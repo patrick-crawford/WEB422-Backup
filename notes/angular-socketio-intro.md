@@ -237,11 +237,10 @@ Additionally, we will use Bootstrap 3 to ensure that our UI is consistant.  Add 
 
 For us to use the features of socket.io on the client side in Angular, we must use NPM to obtain the "socket.io-client" library, as well as some packages defining the "types", so that TypeScript will recognize our new code.
 
-In the Integrated terminal, execute the following 3 "npm install" commands:
+In the Integrated terminal, execute the following 2 "npm install" commands:
 
 - `npm install --save socket.io-client`
 - `npm install --save-dev @types/socket.io-client`
-- `npm install --save @types/socket.io-client --only=dev`
 
 Once this is complete, we must add the new "socket.io-client" to the **"types"** array within the file **"tsconfig.app.json"**, ie:
 
