@@ -242,24 +242,6 @@ In the Integrated terminal, execute the following 2 "npm install" commands:
 - `npm install --save socket.io-client`
 - `npm install --save-dev @types/socket.io-client`
 
-Once this is complete, we must add the new "socket.io-client" to the **"types"** array within the file **"tsconfig.app.json"**, ie:
-
-```js
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../out-tsc/app",
-    "baseUrl": "./",
-    "module": "es2015",
-    "types": ["socket.io-client"]
-  },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ]
-}
-```
-
 <br>
 
 #### Step 3: Adding a new ChatService
