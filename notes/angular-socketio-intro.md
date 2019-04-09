@@ -386,17 +386,7 @@ Everything is nearly ready for testing, the only thing left is to update app.com
 
 <br>
 
-#### Step 7: Updating polyfills.ts if using Angular 6
-
-If you're using Angular 6, there is an issue with "global" that causes our code to break with: `Uncaught ReferenceError: global is not defined` (see: [https://github.com/socketio/socket.io-client/issues/1166](https://github.com/socketio/socket.io-client/issues/1166)).  The current fix for this issue is to add the line:
-
-```ts
-(window as any).global = window;
-```
-
-to the polyfills.ts file, underneath the "BROWSER POLYFILLS" comment (around line 18). 
-
-#### Step 8: Testing &amp; Future Work
+#### Step 7: Testing &amp; Future Work
 
 The application should now be ready for testing.  You should be able to serve the app and open multiple windows to `http://localhost:4200` and be able to enter chat messages that are echoed in every window.
 
