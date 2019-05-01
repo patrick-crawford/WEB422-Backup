@@ -9,11 +9,11 @@ In this document, the authors have a number of goals:
 
 1. Re-introduce the idea of a web service, and cover the relevant terminology
 
-2. Explain the roles of the requestor (the client) and the responder (the server
+2. Explain the roles of the requestor (the client) and the responder (the server)
 
-3. Discuss how a client uses an XmlHttpRequest object to contact a server, and handle (typically) JSON data responses
+3. Discuss how a client uses an XMLHttpRequest (XHR) object to contact a server, and handle (typically) JSON data responses
 
-4. Promote the idea that we are building and working with a *distributed* computing system, that has two or more autonomous programs that pass messages (requests, responses) among the programs
+4. Promote the idea that we are building and working with a *distributed* computing system, that has two or more autonomous programs that pass messages (requests, responses) among them.
 
 At this point in time, please review and study the [week 9 notes from the previous WEB322 course](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week9-class1/), so that you are in a position to build upon that knowledge and experience. 
 
@@ -49,6 +49,13 @@ This led to the *de facto* standardization of [SOAP XML web services](https://en
 
 However, other efforts took advantage of the web and its existing features and benefits. In other words, they simply followed the [HTTP specification](https://tools.ietf.org/html/rfc7230) and its *ex post facto* architecture definition, to create true and pure web services. These kinds of web services, often termed "Web API", "RESTful web services", or "HTTP services", exploded in use and popularity from about 2005 onwards, and are now the preferred design approach.
 
+NOTE: in addition to REST programming using HTTP, a number of other protocols and
+approaches have become popular in recent years, especially with the rise of mobile and low-power Internet of Things (IoT) network devices.  Specifically [gRPC](https://grpc.io/)
+for remote procedure calls and [GraphQL](https://graphql.org/) for creating custom queries
+of data sources on the server.  REST APIs continue to be the most popular, and will be
+our focus in this course, but it's good to be aware of trends in the industry.
+
+
 <br>
 
 ### Are web services important?
@@ -75,7 +82,7 @@ Let's step back for a moment, and identify the topics that a web service program
 * The JSON media type (and a little about the XML media type)
 
 Returning to the knowledge and skills that you gained in the previous web programming course, you can map to the list above:
-* The requestor was a JavaScript *XmlHttpRequest object* that was running in a browser
+* The requestor was a JavaScript *XMLHttpRequest object* that was running in a browser
 * The responder was a *Node+Express web app* that was running in a server
 * You learned some fundamentals of the HTTP protocol, including using the GET and POST methods, as well as learning (and maybe using) other methods (PUT, DELETE, OPTIONS)
 * You also learned about responses from the server, and what to do when an HTTP 200 response comes back (which was to update the DOM with the response content!)
