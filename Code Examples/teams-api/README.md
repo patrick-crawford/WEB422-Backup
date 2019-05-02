@@ -8,7 +8,7 @@
 
 Once you have cloned the repository, move the teams-api folder out of the "Code Examples" folder and open it in Visual Studio Code and issue the command "npm install" from the integrated terminal.  This will look at the package.json file and add the required dependant modules.
 
-If you open the "server.js" file, you will notice that the top 2 lines define the constants "mongoDBConnectionString" and "HTTP_PORT".  The HTTP_PORT is fine the way it is (unless you have a conflict on your local machine with port 8081), however the mongoDBConnectionString value will need to change...
+If you open the "server.js" file, you will notice that the top 2 lines define the constants "mongoDBConnectionString" and "HTTP_PORT".  The HTTP_PORT is fine the way it is (unless you have a conflict on your local machine with port 5000), however the mongoDBConnectionString value will need to change...
 
 ### MongoDB Database:
 
@@ -60,25 +60,59 @@ To obtain the connection string:
 
 **Sample Connection String**
 
-When complete, your connection string should look something like this:
+When complete, your connection string should look something like this (NOTE: `userName` and `password` will be whatever database login you created earlier):
 
 ```
 mongodb://userName:password@senecaweb-shard-00-00-abcd.mongodb.net:27017,senecaweb-shard-00-01-abcd.mongodb.net:27017,senecaweb-shard-00-02-fe4bt.mongodb.net:27017/teams-api-data?ssl=true&replicaSet=SenecaWeb-shard-0&authSource=admin&retryWrites=true
 ```
 
-### UPDATING The mongoDBConnectionString in server.js:
+### UPDATING The mongoDBConnectionString:
 
-1. First, switch back to the previous directory using the integrated terminal (cd ..) so that our working directory has the "server.js" file in it.
+Server applications should never include secrets or other configuration information.
+Instead, we place this so-called **config** information in an environment file.
+Sometimes this is done through the use of a file, setting environment variables, or
+through using an execution environment that preloads config values before running the server.
 
-2. Next, open the server.js file and using the credentials identified above, modify the mongoDBConnectionString value your newly completed connection string (from above)
+When the server is started, the environment file is read, and environment variables
+created based on the `key="value"` entries in that file.  In a node.js application,
+we use [`process.env`](https://nodejs.org/api/process.html#process_process_env) (e.g., `process.env.VARIABLE_NAME`) to read these values and use them when our code runs.
 
-3. Save the changes and run the server from the integrated terminal using the familiar command "node server.js"
+### Using an `.env` file for local development
 
-4. If the server starts successfully (ie: you see the output: "API listening on: 8081", then the connection to your MongoDB Atlass Account has succeeded!  
+For testing our server locally, we'll use an `.env` file.  It is typical to exclude
+such files from source control (i.e., adding this file to `.gitignore` so git won't
+include it) so that it is safe to place passwords and other sensitive information in them.
+
+To create your `.env` file, do the following:
+
+1. First, switch back to the previous directory using the integrated terminal (`cd ..`) so that our working directory has the `sample.env` file in it.
+
+2. Next, copy the `sample.env` in order to create a file named `.env`: `cp sample.env .env`
+
+3. Open the `.env` file in VSCode and modify it to include your MongoDB Atlas connection string for the teams-api-data database, including the `username:password` values you created above.
+
+4. Start your node server using the [`heroku local`](https://devcenter.heroku.com/articles/heroku-local) command. Because we'll eventually deploy to Heroku, using the `heroku local` command is a good
+way to test that everything is in order. If the server starts successfully (ie: you see the output: "API listening on: 5000", then the connection to your MongoDB Atlas Account has succeeded!  NOTE: you can change the port you use with the `-p` flag: `heroku local -p 8081`.
 
 5.  At this point, it will be easiest if you push this server to Heroku, so that you can easily use it in all of your projects, without having to start up a local copy of the API server every time we want access to the data.  
 
-**Note:** For a refresher on how initialize the folder with a .git repository, create an App with the Heroku CLI, and publish the App to Heroku, refer to the WEB322 notes on ["Getting Started with Heroku"](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/getting-started-with-heroku).
+**Note:** For a refresher on how to initialize the folder with a .git repository, create an App with the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli), and publish the App to Heroku, refer to the WEB322 notes on ["Getting Started with Heroku"](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/getting-started-with-heroku).
+
+After you've created your Heroku app, continue by setting up your remote environment variables.
+
+### Using `heroku config` to set remote environment variables
+
+For deployment on Heroku, we also need to update our environment, and create the
+necessary variables that the server will require.  To do this, we'll again use
+the `heroku` command to [manage config vars](https://devcenter.heroku.com/articles/config-vars#managing-config-vars).
+
+To set a config variable for your remote app:
+
+1. Start by viewing the current config var values using `heroku config`.
+
+2. Next, set the `MONGODB_CONNECTION_STRING` variable using `heroku config:set MONGODB_CONNECTION_STRING="mongodb+srv://..."`, providing the same connection string you used above.
+
+3. Test that your variable has been set by once again calling `heroku config` to list them all.
 
 ## USING THE API
 
