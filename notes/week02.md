@@ -13,7 +13,7 @@ We will also be introducing at SASS as a powerful and widely adopted CSS preproc
 
 **Topics:**
 
-[jQuery Continued...](jquery)
+[jQuery continued](jquery)
 
 Handling Date/Time information using [Moment.js](moment)
 
