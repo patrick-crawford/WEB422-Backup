@@ -13,12 +13,12 @@ We will also be introducing at SASS as a powerful and widely adopted CSS preproc
 
 **Topics:**
 
-[jQuery continued](jquery)
+[jQuery continued](jquery.md)
 
-Handling Date/Time information using [Moment.js](moment)
+Handling Date/Time information using [Moment.js](moment.md)
 
-Helpful Utility Functions with [Lodash](lodash)
+Helpful Utility Functions with [Lodash](lodash.md)
 
-[Introduction to SASS](sass)
+[Introduction to SASS](sass.md)
 
 <br>

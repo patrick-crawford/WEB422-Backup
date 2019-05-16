@@ -44,7 +44,7 @@ This week's topics include:
 
 [Setting up the back end server based web API](/web422/notes/teams-api-setup)
 
-[jQuery Review & Rendering web API Data](/web422/notes/jquery-review)
+[jQuery Review & Rendering web API Data](jquery-review.md)
 
 <br>
 
