@@ -137,10 +137,9 @@ Our first Vue application is simple, and only contains a single child within our
 an `<h2>`.  As we progress, the size and complexity of what we place here will grow as well. 
 
 The markup for our `<h2>` will look familiar to anyone who has used server-side templating
-languages like [Handlebars](https://handlebarsjs.com/).  Here `{{ frameworkName }}` defines
+languages like [Handlebars](https://handlebarsjs.com/).  Here {% raw  %}`{{ frameworkName }}`{% endraw  %} defines
 a portion of our UI that needs to get rendered based on data in our application's view model.
-At runtime, Vue will replace `{{ frameworkName }}` with the value of the expression `frameworkName`,
-and keep it in sync, if and when it changes.
+At runtime, Vue will replace {% raw  %}`{{ frameworkName }}`{% endraw  %} with the value of the expression `frameworkName`, and keep it in sync, if and when it changes.
 
 Below this we have two scripts.  The first loads Vue from a CDN.  The second defines
 our app, and uses Vue via the global (i.e., we aren't using `require()` or `import` in this
@@ -168,7 +167,7 @@ the element's contents, but also in attributes:
 
 ```html
 <div id="app">
-  <h2>Welcome! This page uses <a v-bind:href="framework.url">{{ framework.name }}</a>.</h2>
+  <h2>Welcome! This page uses {% raw  %}<a v-bind:href="framework.url">{{ framework.name }}</a>{% endraw  %}.</h2>
 </div>
 
 <script src="https://unpkg.com/vue"></script>
@@ -195,11 +194,11 @@ Directives like `v-bind` often take [arguments](https://vuejs.org/v2/guide/synta
 `:argument`.  In the example above, we are asking Vue to bind the value `framework.name` to the `href` attribute
 of our `<a>` element.
 
-Much as we did with `{{ ... }}`, the value we give a directive can be any valid JavaScript expression.
+Much as we did with {% raw  %}`{{ ... }}`{% endraw  %}, the value we give a directive can be any valid JavaScript expression.
 Consider the following:
 
 ```html
-<a v-bind:href="framework.url" v-bind:title="1 + 1">{{ framework.name }}</a>
+{% raw  %}<a v-bind:href="framework.url" v-bind:title="1 + 1">{{ framework.name }}</a>{% endraw  %}
 ```
 
 Here we bind the *result* of the expression `1 + 1` to the `title` attribute of our element.
@@ -210,10 +209,10 @@ The use of `v-bind:attributename="value"` is so common, that Vue provides a shor
 
 ```html
 <!-- Original -->
-<a v-bind:href="framework.url" v-bind:title="1 + 1">{{ framework.name }}</a>
+{% raw  %}<a v-bind:href="framework.url" v-bind:title="1 + 1">{{ framework.name }}</a>{% endraw  %}
 
 <!-- With : Shortcut -->
-<a :href="framework.url" :title="1 + 1">{{ framework.name }}</a>
+{% raw  %}<a :href="framework.url" :title="1 + 1">{{ framework.name }}</a>{% endraw  %}
 ```
 
 Here we've been able to shorten our template markup by eliminating the use of `v-bind` altogether.
@@ -235,7 +234,7 @@ get repeatedly rendered based on some data value.
 
   <ul>
     <li v-for="framework of frameworks" :key="framework.id">
-      <a :href="framework.url">{{ framework.name }}</a>
+      {% raw  %}<a :href="framework.url">{{ framework.name }}</a>{% endraw  %}
     </li>
   </ul>
 </div>
@@ -279,7 +278,7 @@ define certain portions of our template to skip based on JavaScript expressions.
 
   <ul v-if="showFrameworks">
     <li v-for="framework of frameworks" v-if="framework.include" :key="framework.id">
-      <a :href="framework.url">{{ framework.name }}</a>
+      {% raw  %}<a :href="framework.url">{{ framework.name }}</a>{% endraw  %}
     </li>
   </ul>
 </div>
@@ -331,13 +330,13 @@ in our code.
 
 ```html
 <div id="app">
-  <h2>Employee List ({{employees.length}})</h2>
+  {% raw  %}<h2>Employee List ({{employees.length}})</h2>{% endraw  %}
 
   <button v-on:click="loadEmployees">Load Employees</button>
 
   <ol>
     <li v-for="employee of employees" :key="employee._id">
-      {{employee.FirstName}} {{employee.LastName}}
+      {% raw  %}{{employee.FirstName}} {{employee.LastName}}{% endraw  %}
     </li>
   </ol>
 </div>
@@ -383,12 +382,12 @@ In this version, we'll add some more dynamic functionality in the form of a [com
   <label for="city">City</label>
   <select id="city" @change="updateCity">
     <option selected>All</option>
-    <option v-for="city of cities" :key="city">{{city}}</option> 
+    {% raw  %}<option v-for="city of cities" :key="city">{{city}}</option>{% endraw  %}
   </select>
 
   <ul>
     <li v-for="employee of filteredEmployees" :key="employee._id">
-      {{employee.FirstName}} {{employee.LastName}}
+      {% raw  %}{{employee.FirstName}} {{employee.LastName}}{% endraw  %}
     </li>
   </ul>
 </div>
@@ -470,12 +469,12 @@ value displayed.
 
   <label for="city">City</label>
   <select id="city" v-model="city">
-    <option v-for="city of cities" :key="city">{{city}}</option> 
+    {% raw  %}<option v-for="city of cities" :key="city">{{city}}</option>{% endraw  %}
   </select>
 
   <ul>
     <li v-for="employee of filteredEmployees" :key="employee._id">
-      {{employee.FirstName}} {{employee.LastName}}
+      {% raw  %}{{employee.FirstName}} {{employee.LastName}}{% endraw  %}
     </li>
   </ul>
 </div>
@@ -615,7 +614,7 @@ Here's the original code:
 
 ```html
 <div id="app">
-  <h2>Welcome! This page uses <a v-bind:href="framework.url">{{ framework.name }}</a>.</h2>
+  {% raw  %}<h2>Welcome! This page uses <a v-bind:href="framework.url">{{ framework.name }}</a>.</h2>{% endraw  %}
 </div>
 
 <script src="https://unpkg.com/vue"></script>
@@ -641,7 +640,7 @@ three sections:
 ```html
 <template>
   <a :href="framework.url">
-    {{ framework.name }}
+    {% raw  %}{{ framework.name }}{% endraw  %}
   </a>
 </template>
 
