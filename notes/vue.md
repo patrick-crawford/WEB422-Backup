@@ -5,12 +5,12 @@ layout: default
 
 ## Introduction to Vue.js
 
-[Vue.js](https://vuejs.org/) is a JavaScript library that helps you to create
-rich, responsive display and editor user interfaces with a clean underlying data model.
+[Vue.js](https://vuejs.org/) (often abbreviated to "Vue") is a JavaScript library
+that helps you to create rich, responsive user interfaces with a clean underlying data model.
 
-Any time you have sections of UI that update dynamically (e.g., changing depending on the user’s actions or when an external data source changes), Vue.js (often abbreviated to "Vue") can help you implement it more simply and maintainability.
+Any time you have sections of UI that update dynamically (e.g., changing depending on the user’s actions or when an external data source changes), Vue can help you implement it more simply and maintainability.
 
-Vue was started by [Evan You](https://evanyou.me/) in 2014, while he was working at Google. Today, Evan is [supported by the community](https://www.patreon.com/evanyou) to focus on Vue fulltime. Vue is focused on being small, approachable, and implementing some of the best ideas from other popular frameworks (e.g., Angular and React).  Vue has been popular worldwide, but especially in Asia, where some of the largest companies (Alibaba, Baidu, Nintendo) have adopted it.
+Vue was started by [Evan You](https://evanyou.me/) in 2014, while working at Google. Today, Evan is [supported by the community](https://www.patreon.com/evanyou) to focus on Vue fulltime. Vue is focused on being small, approachable, and implementing some of the best ideas from other popular frameworks (e.g., Angular and React).  Vue has been popular worldwide, but especially in Asia, where some of the largest companies (Alibaba, Baidu, Nintendo) have adopted it.
 
 Vue has a smaller learning curve than React or Angular, but gives developers much of the same feature set.  As such, it's a good first framework, and will help us get started with many of the important concepts in modern front-end web development.
 
@@ -21,8 +21,10 @@ Vue has a smaller learning curve than React or Angular, but gives developers muc
 One of the nice features of Vue is that you can learn the basics in a day or two,
 and then, because the documentation is so good, you can look things up as you progress.
 
-To begin learning Vue, read the official [Vue Guide](https://vuejs.org/v2/guide/).  As
-a Seneca student, you also have access to [many online, video courses about Vue through Lynda.com](https://www.lynda.com/search?q=vue&f=meta_software_facet%3aVue.js).  This are an excellent way to supplement the official documentation and guide.
+To begin learning Vue, read the official [Vue Guide](https://vuejs.org/v2/guide/).
+
+As a Seneca student, you also have access to
+[many online, video courses about Vue through Lynda.com](https://www.lynda.com/search?q=vue&f=meta_software_facet%3aVue.js).  This are an excellent way to supplement the official documentation and guide.
 
 <br>
 
@@ -107,7 +109,9 @@ element, and not use a build step.  Here's the `index.html`:
 
 ```html
 <div id="app">
+  {% raw  %}
   <h2>Welcome! This page uses {{ frameworkName }}.</h2>
+  {% endraw %}
 </div>
 
 <script src="https://unpkg.com/vue"></script>
