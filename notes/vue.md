@@ -376,18 +376,19 @@ making the view more reactive.
 In this version, we'll add some more dynamic functionality in the form of a [computed property](https://vuejs.org/v2/guide/computed.html).  Instead of building our employee list based on our entire array from the Teams API, we can define a function to filter our list.
 
 ```html
+{% raw  %}
 <div id="app">
   <h2>Employee List</h2>
 
   <label for="city">City</label>
   <select id="city" @change="updateCity">
     <option selected>All</option>
-    {% raw  %}<option v-for="city of cities" :key="city">{{city}}</option>{% endraw  %}
+    <option v-for="city of cities" :key="city">{{city}}</option>
   </select>
 
   <ul>
     <li v-for="employee of filteredEmployees" :key="employee._id">
-      {% raw  %}{{employee.FirstName}} {{employee.LastName}}{% endraw  %}
+      {{employee.FirstName}} {{employee.LastName}}
     </li>
   </ul>
 </div>
@@ -399,13 +400,17 @@ In this version, we'll add some more dynamic functionality in the form of a [com
     el: '#app',
     data: {
       employees: [],
-      cities: [],
       city: 'All'
     },
     computed: {
       filteredEmployees: function() {
         return this.employees.filter(employee => 
           this.city === 'All' || employee.AddressCity === this.city);
+      },
+      cities: function() {
+          // When employees changes, create a sorted Array of Cities removing duplicates
+          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Remove_duplicate_elements_from_the_array
+          return [...new Set(this.employees.map(employee => employee.AddressCity))].sort());
       }
     },
     methods: {
@@ -413,9 +418,6 @@ In this version, we'll add some more dynamic functionality in the form of a [com
         fetch(`${teamsApiUrl}/employees`)
           .then(res => res.json())
           .then(employees => {
-            // Create a sorted Array of Cities removing duplicates
-            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Remove_duplicate_elements_from_the_array
-            this.cities = [...new Set(employees.map(employee => employee.AddressCity))].sort();
             this.employees = employees;
           });
       },
@@ -429,6 +431,7 @@ In this version, we'll add some more dynamic functionality in the form of a [com
     }
   });
 </script>
+{% endraw %}
 ```
 
 Our computed property `filteredEmployees` is a function that returns an Array.  As such, it
@@ -464,63 +467,65 @@ changes the value (1-way), or if the value changes via code (2-way), we'll get t
 value displayed.
 
 ```html
+{% raw %}
 <div id="app">
-  <h2>Employee List</h2>
+    <h2>Employee List</h2>
 
-  <label for="city">City</label>
-  <select id="city" v-model="city">
-    {% raw  %}<option v-for="city of cities" :key="city">{{city}}</option>{% endraw  %}
-  </select>
+    <label for="city">City</label>
+    <select id="city" v-model="city">
+        <option v-for="city of cities" :key="city">{{city}}</option>
+    </select>
 
-  <ul>
-    <li v-for="employee of filteredEmployees" :key="employee._id">
-      {% raw  %}{{employee.FirstName}} {{employee.LastName}}{% endraw  %}
-    </li>
-  </ul>
+    <ul>
+        <li v-for="employee of filteredEmployees" :key="employee._id">
+            {{employee.FirstName}} {{employee.LastName}}
+        </li>
+    </ul>
 </div>
 
 <script src="https://unpkg.com/vue"></script>
 <script>
-  const teamsApiUrl = 'https://quiet-wave-16481.herokuapp.com';
-  const vm = new Vue({
+const teamsApiUrl = 'https://quiet-wave-16481.herokuapp.com';
+const vm = new Vue({
     el: '#app',
     data: {
-      employees: [],
-      cities: [],
-      city: 'All'
+        employees: [],
+        city: 'All'
     },
     computed: {
-      filteredEmployees: function() {
-        // Build a new list of employees, where All are included, or only
-        // those for the chosen city
-        return this.employees.filter(employee => 
-          this.city === 'All' || employee.AddressCity === this.city);
-      }
-    },
-    methods: {
-      loadEmployees: function() {
-        fetch(`${teamsApiUrl}/employees`)
-          .then(res => res.json())
-          .then(employees => {
+        filteredEmployees: function() {
+            // Build a new list of employees, where All are included, or only
+            // those for the chosen city
+            return this.employees.filter(employee => 
+            this.city === 'All' || employee.AddressCity === this.city);
+        },
+        cities: function() {
             // Create unique list of cities, removing duplicates
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Remove_duplicate_elements_from_the_array
-            let cities = [...new Set(employees.map(employee => employee.AddressCity))];
+            const cities = [...new Set(this.employees.map(employee => employee.AddressCity))];
             // Sort the list of cities in place
             cities.sort();
             // Prepend the value 'All' to the front of the list
             cities.unshift('All');
-
-            // Update our instance's employees and cities arrays with the new ones
-            this.cities = cities;
-            this.employees = employees;
-          });
-      }
+        
+            return cities;
+        }
+    },
+    methods: {
+        loadEmployees: function() {
+            fetch(`${teamsApiUrl}/employees`)
+            .then(res => res.json())
+            .then(employees => {
+                this.employees = employees;
+            });
+        }
     },
     created: function() {
-      this.loadEmployees();
+        this.loadEmployees();
     }
-  });
+});
 </script>
+{% endraw %}
 ```  
 
 <br>
