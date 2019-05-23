@@ -178,6 +178,7 @@ the element's contents, but also in attributes:
       framework: {
         name: 'Vue.js',
         url: 'https://vuejs.org'
+      }
     }
   });
 </script>
@@ -292,7 +293,7 @@ define certain portions of our template to skip based on JavaScript expressions.
       frameworks: [
         { id: 1, name: 'Vue.js', url: 'https://vuejs.org', include: true },
         { id: 2, name: 'React', url: 'https://reactjs.org/', include: true },
-        { id: 3, name: 'Angular', url: 'https://angular.io/' }
+        { id: 3, name: 'Angular', url: 'https://angular.io/', include: false }
       ]
     }
   });
@@ -410,7 +411,7 @@ In this version, we'll add some more dynamic functionality in the form of a [com
       cities: function() {
           // When employees changes, create a sorted Array of Cities removing duplicates
           // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Remove_duplicate_elements_from_the_array
-          return [...new Set(this.employees.map(employee => employee.AddressCity))].sort());
+          return [...new Set(this.employees.map(employee => employee.AddressCity))].sort();
       }
     },
     methods: {
