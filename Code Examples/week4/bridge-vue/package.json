@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "he": "^1.2.0",
+    "leaflet": "^1.5.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {
