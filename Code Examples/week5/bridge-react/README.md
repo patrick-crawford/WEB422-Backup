@@ -1,8 +1,13 @@
 # "Bridge Vue" in React
 
-This week we'll rewrite our previous [Bridge Vue](https://github.com/sictweb/web422/tree/master/Code%20Examples/week4/bridge-vue#bridge-vue) Vue web app for visualizing
-Ontario bridge data.  In do doing, we'll learn about differences between Vue and
+This week we'll rewrite our previous [Bridge Vue](https://github.com/sictweb/web422/tree/master/Code%20Examples/week4/bridge-vue#bridge-vue) web app for visualizing
+Ontario bridge data in React.  In do doing, we'll learn about differences between Vue and
 React, work with more third-party libraries, and use the [create-react-app](https://facebook.github.io/create-react-app/) tool to setup our app.
+
+> NOTE: if you haven't already built or read the code for [Bridge Vue](https://github.com/sictweb/web422/tree/master/Code%20Examples/week4/bridge-vue#bridge-vue)
+> you should begin there.  This walkthrough is focused on discussing differences between
+> the Vue implementation and how to write the same in React.  Not all aspects of the app
+> are discussed in the same depth here.
 
 Once again, the data we'll use is based on a freely available dataset on [bridges in the province](https://www.ontario.ca/data/bridge-conditions), from the Government of Ontario.  We'll
 use this data under the [Open Government Licence - Ontario](https://www.ontario.ca/page/open-government-licence-ontario).  You can read more about the data and API
@@ -28,7 +33,7 @@ cd bridge-react
 npm start
 ```
 
-This will create hte `bridge-react/` directory, download and install all necessary
+This will create the `bridge-react/` directory, download and install all necessary
 dependencies, and build our code.  A web server will be started at http://localhost:3000/.
 We can leave this running the entire time we work, and every time we save a change,
 the server will automatically update what's in our browser.
@@ -47,7 +52,7 @@ a [full discussion of this layout in the docs](https://facebook.github.io/create
         favicon.ico      <-- our project's icon
         index.html       <-- main html file
     /src
-        components/      <-- our custom Vue components go here
+        components/      <-- our custom React components go here
         App.js           <-- our application's main component
         App.css          <-- styles for our application's main component
         index.css        <-- general styles for the page as a whole
@@ -57,8 +62,8 @@ a [full discussion of this layout in the docs](https://facebook.github.io/create
 ### `public/index.html`
 
 Let's start with our main HTML page, which can be very simple: just enough
-to get host our React application and components.  Our React app will get *mounted*
-in the `<main id="root"></div>` element.
+to host our React application and components.  Our React app will get *mounted*
+into the `<main id="root"></div>` element:
 
 ```html
 <!DOCTYPE html>
@@ -133,7 +138,7 @@ main {
 }
 ```
 
-### src/App.js
+### `src/App.js`
 
 The bulk of our code begins in our `App.js` component.  Here we define the top-level
 layout of our application, and its main logic.  We could put everything here; that is,
@@ -165,11 +170,10 @@ function App() {
 export default App;
 ```
 
-Our `App.js` component defines the top-level UI by defining a [React Component](https://reactjs.org/docs/components-and-props.html) `App`
-that returns a single [React Element](https://reactjs.org/docs/rendering-elements.html) (`#app`), containing two children: a `#menu` and some `#bridge-info`.
+Our `App.js` component defines the top-level UI by defining a [React Component](https://reactjs.org/docs/components-and-props.html) `function` that returns a single [React Element](https://reactjs.org/docs/rendering-elements.html) (`#app`), containing two children: a `#menu` and some `#bridge-info`.
 
 We should also say something about the `import React from 'react';` line that
-appears at the top of every file we'll write that contains JSX syntax.
+appears at the top of every file containing JSX syntax.
 Whenever we are defining a React component, or using React elements in our code,
 we always need to include `React` in the same scope.  In the code above,
 the use of `React` is implicit, and we never actually use `React`, so why bother including it?
@@ -201,6 +205,13 @@ We can now answer our original question, namely, why bother including `React` if
 use it.  The answer is that JSX *always* requires `React.createElement()`, which means
 that `React` must be available in the same scope as our JSX.  In all of our files
 below that make use of JSX, we'll begin with `import React from 'react'`.
+
+> NOTE: in Vue we actually did a very similar thing, writing our code as
+> [Single File Vue](https://vuejs.org/v2/guide/single-file-components.html) components
+> with a `.vue` extension.  The browser doesn't understand `.vue` files, and these
+> have to get compiled into JavaScript code.  Both React and Vue are leveraging
+> custom syntax and a build step involving Babel to try and improve the developer
+> experience of developing in a component-based framework.
 
 #### CSS Style
 
@@ -316,7 +327,7 @@ We'll begin with the `MenuItem` component.
 #### `src/components/MenuItem.js`
 
 Each of our `MenuItem`s is basically a `<div>` with some special styling, and
-event handling.  Because the each `MenuItem` is so simple, we once again use
+event handling.  Because each `MenuItem` is so simple, we once again use
 a React function component (i.e., vs. a class):
 
 ```js
@@ -343,20 +354,19 @@ We define our `<div>` and specify four things:
 1. `onClick={props.onClick}`, which tells React to register an event listener for our `<div>`'s `click` event, and use the function passed to us via `props.onClick` as the callback.
 1. `{props.bridge.nameEncoded}`, which will include our bridge's HTML-friendly name in our  content.
 
-Our `MenuItem` is basic.  It `export`s a `Function` that accepts [`props`](https://reactjs.org/docs/components-and-props.html) from its parent, in this case a `bridge` `Object`. In Vue we used `props` over `data`, since the `MenuItem` doesn't manage
-its own `bridge`, but simply uses the one passed to it.  React is the same, and the
-only thing that's different is the mechanism by which we receive the `props`.
+Our `MenuItem` is basic.  It `export`s a `Function` that accepts [`props`](https://reactjs.org/docs/components-and-props.html) from its parent, in this case a `bridge` `Object`. In Vue we used `props` over `data`, since the `MenuItem` didn't manage
+its own `bridge`, but simply used the one passed to it.
 
 The only thing different about how we're using `props` in React is that we're not
-only receiving our `bridge`, but also an `onClick` event handler function.  In Vue
+only receiving our `bridge`, but also an `onClick` event handler `function`.  In Vue
 we defined a `method` (i.e., a `function`) for our component, `handleClick`, and
 used it to [`emit` a custom event](https://vuejs.org/v2/guide/components-custom-events.html) named `'click'` (we could have called it anything).  In React we've moved this code
 to the parent component, and in `MenuItem` simply use the event handler for `click`
 that is passed to us on `props.onClick`.
 
 > TIP: in Vue, you listen for events on DOM elements using `v-on`, and then `$emit()`
-> your own events.  In React, we use connect an `onEvent` (e.g., `onClick`, `onChange`, etc)
-> style prop passed down from a parent component.  The effect is the same: in both
+> your own events.  In React, we use an `onEvent` style prop (e.g., `onClick`, `onChange`, etc)
+> passed down from a parent component.  The effect is the same: in both
 > cases the component will trigger some function in the parent, but the registration
 > pattern is different.
 
@@ -453,25 +463,24 @@ export default class extends React.Component {
 }
 ```
 
-There's a number of new ideas worth discussing in this code.  First, just as we
-did in Vue, we `import` two of the files we made previously: our `bridges.js` file,
-which will load our data; and `MenuItem.js`, which will manage each menu item.
+First, just as we did in Vue, we `import` two of the files we made previously: our `bridges.js` file, which will load our data; and `MenuItem.js`, which will manage each menu item.
+
+However there are enough new ideas in this code, that it's worth discussing them separately.
 
 ##### Extending `React.Component`
 
-Next, we need to discuss why we've moved from using a `function` to a `class`
-for defining our component.  Recall that in Vue, our `BridgeMenu` included its own
-`data`, specifically, some flags related to the data loading status of our component,
-and also an `Array` of bridges.
+We've moved from using a `function` to a `class` for defining our component.
+Recall that in Vue, our `BridgeMenu` included its own `data`, specifically, `boolean`
+flags for `loading` and `errored`, and also an `Array` of bridges.
 
 When a Vue component needs to manage its own data, instead of (or in addition to) using
 `props`, we define a `function` named `data` that returns an `Object` with our
 component's internal state.  Before we look at React, pay attention to what we just
-said: `data` is a `function` that returns an `Object` with our component's internal state.
+said: in Vue, `data` is a `function` that returns an `Object` with our component's internal state.
 
-In React we leverage [JavaScript's `class`](https://googlechrome.github.io/samples/classes-es6/), and write our component in an Object Oriented style.  The main reason
+In React we leverage the [JavaScript `class`](https://googlechrome.github.io/samples/classes-es6/), and write our component in an Object Oriented style.  The main reason
 we do this is so that we can define *instance* data within a *constructor* `function`.
-Said another way, data in React is defined as an `Object` called `state` in a *constructor* `function`.  Doing so, each instance of a React component can maintain its own state.
+Said another way, data in React is defined as an `Object` called `state` in a *constructor* `function`.  Because of this, each instance of a React component can maintain its own state.
 
 Our `BridgeMenu` component is a `class` that builds on `React.Component`, adding and altering
 a few things we need.  In the constructor, we need to accept `props` and pass them
@@ -492,7 +501,7 @@ In React we do exactly the same thing, defining an implementation for the
 We're also augmenting the call to `getBridgeData()` with `loading` and `errored`
 state changes.  However, unlike Vue, our component's internal state data needs
 to be managed manually.  In Vue, our `data` was automatically, and invisibly, wrapped
-with getter and setter functions via Vue's [reactivity system](https://vuejs.org/v2/guide/instance.html#Data-and-Methods): any change our `data` (e.g., `this.data.name = newValue`)
+with getter and setter functions via Vue's [reactivity system](https://vuejs.org/v2/guide/instance.html#Data-and-Methods): any change to our `data` (e.g., `this.data.name = newValue`)
 would be seen by Vue as a change to our component's state, and any updates to
 the virtual DOM, computed values, watchers, etc would happen automatically.  Vue
 takes responsibility for our data, allowing us to "use" it as if it was any
@@ -500,7 +509,7 @@ other regular JavaScript `Object`.
 
 React does the same thing, but removes some of the automation.  As with Vue, our
 internal state (React calls it `state` instead of `data` to be more explicit) dictates
-what should happen in the UI: changes to state values needs to trigger updates, re-rendering
+what should happen in the UI: changes in state needs to trigger updates, re-rendering
 of components, etc.  We can access state values using `this.state.name`, but React
 asks that we not update them directly in this way.  Instead, we are asked to use a
 method of our class, [`setState()`](https://reactjs.org/docs/react-component.html#setstate).
@@ -534,15 +543,14 @@ state of our component's data.
 
 ##### Defining a `render()` function
 
-The final topic we need to address is how we've evolved our view code into a `render()`
-method.  Our earlier `function` components simply returned a React element.  In
+Let's discuss why we've changed our view code into a `render()` method.  Our earlier `function` components simply returned a React element.  In
 our `class` component, we need to do the same, but we do it by providing an implementation
 for the `render()` method.
 
 Our `render()` function has three possible branches, defining three separate UI states.
 In Vue we expressed this with nested directives (`v-if`, `v-else`) to
 [conditionally render portions](https://vuejs.org/v2/guide/conditional.html) of our template.
-We're essentially do the same in React, but instead using JavaScript branching directly.
+We essentially do the same in React, but instead use JavaScript branching directly.
 Depending on our component's `state`, we'll either render an error UI, a loading spinner, or
 if all goes well our entire bridge menu.
 
@@ -657,9 +665,13 @@ There's some inherent complexity in using JavaScript's `this` keyword, and the
 way that functions work.  Our code above is essentially saying: "take the function
 named `handleBridgeChange` on the current instance and pass it down via `props`."
 When we do this we are, in essence, pulling the function off of `this` and passing
-it as a function; that is, we lose the attachment we had to `this`.  Later, when
-we want to call `this.setState()`, the value of `this` will have changed.  We need
-to explicitly [`bind()` our function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) to `this` so that it retains this attachment.
+it as a `function` on its own; that is, we lose the attachment we had to `this`.  Later, when
+we want to call `this.setState()`, the value of `this` will have changed.  To solve this,
+we need to explicitly [`bind()` our function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) to `this` so that it retains this attachment.
+The `.bind()` method is built into JavaScript functions, and returns a `function` that is
+*binds* `this` to the `Object` you pass it as the argument to `.bind()`.  Passing this
+new *bound* function is safe, because it carries with it an attachment to the component's
+instance, and calls to `this.setState()` will do the right thing. 
 
 > NOTE: when you need to use `this` to refer to the component instance in an
 > event handler, you should call `.bind(this)` on your function.  If you don't
@@ -860,8 +872,8 @@ The only thing remaining is to add our map.
 
 #### Map Components: `src/components/LeafletMap.js` and `src/components/LeafletMap.css`
 
-To draw our map, we'll once again use [Leaflet JavaScript library](https://leafletjs.com/),
-but for something new, let's use a [third-party Leaflet component for React](https://react-leaflet.js.org/) vs. creating our own from scratch.  Using [React-Leaflet](https://react-leaflet.js.org/en/), we can go from pure Leaflet-JavaScript code like this:
+To draw our map, we'll once again use the [Leaflet JavaScript library](https://leafletjs.com/),
+but for something different this time, let's use a [third-party Leaflet component for React](https://react-leaflet.js.org/) instead of manually creating our own from scratch.  Using [React-Leaflet](https://react-leaflet.js.org/en/), we can go from pure Leaflet-JavaScript code like this...
 
 ```js
 import L from 'leaflet'
@@ -878,7 +890,7 @@ L.marker(position)
   .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
 ```
 
-To React code like this:
+...to React code like this:
 
 ```jsx
 import React from 'react'
@@ -955,7 +967,7 @@ function LeafletMap(props) {
   // By default, zoom the map to this level
   const defaultZoom = 14;
 
-return (
+  return (
     <Map className="full-height" center={coords} zoom={defaultZoom}>
       <Tiles />
       <Popup position={coords}>
@@ -973,12 +985,12 @@ map and popup.  Here, we're delegating this responsibility to the React componen
 [`<Map />`](https://react-leaflet.js.org/docs/en/components.html#map),
 [`<Popup />`](https://react-leaflet.js.org/docs/en/components.html#popup), and
 [`<TileLayer />`](https://react-leaflet.js.org/docs/en/components.html#tilelayer).
-What's nice about these is that I can use them like any other HTML element, without
-having to write custom logic to manage my map.  Before we can use them, we have to
-`import` them.  We also need to `import` the CSS styles for Leaflet.
+What's nice about these is that we can use them like any other HTML element, without
+having to write custom logic to manage my map.  Before we can use them, however,
+they have to be imported.  We also need to `import` the CSS styles for Leaflet.
 
-Skipping down to `LeafletMap`, we either want to render a map of Ontario, or a
-map of the `bridge` specified on `props`.  To simplify this, we've created some
+Skipping down to the declaration of `LeafletMap`, we either want to render a map of Ontario,
+or a map of the `bridge` specified on `props`.  To simplify this, we've created some
 small React Component functions.  First, an `<OntarioMap />`, which does exactly
 what you'd expect.  Second, a `<Tiles />` component, which takes care of rendering
 our chosen map tiles from [Open Street Maps](https://www.openstreetmap.org/#map=3/71.34/-96.82).
