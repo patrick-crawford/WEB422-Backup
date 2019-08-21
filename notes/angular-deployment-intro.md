@@ -43,7 +43,7 @@ ng build
 
 ### Applying this to our "MEAN" Stack Heroku Deployment
 
-Recall, back in WEB322, we used Node.js with the Express module to create a web server (for a quick refresher, see the ["Getting Started with Heroku Guide"](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/getting-started-with-heroku/)).  In effect, we were able to create an extremely simple web server with the following code:
+Recall, back in WEB322, we used Node.js with the Express module to create a web server (for a quick refresher, see the ["Getting Started with Heroku Guide"](https://web322.ca/getting-started-with-heroku)).  In effect, we were able to create an extremely simple web server with the following code:
 
 ```js
 var express = require("express");

@@ -13,7 +13,7 @@ The following instructions are copied word-for-word from the README.md file for 
 
 <h4>Quick Note: Before you Start</h4>
 
-> This guide requires that you have Node.js and MongoDB correctly installed on your system.  If you cannot execute the commands: `npm --version` or `mongorestore --version`, please [Install NodeJS](https://nodejs.org/) and/or [MongoDB](https://www.mongodb.com/) (See: the [Official Install Guide](https://docs.mongodb.com/manual/administration/install-community/) or the [WEB322 Notes](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) for detailed instructions).
+> This guide requires that you have Node.js and MongoDB correctly installed on your system.  If you cannot execute the commands: `npm --version` or `mongorestore --version`, please [Install NodeJS](https://nodejs.org/) and/or [MongoDB](https://www.mongodb.com/) (See: the [Official Install Guide](https://docs.mongodb.com/manual/administration/install-community/) or the [WEB322 Notes](https://web322.ca/notes/week08) for detailed instructions).
 
 Once you have cloned the repository, move the teams-api folder out of the "Code Examples" folder and open it in Visual Studio Code and issue the command "npm install" from the integrated terminal.  This will look at the package.json file and add the required dependant modules.
 
@@ -21,7 +21,7 @@ If you open the "server.js" file, you will notice that the top 2 lines define th
 
 ### MongoDB Database:
 
-For this course we will be continuing to use MongoDB Atlas (If you're new to MongoDB Atlas, See the [WEB322 Notes (Week 8)](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) on how to create an account and get started):
+For this course we will be continuing to use MongoDB Atlas (If you're new to MongoDB Atlas, See the [WEB322 Notes (Week 8)](https://web322.ca/notes/week08) on how to create an account and get started):
 
 1. Log into your Atlas Account here: [https://cloud.mongodb.com/user#/atlas/login](https://cloud.mongodb.com/user#/atlas/login)
 
@@ -45,7 +45,7 @@ For this course we will be continuing to use MongoDB Atlas (If you're new to Mon
 
 10. Once this is done and your working directory is "API-data-restore", paste the completed mongorestore command into the terminal and press enter to execute it
     
-    **Important Note** For the mongorestore command to work correctly (and not display SSL errors), you will need an up-to-date version of the [MongoDB Community Server](https://www.mongodb.com/download-center/community) - See the [WEB322 Notes (Week 8)](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week8-class1/) for a refresher on installing the community server. 
+    **Important Note** For the mongorestore command to work correctly (and not display SSL errors), you will need an up-to-date version of the [MongoDB Community Server](https://www.mongodb.com/download-center/community) - See the [WEB322 Notes (Week 8)](https://web322.ca/notes/week08) for a refresher on installing the community server. 
 
 11. You should see a number of lines output to the terminal indicating the progress, and then finally a "done" message
 
@@ -87,7 +87,7 @@ mongodb+srv://userName:password@senecaweb-ab0cd.mongodb.net/teams-api-data?retry
 
 5.  At this point, it will be easiest if you push this server to Heroku, so that you can easily use it in all of your projects, without having to start up a local copy of the API server every time we want access to the data.  
 
-**Note:** For a refresher on how initialize the folder with a .git repository, create an App with the Heroku CLI, and publish the App to Heroku, refer to the WEB322 notes on ["Getting Started with Heroku"](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/getting-started-with-heroku).
+**Note:** For a refresher on how initialize the folder with a .git repository, create an App with the Heroku CLI, and publish the App to Heroku, refer to the WEB322 notes on ["Getting Started with Heroku"](https://web322.ca/getting-started-wiÍth-heroku).
 
 ## USING THE API
 

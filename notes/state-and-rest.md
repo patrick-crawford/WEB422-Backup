@@ -112,7 +112,7 @@ Now we can circle back to REST.
 
 let's get back to...
 
-In the previous web programming course, you got started with this task in the [Week 9 coverage](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week9-class1/) (Ajax Review / Practical Ajax Programming). 
+In the previous web programming course, you got started with this task in the [Week 9 coverage](https://web322.ca/notes/week09) (Ajax Review / Practical Ajax Programming). 
 
 
 REST is an architectural style for designing networked apps

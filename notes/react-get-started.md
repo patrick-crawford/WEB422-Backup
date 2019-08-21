@@ -93,7 +93,7 @@ Once this process is complete, open the newly created "build" folder.  You will 
 
 Now, all we need to run this in a "production" environment, is a static web server.  Fortunately for us, we know exactly how to create one using Node.js and Express.
 
-Recall [from WEB322](http://zenit.senecac.on.ca/~patrick.crawford/index.php/web322/course-notes/week4-class1/), a **server.js** file using the following code:
+Recall [from WEB322](https://web322.ca/notes/week04), a **server.js** file using the following code:
 
 ```javascript
 var express = require("express");
