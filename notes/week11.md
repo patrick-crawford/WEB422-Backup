@@ -14,4 +14,4 @@ For more information:
 * [Introduction to Securing a Web API with JWT](intro-web-api-security.md)
 * [Incorporating JWT in an Angular Application](intro-angular-jwt.md)
 
-Remember to frequently use the [learning resources](/web422/resources).
+Remember to frequently use the [learning resources](/resources).

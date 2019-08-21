@@ -47,9 +47,9 @@ Back in WEB322, we discussed a number of [security considerations](https://web32
 
 #### MongoDB Atlas & MongoDB
 
-You should be familiar with MongoDB Atlas from our [experience in WEB322](https://web322.ca/notes/week08) as well as the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup).  MongoDB Atlas will be responsible for hosting our separate (MongoDB) "users" database.
+You should be familiar with MongoDB Atlas from our [experience in WEB322](https://web322.ca/notes/week08) as well as the [Teams API Setup notes]("/notes/teams-api-setup).  MongoDB Atlas will be responsible for hosting our separate (MongoDB) "users" database.
 
-To set up a new "users" database for the simple API, follow along with the [Teams API Setup notes](https://sictweb.github.io/web422/notes/teams-api-setup) starting with "**MongoDB Database**" and continuing until you have a valid **Connection String** - this should look something like: 
+To set up a new "users" database for the simple API, follow along with the [Teams API Setup notes]("/notes/teams-api-setup) starting with "**MongoDB Database**" and continuing until you have a valid **Connection String** - this should look something like: 
 
 ```
 mongodb+srv://userName:password@senecaweb-ab0cd.mongodb.net/teams-api-data?retryWrites=true

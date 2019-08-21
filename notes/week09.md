@@ -19,4 +19,4 @@ For more information:
 * [Angular forms introduction](angular-forms-intro)
 * [Angular forms example](angular-forms-example)
 
-Remember to frequently use the [learning resources](/web422/resources).
+Remember to frequently use the [learning resources](/resources).

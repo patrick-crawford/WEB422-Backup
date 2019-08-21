@@ -14,4 +14,4 @@ For more information:
 * [Angular Deployment Introduction](angular-deployment-intro)
 * [Introduction to Angular Testing](angular-testing-intro)
 
-Remember to frequently use the [learning resources](/web422/resources).
+Remember to frequently use the [learning resources](/resources).

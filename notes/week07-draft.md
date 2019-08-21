@@ -7,7 +7,7 @@ layout: default
 
 This week, it's a deep dive into components, the most important architectural part of Angular.
 
-Remember to frequently use the [learning resources](/web422/resources).
+Remember to frequently use the [learning resources](/resources).
 
 <br>
 

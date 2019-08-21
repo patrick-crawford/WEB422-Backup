@@ -17,9 +17,9 @@ If our Web API provides security features (register/login routes, stored user na
 
 ### Getting Started
 
-**Note:** If you have not yet completed "[Introduction to Securing a Web API with JWT](https://sictweb.github.io/web422/notes/intro-web-api-security)", please go back and complete it now.  We will be using the secure "simple-API" as a source of data for our App.
+**Note:** If you have not yet completed "[Introduction to Securing a Web API with JWT]("/notes/intro-web-api-security)", please go back and complete it now.  We will be using the secure "simple-API" as a source of data for our App.
 
-If your "simple-API" (from "[Introduction to Securing a Web API with JWT](https://sictweb.github.io/web422/notes/intro-web-api-security)" is not currently running on port 8080, please start it up now. 
+If your "simple-API" (from "[Introduction to Securing a Web API with JWT]("/notes/intro-web-api-security)" is not currently running on port 8080, please start it up now. 
 
 <br>
 
