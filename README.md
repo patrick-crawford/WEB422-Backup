@@ -14,3 +14,5 @@ You can browse the code online.
 You can also download the repository as a zip file.
 
 Or, you can clone the repository to your own computer.
+
+**NOTE** An updated set of Code examples has been added as "Code Examples 2020". The old "Code Examples" has been depricated and will be removed in future versions of this course. 
