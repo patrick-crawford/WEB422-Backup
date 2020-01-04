@@ -15,4 +15,4 @@ You can also download the repository as a zip file.
 
 Or, you can clone the repository to your own computer.
 
-**NOTE** An updated set of Code examples has been added as "Code Examples 2020". The old "Code Examples" has been depricated and will be removed in future versions of this course. 
+**NOTE** An updated set of Code examples has replaced the old "Code Examples" folder. The old "Code Examples" has been renamed to "Code Examples v1" and will be removed in future versions of this course. 
