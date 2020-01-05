@@ -25,7 +25,8 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>1</td>
 <td>
 <ul>
-<li>Intro to front end dev / jQuery Review</li>
+<li>Dev environment setup</li>
+<li>Re-introduction to back-end web services</li>
 </ul>
 </td>
 <td>
@@ -38,7 +39,13 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <tr>
 <td>2</td>
-  <td><ul><li>jQuery Continued, Additional JS Libraries (Lodash, Moment), SASS</li></ul></td>
+<td>
+<ul>
+<li>Some more web service work</li>
+<li>Introduction to front-end development</li>
+<li>JavaScript libraries jQuery, Moment</li>
+</ul>
+</td>
 <td>
 <ul>
 <li>Assignment&nbsp;2</li>
@@ -53,7 +60,12 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <tr>
 <td>3</td>
-  <td><ul><li>Introduction to MVVM using Knockout.js</li></ul></td>
+<td>
+<ul>
+<li>React introduction</li>
+<li>Components as an architectural design feature</li>
+</ul>
+</td>
 <td>
 <ul>
 <li>Test 1
@@ -65,7 +77,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <tr>
 <td>4</td>
-  <td><ul><li>Introduction to Component-based architecture using React</li></ul></td>
+  <td><ul><li>Routing in React</li></ul></td>
 <td>
 <ul>
 <li>Assignment&nbsp;3</li>
@@ -82,7 +94,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>5</td>
 <td>
 <ul>
-<li>React Continued</li>
+<li>Services in React</li>
 </ul>
 </td>
 <td>
@@ -96,7 +108,13 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <tr>
 <td>6</td>
-  <td><ul><li>Introduction to Angular / Angular Components</li></ul></td>
+<td>
+<ul>
+<li>Introduction to Angular</li>
+<li>Development Environment Setup</li>
+<li>Modern Front End Development Design Patterns</li>
+</ul>
+</td>
 <td>
 <ul>
 <li>Assignment&nbsp;4</li>
@@ -115,7 +133,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>7</td>
 <td>
 <ul>
-<li>Introduction to Angular Routing / Components cont'd</li>
+<li>Angular Components Introduction</li>
 </ul>
 </td>
 <td>
@@ -140,7 +158,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>8</td>
 <td>
 <ul>
-<li>Introduction to Angular Services / Routing cont'd</li>
+<li>Angular Components Continued </li>
 </ul>
 </td>
 <td>
@@ -159,7 +177,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>9</td>
 <td>
 <ul>
-<li>Introduction to Angular Forms</li>
+<li>Routing in Angular</li>
 </ul>
 </td>
 <td>
@@ -175,7 +193,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>10</td>
 <td>
 <ul>
-<li>Introduction to Angular Deployment &amp; Testing</li>
+<li>Services in Angular</li>
 </ul>
 </td>
 <td>
@@ -208,7 +226,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <tr>
 <td>12</td>
-  <td><ul><li>Introduction to Socket.io</li></ul></td>
+  <td><ul><li>Introduction to Angular Deployment &amp; Testing</li></ul></td>
 <td></td>
 <td>
 <ul>
