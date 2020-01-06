@@ -20,8 +20,8 @@ app.use(cors());
 // ################################################################################
 // Data model and persistent store setup
 
-const manager = require("./manager.js");
-const m = manager();
+const serverData = require("./serverData.js");
+const data = serverData();
 
 
 
@@ -29,15 +29,15 @@ const m = manager();
 // Request handlers for data entities (listeners)
 
 // Get all
-app.get("/api/cars", (req, res) => {
+app.get("/api/theaters", (req, res) => {
   // Call the manager method
-  res.json(m.carGetAll());
+  res.json(data.theaterGetAll());
 });
 
 // Get one
-app.get("/api/cars/:id", (req, res) => {
+app.get("/api/theaters/:id", (req, res) => {
   // Call the manager method
-  let o = m.carGetById(req.params.id);
+  let o = data.theaterGetById(req.params.id);
   // Return the appropriate result
   // Longer if-else form...
   /*
@@ -53,31 +53,35 @@ app.get("/api/cars/:id", (req, res) => {
 });
 
 // Add new
-app.post("/api/cars", (req, res) => {
-  // Call the manager method
+app.post("/api/theaters", (req, res) => {
+  // Call the theater method
   // MUST return HTTP 201
-  res.status(201).json(m.carAdd(req.body));
+  res.status(201).json(data.theaterAdd(req.body));
 });
 
 // Edit existing
-app.put("/api/cars/:id", (req, res) => {
+app.put("/api/theaters/:id", (req, res) => {
   // Make sure that the URL parameter matches the body value
   // This code is customized for the expected shape of the body object
-  if (req.params.id != req.body.id) {
+
+
+  console.log(req.body);
+  
+  if (req.params.id != req.body._id) {
     res.status(404).json({ "message": "Resource not found" });
   }
   else {
-    // Call the manager method
-    let o = m.carEdit(req.body);
+    // Call the theater method
+    let o = data.theaterEdit(req.body);
     // Return the appropriate result
     o ? res.json(o) : res.status(404).json({ "message": "Resource not found" });
   }
 });
 
 // Delete item
-app.delete("/api/cars/:id", (req, res) => {
-  // Call the manager method
-  m.carDelete(req.params.id)
+app.delete("/api/theaters/:id", (req, res) => {
+  // Call the theater method
+  data.theaterDelete(req.params.id)
   // MUST return HTTP 204
   res.status(204).end();
 });
