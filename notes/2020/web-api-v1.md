@@ -146,8 +146,8 @@ app.put("/api/items/:id", (req, res) => {
 
 // Delete item
 app.delete("/api/items/:id", (req, res) => {
-  // MUST return HTTP 204
-  res.status(204).json({ "message": `deleted user with identifier: ${req.params.id}` });
+  // MUST return HTTP 200
+  res.status(200).json({ "message": `deleted user with identifier: ${req.params.id}` });
 
   // In a real app, do not send body data, instead just send...
   //res.status(204).end();
