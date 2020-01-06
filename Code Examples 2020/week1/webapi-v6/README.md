@@ -2,9 +2,9 @@
 <p>Features:</p>
 <ul>
   <li>Node.js and Express.js</li>
-  <li>No database, and the data (a collection of automobile objects) is in memory</li>
+  <li>No database, and the data (a collection of theater objects) is in memory</li>
   <li>Methods that support get all, get one, add new, edit existing, and delete item</li>
-  <li>This app uses a data model manager (<code>manager.js</code>) to handle data service tasks</li>
+  <li>This app uses a data model manager (<code>serverData.js</code>) to handle data service tasks</li>
 </ul>
 
 <br>
