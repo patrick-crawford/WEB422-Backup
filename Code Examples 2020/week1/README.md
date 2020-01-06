@@ -31,6 +31,6 @@ Methods that support get all, get one, add new, edit existing, and delete item.
 
 No database, and the data (a collection of automobile objects) is in memory.  
 Methods that support get all, get one, add new, edit existing, and delete item.  
-This app uses a data model manager (<code>manager.js</code>) to handle data service tasks.  
+This app uses a data model manager (<code>serverData.js</code>) to handle data service tasks.  
 
 <br>
