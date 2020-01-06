@@ -84,7 +84,7 @@ That `c:\dev` folder will be visible from Ubuntu as `/mnt/c/dev`.
 
 <br>
 
-#### Deleting old or unneeded app/projecct folders 
+#### Deleting old or unneeded app/project folders 
 
 As you know, when you delete a folder (using Finder or File Explorer), the folder is just "marked" as deleted, and is then managed by the operating system's Trash folder (Unix) or Recycle Bin folder (Windows 10). Later, you can "empty" the Trash folder, which actually and permanently deletes the contents. 
 
