@@ -29,8 +29,6 @@ File system GUI | Finder | File Explorer
 File system CLI | Terminal | Terminal on **Ubuntu**
 Editor | Visual Studio Code | Visual Studio Code<br>installed on **Windows**
 Node.js<br>React tools<br>Angular tools | Install these on macOS | Install these on **Ubuntu**
-MongoDB engine<br>MongoDB shell | Install these on macOS | Install these on **Ubuntu**
-Database inspector<br>and editor | MongoDB Compass | MongoDB Compass<br>installed on **Windows**
 Web browser(s)<br>including dev tools,<br>debugger | Chrome<br>Firefox<br>Opera<br>Safari | Chrome<br>Firefox<br>Opera<br>Edge 
 HTTP inspector | Postman | Postman<br>installed on **Windows**
 Data generator | [mockaroo.com](https://mockaroo.com)<br>online | [mockaroo.com](https://mockaroo.com)<br>online
@@ -43,7 +41,6 @@ As you can see from the summary, you will be using GUI versions of the following
 
 * File system 
 * Code editor
-* Database inspector and editor
 * Browsers
 
 The dev tools (Node.js etc.) and the database engine and shell are installed on a Unix. DO NOT install these on Windows. 
@@ -58,8 +55,6 @@ Do not hesitate to use multiple terminal windows. During development, your profe
   * Used to create new apps and to run general commands
 * Another is focused on the current app itself
   * It's used to create new files and to run app-specific commands (e.g. `npm start`, or `ng <something>`)
-* Another is focused on the database folder area 
-  * It's used to run the database command shell or to start and stop the database engine
 
 If you're hesitating because you're uncomfortable with a Unix CLI, then get over it. You passed the ULI101, WEB222, and WEB322 courses, so you are expected to know how to perform typical file system and app execution tasks. If your comfort level is low, then vow to improve your skillset in this area. 
 
@@ -80,8 +75,6 @@ Also in your Documents folder, create a folder to hold your apps, maybe named `d
 #### Creating folders on Ubuntu on WSL on Windows 10
 
 After Ubuntu (on WSL on Windows 10) is installed, a typical Unix-style file system is available. Whe you open a terminal, your present working directory (pwd) is your user's home directory (e.g. `/home/peter`). 
-
-This area is NOT visible from the host operating system, Windows 10. However, it is an ideal location for your database folders. Therefore, for each database, we suggest that you create a folder that has a "db-" prefix, so that you can easily and quickly identify them when you display a list of items in a folder. For example, `db-company`. 
 
 Where should you store the apps that you're working on? In an area that's visible from BOTH Ubuntu and the host operating system. Here's our suggestions:
 
