@@ -38,7 +38,7 @@ The weekly notes will be organized and delivered as a collection of topic-themed
 
 ### This Week
 
-New topic presentation, discussions, and demonstrations. While some brief notes are included below, be prepared to [take your own notes](/standards#taking-notes-in-class). 
+New topic presentation, discussions, and demonstrations. While some brief notes are included below, be prepared to take your own notes. 
 
 * [Welcome](welcome) to the WEB422 course
 
