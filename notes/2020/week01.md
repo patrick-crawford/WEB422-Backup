@@ -50,6 +50,8 @@ New topic presentation, discussions, and demonstrations. While some brief notes 
 
 * [This document](postman-intro) introduces you to Postman, and has how-to getting started info.
 
+* [MongoDB Atlas Sample Data](mongodb-sample-data) guide for your MongoDB Account to be used this Semester
+
 <br>
 
 ### Code examples
