@@ -66,9 +66,7 @@ Professional software developers use multiple terminal windows, and are comforta
 
 #### Creating folders on macOS
 
-In your Documents folder, create a folder to hold your databases, maybe named `db`. (Then inside that folder, each database will be in its own folder.)
-
-Also in your Documents folder, create a folder to hold your apps, maybe named `dev`. (Then inside that folder, each app will be in its own folder.)
+In your Documents folder, create a folder to hold your apps, maybe named `dev`. (Then inside that folder, each app will be in its own folder.)
 
 <br>
 
