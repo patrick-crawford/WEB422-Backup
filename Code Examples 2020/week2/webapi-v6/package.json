@@ -1,5 +1,5 @@
 {
-  "name": "webapi-v4",
+  "name": "webapi-v6",
   "version": "1.0.0",
   "description": "Project template, web service, base, in-memory data",
   "main": "server.js",
