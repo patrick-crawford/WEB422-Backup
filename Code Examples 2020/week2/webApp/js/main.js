@@ -42,7 +42,7 @@ function gettheaterModelById(id){
 }
 
 
-$(document).ready(function(){
+$(function(){
 
     initializetheatersModel();
 
@@ -53,4 +53,5 @@ $(document).ready(function(){
         console.log(theater);
          
     });
+
 });
