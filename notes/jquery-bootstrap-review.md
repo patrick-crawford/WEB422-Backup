@@ -95,7 +95,7 @@ jQuery provides this functionality via it's [on()](http://api.jquery.com/on/) me
 We can apply this method to any selected element in order to wire up ("respond to") an "event" by passing a callback function to the "handler" parameter, ie:
 
 ```javascript
-$(".my-table tbody").on("click", "tr", function(){ // watch the whole document for when existing (or new) tr elements are clicked
+$(".my-table tbody").on("click", "tr", function(){ // watch the tbody element contained within an element with class "my-table" and execute code whenever new (or existing) <tr> elements are clicked
      console.log("table row clicked!");
 });
 ```
