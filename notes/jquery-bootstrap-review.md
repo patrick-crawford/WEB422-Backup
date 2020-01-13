@@ -356,8 +356,8 @@ See: [https://getbootstrap.com/docs/3.4/javascript/#popovers-usage](https://getb
 
 ```js
 $("#dynamicPopover").popover({
-    template: '<div class="popover" role="tooltip"><div class="arrow"></div>' + 
-              '<h3 class="popover-title"></h3><div class="popover-content"></div></div>',
+    template: `<div class="popover" role="tooltip"><div class="arrow"></div> 
+              <h3 class="popover-title"></h3><div class="popover-content"></div></div>`,
     title: 'Tooltip Title',
     content: 'Lorem ipsum dolor sit amet',
     placement: 'top',
@@ -372,12 +372,12 @@ $("#dynamicPopover").popover({
 Alerts are small messages that take the form of "**success**", "**information**", "**warning**", or "**danger**".  The template for creating alerts is fairly consistant, ie:
 
 ```js
-let alertTemplate = '<div class="alert alert-warning alert-dismissible fade in" role="alert">' +
-                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' + 
-                            '<span aria-hidden="true">×</span>' +
-                        '</button>' +
-                        '<strong>Warning</strong>' + alertMessage + 
-                    '</div>';
+let alertTemplate = `<div class="alert alert-warning alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <strong>Warning</strong> ${alertMessage}
+                    </div>`;
 ```
 We can use this to create alert messages on the fly and .append() them to our page whenever we wish to alert the user.  
 
