@@ -238,7 +238,7 @@ let template4Result = template4({ 'users': users }); // => '<ul><li>fred</li><li
 
 ## Leveraging Templates to Render Data 
 
-As you can see from above, lodash templates will certainly come in handy when rendering data.  We can declare the template anywhere and use it to "render" our data.  To see how this can apply to a more complex dataset (ie: the "theaters" data from last week), please view the [Week 2 Code Example](https://github.com/sictweb/web422/tree/master/Code%20Examples%202020/week2).  
+As you can see from above, lodash templates will certainly come in handy when rendering data.  We can declare the template anywhere and use it to "render" our data.  To see how this can apply to a more complex dataset (ie: the "theaters" data from last week), please view the [Week 2 Code Example](https://github.com/sictweb/web422/tree/master/Code%20Examples/week2) under "Data-Rendering".  
 
 We will be walking through this example if we have time during the lecture, otherwise we will cover it during the lab period.
 
