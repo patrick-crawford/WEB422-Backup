@@ -26,5 +26,15 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 </ul>
 </td>
 </tr>
+<tr>
+<td><a href="/notes/2020/week02">2 - Notes</a></td>
+<td>
+<ul>
+<li>Short jQuery with Bootstrap 3 Review</li>
+<li>Helpful utility functions with Lodash &amp; Rendering Data</li>
+<li>Handling Date / Time information using Moment</li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>
