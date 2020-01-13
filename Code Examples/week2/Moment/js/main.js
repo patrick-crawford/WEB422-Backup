@@ -4,11 +4,11 @@ $(function(){
 
         // Sample date for testing
     
-            let hireDate = "2010-11-07T04:00:00.000Z"; // Zsa zsa Mannering's hire date in our "Employees" Collection
+            let saleDate = "2010-11-07T04:00:00+00:00";
 
         // Creating a "Moment"
 
-            let mDate = moment(hireDate); // create a new  "moment" object
+            let mDate = moment(saleDate); // create a new  "moment" object
 
             mDate.utc(); // switch to "UTC" mode
 
@@ -85,7 +85,7 @@ $(function(){
 
             // utcOffset: https://momentjs.com/docs/#/manipulating/utc-offset/
 
-            let mDate26 = mDate.utcOffset(); // 240 (minutes)
+            let mDate26 = mDate.utcOffset(); // -240 (minutes)
 
         // Query Options:
 
