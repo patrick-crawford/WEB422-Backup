@@ -16,12 +16,12 @@ function refreshTheaterRows(theaters){
     $("theaters-table tbody").empty();
 
     let rowsTemplate = _.template(
-        '<% _.forEach(theaters, function(theater) { %>' +
-            '<tr data-id=<%- theater._id %>>' + 
-                '<td><%- theater.theaterId %></td>' + 
-                '<td><%- theater.location.address.street1 %></td>' +  
-            '</tr>' +
-        '<% }); %>');
+        `<% _.forEach(theaters, function(theater) { %>
+            <tr data-id=<%- theater._id %>>
+                <td><%- theater.theaterId %></td>
+                <td><%- theater.location.address.street1 %></td>
+            </tr> 
+        <% }); %>`);
 
     let rows = rowsTemplate({'theaters': theaters});
     $("#theaters-table tbody").html(rows);
