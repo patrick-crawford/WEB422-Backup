@@ -11,13 +11,7 @@ layout: default
 
 ### Downloading Moment.js
 
-Moment.js exists as a single, minified .js file that can either be [downloaded](https://momentjs.com/downloads/moment-with-locales.min.js) (with or without all locales) and included in your local solution, or referenced using the [cloudflare CDN](https://cdnjs.com/libraries/moment.js/), ie:
-
-```js
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" integrity="sha256-AdQN98MVZs44Eq2yTwtoKufhnU+uZ7v2kXnD5vqzZVo=" crossorigin="anonymous"></script>
-```
-
- It is also available [via NPM](https://www.npmjs.com/package/moment) and can be used in your Node.js server applications as well.
+Moment.js exists as a single, minified .js file that can either be [downloaded](https://momentjs.com/downloads/moment-with-locales.min.js) (with or without all locales) and included in your local solution, or referenced using [the CDN](https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js) (with or without all locales) in your pages/views. It is also available [via NPM](https://www.npmjs.com/package/moment) and can be used in your Node.js server applications as well.
 
 <br>
 
@@ -29,11 +23,13 @@ We will not be covering every facet of the Moment.js library during this lecture
 
 ### Working with Moment.js
 
-The following core pieces of functionality will provide a solid foundation for working with Moment.js in the future.  For the below examples, we will be using a typical string representation of a date, ie "saleDate" from our sample "sales" collection (within "sample_supplies"):
+The following core pieces of functionality will provide a solid foundation for working with Moment.js in the future.  For the below examples, we will be using the string representation of Zsa Zsa Mannering's start date, ie:
 
-```js
-let saleDate = "2010-11-07T04:00:00+00:00";
 ```
+let hireDate = "2010-11-07T04:00:00.000Z"; // Zsa zsa Mannering's hire date in our "Employees" Collection
+```
+
+If you’re following along with the “Code Samples” the following functionality is located in the “week2/Moment” folder
 
 <br>
 
@@ -48,7 +44,7 @@ let saleDate = "2010-11-07T04:00:00+00:00";
 ### Creating a "Moment"
 
 ```js
-let mDate = moment(saleDate); // create a new "moment" object
+let mDate = moment(hireDate); // create a new "moment" object
 ```
 
 <br>
@@ -154,7 +150,7 @@ Formats a string to the ISO8601 standard.
 See: [https://momentjs.com/docs/#/displaying/as-iso-string/](https://momentjs.com/docs/#/displaying/as-iso-string/)
 
 ```js
-let mDate24 = mDate.toISOString(); // 2010-11-07T04:00:00.000Z (same as what we started with, only using "Z" instead of "+00:00" to indicate UTC)
+let mDate24 = mDate.toISOString(); // 2010-11-07T04:00:00.000Z (the same as what we started with)
 ```
 
 <br>
@@ -277,5 +273,11 @@ See: [https://momentjs.com/docs/#/query/is-leap-year/](https://momentjs.com/docs
 ```js
 let mDate32 = mDate.isLeapYear(); // false
 ```
+
+<br>
+
+## Updating jquery-AJAX to show Dates
+
+To see how we can use Moment to show dates for employees within our Teams API, open the **Moment-AJAX** Example located in the **week2** folder. We will walk through the solution together in class.
 
 <br>

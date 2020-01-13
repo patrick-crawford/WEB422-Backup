@@ -5,20 +5,14 @@ layout: default
 
 ## WEB422 Week 2 Notes
 
-The theme for the next week or more is to continue to build client-side, browser-based development skills, using long-established libraries such as jQuery (continued coverage), Moment.js and Lodash.
-
-We will also be introducing at SASS as a powerful and widely adopted CSS preprocessor / extension language.
-
-<br>
+The theme for the next week or more is to continue to expand upon our client-side, browser-based development skills, by introducing long-established libraries such as Lodash and Moment.js.  However, we will start with a very short review of the jQuery JavaScript library, focusing specifically on DOM Manipulation and working with some of the Bootstrap.  For a detailed review of the Bootstrap 3 framework, please refer to the [WEB322 Week 11 Notes](https://web322.ca/notes/week11) or the extremely comprehensive (and well written) official [Bootstrap 3 documentation](https://getbootstrap.com/docs/3.4/)
 
 **Topics:**
 
-[jQuery continued](jquery.md)
-
-Handling Date/Time information using [Moment.js](moment.md)
+Short [jQuery with Bootstrap Review](jquery-bootstrap-review.md)
 
 Helpful Utility Functions with [Lodash](lodash.md)
 
-[Introduction to SASS](sass.md)
+Handling Date/Time information using [Moment.js](moment.md)
 
 <br>

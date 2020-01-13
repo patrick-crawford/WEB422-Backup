@@ -13,7 +13,13 @@ As John puts it, Lodash is a toolkit or library of functions that extend some of
 
 ### Downloading Lodash
 
-Like most JavaScript libraries, Lodash exists as a single, minified .js file that you can either [download](https://raw.githubusercontent.com/lodash/lodash/4.17.4/dist/lodash.min.js) and include in your local solution, or [reference the CDN](https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js) in your pages/views.  If you're thinking that you might want to use it in your Node.js server applications, you can do that as well [via NPM](https://www.npmjs.com/package/lodash).
+Like most JavaScript libraries, Lodash exists as a single, minified .js file that you can either [download (Full build)](https://lodash.com/) and include in your local solution, or [reference the CDN](https://www.jsdelivr.com/package/npm/lodash) in your pages/views, ie:
+
+```js
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+```
+
+If you're thinking that you might want to use it in your Node.js server applications, you can do that as well [via NPM](https://www.npmjs.com/package/lodash).
 
 <br>
 
@@ -22,14 +28,6 @@ Like most JavaScript libraries, Lodash exists as a single, minified .js file tha
 Lodash is a very large, comprehensive library and covering it in it's entierity is well beyond the scope of this class.  Instead, we will introduce some of the more interesting pieces of functionality that we're likely to come across during this semester.  
 
 However, you should absolutely [**Bookmark the Documentation Page**](https://lodash.com/docs/) and always check it before you start working with Objects, Collections, Strings, Dates, etc.  The chances are very good that there's ***something*** in there that will help optomize your code and make your life easier.
-
-<br>
-
-### The Fun Stuff
-
-As previously stated, this is only a sampling of some of the more interesting and most accessable features of the Lodash library.  We will use some of these to add primitave paging and filtering functionality to last week's **jQuery-AJAX** example.  
-
-If you're following along with the "Code Samples" the following functionality is located in the **"week2/Lodash"** folder
 
 <br>
 
@@ -218,30 +216,30 @@ let template2 = _.template('<b><%- value %></b>');
 let template22Result = template2({ 'value': '<script>' }); // => '<b>&lt;script&gt;</b>'
 
 // Use the "evaluate" delimiter to execute JavaScript and generate HTML.
-let template3 = _.template('<ul>' + 
-                                '<% _.forEach(users, function(user) { %>' +
-                                    '<li><%- user %></li>' + 
-                                '<% }); %>' +
-                            '</ul>');
+let template3 = _.template(`<ul> 
+                                <% _.forEach(users, function(user) { %>
+                                    <li><%- user %></li>
+                                <% }); %>
+                            </ul>`);
 
 let template3Result = template3({ 'users': ['fred', 'barney'] }); // => '<ul><li>fred</li><li>barney</li></ul>'
 
 // Use the "evaluate" delimiter to execute JavaScript and generate HTML from our "users" collection.
-let template4 = _.template('<ul>' + 
-                                '<% _.forEach(users, function(user) { %>' + 
-                                    '<li><%- user.user %></li>' + 
-                                '<% }); %>' + 
-                            '</ul>');
+let template4 = _.template(`<ul> 
+                                <% _.forEach(users, function(user) { %> 
+                                    <li><%- user.user %></li> 
+                                <% }); %>
+                            </ul>`);
 
 let template4Result = template4({ 'users': users }); // => '<ul><li>fred</li><li>pebbles</li><li>barney</li></ul>'
 ```
 
 <br>
 
-## Adding Sorting & Paging
+## Leveraging Templates to Render Data 
 
-Using the methods outlined above, we can very easily add "paging" and "sorting" functionality to our week1 **jquery-AJAX** example.  This can be accomplished using the **.\_template()**, **.\_chunk()**, **.\_take()** and **.\_sortBy()** methods.
+As you can see from above, lodash templates will certainly come in handy when rendering data.  We can declare the template anywhere and use it to "render" our data.  To see how this can apply to a more complex dataset (ie: the "theaters" data from last week), please view the [Week 2 Code Example](https://github.com/sictweb/web422/tree/master/Code%20Examples%202020/week2).  
 
-To see how we can use Lodash and the aforementioned properties to implement **sorting** and **paging**, open the **Lodash-AJAX** Example located in the **week2** folder.  We will walk through the solution together in class.
+We will be walking through this example if we have time during the lecture, otherwise we will cover it during the lab period.
 
 <br>
