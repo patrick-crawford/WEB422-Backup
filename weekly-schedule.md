@@ -62,8 +62,9 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>3</td>
 <td>
 <ul>
-<li>React introduction</li>
-<li>Components as an architectural design feature</li>
+<li>Introduction to React</li>
+<li>Getting started by creating a simple application</li>
+<li>More about components (as an architectural design)</li>
 </ul>
 </td>
 <td>
@@ -77,7 +78,12 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <tr>
 <td>4</td>
-  <td><ul><li>Routing in React</li></ul></td>
+<td>
+<ul>
+<li>Routing in React</li>
+<li>Simple Forms &amp; Connecting to a Web API using a Service</li>
+</ul>
+</td>
 <td>
 <ul>
 <li>Assignment&nbsp;3</li>
@@ -94,7 +100,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>5</td>
 <td>
 <ul>
-<li>Services in React</li>
+<li>Advanced topics in React: Hooks</li>
 </ul>
 </td>
 <td>
