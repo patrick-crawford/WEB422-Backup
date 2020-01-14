@@ -81,7 +81,6 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>
 <ul>
 <li>Routing in React</li>
-<li>Simple Forms &amp; Connecting to a Web API using a Service</li>
 </ul>
 </td>
 <td>
@@ -100,7 +99,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>5</td>
 <td>
 <ul>
-<li>Advanced topics in React: Hooks</li>
+<li>Simple Forms &amp; Connecting to a Web API using a Service</li>
 </ul>
 </td>
 <td>
