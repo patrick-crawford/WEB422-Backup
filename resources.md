@@ -103,12 +103,13 @@ Oh, and you should must know (and love!) the series of RFCs that describe HTTP, 
 * [Beginning Angular 2](https://www.amazon.com/Beginning-Angular-Typescript-updated-ebook/dp/B01N9ZUHBA/) - Greg Lim
 
 **Front end frameworks**  
+* [React](https://reactjs.org/)
 * [Angular](https://angular.io/docs) (which is NOT AngularJS, a legacy technology)  
 
 Alternatives:
 * [Knockout](http://knockoutjs.com/documentation/introduction.html)  
-* [React](https://facebook.github.io/react/docs/hello-world.html)  
 * [Ember](https://www.emberjs.com/api)
+* [Vue](https://vuejs.org/)
 * and many others...  
 
 **State management**  
