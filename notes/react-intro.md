@@ -5,7 +5,7 @@ layout: default
 
 ## Introduction to React
 
-Our last topic stop before we get to Angular is **React**. We will plan to work with React for the next 3 weeks.
+The next topic to be discussed in this class is **React**. We will plan to work with React for the next 3 weeks.
 
 React is a widely-used JavaScript library for building user interfaces. In terms of mindshare for front-end development, React and Angular have almost all of it. 
 
