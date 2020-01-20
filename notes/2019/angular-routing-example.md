@@ -25,7 +25,7 @@ A simple diagram will help you identify the information and functionality that y
 
 For our example app, here's what we're trying to do. Each rectangle will (or could) have information and/or functionality inside.   
 
-![Multiple components](../media/angular-routing-v1.png)
+![Multiple components](/media/angular-routing-v1.png)
 
 <br>
 

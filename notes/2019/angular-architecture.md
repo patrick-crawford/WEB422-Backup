@@ -23,7 +23,7 @@ To begin to understand the Angular architecture, the dev team has created a "big
 
 For now, focus on the middle of that diagram, which shows a *component*. 
 
-![Angular component](../media/angular-architecture-component.png)
+![Angular component](/media/angular-architecture-component.png)
 
 <br>
 

@@ -62,7 +62,7 @@ Then, you can build and run the app with this:
 
 In the code example, the "Bear" component has been edited. Its content has been pushed down. It has a list (table) of academic courses. It also has a form that enables the user to add a new course. 
 
-![Forms](../media/angular-forms-render1.png)
+![Forms](/media/angular-forms-render1.png)
 
 <br>
 

@@ -142,7 +142,7 @@ In the panel body div, add another element:
 
 We're using simple read-only binding syntax, to extract the first element of the `teachers` array/collection. It should show this:
 
-![One name](../media/angular-services-render1.png)
+![One name](/media/angular-services-render1.png)
 
 Now we can improve its appearance, by rendering *all* names in the teacher array/collection. We will use an `ngFor` *structural directive* that renders an element for each item in the collection. Replace the just-added element with this new content:
 
@@ -163,7 +163,7 @@ Now we can improve its appearance, by rendering *all* names in the teacher array
 
 It should show this:
 
-![All names](../media/angular-services-render2.png)
+![All names](/media/angular-services-render2.png)
 
 <br>
 
@@ -181,7 +181,7 @@ Open the component class (`guide.component.ts`) for editing. Then:
 
 Then, modify the HTML template (`guide.component.html`), to render the list of names. The result:
 
-![All names](../media/angular-services-render3.png)
+![All names](/media/angular-services-render3.png)
 
 <br>
 
@@ -391,7 +391,7 @@ Finally, open the HTML template (`horse.component.html`) for editing. We want to
 
 The result should look like this:
 
-![Posts](../media/angular-services-render11.png)
+![Posts](/media/angular-services-render11.png)
 
 <br>
 
@@ -401,7 +401,7 @@ Do it again, to the lizard component. Show the users resource, and push the exis
 
 The result should look like this:
 
-![Users](../media/angular-services-render12.png)
+![Users](/media/angular-services-render12.png)
 
 <br>
 

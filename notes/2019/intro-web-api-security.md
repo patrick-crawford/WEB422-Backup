@@ -241,7 +241,7 @@ app.post("/api/register", (req, res) => {
 
 To test this new route, stop and start your API (server.js) again and open your trusty **Postman** app.  You can dismiss the initial dialog box:
 
-![Postman Dialog](../media/Postman-dialog-box.png)
+![Postman Dialog](/media/Postman-dialog-box.png)
 
 And proceed to enter the following data:
 
@@ -264,11 +264,11 @@ If you entered the data correctly, postman should look like the below:
 
 **"Headers" Tab**<br>
 
-![Postman Headers](../media/Postman-headers.png)
+![Postman Headers](/media/Postman-headers.png)
 
 **"Body" Tab**<br>
 
-![Postman Body](../media/Postman-body.png)
+![Postman Body](/media/Postman-body.png)
 
 When you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
 
@@ -281,7 +281,7 @@ Once the request is processed, it should return with a status 200 and the JSON:
 ```
 You can see this in Postman by scrolling down and selecting "body" in the response section:
 
-![Postman Response](../media/Postman-response.png)
+![Postman Response](/media/Postman-response.png)
 
 <br>
 
@@ -314,7 +314,7 @@ To test this new route, once again stop and start your API (server.js) and open 
 
 If you entered the data correctly, postman should look like the below:
 
-![Postman Login Data](../media/Postman-login-data.png)
+![Postman Login Data](/media/Postman-login-data.png)
 
 
 Again, when you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
@@ -328,7 +328,7 @@ Once the request is processed, it should return with a status 200 and the JSON:
 ```
 You can see this in Postman by scrolling down and selecting "body" in the response section:
 
-![Postman Login Response](../media/Postman-login-response.png)
+![Postman Login Response](/media/Postman-login-response.png)
 
 You can also try entering incorrect credentials in the request body (ie: a different "userName", or an incorrect "password") to validate that our service is indeed functioning properly and will not send the "login successful" message to unauthorized users. 
 
@@ -596,45 +596,45 @@ To test this, we must insure the following series of actions yields the expected
 
 **Action**: Attempt to access the route /api/vehicles as before (without supplying a JWT).
 
-![Postman Get Vehicles](../media/postman-get-vehicles-1.png)
+![Postman Get Vehicles](/media/postman-get-vehicles-1.png)
 
 <br>
 
 **Expected Result:** Server returns a 401 error code and the text "unauthorized".
 
-![Postman Unauthorized](../media/postman-get-vehicles-error.png)
+![Postman Unauthorized](/media/postman-get-vehicles-error.png)
 
 <br>
 <br>
 
 **Action**: Log in as user "bob" (as above) and copy the value of the returned "token" property.
 
-![Postman Login Token](../media/postman-login-token.png)
+![Postman Login Token](/media/postman-login-token.png)
 
 <br>
 
 **Action**: Attempt to access the route /api/vehicles as before, only this time add the header "Authorization" with the value "JWT" followed by a *space*, follwed by the returned "token" that was sent when "bob" logged in (above)
 
-![Postman Get Vehicles with Token](../media/postman-get-vehicles-token.png)
+![Postman Get Vehicles with Token](/media/postman-get-vehicles-token.png)
 
 <br>
 
 **Expected Result:** Vehicle data is returned
 
-![Postman Vehicle Data](../media/postman-get-vehicles-success.png)
+![Postman Vehicle Data](/media/postman-get-vehicles-success.png)
 
 <br>
 <br>
 
 **Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).
 
-![Postman Vehicle Data - Incorrect Token](../media/postman-get-vehicles-incorrect-token.png)
+![Postman Vehicle Data - Incorrect Token](/media/postman-get-vehicles-incorrect-token.png)
 
 <br>
 
 **Expected Result**: Server returns a 401 error code and the text "unauthorized".
 
-![Postman Unauthorized](../media/postman-get-vehicles-error.png)
+![Postman Unauthorized](/media/postman-get-vehicles-error.png)
 
 <br>
 

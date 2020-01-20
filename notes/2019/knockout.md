@@ -71,7 +71,7 @@ It displays information from the view model, sends commands to the view model (e
 
 When using KO, your view is simply your HTML document with declarative bindings to link it to the view model. Alternatively, you can use templates that generate HTML using data from your view model.
 
-![KO in action](../media/kov1.png)
+![KO in action](/media/kov1.png)
 
 <br>
 

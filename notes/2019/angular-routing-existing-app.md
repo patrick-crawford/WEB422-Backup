@@ -31,7 +31,7 @@ Open the app module (`app.module.ts`) for editing.
 
 The code for an app that does NOT have routing is in the left column. The right column shows the new code  - highlighted in yellow - for an app with routing.
 
-![App module](../media/angular-routing-diff1.png)
+![App module](/media/angular-routing-diff1.png)
 
 <br>
 
@@ -41,7 +41,7 @@ Create a new file (`app-routing.module.ts`) to hold the app routing module sourc
 
 All code in the right column is new.
 
-![App module](../media/angular-routing-diff2.png)
+![App module](/media/angular-routing-diff2.png)
 
 <br>
 
@@ -51,7 +51,7 @@ Open the HTML template that will host the routed components. The example below s
 
 The right column shows the new code  - highlighted in yellow - for an app with routing.
 
-![App module](../media/angular-routing-diff3.png)
+![App module](/media/angular-routing-diff3.png)
 
 <br>
 

@@ -23,7 +23,7 @@ A simple diagram will help you identify the information and functionality that y
 
 For our example app, here's what we're trying to do. Each rectangle will (or could) have information and/or functionality inside.   
 
-![Multiple components](../media/angular-components-v1.png)
+![Multiple components](/media/angular-components-v1.png)
 
 <br>
 
@@ -258,7 +258,7 @@ Open the HTML template for the "navbar" component. Create a standard, Bootstrap 
 
 The result will look something like the following:
 
-![Navigation menu](../media/angular-routing-v1-nav2.png)
+![Navigation menu](/media/angular-routing-v1-nav2.png)
 
 <br>
 

@@ -23,7 +23,7 @@ During the React topic coverage, you learned to install and use the *React app g
 
 Angular has an app generator too, the [Angular CLI](https://cli.angular.io/). 
 
-![Angular CLI web site](../media/angular-cli-web-site.png)
+![Angular CLI web site](/media/angular-cli-web-site.png)
 
 <br>
 
@@ -70,7 +70,7 @@ ng serve --open
 
 The server begins listening on HTTP port 4200. A browser tab/window should open, loading the resource [localhost port 4200 URL](http://localhost:4200/). 
 
-![Server is running](../media/angular-server-process.png)
+![Server is running](/media/angular-server-process.png)
 
 <br>
 
@@ -82,7 +82,7 @@ An easy edit, just to prove that you can do so, is to edit the `app.component.ts
 
 After you save your changes, switch over to the browser window. It should show the new content. Behind the scenes, the Terminal process will regenerate the content, making changes where necessary to the deployment assets. As part of the process, the browser will refresh the visible content.
 
-![Server is running](../media/angular-getting-started-edit-result.png)
+![Server is running](/media/angular-getting-started-edit-result.png)
 
 <br>
 
@@ -100,7 +100,7 @@ Here are some of the highlights that you should be looking for:
 * Later (but soon), we will use the Angular CLI to create another component in the `src` folder
 * There are a number of files and folders that perform specific tasks for the app, and/or help you as the programmer
 
-![New app folder structure](../media/angular-cli-project-structure.png)
+![New app folder structure](/media/angular-cli-project-structure.png)
 
 <br>
 
