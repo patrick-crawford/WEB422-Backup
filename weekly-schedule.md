@@ -64,7 +64,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <ul>
 <li>Introduction to React</li>
 <li>Getting started by creating a simple application</li>
-<li>More about components (as an architectural design)</li>
+<li>Introduction to React Components</li>
 </ul>
 </td>
 <td>
