@@ -22,7 +22,7 @@ function App() {
           Learn React
           
         </a>
-        <Hello fName="Jason" lName="Perez" />
+        <Hello />
         <Clock />
       </header>
     </div>
