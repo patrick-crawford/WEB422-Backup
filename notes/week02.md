@@ -9,10 +9,10 @@ The theme for the next week or more is to continue to expand upon our client-sid
 
 **Topics:**
 
-Short [jQuery with Bootstrap Review](jquery-bootstrap-review.md)
+* Short [jQuery with Bootstrap Review](jquery-bootstrap-review.md)
 
-Helpful Utility Functions with [Lodash](lodash.md)
+* Helpful Utility Functions with [Lodash](lodash.md)
 
-Handling Date/Time information using [Moment.js](moment.md)
+* Handling Date/Time information using [Moment.js](moment.md)
 
 <br>

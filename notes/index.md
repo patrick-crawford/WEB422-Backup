@@ -36,5 +36,15 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 </ul>
 </td>
 </tr>
+<tr><td><a href="/notes/week03">3 - Notes</a></td>
+<td>
+Introduction to Component-based architecture using React:<br><br>
+<ul>
+<li>Introduction to React</li>
+<li>Getting started by running the default App</li>
+<li>Introduction to React Components</li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>
