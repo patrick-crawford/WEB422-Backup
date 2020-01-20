@@ -18,7 +18,7 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 </thead>
 <tbody>
 <tr>
-<td><a href="/notes/week01">1 - Notes</a></td>
+<td><a href="/notes/2019/week01">1 - Notes</a></td>
 <td>
 <ul>
 <li>Welcome to the WEB422 course</li>
@@ -29,7 +29,7 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week02">2 - Notes</a></td>
+<td><a href="/notes/2019/week02">2 - Notes</a></td>
 <td>
 <ul>
 <li>jQuery Continued...</li>
@@ -40,7 +40,7 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week03">3 - Notes</a></td>
+<td><a href="/notes/2019/week03">3 - Notes</a></td>
 <td>
 Introduction to MVVM using Knockout.js:<br><br>
 <ul>
@@ -52,7 +52,7 @@ Introduction to MVVM using Knockout.js:<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week04">4 - Notes</a></td>
+<td><a href="/notes/2019/week04">4 - Notes</a></td>
 <td>
 Introduction to Component-based architecture using React:<br><br>
 <ul>
@@ -63,7 +63,7 @@ Introduction to Component-based architecture using React:<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week05">5 - Notes</a></td>
+<td><a href="/notes/2019/week05">5 - Notes</a></td>
 <td>
 React Continued:<br><br>
 <ul>
@@ -74,7 +74,7 @@ React Continued:<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week06">6 - Notes</a></td>
+<td><a href="/notes/2019/week06">6 - Notes</a></td>
 <td>
 Introduction to Angular:<br><br>
 <ul>
@@ -91,7 +91,7 @@ Introduction to Angular:<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week07">7 - Notes</a></td>
+<td><a href="/notes/2019/week07">7 - Notes</a></td>
 <td>
 Introduction to Angular Routing / Components cont'd:<br><br>
 <ul>
@@ -102,7 +102,7 @@ Introduction to Angular Routing / Components cont'd:<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week08">8 - Notes</a></td>
+<td><a href="/notes/2019/week08">8 - Notes</a></td>
 <td>
 Introduction to Angular Services / Routing cont'd:<br><br>
 <ul>
@@ -114,7 +114,7 @@ Introduction to Angular Services / Routing cont'd:<br><br>
 </td>
 </tr>
   <tr>
-<td><a href="/notes/week09">9 - Notes</a></td>
+<td><a href="/notes/2019/week09">9 - Notes</a></td>
 <td>
 Introduction to Angular Forms<br><br>
 <ul>
@@ -125,7 +125,7 @@ Introduction to Angular Forms<br><br>
 </td>
 </tr>
   <tr>
-<td><a href="/notes/week10">10 - Notes</a></td>
+<td><a href="/notes/2019/week10">10 - Notes</a></td>
 <td>
 Introduction to Angular Deployment &amp; Testing<br><br>
 <ul>
@@ -135,7 +135,7 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </td>
 </tr>
     <tr>
-<td><a href="/notes/week11">11 - Notes</a></td>
+<td><a href="/notes/2019/week11">11 - Notes</a></td>
 <td>
   Introduction to Securing a Web API with JWT <br><br>
 <ul>
@@ -147,7 +147,7 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </td>
 </tr>
   <tr>
-<td><a href="/notes/week12">12 - Notes</a></td>
+<td><a href="/notes/2019/week12">12 - Notes</a></td>
 <td>
 Introduction to Socket.io <br><br>
 <ul>
