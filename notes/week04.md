@@ -5,19 +5,29 @@ layout: default
 
 ## WEB422 Week 4 Notes
 
+
+We'll have to talk about events and looping through data and a reintroduction of the "lifecycle methods" and introduce routing
+
+
+
+then week 5, we can talk about connecting our "Sales" api and working with forms
+
+
+
+For the assignment....
+
 Ideas: Compose a page with components and continue to use Bootstrap 3 CSS as usual, by importing the CDN into index.html .... but we can also use Bootstrap 3 components by installing: 
 
 npm install react-bootstrap@0.33.1
 
-and using components:  https://react-bootstrap-v3.netlify.com/components/
+and using components:  https://react-bootstrap-v3.netlify.com/
 
 we can reference them using the syntax:
 
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 
-we can also talk about routing here..
 
 
 
-then week 5, we can talk about connecting our "Sales" api and working with forms
+
