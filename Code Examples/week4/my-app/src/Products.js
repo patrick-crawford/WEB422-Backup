@@ -6,7 +6,8 @@ class Products extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            products: []
+            products: [],
+            loading: true
         }
     }
 
@@ -16,22 +17,28 @@ class Products extends React.Component{
         .then(res=>res.json())
         .then(data => {
             this.setState({
-                products: data.data
+                products: data.data,
+                loading: false  // no longer loading
             })
         })
     }
 
     render(){
-        return (
-            <div>
-                <h1>Products</h1>
-                <div className="list-group">
-                    {this.state.products.map((prod)=>{
-                        return <Link key={prod.id} className="list-group-item" style={{backgroundColor: prod.color}} to={`/Product/${prod.id}`}>{prod.name}: {prod.year}</Link>
-                    })}
+        if(this.state.loading){
+            return null; // could have a loading spinner, etc here
+        }else{
+            return (
+                <div>
+                    <h1>Products</h1>
+                    <div className="list-group">
+                        {this.state.products.map((prod)=>{
+                            return <Link key={prod.id} className="list-group-item" style={{backgroundColor: prod.color}} to={`/Product/${prod.id}`}>{prod.name}: {prod.year}</Link>
+                        })}
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        
     }
 };
 
