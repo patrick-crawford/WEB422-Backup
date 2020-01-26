@@ -152,6 +152,18 @@ const element = React.createElement(
 );
 ```
 
+**ALSO:** When using JSX, there is no notion of an "[empty element](https://developer.mozilla.org/en-US/docs/Glossary/Empty_element)", so be careful when using tags like:
+
+```html
+<br>
+```
+
+as this will actually cause an error and your component will not compile, due to the error **"Parsing error: Unterminated JSX contents"**.  Instead, you must use the "self-closing" syntax, ie:
+
+```html
+<br />
+```
+
 <br>
 
 #### Embedding Expressions in JSX
@@ -299,6 +311,8 @@ Not bad, there's just the issue of updating the clock output - but we'll deal th
 
 * To create a component using a "class", we must [*extend*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Sub_classing_with_extends) the [React.Component](https://reactjs.org/docs/react-component.html) class
 
+* When using "props", we have to refer to them using the "this" keyword, rather than "props" directly
+
 * We must include a "render()" method that returns the content of our component.  This will be invoked every time the component is rendered.
 
 As you can see, the differences between a class component and a functional component are relatively small.  However, by using a class, we can leverage some added complexity, such as "state".  
@@ -330,9 +344,31 @@ return (
 );
 ```
 
+<br>
+
 **Quick Note: "state" vs. "props"**
 
 Props (short for “properties”) and state are both plain JavaScript objects. While both hold information that influences the output of render, they are different in one important way: props get passed to the component (similar to function parameters) whereas state is managed within the component (similar to variables declared within a function).
+
+One interesting thing to note about "props" is that we can pass anything as a property, including functions!  This can be very helpful if we wish to send a message from a "child" component to a "parent" component.  For example, by defining a function (ie: handleMessage(msg) in the "Parent" component, we can pass it in to the "Child" component using a custom property, ie "sendMessage")
+
+**Parent Component**
+
+```jsx
+handleMessage(msg){
+    console.log(`Child Says: ${msg}`)
+}
+
+render(){
+    return <Child sendMessage={this.handleMessage} />;
+}
+```
+
+**Child Component**
+
+```js
+this.props.sendMessage("Hello");
+```
 
 Here are some good resources for further reading on when to use props vs state, from the [official documentation](https://reactjs.org/docs/faq-state.html#what-is-the-difference-between-state-and-props):
 
@@ -382,9 +418,9 @@ Now that our &lt;Clock /&gt; component has a notion of "state", we can write cod
 
   ```jsx
   // Correct
-  this.setState((state, props) => ({
-    counter: state.counter + props.increment
-  }));
+  this.setState((state, props) => {
+    return { counter: state.counter + props.increment }
+  );
   ```
 
 <br>
