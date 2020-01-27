@@ -45,7 +45,7 @@ function App() {
               <Route path='/Product/:id' render={(props) => (
                 <Product id={props.match.params.id} />
               )} />
-              <Route exact path='/about' render={(props) => (
+              <Route exact path='/About' render={() => (
                 <About />
               )} />
               <Route render={() => (
