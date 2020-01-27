@@ -46,5 +46,15 @@ Introduction to Component-based architecture using React:<br><br>
 </ul>
 </td>
 </tr>
+<tr><td><a href="/notes/week04">4 - Notes</a></td>
+<td>
+Continue React Development:<br><br>
+<ul>
+<li>Handling Events and Rendering Data</li>
+<li>Introduction to Routing</li>
+<li>Creating a UI with 3rd party Components</li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>

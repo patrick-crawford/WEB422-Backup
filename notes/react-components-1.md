@@ -158,7 +158,7 @@ const element = React.createElement(
 <br>
 ```
 
-as this will actually cause an error and your component will not compile, due to the error **"Parsing error: Unterminated JSX contents"**.  Instead, you must use the "self-closing" syntax, ie:
+as this will actually cause a problem and your component will not compile, due to the error **"Parsing error: Unterminated JSX contents"**.  Instead, you must use the "self-closing" syntax, ie:
 
 ```html
 <br />
