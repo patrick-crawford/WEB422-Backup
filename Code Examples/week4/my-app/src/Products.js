@@ -39,7 +39,6 @@ class Products extends React.Component{
                 </div>
             );
         }
-        
     }
 };
 

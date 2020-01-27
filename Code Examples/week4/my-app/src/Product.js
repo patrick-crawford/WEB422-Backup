@@ -29,7 +29,6 @@ class Product extends React.Component{
                     loading: false // no longer loading
                 });
             }
-            
         })
     }
 
@@ -55,11 +54,8 @@ class Product extends React.Component{
             }else{
                 return <Redirect to={{ pathname: "/notFound"}} />
             }
-            
         }
-        
     }
-    
 }
 
 export default Product;
