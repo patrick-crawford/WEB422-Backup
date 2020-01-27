@@ -64,7 +64,7 @@ Here, you will notice that we have added a few new concepts to the construction 
   
   "This is not React-specific behavior; it is a part of how functions work in JavaScript. Generally, if you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method."
 
-* on our button element, we use "onClick" (instead of "onclick") to reference the event handler and "wire up" the event.
+* On our button element, we use "onClick" (instead of "onclick") to reference the event handler and "wire up" the event.
 
 For more on passing event handlers to components, such as passing parameters, using arrow functions, etc. see: [https://reactjs.org/docs/faq-functions.html](https://reactjs.org/docs/faq-functions.html).  However, as it states in the linked document, using the alternate syntax can potentially "have performance implications" or "break optimizations based on strict identity comparison", so be careful when using them. 
 
