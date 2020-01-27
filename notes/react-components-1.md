@@ -232,7 +232,7 @@ const element = <div tabIndex="0"></div>;
 You may also use curly braces to embed a JavaScript expression in an attribute:
 
 ```jsx
-const element = <img src={user.avatarUrl}></img>;
+const element = <img src={user.avatarUrl} />;
 ```
 
 Don’t put quotes around curly braces when embedding a JavaScript expression in an attribute. You should either use quotes (for string values) or curly braces (for expressions), but *not both* in the same attribute.
@@ -350,7 +350,7 @@ return (
 
 Props (short for “properties”) and state are both plain JavaScript objects. While both hold information that influences the output of render, they are different in one important way: props get passed to the component (similar to function parameters) whereas state is managed within the component (similar to variables declared within a function).
 
-One interesting thing to note about "props" is that we can pass anything as a property, including functions!  This can be very helpful if we wish to send a message from a "child" component to a "parent" component.  For example, by defining a function (ie: handleMessage(msg) in the "Parent" component, we can pass it in to the "Child" component using a custom property, ie "sendMessage").  Whenever the child wishes to send a message back to the parent, it can invoke the callback function from "props" and pass the data:
+One interesting thing to note about "props" is that we can pass anything as a property, including functions!  This can be very helpful if we wish to send a message from a "child" component to a "parent" component.  For example, if we define a function (ie: handleMessage(msg)) in the "Parent" component, we can pass it in to the "Child" component using a custom property, ie "sendMessage").  Whenever the child wishes to send a message back to the parent, it can invoke the callback function from "props" and pass the data:
 
 **Parent Component**
 
