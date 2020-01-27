@@ -41,7 +41,7 @@ class Product extends React.Component{
                 return (
                     <div>
                         <h1>Product: {this.state.product.name}</h1>
-        
+                        <br />
                         <ul className="list-group">
                             <li className="list-group-item"><strong>Name: </strong> {this.state.product.name}</li>
                             <li className="list-group-item"><strong>Year: </strong> {this.state.product.year}</li>

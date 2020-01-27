@@ -11,6 +11,7 @@ class NotFound extends React.Component{
         return (
             <div>
                 <h1>Page Not Found</h1>
+                <br />
                 <Link to="/">Return Home</Link>
             </div>
         );
