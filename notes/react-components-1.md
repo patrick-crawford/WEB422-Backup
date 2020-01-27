@@ -445,6 +445,15 @@ componentWillUnmount() {
 }
 ```
 
+For more information on the "lifecycle" of a component, and what functions are invoked during that lifecycle, you can check out this excellent tool:
+
+* [Interactive React Lifecycle Methods diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+**Important Note from the Documentation**
+
+> componentDidMount() is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+
+
 <br>
 
 ### Finally, Remove "date={new Date()}" property
