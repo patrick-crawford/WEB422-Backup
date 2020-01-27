@@ -7,7 +7,7 @@ layout: default
 
 This week we will continue to work with *props* as a way to communicate data between components, as well as introduce event handling, routing and working with data from an API. 
 
-First we will discuss how to render data conditionally, in a table or list, as well as displaying content (or not) while we're waiting for data to load.  
+First, we will discuss how to process / "wire up" events and options for conditionally rendering data in a collection.  We will also briefly discuss how to display content (or not) while we're waiting for data to load.  
 
 Next, we will focus on how we can achieve routing within the browser by leveraging the excellent [react-router-dom](https://www.npmjs.com/package/react-router-dom) components.  This will allow uses to quickly navigate to different "views" without leaving the application.
 
