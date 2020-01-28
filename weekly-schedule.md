@@ -80,7 +80,9 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>4</td>
 <td>
 <ul>
-<li>Routing in React</li>
+<li>Handling Events and Rendering Data</li>
+<li>Introduction to Routing</li>
+<li>Creating a UI with 3rd party Components</li>
 </ul>
 </td>
 <td>
@@ -99,7 +101,8 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>5</td>
 <td>
 <ul>
-<li>Simple Forms &amp; Connecting to a Web API using a Service</li>
+<li>Forms in React</li>
+<li>Deploying an App</li>
 </ul>
 </td>
 <td>
