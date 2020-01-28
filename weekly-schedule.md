@@ -26,7 +26,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>
 <ul>
 <li>Dev environment setup</li>
-<li>Re-introduction to back-end web services</li>
+<li>Re-introduction to back-end web services and testing</li>
 </ul>
 </td>
 <td>
@@ -41,9 +41,9 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>2</td>
 <td>
 <ul>
-<li>Some more web service work</li>
-<li>Introduction to front-end development</li>
-<li>JavaScript libraries jQuery, Moment</li>
+<li>Short jQuery with Bootstrap 3 Review</li>
+<li>Helpful utility functions with Lodash &amp; Rendering Data</li>
+<li>Handling Date / Time information using Moment</li>
 </ul>
 </td>
 <td>

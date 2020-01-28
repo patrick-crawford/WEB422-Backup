@@ -22,8 +22,8 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 <td>
 Welcome to WEB422:<br><br>
 <ul>
-<li>Dev and deployment environment setup</li>
-<li>Re-introduction to back-end web services</li>
+<li>Dev environment setup</li>
+<li>Re-introduction to back-end web services and testing</li>
 </ul>
 </td>
 </tr>
