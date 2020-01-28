@@ -13,7 +13,7 @@ Recently, the most widely-used routing library used to achieve this in react; **
 
 <br>
 
-## Getting Started using React Router
+### Getting Started using React Router
 
 To start using the React Router library in our web app, we must first fetch react-router-dom using npm (once we have halted our debugging server using Control+C):
 
@@ -119,7 +119,7 @@ In all three above routes, we use the ["exact"](https://reacttraining.com/react-
 
 <br>
 
-## Adding URL Parameters to our Routes
+### Adding URL Parameters to our Routes
 
 If we wish to pass a specific URL pattern to a given route, we can use the same syntax as we're accustomed to in Node.js, ie: "/routeName/:parameter". To pass the ":parameter" to the `<Project />` component (so we can make use of routes like "/project/4", etc), we need to make the following changes to our files: 
 
@@ -143,7 +143,7 @@ Once we have made the above changes (removed "exact", added /:id, referenced pro
 
 <br>
 
-## Adding A "Not Found" Route
+### Adding A "Not Found" Route
 
 Using React Router, we can easily define a "Not Found" route - this is analagous to the "404" error that we returned in our server.js files in WEB322 when a route was not matched.
 
@@ -157,7 +157,7 @@ To add a "Not Found" route, we simply need to add another route as a child to ou
 
 <br>
 
-## Linking to a Route
+### Linking to a Route
 
 To use the react router effectively, we cannot simply use normal links to route to our pages from within the application. For example, using code like: 
 
@@ -174,7 +174,7 @@ The same code can updated to use the `<Link>` component as follows:
 
 <br>
 
-## "Redirecting" to a Route
+### "Redirecting" to a Route
 
 Sometimes, we wish to "redirect" the user to a different route and override the current route in the "history" stack (or alternatively "push" it onto the current history stack) - this is similar to what we would use [res.redirect()](http://expressjs.com/en/4x/api.html#res.redirect) for in our Node.js servers.
 

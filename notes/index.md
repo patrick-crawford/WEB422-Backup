@@ -20,6 +20,7 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 <tr>
 <td><a href="/notes/week01">1 - Notes</a></td>
 <td>
+Welcome to WEB422:<br><br>
 <ul>
 <li>Dev and deployment environment setup</li>
 <li>Re-introduction to back-end web services</li>
@@ -29,6 +30,7 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 <tr>
 <td><a href="/notes/week02">2 - Notes</a></td>
 <td>
+Bootstrap 3, jQuery and Other Libraries:<br><br>
 <ul>
 <li>Short jQuery with Bootstrap 3 Review</li>
 <li>Helpful utility functions with Lodash &amp; Rendering Data</li>
