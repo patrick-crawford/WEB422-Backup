@@ -61,7 +61,7 @@ Lastly, since we're working with the Bootstrap 3 Components for react (react-boo
 The Week 4 example uses the following navbar consisting of the custom components installed using npm (above).  This navbar is placed above the (soon to be added) &lt;Switch&gt;&lt;/Switch&gt; element in *App.js*
 
 ```jsx
-<Navbar inverse collapseOnSelect>
+<Navbar inverse collapseOnSelect fixedTop>
   <Navbar.Header>
     <LinkContainer to="/">
       <Navbar.Brand>
