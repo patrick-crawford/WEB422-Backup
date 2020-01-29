@@ -11,7 +11,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 function App() {
   return (
     <div>
-      <Navbar inverse collapseOnSelect>
+      <Navbar inverse collapseOnSelect fixedTop>
         <Navbar.Header>
           <LinkContainer to="/">
             <Navbar.Brand>
@@ -31,6 +31,8 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+
+      <br /><br /><br />
 
       <div className="container">
         <div className="row">
