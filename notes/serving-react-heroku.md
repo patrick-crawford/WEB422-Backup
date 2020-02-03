@@ -46,8 +46,16 @@ will treat a local "public" directory as a "static" directory!  All we have to d
 
 **Note:** We must redirect users to /public/index.html if a route is accessed directly without going through "client side routing" (As we discussed last week).
 
-Once this is complete, we can run our new Express server.js file (`node server.js`) in the browser to see our production React.js code (we can even push this to Heroku).
+Once this is complete, we can run our new Express server.js file (`node server.js`) in the browser to see our production React.js code.
 
-Remember: the server is only serving up static files to **build** the application on the client-side.
+<br>
+
+### Hosting on Heroku
+
+Now that our server.js file running just fine on port 8080 on localhost, we should be able to push it to Heroku just like our applications in WEB322.  The only real difference here is that the server is only serving up *static* files within a public directory to **build** the application on the client-side. The "404" style middleware is implemented to simply redirect users *back* to the app, if they enter a path manually in the browser (thereby making a "get" request explicitly for a specific route defined within the App).
+
+For a refresher on how to initialize a local git repository, check in code, create a new app on Heroku, etc. please refer back to the documentation outlined in WEB322, ie:
+
+#### ["Getting Started With Heroku"](https://web322.ca/getting-started-with-heroku)
 
 <br>
