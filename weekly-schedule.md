@@ -101,8 +101,8 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>5</td>
 <td>
 <ul>
-<li>Forms in React</li>
-<li>Deploying an App</li>
+<li>Processing forms in React</li>
+<li>Serving a React App / Hosting on Heroku</li>
 </ul>
 </td>
 <td>

@@ -58,5 +58,14 @@ Continue React Development:<br><br>
 </ul>
 </td>
 </tr>
+<tr><td><a href="/notes/week05">5 - Notes</a></td>
+<td>
+React Forms &amp; Deployment:<br><br>
+<ul>
+<li>Processing forms in React</li>
+<li>Serving a React App / Hosting on Heroku</li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>
