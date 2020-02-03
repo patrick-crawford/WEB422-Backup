@@ -203,7 +203,7 @@ handleChange(e) {
 
 ### Radio Buttons
 
-The final primary input type that we will discuss is the "radio button".  It's similar to the "checkbox" in that we must used the "checked" property (instead of "value") to indicate whether or not the control should be checked.  However a "value" must control this, ie:
+The final input type that we will discuss is the "radio button".  It's similar to the "checkbox" in that we must used the "checked" property (instead of "value") to indicate whether or not the control should be checked.  However a "value" must control this, ie:
 
 ```jsx
 <label>
