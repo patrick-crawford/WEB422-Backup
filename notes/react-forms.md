@@ -90,9 +90,9 @@ To begin, our "input" control has two important properties: **value** and **onCh
     }
     ```
 
-    We have implemented the **handleChange(e)** method to be as *generic* as possible. Here, we can determine which form element initiated the event (using **e.target** and once we have access to the form element, we can pull it's value and name using the properties (**value** ane **name** respectfully).  Finally, using those values, we can set the matching peroperty in the state using the syntax: **`{[name]:value}`**.
+    We have implemented the **handleChange(e)** method to be as *generic* as possible. Here, we can determine which form element initiated the event (using **e.target**) and once we have access to the form element, we can pull it's value and name using the properties (**value** ane **name** respectfully).  Finally, using those values, we can set the matching peroperty in the state using the syntax: **`{[name]:value}`**.
 
-By matching up the **value** and **onChange** methodson components in our form with functionality internal to our component, we can ensure that whenever the value of "state" changes, the corresponding form control changes as well.  Similairly, whenever our form control changes, the corresponding property in the "state" should also change.
+By matching up the **value** and **onChange** methods on components in our form with functionality internal to our component, we can ensure that whenever the value of "state" changes, the corresponding form control changes as well.  Similairly, whenever our form control changes, the corresponding property in the "state" should also change.
 
 Next, you will notice that we have wired up our component to handle the "submit" event of the `<form>`.  This is similar to what we did back in Week 2 with jQuery, ie: prevent the form from submitting using the expected behaviour and instead, submit the data ourselves using AJAX (ie: to an API endpoint using **PUT** or **POST**)
 
@@ -224,7 +224,7 @@ In HTML, an `<input type="file">` lets the user choose one or more files from th
 <input type="file" />
 ```
 
-In React, an `<input type="file" />` is always an uncontrolled component because its value can only be set by a user, and not programmatically.  In the below example, [React.createRef()]
+In React, an `<input type="file" />` is always an uncontrolled component because its value can only be set by a user, and not programmatically.  In the below example, [React.createRef()](https://reactjs.org/docs/refs-and-the-dom.html#creating-refs) is used to retrieve the underlying DOM elmement as its "current" property.
 
 Addditionally, you should use the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications) to interact with the files. The following example shows how to create a ref to the DOM node to access file(s) in a submit handler:
 
