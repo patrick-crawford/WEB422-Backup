@@ -237,7 +237,9 @@ class FileInput extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log(`Selected file - ${this.fileInput.current.files[0].name}`);
+    if(this.fileInput.current.files.length > 0){
+        console.log(`Selected file - ${this.fileInput.current.files[0].name}`);
+    }
   }
 
   render() {
