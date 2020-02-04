@@ -128,7 +128,7 @@ If we wish to add a &lt;select&gt; element, we can follow the same pattern.
 
 ### The select Tag (multiple)
 
-If we wish to work with a &lt;select multiple&gt; element, things are a little more complicated.  For example, we must set the "multiple" attribute using `{true}`, ie:
+If we wish to work with a &lt;select multiple&gt; element, things are a little more complicated.  For example, we can set the "multiple" attribute using `{true}`, ie:
 
 ```jsx
 <select multiple={true} name="campus" value={this.state.userData.campus} onChange={this.handleChange}>
