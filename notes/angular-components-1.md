@@ -5,25 +5,39 @@ layout: default
 
 ## Angular Components Introduction
 
-This document introduces "components". 
-
-<br>
+> **Quick Note:** Some of the below code examples and explanations have been reproduced from sections of the [official online documentation](https://angular.io/) for Angular. 
 
 ### What is an Angular component?
 
-The following was summarized from Angular Docs > Fundamentals > [Architecture](https://angular.io/guide/architecture#components)
+A *component* controls a patch of screen (display, UI surface, rectangle) called a *view*. In Angular, this is implmented using a class, with a certain [decorator](https://www.typescriptlang.org/docs/handbook/decorators.html). Let's take a quick look at the **App** Component that was created with our default Angular application:
 
-A *component* controls a patch of screen (display, UI surface, rectangle) called a *view*. 
+```typescript
+import { Component } from '@angular/core';
 
-As code, a component is a class, with a decorator.
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'my-app';
+}
 
-The class is JavaScript, specifically TypeScript. It includes all the code needed for the the component's *behaviour* during its lifetime.
+```
 
-A decorator is a function that modifies a class. It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
+The class is JavaScript, specifically TypeScript. It includes all the code needed for the the component's *behaviour* during its lifetime.  In this case the class only has a single property: title.
 
-One of the decorator's properties is a *template*, defines the *appearance* of the component. The template includes HTML, or the name of an HTML file. By definition, HTML is the language of the Angular template. Almost all HTML elements are valid in a template, except for these: `html`, `body`, `base`, and `script`.
+A decorator is a function that modifies a class (in this case it's the [@Component()](https://angular.io/api/core/Component) decorator). It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
 
-Another decorator property is the *selector*. Its value is the name of the custom HTML element in the *parent* template that becomes the component. 
+One of the decorator's properties is a *template* (or *templateUrl*), defines the *appearance* of the component. The template includes HTML, or the name of an HTML file. By definition, HTML is the language of the Angular template. Almost all HTML elements are valid in a template, except for these: `html`, `body`, `base`, and `script`.
+
+Another decorator property is the *selector*. Its value is the name of the custom HTML element in the *parent* template that becomes the component. In the above example, you will see the following component in the "src/index.html" file:
+
+```html
+<app-root></app-root>
+```
+
+This is the component that is rendering our default page.  Think it as Angular's equivalent of the react ```<App />``` component.
 
 In summary, from the Angular documentation's Fundamentals > Architecture guide:
 

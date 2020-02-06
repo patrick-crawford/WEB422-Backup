@@ -5,21 +5,9 @@ layout: default
 
 ## Getting started with Angular
 
-The next part of our learning journey will depend on the excellent content that the Angular development team has published. 
-
-Get ready by visiting the [Angular home page](https://angular.io/), and read/scan the following content:
-* Landing page
-* FEATURES page
-* The DOCS landing page
-* A few screenfuls of the GETTING STARTED page
-
-![Angular web site](/media/angular-web-site.png)
-
-<br>
+> **Quick Note:** Some of the below code examples and explanations have been reproduced from sections of the [official online documentation](https://angular.io/) for Angular. 
 
 ### Installation
-
-As described in the GETTING STARTED installation notes, Angular is installed by using the Node Package Manager. 
 
 During the React topic coverage, you learned to use and perhaps install the *React app generator*. As you experienced, it adds a good amount of value to the dev process.
 
@@ -43,7 +31,7 @@ Next, create a new app. Assuming that you want to create a new app (and folder) 
 
 ```bash
 # upper and lower case use for the options is important
-ng new my-app-name --routing -S -g
+ng new my-app --routing -S -g
 ```
 
 The process will create a new folder, with the code needed to get started.
@@ -64,7 +52,7 @@ That being said, during development on your computer, will start an on-demand pe
 Therefore, start the server listener:
 
 ```bash
-cd my-app-name
+cd my-app
 ng serve --open
 ```
 
@@ -88,7 +76,6 @@ An easy edit, just to prove that you can do so, is to edit the `app.component.ts
 
 After you save your changes, switch over to the browser window. It should show the new content. Behind the scenes, the Terminal process will regenerate the content, making changes where necessary to the deployment assets. As part of the process, the browser will refresh the visible content.
 
-![Server is running](/media/angular-getting-started-edit-result.png)
 
 <br>
 
@@ -106,19 +93,15 @@ Here are some of the highlights that you should be looking for:
 * Later (but soon), we will use the Angular CLI to create another component in the `src` folder
 * There are a number of files and folders that perform specific tasks for the app, and/or help you as the programmer
 
-![New app folder structure](/media/angular-cli-project-structure.png)
+![New app folder structure](/media/angular-cli-project-structure-2.png)
 
 <br>
 
 ### What's next?
 
-There are some documents that can help you understand more about the Angular way to build an app.
+Now that we have our development environment all set up to start working with Angular, why don't we dive in and start building our own components?  The next section of notes for this week covers a quick introdution to Angular Components:
 
-The official [Angular tutorial](https://angular.io/tutorial) is a recommended skim/read, and you may or may not want to code along with it. 
-
-> We recommend that you develop locally on your own computer (and not do the live online process). 
-
-The other is from the Visual Studio Code documentation set, titled [Using Angular in VS Code](https://code.visualstudio.com/docs/nodejs/angular-tutorial). It's a reasonably short document. One of its very useful topics is the how-to for debugging Angular in VS Code. 
+[Angular Components Introduction](angular-components-1)
 
 Happy coding!
 
