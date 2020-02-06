@@ -166,6 +166,8 @@ Note:  We will save ["Two-way binding"](https://angular.io/guide/template-syntax
 
 <br>
 
+NOTE::: THIS SHOULD BE IN THE NEXT WEEK!!!
+
 #### Quick "directive" overview
 
 A *directive* is an Angular class. It interacts with HTML elements in the browser DOM. There are three kinds of directives:
