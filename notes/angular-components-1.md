@@ -39,7 +39,7 @@ However, because the "title" property was assigned a value of type *string*, the
 title: string;
 ```
 
-As expected, the value of **this.title** is undefined.  However, unlike regular JavaScript, if we decide to assign title a number value later, we will actually get an error,  ie:
+As expected, the value of **this.title** is undefined.  However, unlike regular JavaScript, if we decide to assign "title" a number value later, we will actually get an error,  ie:
 
 ```javascript
 this.title = 5;
