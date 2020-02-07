@@ -27,7 +27,35 @@ export class AppComponent {
 
 The class is JavaScript, specifically TypeScript. It includes all the code needed for the the component's *behaviour* during its lifetime.  In this case the class only has a single property: title.
 
-A decorator is a function that modifies a class (in this case it's the [@Component()](https://angular.io/api/core/Component) decorator). It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
+The definition and assignment to the "title" property is actually our first line of TypeScript!  It could also have been written like this:
+
+```typescript
+title: string = 'my-app';
+```
+
+However, because the "title" property was assigned a value of type *string*, the type was implied.  If we did not have a default value for *string* the code would instead look like:
+
+```typescript
+title: string;
+```
+
+As expected, the value of **this.title** is undefined.  However, unlike regular JavaScript, if we decide to assign title a number value later, we will actually get an error,  ie:
+
+```javascript
+this.title = 5;
+```
+
+will give the following error:
+
+```terminal
+error TS2322: Type '5' is not assignable to type 'string'.
+```
+
+Welcome to "types" in JavaScript!
+
+<br>
+
+We have also included a decorator (in this case it's the [@Component()](https://angular.io/api/core/Component) decorator). It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
 
 One of the decorator's properties is a *template* (or *templateUrl*), defines the *appearance* of the component. The template includes HTML, or the name of an HTML file. By definition, HTML is the language of the Angular template. Almost all HTML elements are valid in a template, except for these: `html`, `body`, `base`, and `script`.
 
