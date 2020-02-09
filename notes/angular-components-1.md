@@ -51,9 +51,7 @@ will give the following error:
 error TS2322: Type '5' is not assignable to type 'string'.
 ```
 
-Welcome to "types" in JavaScript!
-
-<br>
+Welcome to "types" for JavaScript!
 
 We have also included a decorator (in this case it's the [@Component()](https://angular.io/api/core/Component) decorator). It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
 
@@ -79,107 +77,147 @@ If you are familiar with the MVC or MVVM design patterns, how do they map to Ang
 
 <br>
 
-### Quick Review - Creating an Angular Project from Scratch
+### Creating our first Component (Using "ng generate")
 
-Before we start writing components, we should get a new Angular project going.  Recall, from the week 6 notes:
+In Angular, adding a component manually can be a little tedious.  At a minimum, the following 3 files must be created / edited (assuming our component is called **foo**):
 
-1. Open and use the Terminal app. 
+* New **foo.component.ts** file:  This file must specify the component **class** (typescript)
+* New **foo.component.html** file:  This file must specify the component **template** (html)
+* Edit **app.module.ts** file:  Our new component must be imported and added to the "declarations" array
 
-2. Navigate to the folder that will hold your new project. 
+However, the good news is that the **ng** command can do more than create a starter Angular application for us.  It can also help us add components ([among other things](https://angular.io/cli#command-overview)) to our app automatically!
 
-3. Generate a new project (replace "my-dream-app" with the desired name of the project):
-
-  ```
-  ng new my-app-name --routing -S -g
-  ```
-  
->  **Remember:**  
-> The `--routing` option adds the code we need for "routing", which is a topic that will be covered in detail soon. Adding routing now (when the new project is created) is a *best practice*.  
-> The `-S` option does not add "testing" code, and the `-g` option does not add the git repo code. 
-
-<br>
-
-4. Go into the new folder, and open your editor (`code .`). 
-
-5. Finally, run/start the app:
-
-```
-cd my-app-name
-ng serve --open
-```
-
-<br>
-
-### Creating a Component from Scratch (Using "ng generate")
-
-Recall, from the Angular "Tour of Heroes" app, we can manually create a component using the following task:
+For example, the command:
 
 ```bash
-# Make sure you are in the project folder
-ng generate component foo --flat -S
-# You can use abbreviations too...
-# ng g c foo --flat -S
+ng generate component foo
 ```
 
-> **Note:**  
-> The "--flat" flag will NOT create a folder to enclose the component's source code files. We'll use that for the first while, until the number of files in the app folder gets too numerous.  
-> Documentation for the `ng generate component` command is [here](https://github.com/angular/angular-cli/wiki/generate-component). 
+will not only perform the tasks outlined above, but also provide us with an empty ".css" (or ".scss", ".less", etc. depending on your configuration ) file and include it in our new component decorator.  If we choose to add styles in one of our "styleUrls", it is important to note that all of the styles are automatically [scoped to the related component](https://angular.io/guide/component-styles#style-scope), ie "The styles specified in @Component metadata apply only within the template of that component".
 
-<br>
+If we open up our newly created **foo.component.ts** file, we should see the following code:
 
-Using "ng generate" to create the "foo" component for us has saved us time by automating the following (necessary) steps:
+```typescript
+import { Component, OnInit } from '@angular/core';
 
-* Created the files:  
-**foo.component.css**  
-**foo.component.html**  
-**foo.component.ts**  
-(including the correct class, and "@Component" decorator to make use of the .html &amp; .css files / providing a default "app-" selector property)
-
-* Added the correct "import" statement to app.module.ts, ie:
-
-```js
-import { FooComponent } from './foo.component';
-```
-
-* Added "FooComponent" to the `@NgModule` decorator in `app.module.ts`:
-
-```js
-@NgModule({
-  declarations: [
-    AppComponent,
-    FooComponent // Added!
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+@Component({
+  selector: 'app-foo',
+  templateUrl: './foo.component.html',
+  styleUrls: ['./foo.component.css']
 })
-export class AppModule { }
+export class FooComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
 ```
+
+This is very simmilar to the "app" component that was created with our default Angular application, however there are a few noteable differences:
+
+* Class name ("FooComponent"):  Obviously, the class name will be different, however it is interesting to note that the suffix "Component" was automatically added. This ensures that our component is named according to Angular's [Coding Style Guide](https://angular.io/guide/styleguide), spedifically: "[Symbols and file names](https://angular.io/guide/styleguide#symbols-and-file-names)".
+
+* Similairly, the "selector" has been created to reflect the name of our component.  However, it included the "app" prefix also to adhere with Angular's Coding Style Guide.
+
+* The ngOnInit() [lifecycle hook](https://angular.io/api/core/OnInit) has been included: (**NOTE:** our component should also implement the [OnInit interface](https://angular.io/api/core/OnInit)).  For our purposes, it will function similairly to React's "componentDidMount()" lifecycle method in that we will use it to update our component with data either locally, or from a remote resource (via a "service").
+
+* Finally the **foo.component.html** file has been created and updated to show `<p>foo works!</p>`.  We will actually get this customized default for every component created with "ng generate component ..."
 
 <br>
 
 ### Adding the new component to the view
 
-Recall the "selector" property that was automatically added, ie "app-foo".  This corresponds to the custom element `<app-foo></app-foo>` that we can use to render our newly created "foo" component.
+Before we go ahead and add our newly created "FooComponent" to our "app", let's follow the advice given in the **app.component.html** file and 
 
-To see this in action, add the `<app-foo></app-foo>` element to the bottom of your **app.component.html** file and "serve" your application again, if it's not already running.
+> "Delete the template below to get started with your project".
 
-You should now see the text "foo works" at the bottom of the default "start" page.
+Once this is complete, add the `<app-foo></app-foo>` element (corresponding to the "selector" property in the FooComponent @Component decorator) to your **app.component.html** file and "serve" your application again, if it's not already running.  This should cause "foo works!" to be rendered in the browser.
 
-<br>
-
-### How to think about and plan your components
-
-Now that we are comfortable adding new (simple) components, why don't we try creating a view using *multiple* components.  
-
-> The content for this discussion can be found in ["Angular Components Example"](angular-components-example)
+Congratulations - you have added your first component in Angular!
 
 <br>
 
 ### Using "Templates" in your components
+
+As we have seen, Angular components use a separate ".html" file to indicate "template" for the component.  However, we know that there is a relationship between the properties within the **class** of the component and the **template** itself.  We saw this when we updated the "title" property of our AppComponent back in the "Getting started with Angular" documentation. This was done by using a special syntax for Angular templates called "Interpolation".
+
+<br>
+
+### Interpolation and Template Expressions
+
+Essentially, "interpolation" allows you to incorporate calculated strings into the text between HTML element tags and within attribute assignments. "Template expressions" are what you use to calculate those strings.
+
+For example, let's go ahead and add some properties with default values to our FooComponent class, ie:
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-foo',
+  templateUrl: './foo.component.html',
+  styleUrls: ['./foo.component.css']
+})
+export class FooComponent implements OnInit {
+
+  studentName: string = "Jason Bourne";
+  studentPhoto: string = "https://upload.wikimedia.org/wikipedia/en/6/60/Jason_bourne_infobox.jpg";
+  studentUpdated: Date = new Date();
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+}
+```
+
+Here, we're using Typescript to add 3 properties to the class and set them to a default value, ie: 
+
+* **studentName**: type: *string*, default value: "Jason Bourne"
+
+* **studentPhoto**: type: *string*, default value: "https://upload.wikimedia.org/wikipedia/en/6/60/Jason_bourne_infobox.jpg"
+
+* **studentUpdated**: type: *Date*, default value: new "Date" object.
+
+We do not technically need to include the types, since we are immediately providing a value to each property (causing the type to be inferred).  However it's a good excuse to see a little more Typescript and start to get used to the syntax.
+
+Next, let's use "interpolation" to include these values as template expressions within our *foo.component.html* file one at a time:
+
+```html
+<p>Student Name: {% raw %}{{ studentName }}{% endraw %}</p>
+```
+
+TODO: Explanation
+
+```html
+<div><img src="{% raw %}{{studentPhoto}}{% endraw %}"></div>
+```
+
+TODO: Explanation
+
+```html
+<p>Student Updated: {% raw %}{{studentUpdated.toLocaleDateString()}}{% endraw %}</p>
+```
+
+TODO: Explanation
+
+
+IDEAS: 
+
+NOTE: Maybe add a function to the class and call it before we do property binding ? then do "Template Statements" which are events...
+
+maybe end with structural directives (ie: a loop that loops through an array of objects specified using a class)
+
+
+
+
+
+
+
+
+<hr /><hr />
+[OLD STUFF HERE]
 
 From the example above, we have seen how we can add multiple components as children of a parent component.  However, these were simply "static" components (i.e. their content is hardcoded into the .html).  If we wish our "template" (.html file) to reference values within its corresponding component, we need to reference them using the following techniques:
 

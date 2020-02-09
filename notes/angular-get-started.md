@@ -79,19 +79,12 @@ After you save your changes, switch over to the browser window. It should show t
 
 <br>
 
-### Work through some documentation topics
+### "my-app" Folder Structure
 
-Return to the [GETTING STARTED](https://angular.io/guide/quickstart) documentation topic. 
+The Angular CLI has included many files and folders for us to begin our development effort. At the moment, we will be primairly focusing on:  
 
-In the instructions above, we have taken you through the first few screenfuls. Now it's time to read/scan the remaining content on this page, starting with [Step 4](https://angular.io/guide/quickstart#first-component).
-
-Take your time. While you are doing this, inspect the source code in your editor.
-
-Here are some of the highlights that you should be looking for:
-* The code for your app lives in the `src` folder
-* The generator creates a `src/app` folder, with code assets for the "app" component
-* Later (but soon), we will use the Angular CLI to create another component in the `src` folder
-* There are a number of files and folders that perform specific tasks for the app, and/or help you as the programmer
+* The `src` folder: This is where all the code for your app will reside
+* The `src/app` folder:  This folder contains the code assets for the "app" component (every new compnent that we create will be in its own folder within `src`)
 
 ![New app folder structure](/media/angular-cli-project-structure-2.png)
 
