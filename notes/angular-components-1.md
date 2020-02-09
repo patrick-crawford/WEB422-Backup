@@ -79,7 +79,7 @@ If you are familiar with the MVC or MVVM design patterns, how do they map to Ang
 
 ### Creating our first Component (Using "ng generate")
 
-In Angular, adding a component manually can be a little tedious.  At a minimum, the following 3 files must be created / edited (assuming our component is called **foo**):
+In Angular, adding a component manually can be a little tedious.  At a minimum, the following 3 files must be created / edited (assuming our component is called **foo** and we don't wish to use an [inline template](https://angular.io/api/core/Component#template)):
 
 * New **foo.component.ts** file:  This file must specify the component **class** (typescript)
 * New **foo.component.html** file:  This file must specify the component **template** (html)
