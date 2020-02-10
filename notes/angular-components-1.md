@@ -55,7 +55,7 @@ Welcome to "types" for JavaScript!
 
 In our file, above the class definition we have also included a decorator (in this case it's the [@Component()](https://angular.io/api/core/Component) decorator). It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
 
-One of the decorator's properties is a *template* (or *templateUrl*), defines the *appearance* of the component. The template includes HTML, or the name of an HTML file. By definition, HTML is the language of the Angular template. Almost all HTML elements are valid in a template, except for these: `html`, `body`, `base`, and `script`.
+One of the decorator's properties is a *template* (or *templateUrl*), which defines the *appearance* of the component. The template includes HTML, or the name of an HTML file. By definition, HTML is the language of the Angular template. Almost all HTML elements are valid in a template, except for these: `html`, `body`, `base`, and `script`.
 
 Another decorator property is the *selector*. Its value is the name of the custom HTML element in the *parent* template that becomes the component. In the above example, you will see the following component in the "src/index.html" file:
 
@@ -133,7 +133,7 @@ Before we go ahead and add our newly created "FooComponent" to our "app", let's 
 
 > "Delete the template below to get started with your project".
 
-Once this is complete, add the `<app-foo></app-foo>` element (corresponding to the "selector" property in the FooComponent @Component decorator) to your **app.component.html** file and "serve" your application again, if it's not already running.  This should cause "foo works!" to be rendered in the browser.
+Once this is complete, add the `<app-foo></app-foo>` element (corresponding to the "selector" property in the FooComponent's "@Component" decorator) to your **app.component.html** file and "serve" your application again, if it's not already running.  This should cause "foo works!" to be rendered in the browser.
 
 Congratulations - you have added your first component in Angular!
 
@@ -141,7 +141,7 @@ Congratulations - you have added your first component in Angular!
 
 ### Using "Templates" in your components
 
-As we have seen, Angular components use a separate ".html" file to indicate "template" for the component.  However, we know that there is a relationship between the properties within the **class** of the component and the **template** itself.  We saw this when we updated the "title" property of our AppComponent back in the "Getting started with Angular" documentation. This was done by using a special syntax for Angular templates called "Interpolation".
+As we have seen, Angular components use a separate ".html" file to indicate the "template" for the component.  However, we know that there is a relationship between the properties within the **class** of the component and the **template** itself.  We saw this when we updated the "title" property of our AppComponent back in the "Getting started with Angular" documentation. This was done by using a special syntax for Angular templates called "Interpolation".
 
 <br>
 

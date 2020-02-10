@@ -21,7 +21,7 @@ The class is JavaScript, specifically TypeScript. It includes all the code neede
 
 A decorator is a function that modifies a class. It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
 
-One of the decorator's properties is a *template*, defines the *appearance* of the component. The template includes HTML, or the name of an HTML file. By definition, HTML is the language of the Angular template. Almost all HTML elements are valid in a template, except for these: `html`, `body`, `base`, and `script`.
+One of the decorator's properties is a *template*, which defines the *appearance* of the component. The template includes HTML, or the name of an HTML file. By definition, HTML is the language of the Angular template. Almost all HTML elements are valid in a template, except for these: `html`, `body`, `base`, and `script`.
 
 Another decorator property is the *selector*. Its value is the name of the custom HTML element in the *parent* template that becomes the component. 
 
