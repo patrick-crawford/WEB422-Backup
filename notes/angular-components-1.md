@@ -63,7 +63,7 @@ Another decorator property is the *selector*. Its value is the name of the custo
 <app-root></app-root>
 ```
 
-This is the component that is rendering our default page.  Think it as Angular's equivalent of the react ```<App />``` component.
+This is the component that is rendering our default page.  Think of it as Angular's equivalent of the react ```<App />``` component.
 
 In summary, from the Angular documentation's Fundamentals > Architecture guide:
 
