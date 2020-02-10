@@ -7,7 +7,7 @@ layout: default
 
 Recall the [React intro notes](react-intro). React was described as a *library for building user interfaces*. As you learned, it is actually a rich and vibrant ecosystem for client-side app building. 
 
-Angular is also a widely-used platform for building client-side apps. Like React, it's JavaScript-based, and assumes that it's targeting a browser or browser-like runtime on a device.
+Angular is also a widely-used platform for building client-side apps. Like React, its JavaScript-based, and assumes that its targeting a browser or browser-like runtime on a device.
 
 React introduced the idea of *component*-oriented architecture to you. Arguably, it was Angular that conceived this idea, many years before React was released. 
 
