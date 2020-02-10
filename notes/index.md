@@ -67,5 +67,15 @@ React Forms &amp; Deployment:<br><br>
 </ul>
 </td>
 </tr>
+<tr><td><a href="/notes/week06">6 - Notes</a></td>
+<td>
+Introduction to Angular:<br><br>
+<ul>
+<li>Introduction to Angular</li>
+<li>Getting started by running the default App</li>
+<li>Introduction to Angular Components and Templates</li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>

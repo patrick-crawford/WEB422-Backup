@@ -119,8 +119,8 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <td>
 <ul>
 <li>Introduction to Angular</li>
-<li>Development Environment Setup</li>
-<li>Modern Front End Development Design Patterns</li>
+<li>Getting started by running the default App</li>
+<li>Introduction to Angular Components and Templates</li>
 </ul>
 </td>
 <td>

@@ -53,7 +53,7 @@ error TS2322: Type '5' is not assignable to type 'string'.
 
 Welcome to "types" for JavaScript!
 
-We have also included a decorator (in this case it's the [@Component()](https://angular.io/api/core/Component) decorator). It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
+In our file, above the class definition we have also included a decorator (in this case it's the [@Component()](https://angular.io/api/core/Component) decorator). It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
 
 One of the decorator's properties is a *template* (or *templateUrl*), defines the *appearance* of the component. The template includes HTML, or the name of an HTML file. By definition, HTML is the language of the Angular template. Almost all HTML elements are valid in a template, except for these: `html`, `body`, `base`, and `script`.
 
@@ -119,7 +119,7 @@ This is very simmilar to the "app" component that was created with our default A
 
 * Class name ("FooComponent"):  Obviously, the class name will be different, however it is interesting to note that the suffix "Component" was automatically added. This ensures that our component is named according to Angular's [Coding Style Guide](https://angular.io/guide/styleguide), spedifically: "[Symbols and file names](https://angular.io/guide/styleguide#symbols-and-file-names)".
 
-* Similairly, the "selector" has been created to reflect the name of our component.  However, it included the "app" prefix also to adhere with Angular's Coding Style Guide.
+* Similairly, the "selector" has been created to reflect the name of our component.  However, it included the "app" prefix to adhere with Angular's Coding Style Guide as well.
 
 * The ngOnInit() [lifecycle hook](https://angular.io/api/core/OnInit) has been included: (**NOTE:** our component should also implement the [OnInit interface](https://angular.io/api/core/OnInit)).  For our purposes, it will function similairly to React's "componentDidMount()" lifecycle method in that we will use it to update our component with data either locally, or from a remote resource (via a "service").
 
@@ -182,78 +182,179 @@ Here, we're using Typescript to add 3 properties to the class and set them to a 
 
 We do not technically need to include the types, since we are immediately providing a value to each property (causing the type to be inferred).  However it's a good excuse to see a little more Typescript and start to get used to the syntax.
 
-Next, let's use "interpolation" to include these values as template expressions within our *foo.component.html* file one at a time:
+> **NOTE:** It's important to note before we go on, that whenever a property in a component changes, the view is rendered to reflect the change.  Because of this "change detection" mechanism, we can change the value any of these properties later and see the update reflected in the UI.
+
+Now that we have our data in place, let's use "interpolation" to include these values as template expressions within our *foo.component.html* file one at a time:
+
+<br>
 
 ```html
 <p>Student Name: {% raw %}{{ studentName }}{% endraw %}</p>
 ```
 
-TODO: Explanation
+When we use the double curly braces in an Angular component, we are technically embedding an "expression" using interpolation.  In the above case,  Angular replaces stuentName with the string value of the corresponding component property.
+
+<br>
 
 ```html
 <div><img src="{% raw %}{{studentPhoto}}{% endraw %}"></div>
 ```
 
-TODO: Explanation
+In the example above, Angular evaluates the studentPhoto property and fills in the blank, causing the correct image to be displayed.
+More generally, the text between the braces is a template expression that Angular first evaluates and then converts to a string.
+
+<br>
+
 
 ```html
 <p>Student Updated: {% raw %}{{studentUpdated.toLocaleDateString()}}{% endraw %}</p>
 ```
 
-TODO: Explanation
-
-
-IDEAS: 
-
-NOTE: Maybe add a function to the class and call it before we do property binding ? then do "Template Statements" which are events...
-
-maybe end with structural directives (ie: a loop that loops through an array of objects specified using a class)
-
-
-
-
-
-
-
-
-<hr /><hr />
-[OLD STUFF HERE]
-
-From the example above, we have seen how we can add multiple components as children of a parent component.  However, these were simply "static" components (i.e. their content is hardcoded into the .html).  If we wish our "template" (.html file) to reference values within its corresponding component, we need to reference them using the following techniques:
-
-* [Interpolation](https://angular.io/guide/template-syntax#interpolation-)
-* [Template Expressions](https://angular.io/guide/template-syntax#template-expressions) / [Property Binding](https://angular.io/guide/template-syntax#property-binding--property-)
-* [Template Statements](https://angular.io/guide/template-syntax#template-statements)
-* [Attribute, class, and style bindings](https://angular.io/guide/template-syntax#attribute-class-and-style-bindings)
-
-Essentially, the above logic is really referring to specific types of ["Binding Syntax"](https://angular.io/guide/template-syntax#binding-syntax-an-overview). 
-
-Note:  We will save ["Two-way binding"](https://angular.io/guide/template-syntax#two-way-binding---) until we discuss forms in Angular.
+In this example, the "toLocaleDateString" method is executed on the "studentUpdated" Date property to produce a string, which is then shown between the curly braces.
 
 <br>
 
-NOTE::: THIS SHOULD BE IN THE NEXT WEEK!!!
 
-#### Quick "directive" overview
+### Property Binding - "Where are the props?"
 
-A *directive* is an Angular class. It interacts with HTML elements in the browser DOM. There are three kinds of directives:
-1. Components — directives that have an HTML template
-2. Structural directives — they change the DOM layout by adding and removing DOM elements
-3. Attribute directives — change the appearance or behavior of an element
+In React, we spoke at length about "props".  This was how parent-child component communication was accomplished.  In Angular, we have a similar idea.  To begin. we can say that in image example above we updated the "src" *property* of an "img" DOM element node.  Another way of writing the element would be to use the [Property Binding Syntax](https://angular.io/guide/template-syntax#property-binding-property), ie:
 
-Components are the most common kind of directive. 
+```html
+<div><img [src]="studentPhoto"></div>
+```
 
-[Directives overview](https://angular.io/guide/attribute-directives#directives-overview)
+In the above example, the brackets [ ] tell Angular to evaluate the template expression.  It's important to note that "Property Binding" flows a value in *one direction*, from a component's property into a target element property. You can't use property binding to read or pull values out of target elements. Similarly, you cannot use property binding to call a method on the target element. If the element raises events, you can listen to them with an event binding (discussed further down).
 
-**Built-in directives**
+At this point, you may be thinking, "why use this syntax instead of interpolation?"  For example, the following binding pairs do the same thing:
 
-* [Built-in attribute directives](https://angular.io/guide/template-syntax#built-in-attribute-directives)
-* [Built-in structural directives](https://angular.io/guide/template-syntax#built-in-structural-directives) e.g. `ngIf`, `ngFor`, etc.)
+```html
+<p><img src="{% raw %}{{itemImageUrl}}{% endraw %}"> is the <i>interpolated</i> image.</p>
+<p><img [src]="itemImageUrl"> is the <i>property bound</i> image.</p>
 
-**Building a simple "attribute" directive**
+<p><span>"{% raw %}{{interpolationTitle}}{% endraw %}" is the <i>interpolated</i> title.</span></p>
+<p>"<span [innerHTML]="propertyTitle"></span>" is the <i>property bound</i> title.</p>
+```
 
-A topic for more advanced scenarios:
+Interpolation is a convenient alternative to property binding in many cases. When rendering data values as **strings**, there is no technical reason to prefer one form to the other, though readability tends to favor interpolation. However: 
 
-* [Build a simple attribute directive](https://angular.io/guide/attribute-directives#build-a-simple-attribute-directive)
+> When setting an element property to a **non-string** data value, you ***must use property binding***.
+
+<br>
+
+The "Property Binding" syntax also enables the familiar notion of parent-child component communication via "props".  In Angular however, the set up is slightly different.  Instead of using the child component constructor to store all of the "props", we must instead add them as properties of the child *class* and add a special [@Input Decorator](https://angular.io/api/core/Input).  For example, let's say that our "foo" component is rendered inside another component called "parent".  In the "ParentComponent" class, we have the following property:
+
+```typescript
+studentPhotos: Array<string> = ["https://upload.wikimedia.org/wikipedia/en/6/60/Jason_bourne_infobox.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d1/Matt_Damon_%28cropped%29.jpg"]
+```
+
+**NOTE:** In the code above, you will notice that we have another new line of Typescript.  In this case "*Array&lt;string&gt;*" indicates that the "studentPhotos" array can only contain string values.
+
+Next, in the *template* of the "ParentComponent", we have the following html:
+
+```html
+<app-foo [photos]="studentPhotos"></app-foo>
+```
+
+Here, we wish to pass the array of "studentPhotos" in the "ParentComponent" to "FooComponent" using "Property Binding".  According to what we have learned from above, this should be fine.  However, how do we access the "photos" property in the "FooComponent"?  The answer is the previously mentioned [@Input Decorator](https://angular.io/api/core/Input).  In this case, we must update our "FooComponent" as follows:
+
+```typescript
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-foo',
+  templateUrl: './foo.component.html',
+  styleUrls: ['./foo.component.css']
+})
+export class FooComponent implements OnInit {
+
+  studentName: string = "Jason Bourne";
+  //studentPhoto: string = "https://upload.wikimedia.org/wikipedia/en/6/60/Jason_bourne_infobox.jpg";
+  @Input() photos: Array<string>
+  studentUpdated: Date = new Date();
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+}
+```
+
+Notice how we had to import "Input" from '@angular/core' as well as add "photos" to our list of properties, preceded by the "@Input()" decorator, which:
+
+> "Marks a class field as an input property and supplies configuration metadata. The input property is bound to a DOM property in the template. During change detection, Angular automatically updates the data property with the DOM property's value."
+
+<br>
+
+Finally, since "photos" is an array, we should change our "foo.component.html" template to use one of the images provided.  For now, let's hard-code the first image, ie:
+
+```html
+<img [src]="photos[0]">
+```
+
+
+<br>
+
+### Event Binding ("Template Statements")
+
+In Angular, event binding allows you to listen for certain events such as keystrokes, mouse movements, clicks, and touches.  The syntax consists of a target **event name** within parentheses on the left of an equal sign, and a quoted **template statement** on the right. The following event binding listens for the button's click events, calling the component's toggleImage() method whenever a click occurs:
+
+```html
+<button (click)="toggleImage()">Toggle Image</button>
+```
+
+If we also want access to the native DOM element event, we can use the following syntax:
+
+```html
+<button (click)="toggleImage($event)">Toggle Image</button>
+```
+
+Here, we can use $event to access properties such as target ($event.target) or target.value ($event.target.value).
+
+<br>
+
+Continuing from our example above, why don't we use this new syntax to add a button that will let the user toggle between the different student photos in the "photos" array (passed in from ParentComponent).  To accomplish this, we should add a new property on our FooComponent indicating which photo is currently being viewed (ie: "currentPhoto"), as well as a method "toggleImage" to correspond to the "click" event and update the value of "currentPhoto":
+
+```typescript
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-foo',
+  templateUrl: './foo.component.html',
+  styleUrls: ['./foo.component.css']
+})
+export class FooComponent implements OnInit {
+
+  studentName: string = "Jason Bourne";
+  @Input() photos: Array<string>
+  studentUpdated: Date = new Date();
+  currentPhoto: number = 0;
+
+  toggleImage() {
+    // increment currentPhoto until we reach the end of the array, then start from 0
+    this.currentPhoto = (this.currentPhoto == this.photos.length - 1) ? 0 : this.currentPhoto + 1;
+  }
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+}
+```
+
+Finally, let's update our "foo.component.html" template to invoke the "toggleImage" method whenever a button is clicked (Note:  We will not be requiring $event here, so we will not pass it to the function):
+
+```html
+<p>Student Name: {{studentName}}</p>
+<button (click)="toggleImage()">Toggle Image</button>
+<br><br>
+<div><img [src]="photos[currentPhoto]"></div>
+<p>Student Updated: {{studentUpdated.toLocaleDateString()}}</p>
+```
+
+And there you have it!  Property and Event binding working together to create a simple user interface to swap "student" images in the view on demand.  We were also able to perform some simple top-down communication by storing the array of student photos in a "parent" compnent (ParentComponent) and passing them to the "child" component (FooComponent) through property binding syntax and the use of the "@Input()" decorator.
+
+Next week we will continue to discuss components as well as introduce structural / attribute [directives](https://angular.io/guide/attribute-directives#directives-overview) and [Routing](https://angular.io/start/routing) in Angular.
+
+Happy Coding!
 
 <br>
