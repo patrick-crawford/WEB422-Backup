@@ -15,7 +15,7 @@ We can combine the two by making the React **state** be the “single source of 
 
 ### The input Tag
 
-If we want to synchronize an "input" tag with the state of our compnent, we can write a form as a "controlled component".  In the below example, we will use a form to collect information on a user (stored in the state as "userData"):
+If we want to synchronize an "input" tag with the state of our component, we can write a form as a "controlled component".  In the below example, we will use a form to collect information on a user (stored in the state as "userData"):
 
 ```jsx
 class UserDataForm extends React.Component {

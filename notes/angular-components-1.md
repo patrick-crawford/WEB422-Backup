@@ -351,7 +351,7 @@ Finally, let's update our "foo.component.html" template to invoke the "toggleIma
 <p>Student Updated: {{studentUpdated.toLocaleDateString()}}</p>
 ```
 
-And there you have it!  Property and Event binding working together to create a simple user interface to swap "student" images in the view on demand.  We were also able to perform some simple top-down communication by storing the array of student photos in a "parent" compnent (ParentComponent) and passing them to the "child" component (FooComponent) through property binding syntax and the use of the "@Input()" decorator.
+And there you have it!  Property and Event binding working together to create a simple user interface to swap "student" images in the view on demand.  We were also able to perform some simple top-down communication by storing the array of student photos in a "parent" component (ParentComponent) and passing them to the "child" component (FooComponent) through property binding syntax and the use of the "@Input()" decorator.
 
 Next week we will continue to discuss components as well as introduce structural / attribute [directives](https://angular.io/guide/attribute-directives#directives-overview) and [Routing](https://angular.io/start/routing) in Angular.
 

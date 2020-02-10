@@ -84,7 +84,7 @@ After you save your changes, switch over to the browser window. It should show t
 The Angular CLI has included many files and folders for us to begin our development effort. At the moment, we will be primairly focusing on:  
 
 * The `src` folder: This is where all the code for your app will reside
-* The `src/app` folder:  This folder contains the code assets for the "app" component (every new compnent that we create will be in its own folder within `src`)
+* The `src/app` folder:  This folder contains the code assets for the "app" component (every new component that we create will be in its own folder within `src`)
 
 ![New app folder structure](/media/angular-cli-project-structure-2.png)
 
