@@ -41,6 +41,11 @@ footer {
   }
 }
 
+a:hover{
+  font-weight: normal;
+  text-decoration: underline;
+}
+
 .active {
   background-color: rgba(38, 124, 185, 0.3);
 }
