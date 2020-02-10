@@ -93,7 +93,7 @@ For example, the command:
 ng generate component foo
 ```
 
-will not only perform the tasks outlined above, but also provide us with an empty ".css" (or ".scss", ".less", etc. depending on your configuration ) file and include it in our new component decorator.  If we choose to add styles in one of our "styleUrls", it is important to note that all of the styles are automatically [scoped to the related component](https://angular.io/guide/component-styles#style-scope), ie "The styles specified in @Component metadata apply only within the template of that component".
+will not only perform the tasks outlined above, but also provide us with an empty ".css" (or ".scss", ".less", etc. depending on your configuration) file and include it in our new component decorator.  If we choose to add styles in one of our "styleUrls", it is important to note that all of the styles are automatically [scoped to the related component](https://angular.io/guide/component-styles#style-scope), ie "The styles specified in @Component metadata apply only within the template of that component".
 
 If we open up our newly created **foo.component.ts** file, we should see the following code:
 
