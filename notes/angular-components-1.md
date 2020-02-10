@@ -53,7 +53,8 @@ error TS2322: Type '5' is not assignable to type 'string'.
 
 Welcome to "types" for JavaScript!
 
-In our file, above the class definition we have also included a decorator (in this case it's the [@Component()](https://angular.io/api/core/Component) decorator). It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
+In our file, above the class definition we have also included a decorator (in this case it's the <br>
+[@Component()](https://angular.io/api/core/Component) decorator). It has one parameter, which is an object composed of configuration information as key-value pairs. This object is *metadata*, and the Angular runtime uses the metadata when initializing the component. 
 
 One of the decorator's properties is a *template* (or *templateUrl*), which defines the *appearance* of the component. The template includes HTML, or the name of an HTML file. By definition, HTML is the language of the Angular template. Almost all HTML elements are valid in a template, except for these: `html`, `body`, `base`, and `script`.
 
