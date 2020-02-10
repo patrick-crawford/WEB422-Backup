@@ -65,7 +65,7 @@ Similar to React, the big difference from legacy-style client-side programming i
 
 After the React topic coverage, you have a basis for understanding *modern* client-side app building. 
 
-It all starts with *components*, introduced recently. The app is composed of a hierarchy of nested or contained components, and each encapsulates is visible content and appearance, its interaction code, and interfaces to other components and services. This is arguably the most important concept in Angular. 
+It all starts with *components*, introduced recently. The app is composed of a hierarchy of nested or contained components, and each encapsulates its visible content and appearance, its interaction code, and interfaces to other components and services. This is arguably the most important concept in Angular. 
 
 In code, the component architecture is driven by the design and coding environment of the TypeScript programming language. The organization of a folder to hold the component's source code, as well as the all the other bits have been influenced as well.
 
