@@ -241,7 +241,7 @@ Interpolation is a convenient alternative to property binding in many cases. Whe
 
 <br>
 
-The "Property Binding" syntax also enables the familiar notion of parent-child component communication via "props".  In Angular however, the set up is slightly different.  Instead of using the child component constructor to store all of the "props", we must instead add them as properties of the child *class* and add a special [@Input Decorator](https://angular.io/api/core/Input).  For example, let's say that our "foo" component is rendered inside another component called "parent".  In the "ParentComponent" class, we have the following property:
+The "Property Binding" syntax also works well with our notion of parent-child component communication via "props".  In Angular however, the set up is slightly different.  Instead of using the child component constructor to store all of the "props", we must instead add them as properties of the child *class* and add a special [@Input Decorator](https://angular.io/api/core/Input).  For example, let's say that our "foo" component is rendered inside another component called "parent".  In the "ParentComponent" class, we have the following property:
 
 ```typescript
 studentPhotos: Array<string> = ["https://upload.wikimedia.org/wikipedia/en/6/60/Jason_bourne_infobox.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d1/Matt_Damon_%28cropped%29.jpg"]
