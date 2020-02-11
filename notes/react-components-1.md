@@ -420,7 +420,7 @@ Now that our &lt;Clock /&gt; component has a notion of "state", we can write cod
   // Correct
   this.setState((state, props) => {
     return { counter: state.counter + props.increment }
-  );
+  });
   ```
 
 <br>
