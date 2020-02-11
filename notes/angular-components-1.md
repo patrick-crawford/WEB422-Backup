@@ -309,7 +309,7 @@ If we also want access to the native DOM element event, we can use the following
 <button (click)="toggleImage($event)">Toggle Image</button>
 ```
 
-Here, we can use $event to access properties such as target ($event.target) or target.value ($event.target.value).
+Here, we can use $event to access properties such as target ($event.target) or target.value ($event.target.value).  Although in Angular, it's better practice to ["get user input from a template reference variable"](https://angular.io/guide/user-input#get-user-input-from-a-template-reference-variable) (discussed in detail later in this course).
 
 <br>
 
