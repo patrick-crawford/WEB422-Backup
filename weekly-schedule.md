@@ -140,9 +140,6 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <tr>
 <td>7</td>
 <td>
-<ul>
-<li>Angular Components Introduction</li>
-</ul>
 </td>
 <td>
 <ul>
@@ -165,9 +162,6 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <tr>
 <td>8</td>
 <td>
-<ul>
-<li>Angular Components Continued </li>
-</ul>
 </td>
 <td>
 <ul>
@@ -184,9 +178,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <tr>
 <td>9</td>
 <td>
-<ul>
-<li>Routing in Angular</li>
-</ul>
+
 </td>
 <td>
 <ul>
@@ -200,9 +192,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <tr>
 <td>10</td>
 <td>
-<ul>
-<li>Services in Angular</li>
-</ul>
+
 </td>
 <td>
 <ul>
@@ -219,9 +209,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <tr>
 <td>11</td>
 <td>
-<ul>
-  <li>Introduction to Securing a Web API with JWT</li>
-</ul>
+
 </td>
 <td>
 <ul>
@@ -234,7 +222,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <tr>
 <td>12</td>
-  <td><ul><li>Introduction to Angular Deployment &amp; Testing</li></ul></td>
+<td></td>
 <td></td>
 <td>
 <ul>
