@@ -7,7 +7,7 @@ This is the React example for this week.  It features client-side routing using 
 
 For data, it uses [https://reqres.in/](https://reqres.in/).
 
-Once again, to ensure that this example functions, please emember to run the command while in the directory/folder that has the `package.json` file:
+Once again, to ensure that this example functions, please remember to run the command while in the directory/folder that has the `package.json` file:
 
 ```
 npm i
