@@ -1,0 +1,30 @@
+<h1>Directives</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>First Language</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.firstName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.language}}</td>
+            <td *ngIf="user.active">Active</td>
+            <td *ngIf="!user.active">Inactive</td>
+            <!-- or, using switch / case -->
+            <!--
+            <td [ngSwitch]="user.active">
+                <span *ngSwitchCase="true">Active</span>
+                <span *ngSwitchCase="false">Inactive</span>
+            </td>
+            -->
+        </tr>
+    </tbody>
+</table>

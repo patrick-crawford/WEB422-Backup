@@ -1,0 +1,17 @@
+<h1>Attribute, Class &amp; Style Binding</h1>
+
+<br /><br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th [attr.colspan]="headerSpan">Table Header</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr [class.table-warning]="showWarning">
+            <td [style.background-color]="showBackground ? grayBackground : null" >Column 1</td>
+            <td>Column 2</td>
+        </tr>
+    </tbody>
+</table>

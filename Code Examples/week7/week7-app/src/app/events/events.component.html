@@ -1,0 +1,13 @@
+<h1>Events</h1>
+<br><br>
+
+<div class="card card-body bg-light">
+    <h4>Parent Component</h4>
+    <br />
+    <app-child (btnClicked)="logClick($event)"></app-child>
+    <br />
+    <h5>Click Events</h5>
+    <ul>
+        <li *ngFor="let msg of clickLog">{{msg}}</li>
+    </ul>
+</div>

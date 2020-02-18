@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">Week 7 Example</a>
+ 
+
+  <div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/attributeBinding" routerLinkActive="active">Attribute Binding</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/directives"  routerLinkActive="active">Directives</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/events"  routerLinkActive="active">Events</a></li>
+    </ul>
+  </div>
+</nav>
+<br /><br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
