@@ -159,11 +159,11 @@ For example, if we wanted to render our "users" collection in a table format, we
     </thead>
     <tbody>
         <tr *ngFor="let user of users">
-            <td>{{user.firstName}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.age}}</td>
-            <td>{{user.language}}</td>
-            <td>{{user.active}}</td>
+            <td>{%raw%}{{user.firstName}}{%endraw%}</td>
+            <td>{%raw%}{{user.email}}{%endraw%}</td>
+            <td>{%raw%}{{user.age}}{%endraw%}</td>
+            <td>{%raw%}{{user.language}}{%endraw%}</td>
+            <td>{%raw%}{{user.active}}{%endraw%}</td>
         </tr>
     </tbody>
 </table>
