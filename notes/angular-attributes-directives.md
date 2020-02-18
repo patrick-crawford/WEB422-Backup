@@ -88,7 +88,7 @@ For example, if we wanted to conditionally add the bootstrap "table-warning" cla
 
 ### Style Binding
 
-If we wanted to accomplish a similar task using "style" attribute instead, we must use a slightly different syntax.  For example, if we wanted to set the "background-color" of one of the cells in the above table to "lightgrey", the regular HTML "style" attribute would look like:
+If we wanted to accomplish a similar task using the "style" attribute instead, we must use a slightly different syntax.  For example, if we wanted to set the "background-color" of one of the cells in the above table to "lightgrey", the regular HTML "style" attribute would look like:
 
 ```html
 <td style="background-color: lightgrey" >Column 1</td>
