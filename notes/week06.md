@@ -5,7 +5,7 @@ layout: default
 
 ## WEB422 Week 6 Notes
 
-Starting this week we will focus our app development to Angular.
+Starting this week, we will shift focus to Angular.
 
 Like React, it all starts with *components*. The app is composed of a hierarchy of nested or contained components, and each encapsulates its visible content and appearance, its interaction code, and interfaces to other components and services. This is arguably the most important concept in Angular. 
 
