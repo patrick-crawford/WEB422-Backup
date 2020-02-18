@@ -7,9 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ChildComponent implements OnInit {
 
-
   @Output() btnClicked = new EventEmitter();
-
 
   btnOneClicked(){
     this.btnClicked.emit("Button One Clicked");
