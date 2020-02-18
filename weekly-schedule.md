@@ -140,6 +140,11 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <tr>
 <td>7</td>
 <td>
+<ul>
+<li>Attribute, Class, Style Bindings & Directives</li>
+<li>Emitting Events</li>
+<li>Introduction to Routing</li>
+</ul>
 </td>
 <td>
 <ul>
