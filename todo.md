@@ -53,7 +53,7 @@ Or they can trade off with a friend.
 Either way, the honesty factor should still happen.  
 
 Peter will attempt to work with Kevin Pitts during the early fall to see what Blackboard can help with.  
-Also, put this proposal before other programming teachers (and Mary Lynn).  
+Also, put this proposal before other programming teachers.  
 
 <br>
 
