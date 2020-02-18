@@ -77,5 +77,15 @@ Introduction to Angular:<br><br>
 </ul>
 </td>
 </tr>
+<tr><td><a href="/notes/week07">7 - Notes</a></td>
+<td>
+Additional Bindings, Directives, Events &amp; Routing:<br><br>
+<ul>
+<li>Attribute, Class, Style Bindings & Directives</li>
+<li>Emitting Events</li>
+<li>Introduction to Routing</li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>

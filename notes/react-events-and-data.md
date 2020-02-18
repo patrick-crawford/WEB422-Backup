@@ -58,7 +58,7 @@ export default ClickCounter;
 
 Here, you will notice that we have added a few new concepts to the construction and rendering of a typical class component, ie:
 
-* We have declared a function to handle the event.  It recieves a single parameter 'e' which is a "[SyntheticEvent](https://reactjs.org/docs/events.html)" - "a cross-browser wrapper around the browser’s native event. It has the same interface as the browser’s native event, including *stopPropagation()* and *preventDefault()*, except the events work identically across all browsers."
+* We have declared a function to handle the event.  It receives a single parameter 'e' which is a "[SyntheticEvent](https://reactjs.org/docs/events.html)" - "a cross-browser wrapper around the browser’s native event. It has the same interface as the browser’s native event, including *stopPropagation()* and *preventDefault()*, except the events work identically across all browsers."
 
 * In our *constructor* function, we had to modify our event handler by calling `.bind(this)` to ensure that 'this' works correctly in the callback, according to the React Documentation:
   

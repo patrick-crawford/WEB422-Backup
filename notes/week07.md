@@ -5,10 +5,17 @@ layout: default
 
 ## WEB422 Week 7 Notes
 
-This week we will discuss:
+This week we will continue or discussion of Angular components by focusing on "attribute" binding, "directives" and "emitting events". The code discussed here will help to round out our discussion of how data is rendered using templates in Angular.  Additionally, we will discuss how we can wire up our components to use the [@Output()](https://angular.io/api/core/Output) decorator to emit custom events.  
 
-components cont'd - start with @output - https://dzone.com/articles/understanding-output-and-eventemitter-in-angular) ("we have input, what about output?) then ("Rendering Data using directives" to introduce directives, ie: directives (built in , *ngFor, etc and using a class for the data! ), building directives (custom including emitting custom events) & other component topics, ie: attribute, class & style bindings (ie: that colspan error),  pipes, ng-content 
+Finally, we will introduce a simple routing configuration in an Angular application.
 
-Angular Routing Topics (Introduction)
+
+**Topics:**
+
+* [Attribute, Class, Style Bindings & Directives](angular-attributes-directives)
+
+* [Emitting Events](angular-events)
+
+* [Introduction to Routing](angular-routing)
 
 <br>

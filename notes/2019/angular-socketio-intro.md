@@ -54,7 +54,7 @@ io.on('connection', function(socket){
       console.log('user disconnected'); // show when the user disconnected
     });
 
-    socket.on('chat message', function(msg){ // when the socket recieves a "chat message"
+    socket.on('chat message', function(msg){ // when the socket receives a "chat message"
         console.log("user sent: " + msg);
         io.emit('chat message', tempUserName + ": " + msg); // send the message back to the users
     });
@@ -126,7 +126,7 @@ Here, we wire up the "disconnect" event and simply output "user disconnected" to
 <br>
 
 ```js
-socket.on('chat message', function (msg) { // when the socket recieves a "chat message"
+socket.on('chat message', function (msg) { // when the socket receives a "chat message"
     console.log("user sent: " + msg);
     io.emit('chat message', tempUserName + ": " + msg); // send the message back to the users
 });
@@ -168,7 +168,7 @@ Once this file (public/index.html) is created, enter the following HTML:
           socket.emit('chat message', 'Hello World');
       });
       socket.on('chat message', function(msg){
-        console.log("recieved: " + msg);
+        console.log("received: " + msg);
       });
     </script>
     
@@ -185,7 +185,7 @@ Before we can run our server and see our "chat message" echoed back to us, we ne
 app.use(express.static("public"));
 ```
 
-If we run the server now, we should see the text: "recieved: User-xx Hello World" (where xx is a random number) in the Console! Our server has successfully recieved the message and sent it back out to our clients.  Once we implement a more dynamic client, we will see how this will work across multiple connections to 'chat message' on 'http://localhost:8080'.
+If we run the server now, we should see the text: "received: User-xx Hello World" (where xx is a random number) in the Console! Our server has successfully received the message and sent it back out to our clients.  Once we implement a more dynamic client, we will see how this will work across multiple connections to 'chat message' on 'http://localhost:8080'.
 
 <br>
 
@@ -335,7 +335,7 @@ At first glance, it looks like there's a lot going on in this Component, but rea
 
 - Declare a **getMessagesSub** to hold a reference to the subscription to **chatService.getMessages** (so that we can "unsubscribe" to it in the **ngOnDestroy** lifecycle method
 
-- Declare a "messages" property that will hold an array of Strings (the messages recieved from **chatService.getMessages**)
+- Declare a "messages" property that will hold an array of Strings (the messages received from **chatService.getMessages**)
 
 - Declare a "currentMessage" property that will hold the message that the user has entered (to be added to the chat).
 
@@ -392,5 +392,5 @@ The application should now be ready for testing.  You should be able to serve th
 
 This is a good start in getting a proof-of-concept chat window going, but there's lots of room for improvement.  For example, we can add a feature that lets users choose their own user name or even log in prior to using the chat window.  We could also persist existing message boards using MongoDB so that new users can see an existing conversation when they first log in, or continue a conversation later on.  We could even implement different chat "rooms" (see the documentation for "Rooms and Namespaces" in the [official socket.io documentation](https://socket.io/docs/rooms-and-namespaces/).  
 
-Another interesting use case might be an application with a single "project lead" that assigns "tasks" to users in the application.  If a logged-in user recieves a "task", we can use socket.io to alert that user immediately that a new task has been assigned to them.  This can be done *without* constantly polling the database / API for "task" updates (the traditional approach to solving this problem).
+Another interesting use case might be an application with a single "project lead" that assigns "tasks" to users in the application.  If a logged-in user receives a "task", we can use socket.io to alert that user immediately that a new task has been assigned to them.  This can be done *without* constantly polling the database / API for "task" updates (the traditional approach to solving this problem).
 

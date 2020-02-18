@@ -337,7 +337,7 @@ If we wish to render each name in its own `<li>` element, we need to embed some 
 ```
 This will iterate over every element in the "names" array and execute our callback function.  The callback function is then used to "wrap" each name in an `<li>` element before returning it.  Using this code, we can easily output one or more elements in an existing collection, using the formatting of our choice!  
 
-There is one caveat, however.  If we were to add our new component to our App (in one of the panels, for example) and examine our resulting view in the browser, we'll see that everything looks fine.  The only concern is a **warning** that we recieve in the browser console: 
+There is one caveat, however.  If we were to add our new component to our App (in one of the panels, for example) and examine our resulting view in the browser, we'll see that everything looks fine.  The only concern is a **warning** that we receive in the browser console: 
 
 ```
 "Warning: Each child in an array or iterator should have a unique "key" prop."
