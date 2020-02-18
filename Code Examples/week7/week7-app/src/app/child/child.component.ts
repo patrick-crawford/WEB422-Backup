@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -12,7 +12,6 @@ export class ChildComponent implements OnInit {
 
 
   btnOneClicked(){
-    console.log("btnOneClicked")
     this.btnClicked.emit("Button One Clicked");
   }
 
