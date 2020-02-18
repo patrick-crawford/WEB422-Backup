@@ -27,7 +27,7 @@ Today we will expand on this idea and introduce "Attribute Binding".  You will r
 </table>
 ```
 
-We would get the following error, preventing our template to render correctly in the browser:
+We would get the following error, preventing our template from rendering correctly in the browser:
 
 ```
 Can't bind to 'colspan' since it isn't a known property of 'th'.
