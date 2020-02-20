@@ -82,8 +82,20 @@ module.exports = function(mongoDBConnectionString){
             return new Promise((resolve,reject)=>{
                                
                 Post.find({}, '-_id tags').exec().then(data => {
-                    // todo, pair this down to a single array of unique tags
-                    resolve(data);
+            
+                    let result = [];
+
+                    // join the arrays
+                    data.forEach(tagsObj => {
+                        result = result.concat(tagsObj.tags)
+                    });
+
+                    // filter the results
+                    let filteredResult = result.filter(function(item, pos){
+                        return result.indexOf(item)== pos; 
+                    });
+
+                    resolve(filteredResult);
                 }).catch(err => {
                     reject(err);
                 });
