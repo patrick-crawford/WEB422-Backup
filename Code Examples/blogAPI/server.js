@@ -21,8 +21,9 @@ app.post("/api/posts", (req,res)=>{
     });
 });
 
+// IMPORTANT NOTE: ?tag=#funny wll not function, but ?tag=funny will
 app.get("/api/posts", (req,res) => {
-    data.getAllPosts(req.query.page, req.query.perPage).then((data)=>{
+    data.getAllPosts(req.query.page, req.query.perPage, req.query.category, req.query.tag).then((data)=>{
         res.json(data);
     })
     .catch((err)=>{
@@ -47,8 +48,6 @@ app.get("/api/tags", (req,res)=>{
         res.json({message: `an error occurred: ${err}`});
     })
 });
-
-// TODO: Get Post by Tag & Get Post By Category!
 
 app.get("/api/posts/:id",(req,res)=>{
     data.getPostById(req.params.id).then(data=>{
