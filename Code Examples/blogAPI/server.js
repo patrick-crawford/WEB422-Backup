@@ -30,6 +30,26 @@ app.get("/api/posts", (req,res) => {
     })
 });
 
+app.get("/api/categories", (req,res)=>{
+    data.getCategories().then((data)=>{
+        res.json(data);
+    })
+    .catch((err)=>{
+        res.json({message: `an error occurred: ${err}`});
+    })
+});
+
+app.get("/api/tags", (req,res)=>{
+    data.getTags().then((data)=>{
+        res.json(data);
+    })
+    .catch((err)=>{
+        res.json({message: `an error occurred: ${err}`});
+    })
+});
+
+// TODO: Get Post by Tag & Get Post By Category!
+
 app.get("/api/posts/:id",(req,res)=>{
     data.getPostById(req.params.id).then(data=>{
         res.json(data);

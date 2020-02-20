@@ -52,6 +52,44 @@ module.exports = function(mongoDBConnectionString){
                 }
             });
         },
+        getCategories: function(){
+            return new Promise((resolve,reject)=>{
+                               
+                Post.find({}, '-_id category').sort().exec().then(data => {
+
+                    let categories = data.map(cat => cat.category).sort();
+
+                    let result = [];
+
+                    let i = 0;
+                    while (i < categories.length) {
+                        let start = i;
+                        while (i < categories.length && (categories[i] == categories[start])) {
+                            ++i;
+                        }
+                        let count = i - start;
+                        result.push({ cat: categories[start], num: count });
+                    }
+
+                    resolve(result);
+                }).catch(err => {
+                    reject(err);
+                });
+             
+            });
+        },
+        getTags: function(){
+            return new Promise((resolve,reject)=>{
+                               
+                Post.find({}, '-_id tags').exec().then(data => {
+                    // todo, pair this down to a single array of unique tags
+                    resolve(data);
+                }).catch(err => {
+                    reject(err);
+                });
+             
+            });
+        },
         getPostById: function(id){
             return new Promise((resolve,reject)=>{
                 Post.findOne({_id: id}).exec().then(post=>{
@@ -61,6 +99,7 @@ module.exports = function(mongoDBConnectionString){
                 });
             });
         },
+
         updatePostById: function(data, id){
             return new Promise((resolve,reject)=>{
                 Post.updateOne({_id: id}, {
