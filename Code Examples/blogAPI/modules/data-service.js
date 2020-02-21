@@ -43,7 +43,7 @@ module.exports = function(mongoDBConnectionString){
                 if(+page && +perPage){
                     
                         let filter = {}; 
-                        if(category) filter.category = {$ne: ""};
+                        if(category) filter.category = category;
                         if(tag) filter.tags = {$in: ["#" + tag]};
 
                         page = (+page) - 1;                      
