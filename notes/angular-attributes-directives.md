@@ -112,7 +112,7 @@ We can also conditionally add or remove the above style using the ternary operat
 
 ### Built-in Structural Directives
 
-In Angular, a directive is a custom attribute that can be used on an element or component to help manipulate the DOM or change the appearance or behaviour of an element, component or another directive.
+In Angular, a directive is essentially a custom attribute that can be used on an element or component to help manipulate the DOM or change the appearance or behaviour of an element, component or another directive.
 
 For our purposes, we will specifically be studying "Structural Directives" as they will help us dynamically manipulate the HTML layout, ie:
 
