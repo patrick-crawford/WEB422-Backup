@@ -87,7 +87,6 @@ Additional Bindings, Directives, Events &amp; Routing:<br><br>
 </ul>
 </td>
 </tr>
-</tr>
 <tr><td><a href="/notes/week08">8 - Notes</a></td>
 <td>
 Introduction to Services, HttpClient &amp; More Routing Options<br><br>
