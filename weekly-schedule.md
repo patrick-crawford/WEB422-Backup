@@ -11,6 +11,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <br>
 
+<div style="width:100%; min-width:100%; overflow-x: auto; overflow-y:hidden;">
 <table>
 <thead>
 <tr>
@@ -255,5 +256,6 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 </tbody>
 </table>
+</div>
 
 
