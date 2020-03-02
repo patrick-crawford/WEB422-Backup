@@ -167,6 +167,11 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <tr>
 <td>8</td>
 <td>
+<ul>
+<li>Angular Services Introduction</li>
+<li>Working with a Web API in Angular</li>
+<li>Angular Routing Continued</li>
+</ul>
 </td>
 <td>
 <ul>

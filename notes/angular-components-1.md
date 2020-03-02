@@ -349,7 +349,7 @@ Finally, let's update our "foo.component.html" template to invoke the "toggleIma
 <button (click)="toggleImage()">Toggle Image</button>
 <br><br>
 <div><img [src]="photos[currentPhoto]"></div>
-<p>Student Updated: {{studentUpdated.toLocaleDateString()}}</p>
+{% raw %}<p>Student Updated: {{studentUpdated.toLocaleDateString()}}</p>{% endraw %}
 ```
 
 And there you have it!  Property and Event binding working together to create a simple user interface to swap "student" images in the view on demand.  We were also able to perform some simple top-down communication by storing the array of student photos in a "parent" component (ParentComponent) and passing them to the "child" component (FooComponent) through property binding syntax and the use of the "@Input()" decorator.
