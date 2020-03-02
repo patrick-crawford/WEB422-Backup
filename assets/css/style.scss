@@ -50,6 +50,13 @@ a:hover{
   background-color: rgba(38, 124, 185, 0.3);
 }
 
+.wide-table{
+  width:100%; 
+  min-width:100%;
+  overflow-x: auto;
+  overflow-y:hidden; 
+}
+
 /* end of new items */
 
 @media print, screen and (max-width: 960px) {
