@@ -11,7 +11,7 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <br>
 
-<div style="width:100%; min-width:100%; overflow-x: auto; overflow-y:hidden;">
+<div class="wide-table">
 <table>
 <thead>
 <tr>
