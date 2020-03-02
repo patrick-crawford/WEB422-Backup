@@ -1,0 +1,21 @@
+<div *ngIf="posts">
+    <h3>Posts</h3><br>
+
+    <table class="table">
+    <tr>
+        <th>User ID</th>
+        <th>Title</th>
+        <th>Body</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <!--<tr *ngFor="let post of posts" (click)="navigateToPost(post.id)">-->
+        <tr *ngFor="let post of posts">
+        <td>{{post.userId}}</td>
+        <td>{{post.title}}</td>
+        <td>{{post.body}}</td>
+        <td><a [routerLink]="['/post', post.id]" class="btn btn-primary btn-sm">View Post (Link)</a></td>
+        <td><button (click)="navigateToPost($event,post.id)" class="btn btn-warning btn-sm">View Post (Function)</button></td>
+    </tr>
+    </table>
+</div>

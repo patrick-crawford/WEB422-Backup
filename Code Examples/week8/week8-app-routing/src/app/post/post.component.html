@@ -1,0 +1,10 @@
+<div *ngIf="post">
+    <h3>Post: {{post.id}}</h3><br>
+
+    <h4 [innerHtml]="post.title"></h4>
+    <p [innerHtml]="post.body"></p>
+
+    <hr>
+    <p>Posted by: User Id: {{post.userId}}</p>
+</div>
+
