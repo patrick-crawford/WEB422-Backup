@@ -47,6 +47,10 @@ export class ChildComponent implements OnInit {
 Our btnClicked property will actually be an instance of Angular's ["EventEmitter" class](https://angular.io/api/core/EventEmitter).  Therefore, we must "import" it from *'@angular/core'* as well as use it to create our btnClicked emitter:
 
 ```typescript
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+```
+
+```typescript
 @Output() btnClicked = new EventEmitter();
 ```
 
