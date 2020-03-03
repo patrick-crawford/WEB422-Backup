@@ -21,7 +21,7 @@ Consider a scenario where an app has many components. Some of the components nee
 
 A component should be lean and focused. Its job is to enable the user experience and nothing more. It mediates between the *view* (rendered by the template) and the *application logic* (which often includes some notion of a model). A good component presents properties and methods for data binding. It delegates everything nontrivial to services.
 
-Angular helps you follow these principles by making it easy to place your application logic into services and make those services available to components through dependency injection.
+Angular helps you follow these principles by making it easy to place your application logic within services and make those services available to components through dependency injection.
 
 <br>
 
