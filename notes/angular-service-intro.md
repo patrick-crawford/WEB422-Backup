@@ -81,7 +81,7 @@ Above, you were introduced to the `@Injectable` decorator, which indicates that 
 
 The Angular system is has dependency injection (DI) built in. It includes an "Injector", which is a module that knows about and maintains a container of **service**  ([singletons](https://angular.io/guide/singleton-services)) that it has previously created. A service is created when it is accessed for the first time.
 
-The idea behind dependency injection is very simple. You have a component that depends on a service. In the component's code, you do not create that service yourself. Instead, you request one in the constructor (as a parameter - see: ["Parameter Properties"](https://www.typescriptlang.org/docs/handbook/classes.html#parameter-properties)), and the framework will provide you one. This leads to more decoupled code.
+The idea behind dependency injection is very simple. You have a component that depends on a service. In the component's code, you do not create that service yourself. Instead, you request one in the constructor (as a parameter - see: ["Parameter Properties"](https://www.logicbig.com/tutorials/misc/typescript/parameter-properties.html)), and the framework will provide you one. This leads to more decoupled code.
 
 <br>
 
