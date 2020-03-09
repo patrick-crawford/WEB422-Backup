@@ -1,0 +1,71 @@
+<form #f='ngForm' (ngSubmit)='onSubmit(f)'>
+
+    <div class="form-group">
+      <label class="control-label" for="name" [class.text-danger]="!name.valid">Full Name:</label>
+      <input type="text" class="form-control" [class.is-invalid]="!name.valid" id="name" name="name" [(ngModel)]="driverData.name" required autofocus #name="ngModel"> 
+      <div *ngIf="name.errors && name.errors.required">
+        <small class="text-danger">
+            <strong>Warning:</strong> "Full Name:" is required.
+        </small>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label class="control-label" for="description">Description:</label>
+      <textarea class="form-control" id="description" name="description" [(ngModel)]="driverData.description"></textarea>
+    </div>
+  
+    <div class="form-group">
+      <label class="control-label" for="ownedTransportation">Owned Transportation:</label>
+      <select multiple class="form-control" id="ownedTransportation" name="ownedTransportation" [(ngModel)]="driverData.ownedTransportation">
+        <option *ngFor = "let transportation of transportationList" [value]="transportation.value">{{transportation.text}}</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label class="control-label" for="favouriteTransportation">Favourite Transportation:</label>
+      <select class="form-control" id="favouriteTransportation" name="favouriteTransportation" [(ngModel)]="driverData.favouriteTransportation">
+        <option *ngFor = "let transportation of transportationList" [value]="transportation.value">{{transportation.text}}</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="driverLicence" class="control-label">Has a driver's license?</label>
+      <div class="checkbox">
+          <input type="checkbox" id="driverLicence" name="driverLicence" [(ngModel)]="driverData.driverLicence" />
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="" class="control-label">Vehicle usage:</label>
+      <div class="radio">
+        <label class="control-label" for="vehicleUseBusiness">
+          <input type="radio" id="vehicleUseBusiness" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="business" /> Business
+        </label>
+      </div>
+      <div class="radio">
+        <label class="control-label" for="vehicleUsePleasure">
+          <input type="radio" id="vehicleUsePleasure" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="pleasure" /> Pleasure
+        </label>
+      </div>
+      <div class="radio">
+        <label class="control-label" for="vehicleUseOther">
+          <input type="radio" id="vehicleUseOther" name="vehicleUse" [(ngModel)]="driverData.vehicleUse" value="other" /> Other
+        </label>
+      </div>
+    </div>
+  
+    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Create</button>&nbsp;&nbsp;<button class="btn btn-success" type="reset">Clear</button>
+  
+  </form>
+
+  <div *ngIf="f.submitted">
+    <br>
+    <div class="card card-body bg-light">
+        <strong>Value: </strong> {{f.value | json}} <br><br>
+        <strong>Valid: </strong> {{f.valid}} <br><br>
+        <strong>Dirty: </strong> {{f.dirty}} <br><br>
+        <strong>Touched: </strong> {{f.touched}}
+
+    </div>
+  </div>
