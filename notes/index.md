@@ -96,6 +96,14 @@ Introduction to Services, HttpClient &amp; More Routing Options<br><br>
 <li>Angular Routing Continued</li>
 </ul>
 </td>
+</tr><tr><td><a href="/notes/week09">9 - Notes</a></td>
+<td>
+Introduction to Working with Forms in Angular<br><br>
+<ul>
+<li>Angular Forms Introduction</li>
+<li>Element "State" &amp; Validation</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>

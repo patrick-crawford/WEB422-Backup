@@ -189,7 +189,11 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 <tr>
 <td>9</td>
 <td>
-
+Introduction to Working with Forms in Angular<br><br>
+<ul>
+<li>Angular Forms Introduction</li>
+<li>Element "State" &amp; Validation</li>
+</ul>
 </td>
 <td>
 <ul>
