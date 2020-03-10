@@ -96,7 +96,7 @@ It also uses the bootstrap "forms" classes, ie "form-group" and "form-control" f
   <div class="form-group">
     <label for="driverLicence" class="control-label">Has a driver's license?</label>
     <div class="checkbox">
-        <input type="checkbox" id="driverLicence" name="driverLicence" />Yes, if checked</label>
+        <label><input type="checkbox" id="driverLicence" name="driverLicence" /> Yes, if checked</label>
     </div>
   </div>
 
