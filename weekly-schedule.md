@@ -207,7 +207,11 @@ Introduction to Working with Forms in Angular<br><br>
 <tr>
 <td>10</td>
 <td>
-
+Introduction to Angular Deployment &amp; Testing<br><br>
+<ul>
+<li>Introduction to Building / Deploying an Angular app using Node.js</li>
+<li>A brief introduction to the Angular testing landscape</li>
+</ul>
 </td>
 <td>
 <ul>

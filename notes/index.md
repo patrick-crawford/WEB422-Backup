@@ -104,6 +104,14 @@ Introduction to Working with Forms in Angular<br><br>
 <li>Element "State" &amp; Validation</li>
 </ul>
 </td>
+</tr><tr><td><a href="/notes/week10">10 - Notes</a></td>
+<td>
+Introduction to Angular Deployment &amp; Testing<br><br>
+<ul>
+<li>Introduction to Building / Deploying an Angular app using Node.js</li>
+<li>A brief introduction to the Angular testing landscape</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>

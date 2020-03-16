@@ -7,7 +7,7 @@ layout: default
 
 Throughout our discussion of Angular, we have largely been ignoring the test features that have been made available to us.  For example, we have opted to ignore the spec files and "skip tests" using the "-S" command when creating a "new" application (skipping the creation the spec files altogether, as well as excluding the end-to-end (e2e) testing functionality).
 
-However, running e2e tests & unit testing is an [extremely important](https://www.agiletestingframework.com/atf/testing/unit-testing/) part of the Agile development cycle.  For example, unit / e2e testing:
+However, running e2e tests & unit testing is an [extremely important](https://www.agilealliance.org/glossary/unit-test/) part of the Agile development cycle.  For example, unit / e2e testing:
 
 * Guards against changes that break existing code (“regressions”).
 
@@ -119,10 +119,10 @@ describe('1st tests', () => {
   You should see some text output to the terminal, ie:
   
   ```
-18 12 2017 23:02:29.790:WARN [karma]: No captured browser, open http://localhost:9876/
-18 12 2017 23:02:29.800:INFO [karma]: Karma v1.7.1 server started at http://0.0.0.0:9876/
-18 12 2017 23:02:29.801:INFO [launcher]: Launching browser Chrome with unlimited concurrency
-18 12 2017 23:02:29.804:INFO [launcher]: Starting browser Chrome
+15 03 2020 21:47:06.130:WARN [karma]: No captured browser, open http://localhost:9876/
+15 03 2020 21:47:06.241:INFO [karma-server]: Karma v4.1.0 server started at http://0.0.0.0:9876/
+15 03 2020 21:47:06.241:INFO [launcher]: Launching browsers Chrome with concurrency unlimited
+15 03 2020 21:47:06.244:INFO [launcher]: Starting browser Chrome
 ...
 ```
 
@@ -541,13 +541,13 @@ If we try it now, we should see that everything works as expected and our test i
 
 Say we wish to check that a button behaves properly when clicked - ie: it updates the value of a property in the component.  How do we simulate a "click" event? How do we check the property value in the component once an event has completed?  To wire this test up, let's first create a "button" element in our `component-one.component.html` template:
 
-```
+```html
 <button class="myButton" (click)="onClick()">Click Me</button>
 ```
 
 Notice how it has a "click" event that invokes an "onClick()" method?  Our next step to set this test up, is to create the "onClick()" event in the "ComponentOneComponent" class (`component-one.component.ts`).  We should also create some value in the component to be modified when "onClick()" is invoked (we'll go with "x"):
 
-```js
+```ts
 export class ComponentOneComponent implements OnInit {
 
   public x:number;
