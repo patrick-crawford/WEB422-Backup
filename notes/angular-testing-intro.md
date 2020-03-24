@@ -389,6 +389,7 @@ var foo = function (x, callBack) {
 };
 
 it("should not call the callBack", function () {
+    expect(foo).toBeTruthy();
     foo(false, function () {
         fail("Callback has been called");
     });
@@ -571,6 +572,8 @@ To simulate the button click and check that the value of x is updated to one (1)
 ```js
 it('Sets x to 1 when "myButton" is clicked', () => {
   let button = fixture.debugElement.query(By.css('button.myButton'));
+  expect(button).toBeTruthy();
+
   button.nativeElement.click();
 
   fixture.whenStable().then(() => {
