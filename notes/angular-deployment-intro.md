@@ -208,4 +208,4 @@ RewriteRule ^(.*) /~matrixuser/index.html [NC,L]
 
 * Once this is complete, upload the .htaccess file to your public_html folder
 
-* Finally, upload the contents of your "dist/my-app" folder (assuming your app is in the folder "my-app" - basically you want to upload the contents of the folder containing index.html
+* Finally, upload the contents of your "dist/my-app" folder (assuming your app is in the folder "my-app"  - basically you want to upload the contents of the folder containing index.html to the public_html folder on Matrix
