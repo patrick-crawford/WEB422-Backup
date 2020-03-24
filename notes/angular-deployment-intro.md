@@ -149,7 +149,7 @@ npx npm-force-resolutions
 npm install
     ```
 
-    With this complete, try to deploy your app again.
+    With this complete, try to deploy your app again by checking in your code.
     
     ![Site overview screenshot](/media/angular-deployment-7.png)
 
