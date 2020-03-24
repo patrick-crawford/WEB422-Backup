@@ -25,7 +25,7 @@ Netlify will need to know what to do with routes that are manually entered by th
 
 * Open your angular.json file and locate the "assets" array under the "architect" property (approximately line 44)
 
-* Add the value: `"src/_redirects"`
+* Add the value: `"src/_redirects"` 
 
 * in the src folder add a _redirects file that contains the following line: `/* /index.html 200`
 
