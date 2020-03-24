@@ -149,7 +149,7 @@ Next, you will have to fill in the deploy settings for your app:
 npm install npm-force-resolutions --save-dev
 npm install
 npx npm-force-resolutions
-
+npm install
     ```
 
     With this complete, try to deploy your app again by checking in your code.
@@ -217,7 +217,7 @@ Once this is complete,  run the following commands:
 npm install npm-force-resolutions --save-dev
 npm install
 npx npm-force-resolutions
-
+npm install
 ```
 
 Finally, try your `npm build --prod step` again - this should remove the error.
