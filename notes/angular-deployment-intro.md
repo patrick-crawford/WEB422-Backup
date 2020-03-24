@@ -132,7 +132,9 @@ Next, you will have to fill in the deploy settings for your app:
 
     [One recommended fix](https://github.com/angular/angular-cli/issues/17262): is to do the following:
     
-    In your package.json file, add:
+    First, delete your node_modules and package-lock.json files.
+    
+    Next, In your package.json file, add:
     
     ```json
 "resolutions": {
@@ -145,8 +147,9 @@ Next, you will have to fill in the deploy settings for your app:
     
     ```bash
 npm install npm-force-resolutions --save-dev
-npx npm-force-resolutions
 npm install
+npx npm-force-resolutions
+
     ```
 
     With this complete, try to deploy your app again by checking in your code.
@@ -197,7 +200,9 @@ An unhandled exception occurred: [BABEL] /.../dist/.../main-es2015.c1198abfed2fe
 
 [One recommended fix](https://github.com/angular/angular-cli/issues/17262): is to do the following:
 
-In your package.json file, add:
+First, delete your node_modules and package-lock.json files.
+
+Next, In your package.json file, add:
 
 ```json
 "resolutions": {
@@ -209,8 +214,10 @@ In your package.json file, add:
 Once this is complete,  run the following commands:
 
 ```bash
-npx npm-force-resolutions
+npm install npm-force-resolutions --save-dev
 npm install
+npx npm-force-resolutions
+
 ```
 
 Finally, try your `npm build --prod step` again - this should remove the error.
