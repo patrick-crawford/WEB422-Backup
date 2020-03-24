@@ -210,4 +210,4 @@ RewriteRule ^(.*) /~matrixuser/index.html [NC,L]
 
 * Finally, upload the contents of your "dist/my-app" folder (assuming your app is in the folder "my-app"  - basically you want to upload the contents of the folder containing index.html to the public_html folder on Matrix
 
-* Now that your app is on Matrix, you should be able to access it using the path: 'https://matrix.senecacollege.ca/~matrixuser` (where matrixuser is your user name)
+* Now that your app is on Matrix, you should be able to access it using the path: 'https://matrix.senecacollege.ca/~matrixuser' (where matrixuser is your user name)
