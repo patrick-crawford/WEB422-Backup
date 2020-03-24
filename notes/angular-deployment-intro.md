@@ -67,7 +67,7 @@ This will copy the URL of your remote GitHub repository.
 Now, go back to your Terminal again and add this remote URL by running the following command:
 
 ```
-git add remote origin URL
+git remote add origin URL
 ```
 where **URL** is the remote repository URL that you have copied in the previous step. 
 
