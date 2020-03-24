@@ -127,3 +127,85 @@ After your app is deployed, making changes and updating the app is simple: All t
 1. Stage updated files to the local repository: `git add .`
 2. Commit these files: `git commit -m "Developed a new feature"`
 3. Push the changes to your remote repository: `git push`
+
+<br>
+
+### Quick Note: Alternate Deployment Strategies (Heroku, Seneca's "Matrix" Server)
+
+As a final note, let's quickly discuss how we can deploy an Angular app to our Heroku accounts as well as our "Matrix" accounts.
+
+<br>
+
+### Heroku
+
+Fortunately, the process for pushing to Heroku is literally identical to the process [that we discussed for React](https://web422.ca/notes/serving-react-heroku), except the build step is different (since we're building an Angular app and not a React App), ie:
+
+```bash
+ng build --prod
+```
+
+instead of:
+
+```bash
+npm run build
+```
+
+Also,  instead of a "build" folder, Angular gives us a "dist" folder for our build.
+
+**NOTE**: If at this point you see the error: 
+
+```bash
+An unhandled exception occurred: [BABEL] /.../dist/.../main-es2015.c1198abfed2fed87a91c.js: Could not find plugin "proposal-numeric-separator"
+```
+
+[One recommended fix](https://github.com/angular/angular-cli/issues/17262): is to do the following:
+
+In your package.json file, add:
+
+```json
+"resolutions": {
+    "@babel/preset-env": "^7.8.7",
+    "@babel/compat-data": "~7.8.0"
+}
+```
+
+Once this is complete,  run the following commands:
+
+```bash
+npx npm-force-resolutions
+npm install
+```
+
+Finally, try your `npm build --prod step` again - this should remove the error.
+
+<br>
+
+### Matrix
+
+Since we all have a Matrix account with a "public_html" folder, let's see how we can go about hosting our Angular app here.
+
+* First, run
+  
+  ```
+ng build --prod --base-href /~matrixuser/
+  ```
+  to get a production build (dist directory) (where matrixuser is your user name (ie: john.smith).
+   
+* Next, ftp to matrix and remove all the files from your public_html folder
+  
+* On your local machine create a .htaccess file with the contents:
+  
+  ```
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^(.*) /~matrixuser/index.html [NC,L]
+  ```
+  
+  (where matrixuser is your user name (ie: john.smith)
+
+* Once this is complete, upload the .htaccess file to your public_html folder
+
+* Finally, upload the contents of your "dist/my-app" folder (assuming your app is in the folder "my-app" - basically you want to upload the contents of the folder containing index.html
