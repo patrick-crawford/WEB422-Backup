@@ -9,6 +9,18 @@ Until now, we've been working with our web applications in a local environment. 
 
 <br>
 
+### Important Note (Angular CLI)
+
+Before you attempt to create a production build of your Angular app, please verify your version of the angular cli.  This can be done by entering the command:
+
+```bash
+ng --version
+```
+
+If your version of "Angular CLI" is less than "9.0.7" then we must do an update to ensure that the build does not contain errors:  [https://www.npmjs.com/package/@angular/cli#updating-angular-cli](https://www.npmjs.com/package/@angular/cli#updating-angular-cli)
+
+<br>
+
 ### Angular App Deployment with Netlify
 
 Previously, we used Heroku for hosting our web applications, but there are a lot of other options available. Heroku works well when you have a backend for your application. However, if you just have a front-end application, there are other services that are more convenient to use. One of them is Netlify, and we are going to use it for deploying our Angular applications.
@@ -127,32 +139,6 @@ Next, you will have to fill in the deploy settings for your app:
 4. Click "Deploy site".
     
     This will take you to the site overview page, where you can find all the details about your project. Currently, you will see that the site is being published. After some time, if the site is built successfully, you will see the URL to your published website.
-
-    **NOTE**: If at this point you see the error:  Production master@HEAD Failed under "Production deploys"
-
-    [One recommended fix](https://github.com/angular/angular-cli/issues/17262): is to do the following:
-    
-    First, delete your node_modules and package-lock.json files.
-    
-    Next, In your package.json file, add:
-    
-    ```json
-"resolutions": {
-    "@babel/preset-env": "^7.8.7",
-    "@babel/compat-data": "~7.8.0"
-}
-    ```
-    
-    Once this is complete,  run the following commands:
-    
-    ```bash
-npm install npm-force-resolutions --save-dev
-npm install
-npx npm-force-resolutions
-npm install
-    ```
-
-    With this complete, try to deploy your app again by checking in your code.
     
     ![Site overview screenshot](/media/angular-deployment-7.png)
 
@@ -191,36 +177,6 @@ npm run build
 ```
 
 Also,  instead of a "build" folder, Angular gives us a "dist" folder for our build.
-
-**NOTE**: If at this point you see the error:
-
-```bash
-An unhandled exception occurred: [BABEL] /.../dist/.../main-es2015.c1198abfed2fed87a91c.js: Could not find plugin "proposal-numeric-separator"
-```
-
-[One recommended fix](https://github.com/angular/angular-cli/issues/17262): is to do the following:
-
-First, delete your node_modules and package-lock.json files.
-
-Next, In your package.json file, add:
-
-```json
-"resolutions": {
-    "@babel/preset-env": "^7.8.7",
-    "@babel/compat-data": "~7.8.0"
-}
-```
-
-Once this is complete,  run the following commands:
-
-```bash
-npm install npm-force-resolutions --save-dev
-npm install
-npx npm-force-resolutions
-npm install
-```
-
-Finally, try your `npm build --prod step` again - this should remove the error.
 
 <br>
 
