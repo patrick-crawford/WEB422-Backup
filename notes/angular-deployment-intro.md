@@ -39,7 +39,7 @@ Netlify will need to know what to do with routes that are manually entered by th
 
 * Add the value: `"src/_redirects"` 
 
-* in the src folder add a _redirects file that contains the following line: `/* /index.html 200`
+* In the src folder add a _redirects file that contains the following line: `/* /index.html 200`
 
 <br>
 
