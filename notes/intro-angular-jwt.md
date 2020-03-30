@@ -103,7 +103,7 @@ To create this service, follow along with the instructions below:
 #### Step 1: Use the Angular-CLI to generate our "AuthService"
 
 ```
-ng g s Auth --module app
+ng g s Auth
 ```
 
 <br>
