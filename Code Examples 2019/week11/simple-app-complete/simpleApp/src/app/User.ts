@@ -4,5 +4,4 @@ export class User{
     "password": string;
     "fullName": string;
     "role": string;
-    __v: 0;
 }
