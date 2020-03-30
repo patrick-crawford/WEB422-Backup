@@ -228,7 +228,13 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 <tr>
 <td>11</td>
 <td>
-
+  Introduction to Securing a Web API with JWT <br><br>
+<ul>
+  <li>Introduction to JWT</li>
+  <li>Review User Account Management / Security (MongoDB / bcrypt)</li>
+  <li>Securing routes in existing Teams API using Passport.js / Passport-jwt</li>
+  <li>Updating an Angular app to use JWT (Route Guards / Http Interceptors)</li>
+  </ul>
 </td>
 <td>
 <ul>
