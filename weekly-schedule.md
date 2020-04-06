@@ -254,6 +254,8 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </ul>  
 </td>
 <td>
+</td>
+<td>
 <ul>
 <li>Assignment&nbsp;6</li>
 </ul>
