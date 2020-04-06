@@ -247,8 +247,12 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 
 <tr>
 <td>12</td>
-<td></td>
-<td></td>
+<td>Introduction to Socket.io <br><br>
+<ul>
+<li>Creating a server using Node/Express for managing socket connections</li>
+<li>Developing an Angular application which contains a working "chat window"</li>
+</ul>  
+</td>
 <td>
 <ul>
 <li>Assignment&nbsp;6</li>
