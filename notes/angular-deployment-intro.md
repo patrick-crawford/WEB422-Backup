@@ -9,18 +9,6 @@ Until now, we've been working with our web applications in a local environment. 
 
 <br>
 
-### Important Note (Angular CLI)
-
-Before you attempt to create a production build of your Angular app, please verify your version of the angular cli.  This can be done by entering the command:
-
-```bash
-ng --version
-```
-
-If your version of "Angular CLI" is less than "9.0.7" then we must do an update to ensure that the build does not contain errors:  [https://www.npmjs.com/package/@angular/cli#updating-angular-cli](https://www.npmjs.com/package/@angular/cli#updating-angular-cli)
-
-<br>
-
 ### Angular App Deployment with Netlify
 
 Previously, we used Heroku for hosting our web applications, but there are a lot of other options available. Heroku works well when you have a backend for your application. However, if you just have a front-end application, there are other services that are more convenient to use. One of them is Netlify, and we are going to use it for deploying our Angular applications.
