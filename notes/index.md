@@ -123,7 +123,9 @@ Introduction to Angular Deployment &amp; Testing<br><br>
   <li>Updating an Angular app to use JWT (Route Guards / Http Interceptors)</li>
   </ul>
 </td>
-</tr><tr>
+</tr>
+<!-- NOTE: Week 12 is used for normal Schedule (ie: Not 6-1-6)
+<tr>
 <td><a href="/notes/week12">12 - Notes</a></td>
 <td>
 Introduction to Socket.io <br><br>
@@ -132,6 +134,6 @@ Introduction to Socket.io <br><br>
 <li>Developing an Angular application which contains a working "chat window"</li>
 </ul>  
 </td>
-</tr>
+</tr>-->
 </tbody>
 </table>
