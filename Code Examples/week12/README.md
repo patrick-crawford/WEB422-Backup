@@ -1,4 +1,4 @@
-## Week 12 Example
+## Week 12 Example (NOTE: This will not be used during the Summer 2020 Semester)
 
 The code example this week contains Two folders "chatApp" and "chatServer":
 
