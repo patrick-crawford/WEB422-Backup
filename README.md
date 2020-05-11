@@ -29,7 +29,7 @@ The following table has links to course content:
 
 | Link | Description |
 | ---- | ----------- |
-| [Course notes](/notes/2020) | Weekly and daily class notes, and related information |
+| [Course notes](/notes) | Weekly and daily class notes, and related information |
 | [Learning resources](/resources) | A list of digital and physical resources that we’ll use during the course |
 | [Weekly schedule](/weekly-schedule) | Topics covered during the course, organized by week; includes test dates and assignment due dates |
 | [Graded work](/graded-work) | Information about graded work and values |

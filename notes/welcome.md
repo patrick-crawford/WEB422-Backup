@@ -72,7 +72,7 @@ During the course, the professor(s) will guide the student in the installation, 
 
 Every class/session will have notes posted on this web site.
 
-All notes will be linked from the [notes index page](https://WEB422.ca/notes/2020/). 
+All notes will be linked from the [notes index page](/notes). 
 
 Study that page's URI to learn the naming convention for a specific weekly notes page.
 
