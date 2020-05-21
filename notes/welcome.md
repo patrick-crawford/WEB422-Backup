@@ -23,7 +23,7 @@ Throughout the learning process, you will learn foundational concepts, skills, a
 * A survey of widely-used current/existing front end development environments
 * The Angular application platform
 
-Coming into the course, you must have some experience and success programming object-oriented software in C++. This means that you must have passed OOP244.
+Coming into the course, you must have some experience and success programming object-oriented software in C++. This means that you must have passed OOP345.
 
 In addition, you must have some experience and success with web client programming, and you must "get" the server-based web application concept. This means that you must have passed WEB222 and WEB322.
 
