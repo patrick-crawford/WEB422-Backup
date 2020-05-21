@@ -113,7 +113,6 @@ Alternatives:
 * and many others...  
 
 **State management**  
-* [Our own "Teams" API](https://github.com/sictweb/web422)
 * [JSON data API - jsonplaceholder](http://jsonplaceholder.typicode.com)  
 
 <!--**To be categorized**  
