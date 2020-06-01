@@ -213,7 +213,7 @@ let template1Result = template1({ 'user': users[0].user });  // => 'hello fred!'
 
 // Use the HTML "escape" delimiter to escape data property values.
 let template2 = _.template('<b><%- value %></b>');
-let template22Result = template2({ 'value': '<script>' }); // => '<b>&lt;script&gt;</b>'
+let template2Result = template2({ 'value': '<script>' }); // => '<b>&lt;script&gt;</b>'
 
 // Use the "evaluate" delimiter to execute JavaScript and generate HTML.
 let template3 = _.template(`<ul> 
