@@ -50,10 +50,10 @@ You should be familiar with MongoDB Atlas from our [experience in WEB322](https:
 To begin, set up a new "simple-api-users" database with a "uses" collection for the simple API.  Once this is done, get a copy of the connection string - this should look something like: 
 
 ```
-mongodb+srv://user:<password>@cluster0-abc1.mongodb.net/test?retryWrites=true&w=majority
+mongodb+srv://user:<password>@cluster0-abc1.mongodb.net/<dbname>?retryWrites=true&w=majority
 ```
 
-**Note:** You will have to change the **test** in the above connection string to **simple-api-users**, as well as the values for **user** and **&lt;password&gt;** to match the credentials that you created for a user of the cluster.
+**Note:** You will have to change the **&lt;dbname&gt;** in the above connection string to **simple-api-users**, as well as the values for **user** and **&lt;password&gt;** to match the credentials that you created for a user of the cluster.
 
 Be sure to keep track of your connection string, as we will be using it in the next piece:
 
