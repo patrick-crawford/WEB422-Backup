@@ -143,6 +143,40 @@ Once we have made the above changes (removed "exact", added /:id, referenced pro
 
 <br>
 
+### Adding Query Parameters to our Routes
+
+If we wish to obtain the query parameters for a specific route, the process is very similar, however the ability to actually parse the value(s) is [absent from react-router](https://github.com/ReactTraining/react-router/issues/4410).  For example:
+
+* Update the "Project" component's "render()" method to show query parameters:
+  
+  ```jsx
+  render(){
+    return <p>Project {this.props.id} Page - query: {this.props.query}</p>
+  }
+  ```
+
+* Update the "Project" `<Route>` component:
+  
+  ```jsx
+  <Route path='/Project/:id' render={(props) => (
+      <Project id={props.match.params.id} query={props.location.search} />
+  )}/>
+  ```
+
+This will give us the full query string. However, if we wish to parse the string and convert it to an object, a 3rd party module will have to be used.  For example, the [query-string](https://www.npmjs.com/package/query-string) module can be employed to perform this task.  Once it's been installed using npm (ie: "```npm i query-string```"), it can be added to any component:
+
+```jsx
+import queryString from 'query-string';
+```
+
+giving us access to a 'parse' method, used to convert the query string into an object:
+
+```jsx
+queryString.parse(this.props.query) // used to obtain an object from the query string (passed to the component via a "query" property)
+```
+
+<br>
+
 ### Adding A "Not Found" Route
 
 Using React Router, we can easily define a "Not Found" route - this is analagous to the "404" error that we returned in our server.js files in WEB322 when a route was not matched.
