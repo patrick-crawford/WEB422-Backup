@@ -123,7 +123,7 @@ Next, let's look at how we can use the [ternary operator](https://developer.mozi
 render() {
     return (
         <div>
-            {this.state.data[0].active ? (
+            {this.state.users[0].active ? (
                 <p>{this.state.users[0].user} is Active!</p>
             ) : (
                 <p>{this.state.users[0].user} is Inactive!</p>
