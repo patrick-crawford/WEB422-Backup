@@ -17,7 +17,7 @@ class Product extends React.Component{
         fetch(`https://reqres.in/api/unknown/${this.props.id}`)
         .then(res=>res.json())
         .then(data => {
-            if(data.data.id){ // an "id" property exists on the returned data
+            if(data.data){ // a "data" property exists on the returned data
                 this.setState({
                     product: data.data,
                     found: true, // we found some data
