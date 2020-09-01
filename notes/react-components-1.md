@@ -7,7 +7,7 @@ layout: default
 
 > **Quick Note:** Some of the below code examples and explanations have been reproduced from sections of the [official online documentation](https://reactjs.org/docs/getting-started.html) for React. 
 
-As we have stated, at the core of all applications written using React, are **components**.  So far, we have seen one component: **&lt;App /&gt;**.  To see the source for this compoent, open the file "App.js":
+As we have stated, at the core of all applications written using React, are **components**.  So far, we have seen one component: **&lt;App /&gt;**.  To see the source for this component, open the file "App.js":
 
 
 ```jsx
