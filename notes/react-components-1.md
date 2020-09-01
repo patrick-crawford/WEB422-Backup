@@ -417,7 +417,7 @@ useEffect(()=>{
 }, []); 
 ```
 
-In the above code, you'll notice that the **useEffect** hook actually accepts two parameters: a callback function, and an array of "dependencies".  The callback function is simply the code to be executed once the component is first "mounted" and rendered, while the dependency array is a list of variables that, when changed, will cause the effect to execute again.  Since we only want this effect to execute **once**, we can provide an empty array.
+In the above code, you'll notice that the **useEffect** hook actually accepts two parameters: a callback function and an array of "dependencies".  The callback function is simply the code to be executed once the component is first "mounted" and rendered, while the dependency array is a list of variables that, when changed, will cause the effect to execute again.  Since we only want this effect to execute **once**, we can provide an empty array.
 
 If we check our updated code running in the browser now, we will see that "creating a new interval" is only executed once!
 
