@@ -316,7 +316,7 @@ Not bad, there's just the issue of updating the clock output - but we'll deal wi
 
 As mentioned above, the "state" of a component is a way to store data within the component that is synchronized with the UI of the component.  This is a very powerful concept and one of the core ideas behind designing apps using components.
 
-For our example, let's add a "state" value to our &lt;Clock /&gt; component, so that we can keep the UI of the component in sync with the current time.  In this way, we can say that each &lt;Clock /&gt; component keeps track of its own internal *date* data. It will also be responsible for updating its UI every second to reflect its internal "state" data.
+For our example, let's add a "state" value to our &lt;Clock /&gt; component, so that we can keep the UI of the component in sync with the current time.  In this way, we can say that each &lt;Clock /&gt; component keeps track of its own internal *date* data. It will also be responsible for updating its UI every second to reflect changes in this data.
 
 Here is where we will use our first hook: **useState()**.  In the first line of your "Clock" function, add the line:
 
