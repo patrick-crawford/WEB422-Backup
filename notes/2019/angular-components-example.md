@@ -205,7 +205,7 @@ Notice how the "content" component contains all of our other "content" and "rout
 
 #### Updating our Navigation component
 
-For now, the navigation component - i.e. the menu bar - will simply be used to jump to a specific "content" component (ie: "horse" using it's "id" element, ie
+For now, the navigation component - i.e. the menu bar - will simply be used to jump to a specific "content" component (ie: "horse" using its "id" element, ie
 
 ```html
 <a href="#horse">Horse</a>

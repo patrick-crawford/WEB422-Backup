@@ -163,7 +163,7 @@ If we wish to obtain the query parameters for a specific route, the process is v
   )}/>
   ```
 
-This will give us the full query string. However, if we wish to parse the string and convert it to an object, a 3rd party module will have to be used.  For example, the [query-string](https://www.npmjs.com/package/query-string) module can be employed to perform this task.  Once it's been installed using npm (ie: "```npm i query-string```"), it can be added to any component:
+This will give us the full query string. However, if we wish to parse the string and convert it to an object, a 3rd party module will have to be used.  For example, the [query-string](https://www.npmjs.com/package/query-string) module can be employed to perform this task.  Once its been installed using npm (ie: "```npm i query-string```"), it can be added to any component:
 
 ```jsx
 import queryString from 'query-string';

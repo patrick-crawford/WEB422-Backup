@@ -81,7 +81,7 @@ the main point is that the server effectively treats every request as separate /
 
 in other words, no state maintenance or state management at the server
 
-this runs counter to a fimilar message-passing activity we as people do... a face-to-face or voice telephone conversation, in which each person in this kind of interactive information exchange maintains state naturally; each can easily recall what was said a few moments ago, and build upon that 
+this runs counter to a familiar message-passing activity we as people do... a face-to-face or voice telephone conversation, in which each person in this kind of interactive information exchange maintains state naturally; each can easily recall what was said a few moments ago, and build upon that 
 
 maybe define what a "session" is when used in a networked app context
 

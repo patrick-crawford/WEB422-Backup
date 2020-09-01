@@ -90,7 +90,7 @@ To begin, our "input" control has two important properties: **value** and **onCh
     }
     ```
 
-    We have implemented the **handleChange(e)** method to be as *generic* as possible. Here, we can determine which form element initiated the event (using **e.target**) and once we have access to the form element, we can pull it's value and name using the properties (**value** ane **name** respectfully).  Finally, using those values, we can set the matching peroperty in the state using the syntax: **`{[name]:value}`**.
+    We have implemented the **handleChange(e)** method to be as *generic* as possible. Here, we can determine which form element initiated the event (using **e.target**) and once we have access to the form element, we can pull its value and name using the properties (**value** ane **name** respectfully).  Finally, using those values, we can set the matching peroperty in the state using the syntax: **`{[name]:value}`**.
 
 By matching up the **value** and **onChange** methods on components in our form with functionality internal to our component, we can ensure that whenever the value of "state" changes, the corresponding form control changes as well.  Similairly, whenever our form control changes, the corresponding property in the "state" should also change.
 

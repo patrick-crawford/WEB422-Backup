@@ -26,7 +26,7 @@ This would create the following 4 files in the src/app directory (Note: it will 
 * red-box.component.spec.ts
 * red-box.component.ts
 
-Our main component is defined in the TypeScript file "red-box.component.ts" while the .html file provides the "template" for our comopnent and the .css file provides the style for our component (scoped to "app-red-box").  At this point we aren't particulairly concerned with "red-box.component.spec.ts" file.  It's created to help us "unit test" the component (using [Jasmine](https://jasmine.github.io/2.4/introduction.html) / [Karma](https://karma-runner.github.io/1.0/index.html)), however at this point we aren't concerned with testing, so this file can effectively be ignored for the time being.
+Our main component is defined in the TypeScript file "red-box.component.ts" while the .html file provides the "template" for our component and the .css file provides the style for our component (scoped to "app-red-box").  At this point we aren't particularly concerned with "red-box.component.spec.ts" file.  It's created to help us "unit test" the component (using [Jasmine](https://jasmine.github.io/2.4/introduction.html) / [Karma](https://karma-runner.github.io/1.0/index.html)), however at this point we aren't concerned with testing, so this file can effectively be ignored for the time being.
 
 <br>
 
@@ -84,7 +84,7 @@ This includes topics such as:
 
 ### Built-In Attribute and Structural Directives 
 
-We must not forget to include the extremely useful built-in attribute and structural directives in our list.  Using built-in directives like \[ngClass\], \*ngIf, \*ngFor, and \[ngSwitch] / \*ngSwitchCase, we can control how our data is displayed, based on it's current value:
+We must not forget to include the extremely useful built-in attribute and structural directives in our list.  Using built-in directives like \[ngClass\], \*ngIf, \*ngFor, and \[ngSwitch] / \*ngSwitchCase, we can control how our data is displayed, based on its current value:
 
 * ["Built-in Attribute Directives"](https://angular.io/guide/template-syntax#built-in-attribute-directives)
 * ["Built in Structural Directives"](https://angular.io/guide/template-syntax#built-in-structural-directives)
@@ -162,7 +162,7 @@ For example, while composing the component template, assume that we already know
 
 #### Rendering the "Content" (Between the Tags) of a Component 
 
-While it's not that common, sometimes we wish to render the "content" (between the tags) of a component alongside it's own template.  To accomplish this, we can use a special `<ng-content></ng-content>` component.  For example, if we create two more components - "GreenBoxComponent" and "OrangeBoxComponent" and arrange them like this in another template (ie: "app.component.html"):
+While it's not that common, sometimes we wish to render the "content" (between the tags) of a component alongside its own template.  To accomplish this, we can use a special `<ng-content></ng-content>` component.  For example, if we create two more components - "GreenBoxComponent" and "OrangeBoxComponent" and arrange them like this in another template (ie: "app.component.html"):
 
 ```html
 <app-green-box>

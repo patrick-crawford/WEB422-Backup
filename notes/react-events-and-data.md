@@ -162,7 +162,7 @@ return (
 );
 ```
 
-While this does work to render each user in it's own &lt;tr&gt; element, we actually have one small problem.  If you open the console in the browser, you will see an error: "Warning: Each child in a list should have a unique "key" prop."  According to the documentation:
+While this does work to render each user in its own &lt;tr&gt; element, we actually have one small problem.  If you open the console in the browser, you will see an error: "Warning: Each child in a list should have a unique "key" prop."  According to the documentation:
 
 >Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity.
 

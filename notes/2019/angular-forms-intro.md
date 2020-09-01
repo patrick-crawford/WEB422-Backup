@@ -405,7 +405,7 @@ Basically, if we wish to display a message for a specific type of error, we make
 ```html
 <input type="text" class="form-control" name="name" [(ngModel)]="driverData.name" required autofocus #name="ngModel">
 ```
-we can then access it's "error" property, ie: **name.error**.  For a quick glimpse at what error properties get applied, we can place the following diagnostic output somewhere near the "name" control:
+we can then access its "error" property, ie: **name.error**.  For a quick glimpse at what error properties get applied, we can place the following diagnostic output somewhere near the "name" control:
 {% raw %}
 ```html
 {{name.errors | json}}

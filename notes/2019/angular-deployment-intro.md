@@ -23,7 +23,7 @@ For the simplest deployment, build for development and copy the output directory
 ng build
 ```
 
-* Copy everything within the app folder (ie "myApp") inside output folder (**dist/** by default) to a folder on the server (**NOTE**: do not include the app folder (ie "myApp") - only it's contents).  If you copy the files into a server sub-folder, append the build flag, `--base-href` and set the `<base href...` (in the index.html file) appropriately.
+* Copy everything within the app folder (ie "myApp") inside output folder (**dist/** by default) to a folder on the server (**NOTE**: do not include the app folder (ie "myApp") - only its contents).  If you copy the files into a server sub-folder, append the build flag, `--base-href` and set the `<base href...` (in the index.html file) appropriately.
 
   For example, if the index.html is on the server at `/my/app/index.html`, set the base href to `<base href="/my/app/">`, and the build command is:
 

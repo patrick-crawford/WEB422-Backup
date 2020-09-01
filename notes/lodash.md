@@ -25,7 +25,7 @@ If you're thinking that you might want to use it in your Node.js server applicat
 
 ### The Full Documentation
 
-Lodash is a very large, comprehensive library and covering it in it's entierity is well beyond the scope of this class.  Instead, we will introduce some of the more interesting pieces of functionality that we're likely to come across during this semester.  
+Lodash is a very large, comprehensive library and covering it in its entirety is well beyond the scope of this class.  Instead, we will introduce some of the more interesting pieces of functionality that we're likely to come across during this semester.  
 
 However, you should absolutely [**Bookmark the Documentation Page**](https://lodash.com/docs/) and always check it before you start working with Objects, Collections, Strings, Dates, etc.  The chances are very good that there's ***something*** in there that will help optomize your code and make your life easier.
 

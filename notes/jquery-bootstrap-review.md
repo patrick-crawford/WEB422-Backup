@@ -85,7 +85,7 @@ TypeError: this.css is not a function
 
 Now that we have access to the element (or elements) we wish to modify in the DOM, we can apply a number of operations to modify their appearance and/or behaviour using jQuery.  One extremely important aspect in creating a reactive and dynamic view (DHTML) is watching a given element for a user / system initiated event and responding to it with custom code.
 
-jQuery provides this functionality via it's [on()](http://api.jquery.com/on/) method:
+jQuery provides this functionality via its [on()](http://api.jquery.com/on/) method:
 
 
 ```

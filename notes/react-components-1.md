@@ -79,7 +79,7 @@ Inside the App.js file, add the following "import" statement:
 import Hello from './Hello';
 ```
 
-Next, include the "Hello" component *beneath* the "Learn React" link using it's associated "self-closing" tag:
+Next, include the "Hello" component *beneath* the "Learn React" link using its associated "self-closing" tag:
 
 ```jsx
 <Hello />
@@ -267,79 +267,83 @@ will allow us to provide "fName" and "lName" values to the component using the s
 
 <br>
 
-### Introducing "class" Components.
+### Introducing "Hooks".
 
-In addition to "functional" components, React also provides components in the form of an ES6 **class**.  Using this syntax will open up some new, interesting possibilities, including storing the "[state](https://reactjs.org/docs/state-and-lifecycle.html#adding-local-state-to-a-class)" of a Component as well as handling [events on DOM elements](https://reactjs.org/docs/handling-events.html) and component [lifecycle events](https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class).
+As of version 16.8, React has introduced a feature known as "hooks".  Using this syntax will open up some new, interesting possibilities to our functional components, including working with the "[state](https://reactjs.org/docs/hooks-state.html)" as well as performing "[side effects](https://reactjs.org/docs/hooks-effect.html)" during the lifetime of the component (ie: "Data fetching, setting up a subscription, and manually changing the DOM in React components").  
 
-To practice working with class, let's create a new component called **Clock**:
+Basically, by using certain built-in "hooks" (functions), React components are able to store and manage data internally to the component (ie, its "state" values).  When this data changes, a refresh (render) of the component will occur and the user interface will be updated.  This allows us to create components that work with data internally that changes over time.
+
+To actually see this in action, let's create a new component called **Clock**:
 
 First, create a new file in "src" called "Clock.js".  Once this is done, add the following code:
 
-
 ```jsx
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
-class Clock extends React.Component {
-  render() {
+function Clock(props){
     return (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
-      </div>
+        <div>
+            <h1>Hello, world!</h1>
+            <h2>It is {props.date.toLocaleTimeString()}.</h2>
+        </div>
     );
-  }
 }
 
 export default Clock;
 ```
 
-Once again, we must add the correct import statement and component to our App.js file, ie:
+So far, this looks very similar to our "Hello" component above; it is defined as a function that accepts props and it returns some JSX to be rendered.  However, there is one key difference: we have imported both the **[useState](https://reactjs.org/docs/hooks-reference.html#usestate)** and the **[useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)** hooks from 'react'.  Soon, we will use these functions within our component.
 
-Inside the App.js file, add the following "import" statement:
+For now, let's add the Clock component to our App so that we can see it render some data:
+
+Open the **App.js** file and add the following "import" statement:
 
 ```js
 import Clock from './Clock';
 ```
 
-Next, include the "Clock" component *beneath* the &lt;Hello /&gt; link using it's associated "self-closing" tag, as well as some code to include the current date as its only "prop":
+Next, include the "Clock" component *beneath* the &lt;Hello /&gt; link using its associated "self-closing" tag, as well as some code to include the current date as its only "prop":
 
 ```jsx
 <Clock date={new Date()} />
 ```
 
-Not bad, there's just the issue of updating the clock output - but we'll deal that next.  In the mean time, let's discuss the small differences between our &lt;Clock /&gt; class component and our &lt;Hello /&gt; functional component:
-
-* To create a component using a "class", we must [*extend*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Sub_classing_with_extends) the [React.Component](https://reactjs.org/docs/react-component.html) class
-
-* When using "props", we have to refer to them using the "this" keyword, rather than "props" directly
-
-* We must include a "render()" method that returns the content of our component.  This will be invoked every time the component is rendered.
-
-As you can see, the differences between a class component and a functional component are relatively small.  However, by using a class, we can leverage some added complexity, such as "state".  
+Not bad, there's just the issue of updating the clock output - but we'll deal with that next.  
 
 <br>
 
 #### Adding "state"
 
-The "state" of a component is a way to store data within the component that is synchronized with the UI of the component.  This is a very powerful concept and one of the core ideas behind designing apps using components.
+As mentioned above, the "state" of a component is a way to store data within the component that is synchronized with the UI of the component.  This is a very powerful concept and one of the core ideas behind designing apps using components.
 
 For our example, let's add "state" to our &lt;Clock /&gt; component, so that we can keep the UI of the component in sync with the current time.  In this way, we can say that each &lt;Clock /&gt; component keeps track of its own internal *Date* data. It will also be responsible for updating its UI every second to reflect its internal "state" data.
 
-The first thing we must do, is add a "constructor" to our function.  This is where we will initialize the component's internal state, as well as pass "props" to the parent object (React.Component) using the [super](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super) keyword:
+Here is where we will use our first hook: **useState()**.  In the first line of your "Clock" function, add the line:
 
 ```jsx
-constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
-}
+const [date, setDate] = useState(new Date());
 ```
-Now, instead of passing a new "Date" object as the "date" property to the &lt;Clock /&gt; component, we will let the component initizlize its own Date once its initialized.  Since we're using the "state" object, instead of "props" to reference the date, we must also update our render() method, ie:
+
+Here, we can see that "useState" is a function, which: 
+
+* Accepts a parameter that allows us to set the *initial value* of a "state" variable
+* Returns ann array consisting two values: the "state" variable itself and a function to update it.  We use a *[destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)* to assign each of those values to a pair of constant variables - in this case: "date" and "setDate".  In the above case, this is *shorthand* for:
+  
+  ```jsx
+  const dateState = useState(new Date());
+  const date = dateState[0];
+  const setDate = dateState[1];  
+  ```
+  
+  **NOTE** We use the "const" keyword here since we **must** use the "setDate" function to modify the state value "date" - we cannot modify "date" directly.  By invoking the "setDate" method, we not only update the value of "date", but also trigger our component to re-render!
+
+Now, instead of passing a new "Date" object as the "date" property to the &lt;Clock /&gt; component, we will let the component initialize its own Date once its initialized.  Since we're using the "date" state variable, instead of "props" to reference the date, we must also update our return value, ie:
 
 ```jsx
 return (
     <div>
         <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h2>It is {date.toLocaleTimeString()}.</h2>
     </div>
 );
 ```
@@ -348,111 +352,69 @@ return (
 
 **Quick Note: "state" vs. "props"**
 
-Props (short for “properties”) and state are both plain JavaScript objects. While both hold information that influences the output of render, they are different in one important way: props get passed to the component (similar to function parameters) whereas state is managed within the component (similar to variables declared within a function).
+ While "state" &amp; "props" both hold information that can be used to influence the output of the rendered component, they are different in one important way: props get *passed to* the component whereas state is managed *within* the component.
 
 One interesting thing to note about "props" is that we can pass anything as a property, including functions!  This can be very helpful if we wish to send a message from a "child" component to a "parent" component.  For example, if we define a function (ie: handleMessage(msg)) in the "Parent" component, we can pass it in to the "Child" component using a custom property, ie "sendMessage").  Whenever the child wishes to send a message back to the parent, it can invoke the callback function from "props" and pass the data:
 
 **Parent Component**
 
 ```jsx
-handleMessage(msg){
+function handleMessage(msg){
     console.log(`Child Says: ${msg}`)
 }
 
-render(){
-    return <Child sendMessage={this.handleMessage} />;
-}
+return <Child sendMessage={handleMessage} />;
+
 ```
 
 **Child Component**
 
 ```js
-this.props.sendMessage("Hello");
+props.sendMessage("Hello");
 ```
 
-Here are some good resources for further reading on when to use props vs state, from the [official documentation](https://reactjs.org/docs/faq-state.html#what-is-the-difference-between-state-and-props):
-
-* [Props vs State](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
-* [ReactJS: Props vs. State](https://lucybain.com/blog/2016/react-state-vs-pros/)
-
 <br>
 
-#### Updating "state" and synchronizing the UI
+#### Updating the &lt;Clock /&gt; Component using the "useEffect" Hook
 
-Now that our &lt;Clock /&gt; component has a notion of "state", we can write code to manage the value of the current state and update the UI.  This involves the **setState()** method, however there are certain cautions we must take when using this function:
+For our &lt;Clock /&gt; component to function as a proper clock and update the UI every second, we must add some additional logic.  As expected, this will involve the [setInterval()](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#setInterval) function to update the Date value every second.  However, where we *place* the code is important:
 
-* **Do Not Modify State Directly**
-
-  For example, this will not re-render a component:
-
-  ```jsx
-  // Wrong
-  this.state.comment = 'Hello';
-  ```
-
-  Instead, use setState():
-
-  ```jsx
-  // Correct
-  this.setState({comment: 'Hello'});
-  ```
-
-  The only place where you can assign this.state is the constructor.
-
-* **State Updates May Be Asynchronous**
-
-  React may batch multiple setState() calls into a single update for performance.
-
-  Because this.props and this.state may be updated asynchronously, you should not rely on their values for calculating the next state.
-
-  For example, this code may fail to update the counter:
-
-  ```jsx
-  // Wrong
-  this.setState({
-    counter: this.state.counter + this.props.increment,
-  });
-  ```
-
-  To fix it, use a second form of setState() that accepts a function rather than an object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument:
-
-  ```jsx
-  // Correct
-  this.setState((state, props) => {
-    return { counter: state.counter + props.increment }
-  });
-  ```
-
-<br>
-
-#### Updating the &lt;Clock /&gt; Component using Lifecycle Methods
-
-For our &lt;Clock /&gt; component to function as a proper clock and update the UI every second, we must add a few functions.  As expected, this will involve the [setInterval()](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#setInterval) function to update the Date value every second.  However, where we *place* the code is important:
-
-For example, we will override the ["componentDidMount"](https://reactjs.org/docs/react-component.html#componentdidmount) Lifecycle method, in order to invoke "setState()" once every second and update the "state" and UI with a new Date.  Also, we assign its return value to an internal property called "timerID" using "this", so that we may clear the interval later (within the ["componentWillUnmount"](https://reactjs.org/docs/react-component.html#componentwillunmount)) method.  
+For example, you may be tempted to simply place the code: 
 
 ```jsx
-componentDidMount() {
-    this.timerID = setInterval(() => {
-        this.setState({
-            date: new Date()
-        });
-    }, 1000);
-}
-
-componentWillUnmount() {
-  clearInterval(this.timerID);
-}
+const timerID = setInterval(()=>{
+    setDate(new Date());
+},1000);
 ```
 
-For more information on the "lifecycle" of a component, and what functions are invoked during that lifecycle, you can check out this excellent tool:
+within the body of the Clock function, before the return statement.  While this code will technically achieve our goal of updating the "date" state value once every second (triggering a re-render with the new value of "date"), there are a few problems:
 
-* [Interactive React Lifecycle Methods diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+**1. The Infinite Loop**
 
-**Important Note from the Documentation**
+If we actually place a log statement within the interval function, ie:
 
-> componentDidMount() is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+```jsx
+const timerID = setInterval(()=>{
+    console.log("setting a new date");
+    setDate(new Date());
+},1000);
+```
 
+We will see that it quickly gets out of control:
+
+[new date loop](/media/new-date-loop.png)
+
+<br>
+
+This is because... (COMING SOON)
+
+**2. When / How to Stop the interval?**
+
+We have no mechanism to **stop** the interval using the [clearInterval()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) when it is no longer needed.  This would be part of a clean-up process and should execute when the component is removed "unmounted" from the DOM.
+
+<br>
+
+To Solve this... (COMING SOON)
 
 <br>
 

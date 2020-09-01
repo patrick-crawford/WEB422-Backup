@@ -15,7 +15,7 @@ Get ready by visiting the [React home page](https://reactjs.org/), and read/scan
 
 ### Installation
 
-At it's heart, react is really a "JavaScript library for building user interfaces" and as such, it can be added to your site [in one minute](https://reactjs.org/docs/add-react-to-a-website.html#add-react-in-one-minute) by including some &lt;script&gt; tags.  However, we will leverage the popular [create-react-app](https://www.npmjs.com/package/create-react-app) command line tool:
+At its heart, react is really a "JavaScript library for building user interfaces" and as such, it can be added to your site [in one minute](https://reactjs.org/docs/add-react-to-a-website.html#add-react-in-one-minute) by including some &lt;script&gt; tags.  However, we will leverage the popular [create-react-app](https://www.npmjs.com/package/create-react-app) command line tool:
 
 > Create React App is a comfortable environment for learning React, and is the best way to start building a new single-page application in React.
 >

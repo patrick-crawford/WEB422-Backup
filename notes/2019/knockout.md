@@ -156,7 +156,7 @@ Here, we're telling Knockout (ko) to use the **"myViewModel"** object with all o
 
 Since we have placed our `<span data-bind="text: personName"></span>` code within the &lt;body&gt;, the "text: personName" binding makes sense (it's pulling it from "myViewModel").
 
-Using this syntax actually affords us a lot of flexability, as we can apply different viewModels to different areas of the DOM!, for example, say we have the following two models:
+Using this syntax actually affords us a lot of flexibility, as we can apply different viewModels to different areas of the DOM!, for example, say we have the following two models:
 
 ```js
 var myPersonModel = {

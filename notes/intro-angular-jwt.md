@@ -370,7 +370,7 @@ export class InterceptTokenService implements HttpInterceptor {
 }
 ```
 
-You can see from the above code, that our ["intercept" method](https://angular.io/api/common/http/HttpInterceptor#intercept) has a very specific definition.  It's function is to "intercept" the request (available as the "request" property), perform some work on the request, and finally pass the request on to the "next" request handler (available as the "next" property).
+You can see from the above code, that our ["intercept" method](https://angular.io/api/common/http/HttpInterceptor#intercept) has a very specific definition.  Its function is to "intercept" the request (available as the "request" property), perform some work on the request, and finally pass the request on to the "next" request handler (available as the "next" property).
 
 For our purposes, this is all fairly boilerplate except for the "setHeaders" property.  This is where we identify which header we would like to set (ie: "Authorization") and what the data should be (ie: "JWT" + *space* + token).  We use the "AuthService" to pull the token from local storage.
 
@@ -482,7 +482,7 @@ You will notice that the class definition is fairly boilerplate, with the except
 
 #### Step 3: Updating our "vehicles" Route with the "Guard":
 
-As mentioned above, we must **assign** our guard to a specific route to control it's access.  In our case, we will be "guarding" the "vehicles" route.  Add the following code to the **app-routing.module.ts** file:
+As mentioned above, we must **assign** our guard to a specific route to control its access.  In our case, we will be "guarding" the "vehicles" route.  Add the following code to the **app-routing.module.ts** file:
 
 * First, add the required "import" statement:
 

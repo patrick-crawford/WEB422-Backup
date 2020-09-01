@@ -93,7 +93,7 @@ TypeError: this.css is not a function
 
 Now that we have access to the element (or elements) we wish to modify in the DOM, we can apply a number of operations to modify their appearance and/or behaviour using jQuery.  One extremely important aspect in creating a reactive and dynamic view (DHTML) is watching a given element for a user / system initiated event and responding to it with custom code.
 
-jQuery provides this functionality via it's [on()](http://api.jquery.com/on/) method:
+jQuery provides this functionality via its [on()](http://api.jquery.com/on/) method:
 
 
 ```
@@ -151,7 +151,7 @@ The final piece in creating dynamic html (DHTML) is actually modifying the DOM b
 <tr>
 <td>newDiv.css({"border":"1px solid lightgray", "padding":"10px"});</td>
 <td><strong>.css()</strong> Get the value of a computed style property for the first element in the set of matched elements or set one or more CSS properties for every matched element.</td>
-<td>Sets the "border" and "padding" CSS properties on the "newDiv" element via it's "style" attribute</td>
+<td>Sets the "border" and "padding" CSS properties on the "newDiv" element via its "style" attribute</td>
 </tr>
 <tr>
 <td>newDiv.html("&lt;span&gt;New Div!&lt;/span&gt;");</td>
@@ -257,7 +257,7 @@ If the Teams API is up and running properly, this will show an array in the cons
 
 <br>
 
-To begin, why don't we restrict the results to the first 5 employees (for now)?  Each employee should be in it's own &lt;tr&gt; element with each piece of data (First Name, Last Name & Position) in their own nested &lt;td&gt; element.  For each employee that we're going to add to the DOM (specifically, the &lt;tbody&gt; element inside the #employees-table), the end result should look like:
+To begin, why don't we restrict the results to the first 5 employees (for now)?  Each employee should be in its own &lt;tr&gt; element with each piece of data (First Name, Last Name & Position) in their own nested &lt;td&gt; element.  For each employee that we're going to add to the DOM (specifically, the &lt;tbody&gt; element inside the #employees-table), the end result should look like:
 
 ```html
 <tr>
@@ -297,7 +297,7 @@ To construct the table row & cells as efficiently as possible, we can leverage [
 
 In the code above, we create new &lt;td&gt; elements for each of the properties that we want to show in the table - in this case: First Name, Last Name and Position Name (PositionName being a property of the "Position" object within the "employee" object).  We can immediately invoke the **.text()** method because $(' ') returns a reference to the new object!
 
-This notion of chaining really starts to show it's value when we append all of the newly creaed &lt;td&gt; elements to a brand new &lt;tr&gt; element.  
+This notion of chaining really starts to show its value when we append all of the newly creaed &lt;td&gt; elements to a brand new &lt;tr&gt; element.  
 
 Lastly, we append the new row onto the tbody element and move onto the next employee.
 
