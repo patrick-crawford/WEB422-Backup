@@ -39,7 +39,7 @@ function App() {
 export default App;
 ```
 
-This is known as a [functional component](https://reactjs.org/docs/components-and-props.html#function-and-class-components), since it's defined as a "function" (rather than a "class").  The name of the function corresponds to the tag used to render the component, in this case &lt;App /&gt;.  This tag is said to be "self-closing", but we could also write the component in this form: &lt;App&gt;&lt;/App&gt;.  Ths is not as common however, and it's unnecessary unless we wish to write a component that acts as a wrapper that simply renders other components.
+This is known as a [functional component](https://reactjs.org/docs/components-and-props.html#function-and-class-components), since it's defined as a "function".  The name of the function corresponds to the tag used to render the component, in this case &lt;App /&gt;.  This tag is said to be "self-closing", but we could also write the component in this form: &lt;App&gt;&lt;/App&gt;.  Ths is not as common however, and it's unnecessary unless we wish to write a component that acts as a wrapper that simply renders other components.
 
 Additionally, you will notice that our function is preceded by three import statements.  In this case, they provide the following functionality:
 
