@@ -294,7 +294,7 @@ export default Clock;
 
 So far, this looks very similar to our "Hello" component above; it is defined as a function that accepts props and it returns some JSX to be rendered.  However, there is one key difference: we have imported both the **[useState](https://reactjs.org/docs/hooks-reference.html#usestate)** and the **[useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)** hooks from 'react'.  Soon, we will use these functions within our component.
 
-For now, let's add the Clock component to our App so that we can see it render some data:
+For now, let's just add the Clock component to our App so that we can see it render some data:
 
 Open the **App.js** file and add the following "import" statement:
 
@@ -316,7 +316,7 @@ Not bad, there's just the issue of updating the clock output - but we'll deal wi
 
 As mentioned above, the "state" of a component is a way to store data within the component that is synchronized with the UI of the component.  This is a very powerful concept and one of the core ideas behind designing apps using components.
 
-For our example, let's add "state" to our &lt;Clock /&gt; component, so that we can keep the UI of the component in sync with the current time.  In this way, we can say that each &lt;Clock /&gt; component keeps track of its own internal *Date* data. It will also be responsible for updating its UI every second to reflect its internal "state" data.
+For our example, let's add "state" to our &lt;Clock /&gt; component, so that we can keep the UI of the component in sync with the current time.  In this way, we can say that each &lt;Clock /&gt; component keeps track of its own internal *date* data. It will also be responsible for updating its UI every second to reflect its internal "state" data.
 
 Here is where we will use our first hook: **useState()**.  In the first line of your "Clock" function, add the line:
 
@@ -327,7 +327,7 @@ const [date, setDate] = useState(new Date());
 Here, we can see that "useState" is a function, which: 
 
 * Accepts a parameter that allows us to set the *initial value* of a "state" variable
-* Returns ann array consisting two values: the "state" variable itself and a function to update it.  We use a *[destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)* to assign each of those values to a pair of constant variables - in this case: "date" and "setDate".  In the above case, this is *shorthand* for:
+* Returns an array consisting two values: the "state" variable itself and a function to update it.  We use a *[destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)* to assign each of those values to a pair of constant variables - in this case: "date" and "setDate".  In the above case, this is *shorthand* for:
   
   ```jsx
   const dateState = useState(new Date());
@@ -335,9 +335,9 @@ Here, we can see that "useState" is a function, which:
   const setDate = dateState[1];  
   ```
   
-  **NOTE** We use the "const" keyword here since we **must** use the "setDate" function to modify the state value "date" - we cannot modify "date" directly.  By invoking the "setDate" method, we not only update the value of "date", but also trigger our component to re-render!
+  **NOTE:** We use the "const" keyword here since we **must** use the "setDate" function to modify the state value "date" - we cannot modify "date" directly.  By invoking the "setDate" method, we not only update the value of "date", but also trigger our component to re-render!
 
-Now, instead of passing a new "Date" object as the "date" property to the &lt;Clock /&gt; component, we will let the component initialize its own Date once its initialized.  Since we're using the "date" state variable, instead of "props" to reference the date, we must also update our return value, ie:
+Now, instead of passing a new "Date" object as the "date" property to the &lt;Clock /&gt; component, we will let the component initialize its own date once its initialized.  Since we're using the "date" state variable, instead of "props" to reference the date, we must also update our return value, ie:
 
 ```jsx
 return (
@@ -377,7 +377,7 @@ props.sendMessage("Hello");
 
 #### Updating the &lt;Clock /&gt; Component using the "useEffect" Hook
 
-For our &lt;Clock /&gt; component to function as a proper clock and update the UI every second, we must add some additional logic.  As expected, this will involve the [setInterval()](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#setInterval) function to update the Date value every second.  However, where we *place* the code is important:
+For our &lt;Clock /&gt; component to function as a proper clock and update the UI every second, we must add some additional logic.  As expected, this will involve the [setInterval()](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#setInterval) function to update the date value every second.  However, where we *place* the code is important:
 
 For example, you may be tempted to simply place the code: 
 
@@ -389,32 +389,57 @@ const timerID = setInterval(()=>{
 
 within the body of the Clock function, before the return statement.  While this code will technically achieve our goal of updating the "date" state value once every second (triggering a re-render with the new value of "date"), there are a few problems:
 
-**1. The Infinite Loop**
+<br>
 
-If we actually place a log statement within the interval function, ie:
+**1. Out of Control Execution**
+
+If we place a log statement just before the interval is created, ie:
 
 ```jsx
+console.log("creating a new interval");
 const timerID = setInterval(()=>{
-    console.log("setting a new date");
     setDate(new Date());
 },1000);
 ```
 
-We will see that it quickly gets out of control:
+and check our updated code running in the browser, we will see that things quickly gets out of control in the console. To resolve this, we need to ensure that out setInterval function is only executed **once**.
 
-[new date loop](/media/new-date-loop.png)
+This can be achieved by using the **[useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)** hook, which will help us to ensure that our function is only executed after the component is "mounted" (ie: after the first render).  This is typically where we will set up any asynchronous operations such as fetching data (or registering a callback timer in this case).  It's important to note however, that the "useEffect" hook can be used to execute code at other times as well (ie: when a state or props value has been updated), but we will discuss this topic later on.
+
+For now, let's just invoke the "useEffect" function and provide it with our setInterval() logic:
+
+```jsx
+useEffect(()=>{
+    console.log("creating a new interval")
+    const timerID = setInterval(()=>{
+        setDate(new Date());
+    },1000);
+}, []); 
+```
+
+In the above code, you'll notice that the **useEffect** hook actually accepts two parameters: a callback function, and an array of "dependencies".  The callback function is simply the code to be executed once the component is first "mounted" and rendered, while the dependency array is a list of variables that, when changed, will cause the effect to execute again.  Since we only want this effect to execute **once**, we can provide an empty array.
+
+If we check our updated code running in the browser now, we will see that "creating a new interval" is only executed once!
 
 <br>
-
-This is because... (COMING SOON)
 
 **2. When / How to Stop the interval?**
 
-We have no mechanism to **stop** the interval using the [clearInterval()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) when it is no longer needed.  This would be part of a clean-up process and should execute when the component is removed "unmounted" from the DOM.
+At the moment, our code has no mechanism to **stop** the interval using [clearInterval()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) when it is no longer needed.  This would be part of a clean-up process and should execute when the component is "unmounted" or removed from the DOM.
 
-<br>
+Fortunately, we can handle this situation within the **return value** of the callback function provided to **useEffect**, ie:
 
-To Solve this... (COMING SOON)
+```jsx
+useEffect(()=>{
+    console.log("creating a new interval")
+    const timerID = setInterval(()=>{
+        setDate(new Date());
+    },1000);
+    return ()=>{ // clean up the effect
+        clearInterval(timerID);
+    }
+}, []);
+```
 
 <br>
 
