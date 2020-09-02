@@ -18,81 +18,79 @@ We can combine the two by making the React **state** be the “single source of 
 If we want to synchronize an "input" tag with the state of our component, we can write a form as a "controlled component".  In the below example, we will use a form to collect information on a user (stored in the state as "userData"):
 
 ```jsx
-class UserDataForm extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {userData: null}; // initialize userData as null for now (populated on componentDidMount)
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+function UserDataForm(props) {
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        setUserData({
+            fullName: "Jason Borne"
+        });
+    }, []);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('The Form Was Submitted: ' + JSON.stringify(userData));
     }
 
-    componentDidMount(){ // Load the data (Usually from an API endpoint)
-        this.setState({
-            userData: {
-                fullName: "Jason Borne"
-            }
-        });
-    }
-  
-    handleChange(e) {
+    const handleChange = (e) => {
         let target = e.target; // the element that initiated the event
         let value = target.value; // its value
         let name = target.name; // its name
-    
-        this.setState((state,prop)=>{ // use the "name" to set the matching property in the state
-            state.userData[name] = value;
-            return{ userData: state.userData}
-        });
+
+        let newUserData = { ...userData }; // preform a "shallow" clone of userData        
+        newUserData[name] = value; // update the associated property for the control
+        setUserData(newUserData); // set the new user data
     }
-  
-    handleSubmit(e) {
-      e.preventDefault();
-      console.log('The Form Was Submitted: ' + JSON.stringify(this.state.userData));
-    }
-  
-    render() {
-        if(!this.state.userData){
-            return null; // render nothing until the form data is loaded
-        }else{
-            return (
-                <form onSubmit={this.handleSubmit}>
+
+    if (!userData) {
+        return null; // render nothing until the form data is loaded
+    } else {
+        return (
+            <form onSubmit={handleSubmit}>
                 <label>
                     Full Name:
-                    <input type="text" name="fullName" value={this.state.userData.fullName} onChange={this.handleChange} />
+                <input type="text" name="fullName" value={userData.fullName} onChange={handleChange} />
                 </label>
                 <button type="submit">Submit</button>
             </form>
-            );
-        }
+        );
     }
-  }
+}
 ```
 
-In the above "render" method of our UserDataForm component, we have included a simple form that has a single "input" statement. However, we have made a number of changes to ensure that the **state** of the component is the "single source of truth".
+In the above UserDataForm component, we have included a simple form that has a single "input" statement. However, we have made a number of changes to ensure that the **state** of the component (ie: "userData") is the "single source of truth".
 
 To begin, our "input" control has two important properties: **value** and **onChange**:
 
-* The **"value"** property simply exists to set the "value" of the input control to match the "fullName" property of our "userData" object in the **state** of the component.  This is the intended purpose of the [value property](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefvalue) on HTML elements (to set the input control's "value").  **Note:** The **name** of our component should match the property name that we wish to set in the **state**.  This will simplify things in our **handleChange(e)** event.
+* The **"value"** property simply exists to set the "value" of the input control to match the "fullName" property of our "userData" object.  This is the intended purpose of the [value property](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefvalue) on HTML elements (to set the input control's "value").  **Note:** The **name** of our component should match the property name that we wish to set in the **state**.  This will simplify things in our **handleChange(e)** event.
 
-* The **"onChange"** event has been wired up to an internal "handleChange" property:
+* The **"onChange"** event has been wired up to a "handleChange" function:
 
   ```js
-    handleChange(e) {
+    const handleChange = (e) => {
         let target = e.target; // the element that initiated the event
         let value = target.value; // its value
         let name = target.name; // its name
 
-        this.setState((state,prop)=>{  // use the "name" to set the matching property in the state
-            state.userData[name] = value;
-            return{ userData: state.userData}
-        });
+        let newUserData = { ...userData }; // preform a "shallow" clone of userData        
+        newUserData[name] = value; // update the associated property for the control
+        setUserData(newUserData); // set the new user data
     }
     ```
 
-    We have implemented the **handleChange(e)** method to be as *generic* as possible. Here, we can determine which form element initiated the event (using **e.target**) and once we have access to the form element, we can pull its value and name using the properties (**value** ane **name** respectfully).  Finally, using those values, we can set the matching peroperty in the state using the syntax: **`{[name]:value}`**.
+    We have implemented the **handleChange(e)** method to be as *generic* as possible. Here, we can determine which form element initiated the event (using **e.target**) and once we have access to the form element, we can pull its value and name using the properties (**value** ane **name** respectfully).  Finally, using those values, we can set the matching property in the user data using the syntax: **`{[name]:value}`**.
 
-By matching up the **value** and **onChange** methods on components in our form with functionality internal to our component, we can ensure that whenever the value of "state" changes, the corresponding form control changes as well.  Similairly, whenever our form control changes, the corresponding property in the "state" should also change.
+    **NOTE:**  As stated in the comments, the line: `let newUserData = { ...userData };` performs a 'shallow copy' of the userData state variable, since we cannot edit it directly.  This is essentially another form of a "destructuring assignment" and functions the same as:
+
+    ```jsx
+    let newUserData = {};
+
+    for (let prop in userData){
+        newUserData[prop] = userData[prop];
+    }
+    ```
+
+By matching up the **value** and **onChange** methods on components in our form with functionality internal to our component, we can ensure that whenever the value of "state" changes, the corresponding form control changes as well.  Similarly, whenever our form control changes, the corresponding property in the "state" should also change.
 
 Next, you will notice that we have wired up our component to handle the "submit" event of the `<form>`.  This is similar to what we did back in Week 2 with jQuery, ie: prevent the form from submitting using the expected behaviour and instead, submit the data ourselves using AJAX (ie: to an API endpoint using **PUT** or **POST**)
 
@@ -104,7 +102,7 @@ The textarea tag can be controlled in exactly the same way as a simple "input" t
 
 ```jsx
 <label>Full Program Name:
-    <textarea name="programName" value={this.state.userData.programName} onChange={this.handleChange}></textarea>
+    <textarea name="programName" value={userData.programName} onChange={handleChange}></textarea>
 </label>
 ```
 
@@ -115,7 +113,7 @@ The textarea tag can be controlled in exactly the same way as a simple "input" t
 If we wish to add a &lt;select&gt; element, we can follow the same pattern. 
 
 ```jsx
-<select name="campus" value={this.state.userData.campus} onChange={this.handleChange}>
+<select name="campus" value={userData.campus} onChange={handleChange}>
     <option value="">- Select -</option>
     <option value="king">King</option>
     <option value="markham">Markham</option>
@@ -131,13 +129,13 @@ If we wish to add a &lt;select&gt; element, we can follow the same pattern.
 If we wish to work with a &lt;select multiple&gt; element, things are a little more complicated.  For example, we can set the "multiple" attribute using `{true}`, ie:
 
 ```jsx
-<select multiple={true} name="campus" value={this.state.userData.campus} onChange={this.handleChange}>
+<select multiple={true} name="campus" value={userData.campus} onChange={handleChange}>
 ```
 
 Next, we must ensure that we correctly manage the "handleChange" event to handle multiple values.  This involves first checking if the "type" of the target is "select-multiple".  If it is, then we must loop through all of the options and add any "selected" ones to the "value", ie:
 
 ```js
-handleChange(e) {
+const handleChange = (e) => {
     let target = e.target; // the element that initiated the 
     let value = null; // set value to null until we can figure out the type
     let name = target.name; // its name
@@ -149,14 +147,14 @@ handleChange(e) {
                 value.push(target.options[i].value);
             }
         }
-    }else{
-        value = target.value;
+    }
+    else{
+        value = target.value
     }
 
-    this.setState((state,prop)=>{ // use the "name" to set the matching property in the state
-        state.userData[name] = value;
-        return{ userData: state.userData}
-    });
+    let newUserData = { ...userData }; // preform a "shallow" clone of userData        
+    newUserData[name] = value; // update the associated property for the control
+    setUserData(newUserData); // set the new user data
 }
 ```
 
@@ -167,13 +165,13 @@ handleChange(e) {
 If we also wish to handle "checkbox" elements, we can once again wire up our component and state using the same pattern, only instead of **value**, we use **checked**:
 
 ```jsx
-<label>Enrolled: <input name="enrolled" type="checkbox" checked={this.state.userData.enrolled} onChange={this.handleChange}></input></label>
+<label>Enrolled: <input name="enrolled" type="checkbox" checked={userData.enrolled} onChange={handleChange}></input></label>
 ```
 
-We must also update our **handleChange(e)** method to accomodate the "checkbox" type: 
+We must also update our **handleChange(e)** method to accommodate the "checkbox" type: 
 
 ```js
-handleChange(e) {
+const handleChange = (e)=>{
     let target = e.target; // the element that initiated the event
     let value = null; // its value
     let name = target.name; // its name
@@ -192,10 +190,9 @@ handleChange(e) {
         value = target.value
     }
 
-    this.setState((state,prop)=>{ // use the "name" to set the matching property in the state
-        state.userData[name] = value;
-        return{ userData: state.userData}
-    });
+    let newUserData = {...userData}; // preform a "shallow" clone of userData        
+    newUserData[name] = value; // update the associated property for the control
+    setUserData(newUserData); // set the new user data
 }
 ```
 
@@ -207,10 +204,10 @@ The final input type that we will discuss is the "radio button".  It's similar t
 
 ```jsx
 <label>
-    Residence <input name="housing" type="radio" checked={this.state.userData.housing === "residence"} value="residence" onChange={this.handleChange} />
+    Residence <input name="housing" type="radio" checked={userData.housing === "residence"} value="residence" onChange={handleChange} />
 </label>
 <label>
-    Off Campus <input name="housing" type="radio" checked={this.state.userData.housing === "off campus"} value="off campus" onChange={this.handleChange} />
+    Off Campus <input name="housing" type="radio" checked={userData.housing === "off campus"} value="off campus" onChange={handleChange} />
 </label>
 ```
 
@@ -224,36 +221,38 @@ In HTML, an `<input type="file">` lets the user choose one or more files from th
 <input type="file" />
 ```
 
-In React, an `<input type="file" />` is always an uncontrolled component because its value can only be set by a user, and not programmatically.  In the below example, [React.createRef()](https://reactjs.org/docs/refs-and-the-dom.html#creating-refs) is used to retrieve the underlying DOM elmement as its "current" property.
+In React, an `<input type="file" />` is always an uncontrolled component because its value can only be set by a user, and not programmatically.  In the below example, [useRef() Hook](https://reactjs.org/docs/hooks-reference.html#useref) is used to retrieve the underlying DOM element as its "current" property.
 
-Addditionally, you should use the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications) to interact with the files. The following example shows how to create a ref to the DOM node to access file(s) in a submit handler:
+Additionally, you should use the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications) to interact with the files. The following example shows how to create a ref to the DOM node to access file(s) in a submit handler:
 
 ```jsx
-class FileInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.fileInput = React.createRef();
-  }
-  handleSubmit(e) {
+
+import React, { useRef } from 'react'
+
+function FileInput(props) {
+
+  const fileInput = useRef(null);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if(this.fileInput.current.files.length > 0){
-        console.log(`Selected file - ${this.fileInput.current.files[0].name}`);
+
+    if (fileInput.current.files.length > 0) {
+      console.log(`Selected file - ${fileInput.current.files[0].name}`);
     }
+
   }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Upload file:
-          <input type="file" ref={this.fileInput} />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Upload file:
+        <input type="file" ref={fileInput} />
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  );
+
 }
 ```
 
