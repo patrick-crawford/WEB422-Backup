@@ -28,56 +28,59 @@ is slightly different in React:
 </button>
 ```
 
-To see this in action, let's code a simple "click counter" component that renders a single button that shows a number that increases by one (1) every time it's clicked.  To achieve this, we'll create a new component called "ClickCounter" using the class syntax:
+To see this in action, let's code a simple "click counter" component that renders a single button that shows a number that increases by one (1) every time it's clicked.  To achieve this, we'll create a new component called "ClickCounter":
 
 ```jsx
-import React from 'react';
+import React, {useState} from 'react';
 
-class ClickCounter extends React.Component{
-    constructor(props){
-        super(props);
+function ClickCounter(props){
+    const [numClicks, setNumClicks] = useState(0);
 
-        this.state = {numClicks: 0};
-
-        this.increaseNumClicks = this.increaseNumClicks.bind(this); // 'this' must be bound to the event handler
+    function increaseNumClicks(e){ // 'e' is the current event object
+        setNumClicks(numClicks + 1);
     }
 
-    increaseNumClicks(e){ // 'e' is the current event object
-        this.setState((prevState) => {
-            return { numClicks: prevState.numClicks + 1 }
-        });
-    }
-
-    render(){
-        return <button onClick={this.increaseNumClicks}>Clicks: {this.state.numClicks}</button>
-    }
+    return <button onClick={increaseNumClicks}>Clicks: {numClicks}</button>
 }
 
 export default ClickCounter;
 ```
 
-Here, you will notice that we have added a few new concepts to the construction and rendering of a typical class component, ie:
+Here, you will notice that we have added a couple new concepts to the construction and rendering of a typical functional component, ie:
 
 * We have declared a function to handle the event.  It receives a single parameter 'e' which is a "[SyntheticEvent](https://reactjs.org/docs/events.html)" - "a cross-browser wrapper around the browser’s native event. It has the same interface as the browser’s native event, including *stopPropagation()* and *preventDefault()*, except the events work identically across all browsers."
 
-* In our *constructor* function, we had to modify our event handler by calling `.bind(this)` to ensure that 'this' works correctly in the callback, according to the React Documentation:
-  
-  "This is not React-specific behavior; it is a part of how functions work in JavaScript. Generally, if you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method."
-
 * On our button element, we use "onClick" (instead of "onclick") to reference the event handler and "wire up" the event. **Note:** For a full list events please refer to the official documentation for [supported events](https://reactjs.org/docs/events.html#supported-events).
 
-Lastly, for more on passing event handlers to components, such as passing parameters, using arrow functions, etc. see: [https://reactjs.org/docs/faq-functions.html](https://reactjs.org/docs/faq-functions.html).  However, as it states in the linked document, using the alternate syntax can potentially "have performance implications" or "break optimizations based on strict identity comparison", so be careful when using them. 
+<br>
+
+### Adding Parameters
+
+As you can see from the above example, our callback function "increaseNumClicks" is registered to the onClick event by *passing the function only* - the function is not actually *invoked* anywhere in our JSX.  This works fine, but what if we wish to pass one or more parameters to the function, in addition to the SyntheticEvent (above)?  
+
+This can actually be achieved by registering the event as an anonymous function declared within the JSX, which *invokes* the callback function.  For example:
+
+```jsx
+function increaseNumClicks(e, message){ // 'e' is the current event object
+    console.log(message);
+    setNumClicks(numClicks + 1);
+}
+
+return <button onClick={(e)=>{increaseNumClicks(e, "Hello")}}>Clicks: {numClicks}</button>
+```
+
+Here, we declare the callback function in place.  It accepts a single parameter "e" as before, but the body of the function *invokes* the callback function.  This allows us to continue to pass the SyntheticEvent (e) to our event handler "increaseNumClicks" as well as add any other parameter values. 
 
 <br>
 
 ## Rendering Data
 
-So far, we have seen how we can render a value in JSX by placing an expression within curly braces `{...}`.  This expresion is then evaluated and used in place within our JSX, either to:
+So far, we have seen how we can render a value in JSX by placing an expression within curly braces `{...}`.  This expression is then evaluated and used in place within our JSX, either to:
 
 * render the data in place, ie:
 
   ```jsx
-  {this.state.date.toLocaleTimeString()}
+  {date.toLocaleTimeString()}
   ```
 * provide a value to a property, ie:
 
@@ -85,16 +88,16 @@ So far, we have seen how we can render a value in JSX by placing an expression w
   <img src={user.avatarUrl} />
   ```
 
-However, we actually have a great deal of control over the output of the render function, given this syntax.  Since the content between the curly braces `{...}` is a *statement*, we can use well known JavaScript syntax and functions to control our output. 
+However, we actually have a great deal of control over how the data is rendered using this syntax.  Since the content between the curly braces `{...}` is a *statement*, we can use well known JavaScript syntax and functions to control our output. 
 
 Before we move on to the examples, let's assume that we have the following collection of data (borrowed from our Lodash examples) hardcoded in the state of a component:
 
 ```js
-this.state = { users:[
+const [users, setUsers] = useState([
     { 'user': 'fred',    'active': false, 'age': 40 },
     { 'user': 'pebbles', 'active': false, 'age': 1  },
     { 'user': 'barney',  'active': true,  'age': 36 }
-]};
+]);
 ```
 
 <br>
@@ -106,8 +109,8 @@ First, let's take a look at a situation where we may only want to render some da
 ```jsx
 return (
     <div>
-        {this.state.users[0].active &&
-            <p>{this.state.users[0].user} is Active!</p>
+        {users[0].active &&
+            <p>{users[0].user} is Active!</p>
         }
     </div>
 );
@@ -117,27 +120,25 @@ return (
 
 ### Ternary Operator (If-Else)
 
-Next, let's look at how we can use the [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator), ie: `(age > 18) ? "adult" : "minor"` to render a differnet &lt;p&gt; element depending on whether or not the user is "active".
+Next, let's look at how we can use the [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator), ie: `(age > 18) ? "adult" : "minor"` to render a different &lt;p&gt; element depending on whether or not the user is "active".
 
 ```jsx
-render() {
-    return (
-        <div>
-            {this.state.users[0].active ? (
-                <p>{this.state.users[0].user} is Active!</p>
-            ) : (
-                <p>{this.state.users[0].user} is Inactive!</p>
-            )}
-        </div>
-    );
-}
+return (
+    <div>
+        {users[0].active ? (
+            <p>{users[0].user} is Active!</p>
+        ) : (
+            <p>{users[0].user} is Inactive!</p>
+        )}
+    </div>
+);
 ```
 
 <br>
 
 ### Array.map() (Iteration)
 
-One extremely common task is iterating over a collection and outputting each element using a consistant format.  This could be rows in a table, items in a list, other components, etc.  To achieve this within our JSX code, we can use the [Array.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method, ie:
+One extremely common task is iterating over a collection and outputting each element using a consistent format.  This could be rows in a table, items in a list, other components, etc.  To achieve this within our JSX code, we can use the [Array.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method, ie:
 
 ```jsx
 return (
@@ -150,7 +151,7 @@ return (
             </tr>
         </thead>
         <tbody>
-            {this.state.users.map(user => 
+            {users.map(user => 
                 <tr>
                     <td>{user.user}</td>
                     <td>{(user.active) ? "yes" : "no"}</td>
@@ -169,7 +170,7 @@ While this does work to render each user in its own &lt;tr&gt; element, we actua
 Normally, we would have a unique id to work with (ie "_id" from MongoDB), however with our list we don't have any "stable" id's to work with.  In this case, we can make use of the 2nd parameter to the "map()" method - the "index".  This requires us to change our JSX to use the following code:
 
 ```jsx
-{this.state.users.map((user, index) => 
+{users.map((user, index) => 
     <tr key={index}>
         <td>{user.user}</td>
         <td>{(user.active) ? "yes" : "no"}</td>
@@ -182,15 +183,15 @@ Normally, we would have a unique id to work with (ie "_id" from MongoDB), howeve
 
 ### Returning Null
 
-Finally, we can actually choose not to render anything by returning ***null*** from our render function, for example:
+Finally, we can actually choose not to render anything by returning ***null***, for example:
 
 ```jsx
-render() {
-    if(!this.state.loading){
-        return <p>Done Loading! - TODO: Show the data here</p>;
-    }else{
-        return null; // don't render anything - still loading
-    }
+
+if(!loading){
+    return <p>Done Loading! - TODO: Show the data here</p>;
+}else{
+    return null; // don't render anything - still loading
 }
+
 ```
 
