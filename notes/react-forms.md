@@ -7,7 +7,7 @@ layout: default
 
 > **Quick Note:** Some of the below code examples and explanations have been reproduced from sections of the [official online documentation](https://reactjs.org/docs/getting-started.html) for React. 
 
-In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React however, state is typically kept in the **state** property of components, and only updated with setState().
+In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React however, state is typically kept in **state** values within components, and only updated with their corresponding "setter" functions.
 
 We can combine the two by making the React **state** be the “single source of truth”. Then the React component that renders a form also controls what happens in that form during user input. An input form element whose value is controlled by React in this way is called a “controlled component”.
 
