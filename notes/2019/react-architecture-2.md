@@ -9,19 +9,24 @@ Now that we have learned all about Components in React (Stateful, Stateless, Fun
 
 To get started, create a *new app* (maybe named "comp1") using **create-react-app**.  Once this is complete follow the steps in the terminal to start the development server (ie: **npm start**).  This *should* open a new browser window to **http://localhost:3000**, but if it doesn't - proceed to open up that url now.
 
-Notice how the create-react-app tool has created a start page for us already.  However, now that we know a little bit more about how React is used to define and manage "Components", let's disect what's happening here and create our own start page.
+Notice how the create-react-app tool has created a start page for us already.  However, now that we know a little bit more about how React is used to define and manage "Components", let's dissect what's happening here and create our own start page.
 
 Inside the **src/index.js** file is where everything really kicks off.  It's known as the "JavaScript entry point" for our application and it's where we will put our highest level component (ie: `<App />`.  As you can see, this is exactly what create-react-app has done for us:
 
 ```js
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 ```
 
 Here, we invoke the [ReactDom.render](https://reactjs.org/docs/react-dom.html#render) method to render our primary "App" element onto the main `<div>` element in `index.html`
 
 You will notice however, that `<App />` isn't defined in index.js and neither is `ReactDOM`.  References to the original source is included via ["import"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) statements at the top of the file.  This behaviour is defined in ES6 and it simply is the way for us to include modules from other source code files.  You can think of this as analogous to our "require" statements that we use when writing server code in Node.js.  
 
-In our current application (index.js file), we import the modules **React**, **ReactDOM**, **App** and **registerServiceWorker**.  We can discard the **registerServiceWorker** code for now (for more infomation see: [Service Workers: an Introduction](https://developers.google.com/web/fundamentals/primers/service-workers/)).  This should leave you with the following code:
+In our current application (index.js file), we import the modules **React**, **ReactDOM**, **App** and **registerServiceWorker**.  We can discard the **registerServiceWorker** code for now (for more information see: [Service Workers: an Introduction](https://developers.google.com/web/fundamentals/primers/service-workers/)).  This should leave you with the following code:
 
 ```jsx
 import React from 'react';
@@ -29,7 +34,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 ```
 
 The `import './index.css';` line in the above code simply informs the (Webpack) build process that we wish to include the ./index.css file whenever we include the ./index.js file.  

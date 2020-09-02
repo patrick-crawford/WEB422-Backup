@@ -86,13 +86,18 @@ An easy edit, just to prove that you can do so, is to edit the `App.js` file in 
 
 ### What's next?
 
-So far, we have a single *component:* **App**.  This is our high-level component that we will place all of our other components inside.  If you open the "index.js" file, beneath the "import" statements (discussed later) at line 7, you should see the line:
+So far, we have a single *component:* **App**.  This is our high-level component that we will place all of our other components inside.  If you open the "index.js" file, beneath the "import" statements (discussed later) at line 7, you should see the lines:
 
 ```jsx
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 ```
 
-This line is responsible for rendering our "App" component within the: `<div id="root"></div>` element in the "public/index.html" file.  
+The above code is responsible for rendering our "App" component (in ["Strict Mode"](https://reactjs.org/docs/strict-mode.html)) within the: `<div id="root"></div>` element in the "public/index.html" file.  
 
 To continue our learning and begin to develop apps using React, keep reading the Week 3 notes with: [Introduction to React Components](react-components-1).
 

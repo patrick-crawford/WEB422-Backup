@@ -57,15 +57,18 @@ We need to modify our App.js file as well as our index.js file.
 
 ### index.js changes
 
-* "import" the `<BrowserRouter>` Component using `import { BrowserRouter } from 'react-router-dom'` 
+* "import" the `<BrowserRouter>` Component using `import { BrowserRouter } from 'react-router-dom'`; 
 * Update the ReactDom.render() method to wrap the `<App />` component in a `<BrowserRouter>` component:
 
   ```jsx
   ReactDOM.render(
-    <BrowserRouter>
+    <React.StrictMode>
+      <BrowserRouter>
         <App />
-    </BrowserRouter>
-  , document.getElementById('root'));
+      </BrowserRouter>
+    </React.StrictMode>,
+  document.getElementById('root')
+  );
   ```
 
 FYI, if you have to work with old obsolete legacy browser versions: The above code specifies the type of router that we will be using in our `<App />` component.  This could be either [&lt;BrowserRouter&gt;](https://reacttraining.com/react-router/web/api/BrowserRouter) or [&lt;HashRouter&gt;](https://reacttraining.com/react-router/web/api/HashRouter). The Hash Router technique is used to support legacy browsers.
@@ -75,9 +78,18 @@ FYI, if you have to work with old obsolete legacy browser versions: The above co
 ### App.js changes
 
 Import the `<Route>` and `<Switch>` components:  
-`import { Route, Switch } from 'react-router-dom'`
+```js
+import { Route, Switch } from 'react-router-dom'
+```
 
-Update the render() method of the "App" class to use the following JSX:
+Import the `<Home>`, `<Projects>`, `<Project>`:
+```js
+import Home from './Home';
+import Projects from './Projects';
+import Project from './Project';
+```
+
+Update the return value of the "App" function to use the following JSX:
 
 ```jsx
 <Switch>
