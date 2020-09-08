@@ -337,7 +337,7 @@ Here, we can see that "useState" is a function, which:
   
   **NOTE:** We use the "const" keyword here since we **must** use the "setDate" function to modify the state value "date" - we cannot modify "date" directly.  By invoking the "setDate" method, we not only update the value of "date", but also trigger our component to re-render!
 
-Now, instead of passing a new "Date" object as the "date" property to the &lt;Clock /&gt; component, we will let the component initialize its own date once its initialized.  Since we're using the "date" state variable, instead of "props" to reference the date, we must also update our return value, ie:
+Now, instead of passing a new "Date" object as the "date" property to the &lt;Clock /&gt; component, we will let the component set its own date once its initialized.  Since we're using the "date" state variable, instead of "props" to reference the date, we must also update our return value, ie:
 
 ```jsx
 return (
