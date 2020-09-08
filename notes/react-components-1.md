@@ -302,7 +302,7 @@ Open the **App.js** file and add the following "import" statement:
 import Clock from './Clock';
 ```
 
-Next, include the "Clock" component *beneath* the &lt;Hello /&gt; link using its associated "self-closing" tag, as well as some code to include the current date as its only "prop":
+Next, include the "Clock" component *beneath* the &lt;Hello /&gt; tag using its associated "self-closing" tag, as well as some code to include the current date as its only "prop":
 
 ```jsx
 <Clock date={new Date()} />
