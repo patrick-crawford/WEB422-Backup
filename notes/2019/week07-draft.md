@@ -25,7 +25,7 @@ That means staying with a week-long treatment of each of these four topic areas:
 
 Do I assume that there was four (4) assignments remaining? (A5, A6, A7, and A8?)
 
-If yes, then I propose that we do smaller assignments. Each will be a week in length. Introduce each in the Tuesday lecture class/session. Maybe some part of it can be checked/verified in the Thursday computer-lab class/session (but maybe not; let's think about that). Make the assignment due BEFORE the next week's Tuesday lecture class/session (so there's no distractions or topic overlap).
+If yes, then I propose that we do smaller assignments. Each will be a week in length. Introduce each in the  lecture class/session. Maybe some part of it can be checked/verified in the Thursday computer-lab class/session (but maybe not; let's think about that). Make the assignment due BEFORE the next week's lecture class/session (so there's no distractions or topic overlap).
 
 Here's some ideas for the proposed assignments:
 
@@ -62,7 +62,7 @@ Component for the "edit existing" use case:
 
 #### Assign 6 - routing
 
-Build on the result of Assign 5. That's why it's important to have the due date BEFORE the Tuesday lecture class/session. 
+Build on the result of Assign 5. That's why it's important to have the due date BEFORE the lecture class/session. 
 
 Maybe we can provide a sample solution, a base project or at least some of the components. That will enable problem students to start fresh with a best-practice sample solution. 
 

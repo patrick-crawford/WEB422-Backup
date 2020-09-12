@@ -23,7 +23,7 @@ That means staying with a week-long treatment of each of these four topic areas:
 3. Services
 4. Forms
 
-There were originally five (5) assignments to be done. Realistically, that's not possible. So, I propose that we do four (4) smaller assignments. Each will be a week in length. Introduce it in the Tuesday lecture class/session. Maybe some part of it can be checked/verified in the Thursday computer-lab class/session (but maybe not). Make the assignment due BEFORE the next week's Tuesday lecture class/session (so there's no distractions or topic overlap).
+There were originally five (5) assignments to be done. Realistically, that's not possible. So, I propose that we do four (4) smaller assignments. Each will be a week in length. Introduce it in the lecture class/session. Maybe some part of it can be checked/verified in the Thursday computer-lab class/session (but maybe not). Make the assignment due BEFORE the next week's lecture class/session (so there's no distractions or topic overlap).
 
 Here's the proposed assignments:
 
@@ -60,7 +60,7 @@ Component for the "edit existing" use case:
 
 #### Assign 5 - routing
 
-Build on the result of Assign 4. That's why it's important to have the due date BEFORE the Tuesday lecture class/session. 
+Build on the result of Assign 4. That's why it's important to have the due date BEFORE the  lecture class/session. 
 
 Maybe we can provide a sample solution, a base project or at least some of the components. That will enable problem students to start fresh with a best-practice sample solution. 
 

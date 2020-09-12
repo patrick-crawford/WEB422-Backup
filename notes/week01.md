@@ -5,8 +5,6 @@ layout: default
 
 ## WEB422 Week 1 Notes
 
-> Tuesday, January 7 - hands-on in the computer-lab
-
 The theme for the first few classes is to transition your success in the previous course to the new topics in this course.
 
 Remember to frequently use the [learning resources](/resources).

@@ -109,7 +109,7 @@ Before the second class / lab session of the week, we also expect you to prepare
 * Read and study the current assignment
 * Practice its contents, and/or get started on its contents
 
-Regarding the workload, it will simply not be possible to confine this course's learning experience to the scheduled four periods per week. We expect you to spend some of the Tuesday in-class time working on the assignments, but you must spend time out-of-class to complete the work.
+Regarding the workload, it will simply not be possible to confine this course's learning experience to the scheduled four periods per week. We expect you to spend some of the in-class time working on the assignments, but you must spend time out-of-class to complete the work.
 
 That being said, you will encounter problems and delays. Please follow a general rule: If you cannot solve the problem within 20 to 30 minutes, then stop and set it aside. Seek help from your professor, during class time, or during the designated help time or office hours. Alternatively, seek help from a classmate *who knows the solution* to the problem. 
 
