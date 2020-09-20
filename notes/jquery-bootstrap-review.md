@@ -55,7 +55,7 @@ $(function(){
 
 ### Selecting / Accessing Elements Using Class &amp; ID Selectors
 
-jQuery has a rich ["selector" framework](https://api.jquery.com/category/selectors/) for getting a reference to a specific element in the DOM.  You will recall that this was covered extensively in the WEB322 course during [Week 11](https://web322.ca/notes/week11). To refresh our memory, we will be briefly discussing two of the simplest methods of obtaing a DOM element in jQuery, primairly: 
+jQuery has a rich ["selector" framework](https://api.jquery.com/category/selectors/) for getting a reference to a specific element in the DOM.  We will be briefly discussing two of the simplest methods of obtaining a DOM element in jQuery, primarily: 
 
 Selector | Description 
 --- | ---
