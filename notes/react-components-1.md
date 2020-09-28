@@ -354,6 +354,23 @@ return (
 
  While "state" &amp; "props" both hold information that can be used to influence the output of the rendered component, they are different in one important way: props get *passed to* the component whereas state is managed *within* the component.
 
+ One interesting thing to note about "props" is that we can pass anything as a property, including functions!  This can be very helpful if we wish to send a message from a "child" component to a "parent" component.  For example, if we define a function (ie: handleMessage(msg)) in the "Parent" component, we can pass it in to the "Child" component using a custom property, ie "sendMessage").  Whenever the child wishes to send a message back to the parent, it can invoke the callback function from "props" and pass the data:	
+
+**Parent Component**	
+
+```jsx	
+function handleMessage(msg){	
+    console.log(`Child Says: ${msg}`)	
+}	
+return <Child sendMessage={handleMessage} />;	
+```	
+
+**Child Component**	
+
+```js	
+props.sendMessage("Hello");	
+```	
+
 <br>
 
 #### Updating the &lt;Clock /&gt; Component using the "useEffect" Hook
