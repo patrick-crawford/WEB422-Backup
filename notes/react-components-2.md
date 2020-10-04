@@ -44,7 +44,7 @@ span.navbar-brand:hover{
 
 #### index.css
 
-Similairly, we can **wipe out** all CSS in the **index.css** file.  
+Similarly, we can **wipe out** all CSS in the **index.css** file.  
 
 #### Bootstrap 3 CSS
 

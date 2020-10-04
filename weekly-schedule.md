@@ -5,7 +5,7 @@ layout: default
 
 ## Weekly schedule
 
-Please note that all Assignments will be released on the **Friday** of the week indicated and will similairly be due on the **Friday** one or two weeks later (see below).
+Please note that all Assignments will be released on the **Friday** of the week indicated and will similarly be due on the **Friday** one or two weeks later (see below).
 
 Each test will commence at the start of the corresponding **Lecture** period (we will not have tests during the lab period)
 

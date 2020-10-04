@@ -120,7 +120,7 @@ This is very simmilar to the "app" component that was created with our default A
 
 * Class name ("FooComponent"):  Obviously, the class name will be different, however it is interesting to note that the suffix "Component" was automatically added. This ensures that our component is named according to Angular's [Coding Style Guide](https://angular.io/guide/styleguide), spedifically: "[Symbols and file names](https://angular.io/guide/styleguide#symbols-and-file-names)".
 
-* Similairly, the "selector" has been created to reflect the name of our component.  However, it included the "app" prefix to adhere with Angular's Coding Style Guide as well.
+* Similarly, the "selector" has been created to reflect the name of our component.  However, it included the "app" prefix to adhere with Angular's Coding Style Guide as well.
 
 * The ngOnInit() [lifecycle hook](https://angular.io/api/core/OnInit) has been included: (**NOTE:** our component should also implement the [OnInit interface](https://angular.io/api/core/OnInit)).  For our purposes, it will function similarly to React's "useEffect" hook in that we will use it to update our component with data either locally, or from a remote resource (via a "service").
 

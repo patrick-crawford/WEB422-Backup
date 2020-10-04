@@ -74,7 +74,7 @@ npm run build-css
 
 Now, every time we make a change to **main.scss** our SASS will be compiled and the resulting CSS will be saved in the CSS folder as **main.css**.  We can leave this process running in the background and not have to worry about any additional "compile" steps.
 
-You will know when the process has completed successfully when you see the following green message in the terminal: **Rendering Complete, saving .css file...**.  Similairly, you will know that there was an error compiling your SCSS if you see a red JSON string in the terminal with the **"message"** property reading: **"Invalid CSS after ..."** (... somewhere close to your error within the SCSS file)
+You will know when the process has completed successfully when you see the following green message in the terminal: **Rendering Complete, saving .css file...**.  Similarly, you will know that there was an error compiling your SCSS if you see a red JSON string in the terminal with the **"message"** property reading: **"Invalid CSS after ..."** (... somewhere close to your error within the SCSS file)
 
 <br>
 
