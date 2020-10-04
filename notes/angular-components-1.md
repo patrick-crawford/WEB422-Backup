@@ -122,7 +122,7 @@ This is very simmilar to the "app" component that was created with our default A
 
 * Similairly, the "selector" has been created to reflect the name of our component.  However, it included the "app" prefix to adhere with Angular's Coding Style Guide as well.
 
-* The ngOnInit() [lifecycle hook](https://angular.io/api/core/OnInit) has been included: (**NOTE:** our component should also implement the [OnInit interface](https://angular.io/api/core/OnInit)).  For our purposes, it will function similairly to React's "componentDidMount()" lifecycle method in that we will use it to update our component with data either locally, or from a remote resource (via a "service").
+* The ngOnInit() [lifecycle hook](https://angular.io/api/core/OnInit) has been included: (**NOTE:** our component should also implement the [OnInit interface](https://angular.io/api/core/OnInit)).  For our purposes, it will function similarly to React's "useEffect" hook in that we will use it to update our component with data either locally, or from a remote resource (via a "service").
 
 * Finally the **foo.component.html** file has been created and updated to show `<p>foo works!</p>`.  We will actually get this customized default for every component created with "ng generate component ..."
 
