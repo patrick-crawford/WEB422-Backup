@@ -82,7 +82,7 @@ For example, if we wanted to conditionally add the bootstrap "table-warning" cla
 ```
 
 
-**NOTE:** If you wish to add or remove several CSS classes simultaneously, you can use [ngClass](https://angular.io/guide/template-syntax#ngclass).
+**NOTE:** If you wish to add or remove several CSS classes simultaneously, you can use [ngClass](https://angular.io/api/common/NgClass).
 
 <br>
 
