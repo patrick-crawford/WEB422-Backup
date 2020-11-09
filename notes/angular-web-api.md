@@ -24,8 +24,7 @@ Observables on the other hand, allow us to watch (observe) the changing values o
 ```js
 import { Observable } from 'rxjs';
 
-var source = Observable.create(function (observer) {
-  
+var source = new Observable(observer => {
   let i = 0;
   let interval = setInterval(() => {
 
