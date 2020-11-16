@@ -326,7 +326,7 @@ If we want to handle a form submission event, we simply add the event handler "n
 <form (ngSubmit)='onSubmit()'>
 ```
 
-The above will execute the method "onSubmit" (which we will have to write) when the form is submitted.  If we wish to pass a reference to the specific form to the onSubmit() event handler, we can use 'ngForm' to assign a reference variable (see: [Template Reference Variables](https://angular.io/guide/template-syntax#ref-vars)) to the form itself, and pass it to onSubmit(), ie:
+The above will execute the method "onSubmit" (which we will have to write) when the form is submitted.  If we wish to pass a reference to the specific form to the onSubmit() event handler, we can use 'ngForm' to assign a reference variable (see: [Template Reference Variables](https://angular.io/guide/template-reference-variables)) to the form itself, and pass it to onSubmit(), ie:
 
 ```html
 <form #f='ngForm' (ngSubmit)='onSubmit(f)'>
