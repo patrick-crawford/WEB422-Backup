@@ -35,7 +35,7 @@ With the dependencies fetched, we can now start up our app with `ng serve`.  You
 
 ### Adding support for JWT (JwtModule)
 
-If we wish to work with JWT in our Angular application, we will need to obtain the ([`@auth0/angular-jwt`](https://www.npmjs.com/package/@auth0/angular-jwt) package) - this will give us access to the "JwtModule". 
+If we wish to work with JWT in our Angular application, we will need to obtain the ([`@auth0/angular-jwt`](https://www.npmjs.com/package/@auth0/angular-jwt) package) - this will give us access to the "JwtHelperService". 
 
 <br>
 
