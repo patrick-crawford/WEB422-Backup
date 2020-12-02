@@ -544,7 +544,7 @@ Here, we are "subscribing" to all router events.  The "event" that occurs will b
 
 {% raw %}
 ```html
-<li routerLinkActive="active"><a routerLink="home"><span *ngIf="token">Welcome {{token.userName}}</span><span *ngIf="!(token)">Home</span></a></li>
+<li routerLinkActive="active"><a routerLink="home"><span *ngIf="token">Welcome {{token.userName}}</span><span *ngIf="!(token)">Home</span></a></li> 
 ```
 {% endraw %}
 

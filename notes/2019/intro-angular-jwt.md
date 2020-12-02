@@ -17,9 +17,9 @@ If our Web API provides security features (register/login routes, stored user na
 
 ### Getting Started
 
-**Note:** If you have not yet completed "[Introduction to Securing a Web API with JWT]("/notes/intro-web-api-security)", please go back and complete it now.  We will be using the secure "simple-API" as a source of data for our App.
+**Note:** If you have not yet completed "[Introduction to Securing a Web API with JWT](/notes/intro-web-api-security)", please go back and complete it now.  We will be using the secure "simple-API" as a source of data for our App.
 
-If your "simple-API" (from "[Introduction to Securing a Web API with JWT]("/notes/intro-web-api-security)" is not currently running on port 8080, please start it up now. 
+If your "simple-API" (from "[Introduction to Securing a Web API with JWT](/notes/intro-web-api-security)" is not currently running on port 8080, please start it up now. 
 
 <br>
 
@@ -39,50 +39,10 @@ If we wish to work with JWT in our Angular application, we will need to obtain t
 
 <br>
 
-#### Step 1: Install the @auth0/angular-jwt package 
+#### Install the @auth0/angular-jwt package 
 
 ```
 npm install @auth0/angular-jwt
-```
-
-<br>
-
-#### Step 2: Import JwtModule in app.module.ts
-
-```ts
-import { JwtModule } from "@auth0/angular-jwt";
-```
-
-<br>
-
-#### Step 3: Define a "tokenGetter" Function
-
-Next, we must define a "tokenGetter" function, to be used in the configuration of the JwtModule.  This function will be responsible for actually obtaining the locally stored "JWT".  In our application, we will simply store the JWT in "[local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)" using the identifier: "access_token". 
-
-This function will be defined in **app.module.ts** just *below* all of the `import` statments, and *before* the `@NgModule` decorator:
-
-```ts
-export function tokenGetter() {
-  return localStorage.getItem('access_token');
-}
-```
-
-<br>
-
-#### Step 4: Add the JwtModule to the 'imports' Array:
-
-Finally, we will add the JwtModule to the 'imports' array using the following configuration:
-
-```ts
-  imports: [
-    ...,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        authScheme: 'JWT'
-      }
-    })
-  ],
 ```
 
 <br>
@@ -103,7 +63,7 @@ To create this service, follow along with the instructions below:
 #### Step 1: Use the Angular-CLI to generate our "AuthService"
 
 ```
-ng g s Auth --module app
+ng g s Auth
 ```
 
 <br>
@@ -119,7 +79,6 @@ export class User{
     "password": string;
     "fullName": string;
     "role": string;
-    __v: 0;
 }
 ```
 
@@ -133,6 +92,8 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+const helper = new JwtHelperService();
+
 import {User} from './User';
 
 @Injectable({
@@ -140,10 +101,7 @@ import {User} from './User';
 })
 export class AuthService {
 
-  constructor(
-    private http: HttpClient,
-    private jwtHelper: JwtHelperService
-  ) { }
+  constructor( private http: HttpClient ) { }
 
   public getToken(): string {
     return localStorage.getItem('access_token');
@@ -151,7 +109,7 @@ export class AuthService {
 
   public readToken(): any{
     const token = localStorage.getItem('access_token');
-    return this.jwtHelper.decodeToken(token);
+    return helper.decodeToken(token);
   }
 
   isAuthenticated(): boolean {
@@ -176,7 +134,7 @@ export class AuthService {
 }
 ```
 
-There's a lot going on in the above code, so let's break it down *piece by piece* to understand how everything works.  To begin, all of the import statements are fairly standard:  We will be using an Observable, so we must fetch it from "rxjs".  The HTTPClient comes from "@angular/common/http" (which we will need to communicate with our simple-API) and the JwtHelperService (used to decode the contents of the JWT) comes, once again from "@auth0/angular-jwt".
+There's a lot going on in the above code, so let's break it down *piece by piece* to understand how everything works.  To begin, all of the import statements are fairly standard:  We will be using an Observable, so we must fetch it from "rxjs".  The HTTPClient comes from "@angular/common/http" (which we will need to communicate with our simple-API).
 
 After injecting our required services in the constructor, we see the following methods:
 
@@ -216,7 +174,7 @@ In "app.routing.module.ts", add the following route to the "Routes" array under 
 
 #### Step 3: Adding a link to "Login" in the NavComponent template
 
-In the "navbar-collapse" &lt;div&gt;...&lt;\/div&gt;, just above "home" link, add the code:
+In the "navbar-collapse" &lt;div&gt;...&lt;/div&gt;, just above "home" link, add the code:
 
 ```html
 <li routerLinkActive="active"><a routerLink="login">Login</a></li>
@@ -246,7 +204,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth:AuthService, private router:Router) { }
 
   ngOnInit() {
-    this.user = new User;
+    this.user = new User();
   }
 
   onSubmit(f: NgForm): void {
@@ -330,7 +288,7 @@ To automatically send our JWT (located in local storage as "access_token") using
 #### Step 1: Use the Angular-CLI to generate our "InterceptTokenService"
 
 ```
-ng g s InterceptToken --module app
+ng g s InterceptToken
 ```
 
 <br>
@@ -436,7 +394,7 @@ To assign a "Route Guard" to a specific route, we will add it to an existing Rou
 #### Step 1: Use the Angular-CLI to generate our "GuardAuthService
 
 ```
-ng g s GuardAuth --module app
+ng g s GuardAuth
 ```
 
 <br>
