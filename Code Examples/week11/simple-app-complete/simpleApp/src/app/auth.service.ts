@@ -3,17 +3,17 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+const helper = new JwtHelperService();
+
 import {User} from './User';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(
-    private http: HttpClient,
-    private jwtHelper: JwtHelperService
-  ) { }
+  constructor(private http: HttpClient) { }
 
   public getToken(): string {
     return localStorage.getItem('access_token');
@@ -21,7 +21,7 @@ export class AuthService {
 
   public readToken(): any{
     const token = localStorage.getItem('access_token');
-    return this.jwtHelper.decodeToken(token);
+    return helper.decodeToken(token);
   }
 
   isAuthenticated(): boolean {
