@@ -115,7 +115,7 @@ export class AuthService {
   isAuthenticated(): boolean {
     const token = localStorage.getItem('access_token');
 
-    // Note: We can also use this.jwtHelper.isTokenExpired(token) 
+    // Note: We can also use helper.isTokenExpired(token) 
     // to see if the token is expired
 
     if (token) {
