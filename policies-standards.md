@@ -35,7 +35,7 @@ Please Note: The following is taken directly from the <a href="/graded-work">Gra
 
 We have planned six (6) tests during the term.
 
-The duration of each test will range from 30 to 35 minutes. Each test will be worth 10% of your final course grade. All tests will be hand-written, and will happen sometime during the class timeslot. The total value of all tests will be 50%.
+The duration of each test will range from 30 to 35 minutes. Each test will be worth 10% of your final course grade. The total value of all tests will be 50%.
 
 If you miss a test, there is no opportunity to do a replacement test. However, absence due to illness or other reasons happen occasionally. As a result, you can miss up to one (1) test, without suffering the loss of grades.
 
