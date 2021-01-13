@@ -33,13 +33,13 @@ Please Note: The following is taken directly from the <a href="/graded-work">Gra
 
 ### Tests
 
-We have planned six (6) tests during the term.
+We have planned six (6) tests during the term, each worth 10% of your final course grade.
 
-The duration of each test will range from 30 to 35 minutes. Each test will be worth 10% of your final course grade. The total value of all tests will be 50%.
+The duration of each test will range from 30 to 35 minutes. Each test will be available on My.Seneca for 24 hours on the day discussed with your professor.
 
 If you miss a test, there is no opportunity to do a replacement test. However, absence due to illness or other reasons happen occasionally. As a result, you can miss up to one (1) test, without suffering the loss of grades.
 
-The effect of this policy will be extended to all students. At the end of the course, your lowest test result will be discarded, leaving your best five results.
+The effect of this policy will be extended to all students. At the end of the course, your lowest test result will be discarded, leaving your best five results for a total of 50% of your final grade.
 
 ### Assignments
 
