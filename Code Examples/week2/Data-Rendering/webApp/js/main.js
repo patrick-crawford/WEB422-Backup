@@ -1,14 +1,11 @@
 let theatersModel = [];
 
-function initializetheatersModel(){
+function initializeTheatersModel(){
 
     fetch("http://localhost:8080/api/theaters")
-    .then(response => response.json())
-    .then(json => {
-        theatersModel = json;
-        refreshTheaterRows(theatersModel); 
-    });
-
+        .then(response => response.json())
+        .then(refreshTheaterRows)
+        .catch(err => console.error('Unable to load theaters data:', err));
 }
 
 function refreshTheaterRows(theaters){
@@ -26,29 +23,27 @@ function refreshTheaterRows(theaters){
     let rows = rowsTemplate({'theaters': theaters});
     $("#theaters-table tbody").html(rows);
     
-
 }
 
-function gettheaterModelById(id){
+function getTheaterModelById(id){
 
-    let retVal = null;
     for(let i =0; i < theatersModel.length; i++){
         if(theatersModel[i]._id == id){
-            retVal = _.cloneDeep(theatersModel[i]);
+            return _.cloneDeep(theatersModel[i]);
         }
 
     }
-    return retVal;
+    return null;
 }
 
 
 $(function(){
 
-    initializetheatersModel();
+    initializeTheatersModel();
 
     $("#theaters-table tbody").on("click","tr",function(e){
        
-        let theater = gettheaterModelById($(this).attr("data-id"));
+        let theater = getTheaterModelById($(this).attr("data-id"));
 
         console.log(theater);
          
