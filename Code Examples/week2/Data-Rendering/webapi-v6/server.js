@@ -4,7 +4,6 @@
 
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
 const bodyParser = require('body-parser');
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
@@ -20,9 +19,7 @@ app.use(cors());
 // ################################################################################
 // Data model and persistent store setup
 
-const serverData = require("./serverData.js");
-const data = serverData();
-
+const data = require("./serverData.js");
 
 
 // ################################################################################

@@ -1,6 +1,9 @@
 $(function(){
 
-        //moment.locale("fr-CA"); // Try out Quebec French
+        // Uncomment the next line and open your dev tools if you want to step-through the code line by line
+        // debugger;
+
+        // moment.locale("fr-CA"); // Try out Quebec French
 
         // Sample date for testing
     

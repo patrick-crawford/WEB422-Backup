@@ -1,12 +1,14 @@
 $(function(){
+    // Uncomment the next line and open your dev tools if you want to step-through the code line by line
+    // debugger;
 
     // simple data for testing
 
-let users = [
-    { 'user': 'fred',    'active': false, 'age': 40 },
-    { 'user': 'pebbles', 'active': false, 'age': 1  },
-    { 'user': 'barney',  'active': true,  'age': 36 }
-];
+    let users = [
+        { 'user': 'fred',    'active': false, 'age': 40 },
+        { 'user': 'pebbles', 'active': false, 'age': 1  },
+        { 'user': 'barney',  'active': true,  'age': 36 }
+    ];
 
     // The following is a small sample of the full Lodash functionality.
     // For a full list of all Lodash methods, see: https://lodash.com/docs/4.17.4
