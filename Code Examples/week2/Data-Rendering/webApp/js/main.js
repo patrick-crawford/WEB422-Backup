@@ -1,10 +1,15 @@
 let theatersModel = [];
 
-function initializeTheatersModel(){
+function initializeTheatersModel() {
 
     fetch("http://localhost:8080/api/theaters")
         .then(response => response.json())
-        .then(refreshTheaterRows)
+        .then(data => {
+            // Cache the reference to the array of theaters data
+            theatersModel = data;
+            // Render this data to the DOM
+            refreshTheaterRows(theatersModel);
+        })
         .catch(err => console.error('Unable to load theaters data:', err));
 }
 
@@ -41,7 +46,7 @@ $(function(){
 
     initializeTheatersModel();
 
-    $("#theaters-table tbody").on("click","tr",function(e){
+    $("#theaters-table tbody").on("click", "tr", function() {
        
         let theater = getTheaterModelById($(this).attr("data-id"));
 
