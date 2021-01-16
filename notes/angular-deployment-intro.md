@@ -152,7 +152,7 @@ As a final note, let's quickly discuss how we can deploy an Angular app to our H
 
 ### Heroku
 
-Fortunately, the process for pushing to Heroku is literally identical to the process [that we discussed for React](https://web422.ca/notes/serving-react-heroku), except the build step is different (since we're building an Angular app and not a React App), ie:
+Fortunately, the process for pushing to Heroku is literally identical to the process [that we discussed for React](/notes/serving-react-heroku), except the build step is different (since we're building an Angular app and not a React App), ie:
 
 ```bash
 ng build --prod
