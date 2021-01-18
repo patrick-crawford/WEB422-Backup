@@ -136,6 +136,12 @@ The final piece in creating dynamic html (DHTML) is actually modifying the DOM b
 <td>Adds the  &lt;span&gt; element with the text "Another New Div!" to the end of the "content" element.</td>
 </tr>
 
+<tr>
+<td>$("#content").attr("data-id");</td>
+<td><strong>.attr()</strong> Get / Set the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.</td>
+<td>Get the "data-id" attribute value for the content element, ie: &lt;div id="content" data-id="123"&gt;</td>
+</tr>
+
 </tbody>
 </table>
 
