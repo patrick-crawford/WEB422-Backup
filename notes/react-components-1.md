@@ -43,7 +43,7 @@ This is known as a [functional component](https://reactjs.org/docs/components-an
 
 Additionally, you will notice that our function is preceded by three import statements.  In this case, they provide the following functionality:
 
-* `import React from 'react';` - This may look strange, because we don't reference "React" directly anywhere in our file.  However, it is required because of the strange syntax that exists in the return statement (ie: JSX - explained further down)
+* `import React from 'react';` - This may look strange, because we don't reference "React" directly anywhere in our file.  However, it is required because of the strange syntax that exists in the return statement (ie: JSX - explained further down). **NOTE** Starting from React 17, it's [not necessary to import React to use JSX](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports). 
 
 * `import logo from './logo.svg';` - This provides the actual source code for the svg file used in the cool spinning "React" logo - you can see it for yourself if you open the logo.svg file.
 
