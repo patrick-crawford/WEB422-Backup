@@ -335,7 +335,24 @@ Here, we can see that "useState" is a function, which:
   const setDate = dateState[1];  
   ```
   
-  **NOTE:** We use the "const" keyword here since we **must** use the "setDate" function to modify the state value "date" - we cannot modify "date" directly.  By invoking the "setDate" method, we not only update the value of "date", but also trigger our component to re-render!
+  We use the "const" keyword here since we **must** use the "setDate" function to modify the state value "date" - we cannot modify "date" directly.  By invoking the "setDate" method, we not only update the value of "date", but also trigger our component to re-render!
+
+  **NOTE**
+
+  If the new state is computed using the previous state, you can [pass a function to setState](https://reactjs.org/docs/hooks-reference.html#functional-updates). The function will receive the previous value, and return an updated value., ie:
+
+  If you have the variable "num" in your state:
+
+  ```js
+  const [num, setNum] = useState(0);
+  ```
+
+  and you wish to increase it's value by 1, you can use the following code:
+
+  ```js
+  setNum(prev => prev + 1);
+  ```
+
 
 Now, instead of passing a new "Date" object as the "date" property to the &lt;Clock /&gt; component, we will let the component set its own date once its initialized.  Since we're using the "date" state variable, instead of "props" to reference the date, we must also update our return value, ie:
 
