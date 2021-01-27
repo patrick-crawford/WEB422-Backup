@@ -37,7 +37,7 @@ function ClickCounter(props){
     const [numClicks, setNumClicks] = useState(0);
 
     function increaseNumClicks(e){ // 'e' is the current event object
-        setNumClicks(numClicks + 1);
+        setNumClicks(prevClicks => prevClicks + 1);
     }
 
     return <button onClick={increaseNumClicks}>Clicks: {numClicks}</button>
@@ -63,7 +63,7 @@ This can actually be achieved by registering the event as an anonymous function 
 ```jsx
 function increaseNumClicks(e, message){ // 'e' is the current event object
     console.log(message);
-    setNumClicks(numClicks + 1);
+    setNumClicks(prevClicks => prevClicks + 1);
 }
 
 return <button onClick={(e)=>{increaseNumClicks(e, "Hello")}}>Clicks: {numClicks}</button>
