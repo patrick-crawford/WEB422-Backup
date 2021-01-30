@@ -7,7 +7,7 @@ import Products from './Products';
 import Product from './Product';
 import About from './About';
 import NotFound from './NotFound';
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
