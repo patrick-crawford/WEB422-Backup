@@ -11,7 +11,7 @@ First, we will discuss how to process / "wire up" events and options for conditi
 
 Next, we will focus on how we can achieve routing within the browser by leveraging the excellent [react-router-dom](https://www.npmjs.com/package/react-router-dom) components.  This will allow uses to quickly navigate to different "views" without leaving the application.
 
-Finally, we will put this all together and make a simple app that uses 3rd party UI components ([react-bootstrap - version 0.33.1](https://react-bootstrap-v3.netlify.com/) and [react-router-bootstrap](https://www.npmjs.com/package/react-router-bootstrap)) to create a simple UI to view data from the public [reqres testing API](https://reqres.in/).
+Finally, we will put this all together and make a simple app that uses 3rd party UI components ([react-bootstrap](https://react-bootstrap.github.io/) and [react-router-bootstrap](https://www.npmjs.com/package/react-router-bootstrap)) to create a simple UI to view data from the public [reqres testing API](https://reqres.in/).
 
 
 **Topics:**

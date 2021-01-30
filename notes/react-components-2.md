@@ -24,7 +24,7 @@ Once this is complete, we must change to the newly created "my-app" directory an
 
 * `react-router-dom` - (Enable client-side routing in the browser)
 
-* `react-bootstrap@0.33.1` (Include the Bootstrap 3 Components for React)
+* `react-bootstrap` &amp; `bootstrap` (Include the Bootstrap 4 Components for React)
 
 * `react-router-bootstrap` (Integration between React Bootstrap &amp; React Router v4, primairly the "LinkContainer" Component )
 
@@ -46,12 +46,12 @@ span.navbar-brand:hover{
 
 Similarly, we can **wipe out** all CSS in the **index.css** file.  
 
-#### Bootstrap 3 CSS
+#### Bootstrap CSS
 
-Lastly, since we're working with the Bootstrap 3 Components for react (react-bootstrap@0.33.1), we must explicitly add the included CSS in our **public/index.html** file before the "manifest":
+Lastly, since we're working with  Bootstrap Components for react, we must explicitly import the included CSS in our **App** component:
 
-```html
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+```js
+import 'bootstrap/dist/css/bootstrap.min.css';
 ```
 
 <br>
@@ -61,22 +61,18 @@ Lastly, since we're working with the Bootstrap 3 Components for react (react-boo
 The Week 4 example uses the following navbar consisting of the custom components installed using npm (above).  This navbar is placed above the (soon to be added) &lt;Switch&gt;&lt;/Switch&gt; element in *App.js*
 
 ```jsx
-<Navbar inverse collapseOnSelect fixedTop>
-  <Navbar.Header>
-    <LinkContainer to="/">
-      <Navbar.Brand>
-        WEB422 - React Routing
-      </Navbar.Brand>
-    </LinkContainer>
-    <Navbar.Toggle />
-  </Navbar.Header>
-  <Navbar.Collapse>
-    <Nav>
-      <LinkContainer to="/Products">
-        <NavItem eventKey={1}>Products</NavItem>
+<Navbar bg="light" expand="lg">
+  <LinkContainer to="/">
+    <Navbar.Brand>WEB422 - React Routing</Navbar.Brand>
+  </LinkContainer>
+  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  <Navbar.Collapse id="basic-navbar-nav">
+    <Nav className="mr-auto">
+      <LinkContainer to="/products">
+        <Nav.Link>Products</Nav.Link>
       </LinkContainer>
-      <LinkContainer to="/About">
-        <NavItem eventKey={2}>About</NavItem>
+      <LinkContainer to="/about">
+        <Nav.Link>About</Nav.Link>
       </LinkContainer>
     </Nav>
   </Navbar.Collapse>
@@ -87,18 +83,18 @@ The Week 4 example uses the following navbar consisting of the custom components
 
 ### Container, Routes & Components
 
-All routes in the example code are defined using a &lt;Switch&gt;&lt;/Switch&gt; element in *App.js*.  Immediately surrounding this component (below the Navbar), we need to add the bootstrap 3 "container", "row" and "col-md-12" classes for &lt;div&gt; elements, ie:
+All routes in the example code are defined using a &lt;Switch&gt;&lt;/Switch&gt; element in *App.js*.  Immediately surrounding this component (below the Navbar), we need to add the bootstrap "Container", "Row" and "Col" components, ie:
 
 ```jsx
-<div className="container">
-  <div className="row">
-    <div className="col-md-12">
+<Container>
+  <Row>
+    <Col>
       <Switch>
         ...
       </Switch>
-    </div>
-  </div>
-</div>
+    </Col>
+  </Row>
+</Container>
 ```
 
 #### Routes & Components
