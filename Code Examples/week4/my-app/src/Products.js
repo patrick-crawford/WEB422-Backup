@@ -26,7 +26,6 @@ function Products(props){
                 <br />
                 <ListGroup>
                     {products.map((prod)=>{
-                        // return <Link key={prod.id} className="list-group-item" style={{backgroundColor: prod.color, color: "white", "font-weight": "bold"}} to={`/Product/${prod.id}`}>{prod.name}: {prod.year}</Link>
                         return <LinkContainer to={`/Product/${prod.id}`} ><ListGroup.Item action >{prod.name}: {prod.year}</ListGroup.Item></LinkContainer>
                     })}
                 </ListGroup>
