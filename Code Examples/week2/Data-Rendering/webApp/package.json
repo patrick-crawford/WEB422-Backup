@@ -1,0 +1,11 @@
+{
+  "name": "webApp",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "^11.3.2"
+  }
+}
