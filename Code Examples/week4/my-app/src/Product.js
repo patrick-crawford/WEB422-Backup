@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 
 function Product(props){
@@ -36,7 +36,7 @@ function Product(props){
                         <li className="list-group-item"><strong>Color: </strong> {product.color}</li>
                         <li className="list-group-item"><strong>Pantone Value: </strong> {product.pantone_value}</li>
                     </ul>
-    
+                    <br />
                     <Link className="btn btn-primary" to="/Products">All Products</Link>
                 </div>
             );

@@ -1,4 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
+import { ListGroup } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import {Link} from 'react-router-dom';
 
 function Products(props){
@@ -22,11 +24,12 @@ function Products(props){
             <div>
                 <h1>Products</h1>
                 <br />
-                <div className="list-group">
+                <ListGroup>
                     {products.map((prod)=>{
-                        return <Link key={prod.id} className="list-group-item" style={{backgroundColor: prod.color}} to={`/Product/${prod.id}`}>{prod.name}: {prod.year}</Link>
+                        // return <Link key={prod.id} className="list-group-item" style={{backgroundColor: prod.color, color: "white", "font-weight": "bold"}} to={`/Product/${prod.id}`}>{prod.name}: {prod.year}</Link>
+                        return <LinkContainer to={`/Product/${prod.id}`} ><ListGroup.Item action >{prod.name}: {prod.year}</ListGroup.Item></LinkContainer>
                     })}
-                </div>
+                </ListGroup>
             </div>
         );
     }

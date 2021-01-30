@@ -1,32 +1,32 @@
-import React from 'react';
+import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Products from './Products';
 import Product from './Product';
 import About from './About';
 import NotFound from './NotFound';
-import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Container, Row, Col, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+
 
 function App() {
   return (
     <div>
-      <Navbar inverse collapseOnSelect fixedTop>
-        <Navbar.Header>
-          <LinkContainer to="/">
-            <Navbar.Brand>
-              WEB422 - React Routing
-            </Navbar.Brand>
-          </LinkContainer>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <LinkContainer to="/Products">
-              <NavItem eventKey={1}>Products</NavItem>
+
+      <Navbar bg="light" expand="lg">
+        <LinkContainer to="/">
+          <Navbar.Brand>WEB422 - React Routing</Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <LinkContainer to="/products">
+              <Nav.Link>Products</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/About">
-              <NavItem eventKey={2}>About</NavItem>
+            <LinkContainer to="/about">
+              <Nav.Link>About</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
@@ -34,9 +34,9 @@ function App() {
 
       <br /><br /><br />
 
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
+      <Container>
+        <Row>
+          <Col>
             <Switch>
               <Route exact path='/' render={() => (
                 <Redirect push to={"/Products"} />
@@ -54,9 +54,9 @@ function App() {
                 <NotFound />
               )} />
             </Switch>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
