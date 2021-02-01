@@ -281,7 +281,7 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 
 #### Summary
 
-6 Tests - 50% (10%/ea)<br>
+6 Tests - 50% (10%/ea - lowest test dropped)<br>
 6 Assignments - 50% ([A1] = 5%, [A2-A6] = 9%/ea)    
 
 #### Promotion Policy
