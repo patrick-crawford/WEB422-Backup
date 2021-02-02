@@ -23,7 +23,7 @@ The idea is that a specific topic page can be used as a module, which can be mov
 
 **Topic page**
 
-Each topic has its own page (e.g. intro-web-services, etc.). 
+Each topic has its own page (e.g. intro-web-services, etc). 
 
 Many topic pages will *guide* the reader to read (or go through) an external article, post, tutorial, or document. In this course, we will prefer to re-use excellent content that already exists, instead of content authored by the course professors. 
 
