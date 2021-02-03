@@ -106,7 +106,7 @@ Here, we can define our routes explicitly using the ["Switch" component](https:/
 
 In all three above routes, we use the ["exact"](https://reacttraining.com/react-router/web/api/Route/exact-bool) because we want to match the route *exactly* (ie, we don't care about "/Project/1" yet, only "/Project"). 
 
-**NOTE:** Components will only be added or removed as children of the &lt;Switch&gt;&lt;/Switch&gt; coponent, so if we wish to have parts of the UI that are consistant across all routes, we can place JSX *above* or *below* it, for example:
+**NOTE:** Components will only be added or removed as children of the &lt;Switch&gt;&lt;/Switch&gt; component, so if we wish to have parts of the UI that are consistent across all routes, we can place JSX *above* or *below* it, for example:
 
 ```jsx
 <header>Header</header>
@@ -217,10 +217,30 @@ The same code can updated to use the `<Link>` component as follows:
 
 Sometimes, we wish to "redirect" the user to a different route and override the current route in the "history" stack (or alternatively "push" it onto the current history stack) - this is similar to what we would use [res.redirect()](http://expressjs.com/en/4x/api.html#res.redirect) for in our Node.js servers.
 
-React provides an intuitive way to achieve this, by providing a special [&lt;Redirect /&gt;](https://reacttraining.com/react-router/web/api/Redirect) component.  When rendered, it will redirect the client to the specified route using the following syntax (Note: the use of "push" will add the new route to the "history" stack):
+React provides an intuitive way to achieve this, by providing a special [&lt;Redirect /&gt;](https://reacttraining.com/react-router/web/api/Redirect) component.  When rendered, it will redirect the client to the specified route using the following syntax (Note: the use of "push" will add the new route to the "history" stack, instead of replacing the current one):
 
 ```jsx
 <Redirect push to={"/newRoute"} />
+```
+
+Additionally, we have the ability to *programmatically* change routes from within our code (for example, when an event occurs).  This can be accomplished using the [useHistory hook](https://reactrouter.com/web/api/Hooks/usehistory) from 'react-router-dom':
+
+```jsx
+import { useHistory } from "react-router-dom";
+
+function HomeButton() {
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/home");
+  }
+
+  return (
+    <button type="button" onClick={handleClick}>
+      Go home
+    </button>
+  );
+}
 ```
 
 <br>
