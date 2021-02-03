@@ -1,49 +1,52 @@
-import {useState, useEffect} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Button, Card } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
-function Product(props){
+export default function Product(props) {
 
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [found, setFound] = useState(false);
 
-    useEffect(()=>{
-        fetch(`https://reqres.in/api/unknown/${props.id}`)
-        .then(res=>res.json())
-        .then(result => {
-            if(result.data){ // a "data" property exists on the returned data
-                setProduct(result.data);
-                setFound(true); // we found some data
-                setLoading(false); // no longer loading
-            }else{
-                setFound(false); // we did not find any data
-                setLoading(false); // no longer loading
-            }
+    useEffect(() => {
+        setLoading(true);
+        fetch(`https://reqres.in/api/unknown/${props.id}`).then(res => res.json()).then(product => {
+            setLoading(false);
+            setProduct(product.data);
         });
-    }, [props.id]); // rerun this effect if props.id changes
+    }, [props.id])
 
-    if(loading){
-        return null; // could have a loading spinner, etc here
-    }else{
-        if(found){
+    if (!loading) {
+        if (product) {
             return (
-                <div>
-                    <h1>Product: {product.name}</h1>
+                <>
+                    <h3>Product {props.id}</h3>
                     <br />
-                    <ul className="list-group">
-                        <li className="list-group-item"><strong>Name: </strong> {product.name}</li>
-                        <li className="list-group-item"><strong>Year: </strong> {product.year}</li>
-                        <li className="list-group-item"><strong>Color: </strong> {product.color}</li>
-                        <li className="list-group-item"><strong>Pantone Value: </strong> {product.pantone_value}</li>
-                    </ul>
-                    <br />
-                    <Link className="btn btn-primary" to="/Products">All Products</Link>
-                </div>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>{product.name}</Card.Title>
+                            <Card.Text>
+                                <strong>Year:</strong> {product.year}<br />
+                                <strong>Pantone:</strong> {product.pantone_value}
+                            </Card.Text>
+                            <LinkContainer to="/products">
+                                <Button variant="primary">Back to Products</Button>
+                            </LinkContainer>
+                        </Card.Body>
+                    </Card>
+                </>
             );
-        }else{
-            return <Redirect to={{ pathname: "/notFound"}} />
+        } else {
+            return (
+                <>
+                    <h3>Product {props.id}</h3>
+                    <p>Not Found...</p>
+                </>
+            );
         }
-    }
-}
 
-export default Product;
+    } else {
+        return null; // could have a loading spinner here, etc
+    }
+
+
+}

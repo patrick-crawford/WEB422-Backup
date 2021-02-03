@@ -1,20 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Products from './Products';
 import Product from './Product';
 import About from './About';
-import NotFound from './NotFound';
-import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import Notfound from './NotFound';
 
 
 function App() {
   return (
-    <div>
-
+    <>
       <Navbar bg="light" expand="lg">
         <LinkContainer to="/">
           <Navbar.Brand>WEB422 - React Routing</Navbar.Brand>
@@ -31,33 +29,21 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
-      <br /><br /><br />
-
+      <br />
       <Container>
         <Row>
           <Col>
             <Switch>
-              <Route exact path='/' render={() => (
-                <Redirect push to={"/Products"} />
-              )} />
-              <Route exact path='/Products' render={() => (
-                <Products />
-              )} />
-              <Route path='/Product/:id' render={(props) => (
-                <Product id={props.match.params.id} />
-              )} />
-              <Route exact path='/About' render={() => (
-                <About />
-              )} />
-              <Route render={() => (
-                <NotFound />
-              )} />
+              <Route exact path="/" render={()=>(<Redirect to="/products" />)} />
+              <Route exact path="/products" render={()=>(<Products />)} />
+              <Route path="/product/:id" render={(props)=>(<Product id={props.match.params.id} />)} />
+              <Route exact path="/about" render={()=>(<About />)} />
+              <Route render={()=>(<Notfound />)} />
             </Switch>
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }
 

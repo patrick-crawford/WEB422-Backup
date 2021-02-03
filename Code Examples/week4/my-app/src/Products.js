@@ -1,37 +1,37 @@
 import {useState, useEffect} from 'react';
 import { ListGroup } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import {Link} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-function Products(props){
 
-    const [loading, setLoading] = useState(true);
+export default function Products(){
+
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const history = useHistory();
 
     useEffect(()=>{
-        fetch("https://reqres.in/api/unknown")
-        .then(res=>res.json())
-        .then(result => {
-            setProducts(result.data);
+        setLoading(true);
+        fetch("https://reqres.in/api/unknown").then(res=>res.json()).then(products=>{
             setLoading(false);
+            setProducts(products.data);
         })
     }, []);
 
-    if(loading){
-        return null; // could have a loading spinner, etc here
-    }else{
+    if(!loading){
         return (
-            <div>
-                <h1>Products</h1>
+            <>
+                <h3>Products</h3>
                 <br />
                 <ListGroup>
-                    {products.map((prod)=>{
-                        return <LinkContainer to={`/Product/${prod.id}`} ><ListGroup.Item action >{prod.name}: {prod.year}</ListGroup.Item></LinkContainer>
-                    })}
+                    {
+                        products.map(prod=>(
+                            <ListGroup.Item onClick={(e)=>{history.push(`product/${prod.id}`)}} style={{backgroundColor: prod.color}} key={prod.id}>{prod.name} - {prod.year}</ListGroup.Item>
+                        ))
+                    }
                 </ListGroup>
-            </div>
-        );
+            </>
+        )
+    }else{
+        return null; // could have a loading spinner here, etc
     }
 }
-
-export default Products;
