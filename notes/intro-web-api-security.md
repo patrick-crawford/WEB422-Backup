@@ -39,7 +39,7 @@ More details can be found on MDN under "[Cross-Origin Resource Sharing (CORS)](h
 
 With our extremely simple "vehicles" API in place and producing data, we can now move on to discuss how we might *protect* this data from unwanted (unauthorized) access. 
 
-Back in WEB322, we discussed a number of [security considerations](https://web322.ca/notes/week12) that are vital to a modern web application.  This primairly included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up a MongoDB Atlas DB to store our user information & credentials.
+Back in WEB322, we discussed a number of [security considerations](https://web322.ca/notes/week12) that are vital to a modern web application.  This primarily included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up a MongoDB Atlas DB to store our user information & credentials.
 
 <br>
 
@@ -360,7 +360,7 @@ We have now identified that we would like to work with JWT to secure our routes.
 
 #### jsonwebtoken
 
-The ["jsonwebtoken" module](https://www.npmjs.com/package/jsonwebtoken) (available using `npm install jsonwebtoken --save` &amp; added to server.js using: `var jwt = require('jsonwebtoken');`).  In our application, this module is used primairly to **"sign"** our JSON payload with a 'secret' and generate the token, ie:
+The ["jsonwebtoken" module](https://www.npmjs.com/package/jsonwebtoken) (available using `npm install jsonwebtoken --save` &amp; added to server.js using: `var jwt = require('jsonwebtoken');`).  In our application, this module is used primarily to **"sign"** our JSON payload with a 'secret' and generate the token, ie:
 
 ```javascript
 var token = jwt.sign({ userName: 'bob' }, 'secret');

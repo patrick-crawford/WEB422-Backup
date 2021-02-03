@@ -15,7 +15,7 @@ However, running e2e tests & unit testing is an [extremely important](https://ww
 
 * Reveals mistakes in design and implementation. Tests shine a harsh light on the code from many angles. When a part of the application seems hard to test, the root cause is often a design flaw, something to cure now rather than later when it becomes expensive to fix.
 
-So, to take full advantage of all the built in testing functionality that Angular provides, we will be primairly referring to the excellent [documentation](https://angular.io/guide/testing) (re-printed here with extra comments where applicable).
+So, to take full advantage of all the built in testing functionality that Angular provides, we will be primarily referring to the excellent [documentation](https://angular.io/guide/testing) (re-printed here with extra comments where applicable).
 
 <br>
 

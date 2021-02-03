@@ -26,7 +26,7 @@ Once this is complete, we must change to the newly created "my-app" directory an
 
 * `react-bootstrap bootstrap` (Include the Bootstrap 4 Components for React &amp; bootstrap)
 
-* `react-router-bootstrap` (Integration between React Bootstrap &amp; React Router v4, primairly the "LinkContainer" Component )
+* `react-router-bootstrap` (Integration between React Bootstrap &amp; React Router v4, primarily the "LinkContainer" Component )
 
 <br>
 
