@@ -12,29 +12,16 @@ Get ready by visiting the [React home page](https://reactjs.org/), and read/scan
 <!-- On the top navigation menu, notice the [Docs](https://reactjs.org/docs/installation.html) (documentation) and [Tutorial](https://reactjs.org/tutorial/tutorial.html) items. 
 
 ![React web site](/media/react-web-site.png) -->
-
-### Installation
-
-At its heart, react is really a "JavaScript library for building user interfaces" and as such, it can be added to your site [in one minute](https://reactjs.org/docs/add-react-to-a-website.html#add-react-in-one-minute) by including some &lt;script&gt; tags.  However, we will leverage the popular [create-react-app](https://www.npmjs.com/package/create-react-app) command line tool:
-
-> Create React App is a comfortable environment for learning React, and is the best way to start building a new single-page application in React.
->
-> It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 8.10 and npm >= 5.6 on your machine.
->
-> For best results, use the React app generator. Install it on your computer:
->
-> ```text
-npm install -g create-react-app
-```
-
 <br>
 
 ### Create an app
 
-With the "create-react-app" tool correctly installed using NPM (above), you can now proceed to create a new app. Begin by creating a new folder on your machine and open it using Visual Studio Code.  Next, open the Integrated Terminal and (assuming that you want to create a new app (and folder) named "my-app") execute the command:
+At its heart, react is really a "JavaScript library for building user interfaces" and as such, it can be added to your site [in one minute](https://reactjs.org/docs/add-react-to-a-website.html#add-react-in-one-minute) by including some &lt;script&gt; tags.  However, we will leverage the popular [create-react-app](https://github.com/facebook/create-react-app#readme) command line tool.
+
+Begin by creating a new folder on your machine and open it using Visual Studio Code.  Next, open the Integrated Terminal and (assuming that you want to create a new app (and folder) named "my-app") execute the command:
 
 ```text
-create-react-app my-app
+npx create-react-app my-app
 ```
 
 The process will create a new folder called "my-app", with the code needed to get started.

@@ -13,7 +13,7 @@ The following instructions are here to help get us started, as well as to provid
 To begin, create a new app as usual:
 
 ```terminal
-create-react-app my-app
+npx create-react-app my-app
 ```
 
 <br>
