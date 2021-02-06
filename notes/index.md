@@ -63,7 +63,7 @@ Continue React Development:<br><br>
 React Forms &amp; Deployment:<br><br>
 <ul>
 <li>Processing forms in React</li>
-<li>Serving a React App / Hosting on Heroku</li>
+<li>Serving a React App</li>
 </ul>
 </td>
 </tr>

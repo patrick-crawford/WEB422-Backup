@@ -13,4 +13,6 @@ Week 5 brings us to our final week discussing React, before we move on to Angula
 
 * [Serving a React App / Hosting on Heroku](serving-react-heroku)
 
+* [Hosting on Vercel](serving-react-vercel)
+
 <br>
