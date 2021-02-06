@@ -31,7 +31,7 @@ Fill in the repository name text field with the name of your project. Also, plea
 
 ![New repository page screenshot](/media/react-deployment-2.png)
 
-Finally, hit the "Create repository" button.
+Once you're happy with the settings, hit the "Create repository" button.
 
 <br>
 
