@@ -5,7 +5,7 @@ layout: default
 
 ## Serving a React app with Vercel
 
-Rather than building the app manually before every production build and pushing the contents to a static web server, we can leverage modern services such as [Vercel](https://vercel.com/) to automate this process.  Vercel will detect changes to our code and perform the build step for us automatically as well as host the built app on their server.      
+Rather than building the app manually before every production deployment and pushing the contents to a static web server, we can leverage modern services such as [Vercel](https://vercel.com/) to automate this process.  Vercel will detect changes to our code and perform the build step for us automatically as well as host the built app on their server.      
 
 For Vercel to gain access to our code however, it must be hosted online.  This is where GitHub comes in.
 
