@@ -39,9 +39,7 @@ Finally, hit the "Create repository" button.
 
 Open the terminal and change the current working directory to your app.
 
-If you created your Angular application **without** the `-g` option (i.e. `ng new my-app`), then, a Git repository was created automatically for you. Otherwise, if you accidentally used `-g` option while creating the app, you can initialize a local Git repository by running `git init` in the project's directory.
-
-Additionally, you can run `git status` to verify that Git is set up properly. If you *do not* see `fatal: not a git repository (or any of the parent directories): .git` error message, then, your local Git repository exists.
+You can run `git status` to verify that Git is set up properly. If you see `fatal: not a git repository (or any of the parent directories): .git` error message, then, your local Git repository does not exist and you need to initialize it using `git init`.
 
 Now that we're sure that our local git repository is set up, we need to add and commit all of our code changes:
 
