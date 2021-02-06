@@ -27,7 +27,7 @@ Find and click a "+" button on the Navigation Bar. Then, choose "New Repository"
 
 ![New repository button screenshot](/media/react-deployment-1.png)
 
-Fill in the repository name text field with the name of your project. Also, please make sure that "Private" option is selected:
+Fill in the repository name text field with the name of your project. Also, please make sure that the "Private" option is selected:
 
 ![New repository page screenshot](/media/react-deployment-2.png)
 
