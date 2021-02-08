@@ -37,9 +37,12 @@ function UserDataForm(props) {
         let value = target.value; // its value
         let name = target.name; // its name
 
-        let newUserData = { ...userData }; // preform a "shallow" clone of userData        
-        newUserData[name] = value; // update the associated property for the control
-        setUserData(newUserData); // set the new user data
+        setUserData(userData => {
+            // return a new object built with the properties from userData 
+            // including a new property name:value.  If name:value exists, it will be 
+            // overwritten, ie: let obj1 = {x:5,x:6}; console.log(obj1); // {x: 6}  
+            return {...userData, [name]: value}; 
+        });
     }
 
     if (!userData) {
@@ -72,23 +75,19 @@ To begin, our "input" control has two important properties: **value** and **onCh
         let value = target.value; // its value
         let name = target.name; // its name
 
-        let newUserData = { ...userData }; // preform a "shallow" clone of userData        
-        newUserData[name] = value; // update the associated property for the control
-        setUserData(newUserData); // set the new user data
+        setUserData(userData => {
+            // return a new object built with the properties from userData 
+            // including a new property name:value.  If name:value exists, it will be 
+            // overwritten, ie: let obj1 = {x:5,x:6}; console.log(obj1); // {x: 6}  
+            return {...userData, [name]: value}; 
+        });
     }
     ```
 
     We have implemented the **handleChange(e)** method to be as *generic* as possible. Here, we can determine which form element initiated the event (using **e.target**) and once we have access to the form element, we can pull its value and name using the properties (**value** ane **name** respectfully).  Finally, using those values, we can set the matching property in the user data using the syntax: **`{[name]:value}`**.
 
-    **NOTE:**  As stated in the comments, the line: `let newUserData = { ...userData };` performs a 'shallow copy' of the userData state variable, since we cannot edit it directly.  This is essentially another form of a "destructuring assignment" and functions the same as:
+    **NOTE:**  As stated in the comments, the line: `...userData` contains all of the properties in the userData object.  The `...` in this case is the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals) acting on an object literal.
 
-    ```jsx
-    let newUserData = {};
-
-    for (let prop in userData){
-        newUserData[prop] = userData[prop];
-    }
-    ```
 
 By matching up the **value** and **onChange** methods on components in our form with functionality internal to our component, we can ensure that whenever the value of "state" changes, the corresponding form control changes as well.  Similarly, whenever our form control changes, the corresponding property in the "state" should also change.
 
@@ -152,9 +151,12 @@ const handleChange = (e) => {
         value = target.value
     }
 
-    let newUserData = { ...userData }; // preform a "shallow" clone of userData        
-    newUserData[name] = value; // update the associated property for the control
-    setUserData(newUserData); // set the new user data
+    setUserData(userData => {
+        // return a new object built with the properties from userData 
+        // including a new property name:value.  If name:value exists, it will be 
+        // overwritten, ie: let obj1 = {x:5,x:6}; console.log(obj1); // {x: 6}  
+        return {...userData, [name]: value}; 
+    });
 }
 ```
 
@@ -190,9 +192,12 @@ const handleChange = (e)=>{
         value = target.value
     }
 
-    let newUserData = {...userData}; // preform a "shallow" clone of userData        
-    newUserData[name] = value; // update the associated property for the control
-    setUserData(newUserData); // set the new user data
+    setUserData(userData => {
+        // return a new object built with the properties from userData 
+        // including a new property name:value.  If name:value exists, it will be 
+        // overwritten, ie: let obj1 = {x:5,x:6}; console.log(obj1); // {x: 6}  
+        return {...userData, [name]: value}; 
+    });
 }
 ```
 
