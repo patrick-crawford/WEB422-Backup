@@ -40,10 +40,12 @@ function UserDataForm(props){
             value = target.value
         }
 
-        let newUserData = {...userData}; // preform a "shallow" clone of userData        
-        newUserData[name] = value; // update the associated property for the control
-        setUserData(newUserData); // set the new user data
-
+        setUserData(userData => {
+            // return a new object built with the properties from userData 
+            // including a new property name: value.  If name:value exists, it will be 
+            // overwritten, ie: let obj1 = {x:5,x:6}; console.log(obj1); // {x: 6}  
+            return {...userData, [name]: value}; 
+        });
     }
 
     if(!userData){
