@@ -34,6 +34,19 @@ Next, create a new app. Assuming that you want to create a new app (and folder) 
 ng new my-app --routing -S -g
 ```
 
+**NOTE:** If at this point, you receive the following error in <span style="color:red; font-weight: bold">red</span>:
+
+
+```
+The Angular CLI currently requires npm version 6.
+
+Please install a compatible version to proceed (`npm install --global npm@6`).
+```
+
+
+Please, run the suggested command: `npm install --global npm@6` before trying to create a new app again with the `ng` command.  This is a current, preferred workaround for an [issue with the Angular-CLI and NPM version 7](https://github.com/angular/angular-cli/issues/19957).
+
+
 The process will create a new folder, with the code needed to get started.
 
 > Notes:  
