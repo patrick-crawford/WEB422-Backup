@@ -19,7 +19,7 @@ Angular has an app generator too, the [Angular CLI](https://cli.angular.io/). It
 
 Install Angular CLI on your computer:
 
-```text
+```bash
 npm install -g @angular/cli
 ```
 
@@ -27,24 +27,40 @@ npm install -g @angular/cli
 
 ### Create an app
 
-Next, create a new app. Assuming that you want to create a new app (and folder) named "my-dream-app":
+Next, create a new app. Assuming that you want to create a new app (and folder) named "my-dream-app", execute the following command:
 
 ```bash
 # upper and lower case use for the options is important
 ng new my-app --routing -S -g
 ```
 
-**NOTE:** If at this point, you receive the following error in <span style="color:red; font-weight: bold">red</span> that contains the text:
+* **NOTE:** If at this point, you receive the following error in <span style="color:red; font-weight: bold">red</span> that contains the text:
+  
+  
+  ```bash
+  The Angular CLI temporarily requires npm version 6 while upstream issues are addressed.
+  
+  Please install a compatible version to proceed (`npm install --global npm@6`).
+  ```
+  
+  
+  Please, run the suggested command: `npm install --global npm@6` before trying to create a new app again with the `ng` command.  This is a current, preferred workaround for an [issue with the Angular-CLI and NPM version 7](https://github.com/angular/angular-cli/issues/19957).
 
+Next, you will be presented with the following options:
 
+```bash
+Do you want to enforce stricter type checking and stricter bundle budgets in the workspace?
+This setting helps improve maintainability and catch bugs ahead of time.
+For more information, see https://angular.io/strict y/N)
 ```
-The Angular CLI temporarily requires npm version 6 while upstream issues are addressed.
 
-Please install a compatible version to proceed (`npm install --global npm@6`).
+Hit **Enter** to accept the default "N"
+
+```bash
+Which stylesheet format would you like to use? (Use arrow keys)
 ```
 
-
-Please, run the suggested command: `npm install --global npm@6` before trying to create a new app again with the `ng` command.  This is a current, preferred workaround for an [issue with the Angular-CLI and NPM version 7](https://github.com/angular/angular-cli/issues/19957).
+Hit **Enter** to accept the default "CSS"
 
 
 The process will create a new folder, with the code needed to get started.
