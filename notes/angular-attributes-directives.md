@@ -106,7 +106,7 @@ We can also conditionally add or remove the above style using the ternary operat
  <td [style.background-color]="showBackground ? grayBackground : null" >Column 1</td>
  ```
 
- **NOTE:** If you wish to set many inline styles at the same time, you can use [ngStyle](https://angular.io/guide/template-syntax#ngstyle).
+ **NOTE:** If you wish to set many inline styles at the same time, you can use [ngStyle](https://angular.io/api/common/NgStyle).
 
 <br>
 
