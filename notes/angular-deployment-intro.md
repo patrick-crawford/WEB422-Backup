@@ -23,7 +23,7 @@ Before we actually go and deploy our app with Netlify, there are a few steps tha
 
 Netlify will need to know what to do with routes that are manually entered by the user in the navigation bar.  This problem was previously solved by redirecting back to index.html on 404 errors in our server.js file when using Node.js to host our apps.  However, since we're hosting our App on Netlify, we need to add a special file: "_redirects" to configure this setting:
 
-* Open your angular.json file and locate the "assets" array under the "architect" property (approximately line 22)
+* Open your angular.json file and locate the "assets" array under the "architect" property
 
 * Add the value: `"src/_redirects"` 
 
