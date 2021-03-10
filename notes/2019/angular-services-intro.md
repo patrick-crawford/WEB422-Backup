@@ -495,7 +495,7 @@ ngOnInit() {
 }
 
 ngOnDestroy() {
-   if(this.sub){this.sub.unsubscribe();}
+   this.sub.unsubscribe();
 }
 ```
 <br>
@@ -573,7 +573,7 @@ ngOnInit() {
 }
 
 ngOnDestroy() {
-  if(this.sub){this.sub.unsubscribe();}
+  this.sub.unsubscribe();
 }
 ```
 
