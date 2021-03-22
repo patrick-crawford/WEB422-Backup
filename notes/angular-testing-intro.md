@@ -41,7 +41,7 @@ You can write and run Angular tests with a variety of tools and technologies. Th
       Jasmine
     </td>
     <td>
-<p>      The <a href="http://jasmine.github.io/2.4/introduction.html">Jasmine test framework</a>
+<p>      The <a href="https://jasmine.github.io/index.html">Jasmine test framework</a>
 provides everything needed to write basic tests.
 It ships with an HTML test runner that executes tests in the browser.</p>
     </td>
@@ -182,7 +182,7 @@ The **expect** function is used to build "Expectations", by providing a value, c
 
 ### Matcher Functions
 
-Jasmine comes with the following "Matcher Functions" that we can use to test our code.  Please note however, that it is also possible to create [custom matchers](https://jasmine.github.io/2.4/custom_matcher.html) when required as well.
+Jasmine comes with the following "Matcher Functions" that we can use to test our code.  Please note however, that it is also possible to create [custom matchers](https://jasmine.github.io/tutorials/custom_matcher) when required as well.
 
 #### toBe()
 
@@ -459,7 +459,7 @@ The createComponent method returns a **ComponentFixture**, a handle on the test 
 
 ### async
 
-We simply need this to invoke the first of two [beforeEach()](https://jasmine.github.io/2.4/introduction.html#section-Setup_and_Teardown) setup methods "asynchronously", ie: the test setup for ComponentOne must give the Angular template compiler [time to read &amp; compile the files](https://angular.io/guide/testing#compilecomponents-is-async).
+We simply need this to invoke the first of two [beforeEach()](https://jasmine.github.io/tutorials/async) setup methods "asynchronously", ie: the test setup for ComponentOne must give the Angular template compiler [time to read &amp; compile the files](https://angular.io/guide/testing-components-basics).
 
 A second (synchronous) beforeeach is used to actually **create** the component using the TestBed.
 
