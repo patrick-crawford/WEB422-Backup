@@ -1,3 +1,0 @@
-# .env contains our MongoDB Atlas password, ignore it
-.env
-node_modules
