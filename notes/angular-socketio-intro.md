@@ -98,7 +98,7 @@ referencing "http" instead of "app" when listening on our "HTTP_PORT".
 
 We also require the "socket.io" library and provide the "http" server that we will "bind" our socket to.  This must be an "http" server, and will not work with "app" (which is why we must use the "http" module).  
 
-Finally, you will notice that we [explicitly enable CORS](https://socket.io/docs/v4/handling-cors/) as well (in this case, using the default and enabling all CORS requests).
+Finally, you will notice that we [explicitly enable CORS](https://socket.io/docs/v4/handling-cors/) as well (in this case, using the default / enabling all CORS requests).
 
 <br>
 
@@ -116,7 +116,7 @@ This block of code specifies a callback function to be executed when a client "c
 
 ```js
 // assign them a temporary user name:
-    let tempUserName = "User-" + Math.floor(Math.random() * (100000 - 1 + 1)) + 1; 
+let tempUserName = "User-" + Math.floor(Math.random() * (100000 - 1 + 1)) + 1; 
 ```
 
 To help distinguish which user wrote which message, we simply create a "tempUserName" that consists of the text "User-" followed by a random number between 1 and 100000 inclusive using the formula `Math.floor( Math.random() * (max - min + 1)) + min)`.
@@ -203,7 +203,7 @@ Now that we know our server is capable of sending and receiving messages, we can
 
 **Before we begin**: Please note that we must keep the server running in the background, so that our Angular app will have something to connect to.  Therefore, we will *not* stop the server or close the Integrated Terminal window.
 
-With the server still running, click the "+" icon next to the dropdown in the top-right corner of the Integrated Terminal (this will open a 2nd Terminal).  With this new Terminal window open, ensure that your working directory is the "Week12Example" directory (ie, `pwd`).  While in this directory, create a new Angular application (with Routing) called "chatApp", ie: `ng n chatApp --routing`.  Once this is complete, change your working directory to "chatApp" and expand the "chatApp" folder (NOTE: if a `.git` folder was created during the installation, please remove it now).
+With the server still running, click the "+" icon next to the dropdown in the top-right corner of the Integrated Terminal (this will open a 2nd Terminal).  With this new Terminal window open, ensure that your working directory is the "Week12Example" directory (ie, `pwd`).  While in this directory, create a new Angular application (with Routing) called "chatApp" (ie: `ng new chatApp --routing -S -g`).  Once this is complete, change your working directory to "chatApp" and expand the "chatApp" folder.
 
 <br >
 
