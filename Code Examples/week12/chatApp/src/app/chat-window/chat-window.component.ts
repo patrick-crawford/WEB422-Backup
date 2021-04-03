@@ -26,7 +26,7 @@ export class ChatWindowComponent implements OnInit {
   }
 
   ngOnDestroy(){    
-     if(this.getMessagesSub){this.getMessagesSub.unsubscribe();}   
+     this.getMessagesSub.unsubscribe();
   } 
 
 }
