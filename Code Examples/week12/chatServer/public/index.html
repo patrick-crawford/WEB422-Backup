@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Socket.IO Connection Test</title>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
      
      <script>
       var socket = io.connect(); // will connect using the same host, if it's a different host, use io.connect("host")
@@ -9,7 +9,7 @@
           socket.emit('chat message', 'Hello World');
       });
       socket.on('chat message', function(msg){
-        console.log("recieved: " + msg);
+        console.log("received: " + msg);
       });
     
     </script>
