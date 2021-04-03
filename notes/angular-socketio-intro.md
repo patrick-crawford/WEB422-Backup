@@ -42,7 +42,9 @@ const HTTP_PORT = process.env.PORT || 8080;
 
 // setup socket.io
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+const io = require('socket.io')(http, {
+  cors: {}
+});
 
 io.on('connection', function(socket){
   console.log('a user connected'); // show when the user connected
@@ -86,11 +88,17 @@ This is fairly standard and was discussed in detail during our time in WEB322.  
 ```js
 // setup socket.io
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+const io = require('socket.io')(http, {
+  cors: {}
+});
 ```
 
 This code is a little different than what we're used to when working with Express in Node.js.  Here, we require the 'http' module, and invoke its "Server" function with the express "app" to return an http server instance (ie "http"). We will be
-referencing "http" instead of "app" when listening on our "HTTP_PORT".  We also require the "socket.io" library and provide the "http" server that we will "bind" our socket to.  This must be an "http" server, and will not work with "app" (which is why we must use the "http" module).
+referencing "http" instead of "app" when listening on our "HTTP_PORT".  
+
+We also require the "socket.io" library and provide the "http" server that we will "bind" our socket to.  This must be an "http" server, and will not work with "app" (which is why we must use the "http" module).  
+
+Finally, you will notice that we [explicitly enable CORS](https://socket.io/docs/v4/handling-cors/) as well (in this case, using the default and enabling all CORS requests).
 
 <br>
 
@@ -159,8 +167,8 @@ Once this file (public/index.html) is created, enter the following HTML:
 ```html
 <html>
   <head>
-     <title>Socket.IO Connection Test</title>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <title>Socket.IO Connection Test</title>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
      
      <script>
       var socket = io.connect('http://localhost:8080'); // we can also use io.connect() to connect to the current host
@@ -170,8 +178,8 @@ Once this file (public/index.html) is created, enter the following HTML:
       socket.on('chat message', function(msg){
         console.log("received: " + msg);
       });
-    </script>
     
+    </script>
   </head>
   <body>
    <p>Testing Socket Connection</p>
@@ -199,7 +207,7 @@ With the server still running, click the "+" icon next to the dropdown in the to
 
 <br >
 
-#### Step 1: Enable Angular Forms & Bootstrap 3
+#### Step 1: Enable Angular Forms & Bootstrap 4 (ng-bootstrap)
 
 We will be using a simple web form to write "chat" messages, so we must enable Angular Forms.  Recall, this involves adding the "FormsModule" to the "@NgModule" imports array within **app.module.ts**, ie:
 
@@ -217,18 +225,10 @@ import { FormsModule } from '@angular/forms';
 })
 ```
 
-Additionally, we will use Bootstrap 3 to ensure that our UI is consistant.  Add the following CSS/JS imports to the index.html file:
+Additionally, we will use [ng-bootstrap](https://ng-bootstrap.github.io/#/home) ("Bootstrap widgets - the angular way") to give us a clean UI.  Execute the following line in your terminal to [add ng-bootstrap](https://ng-bootstrap.github.io/#/getting-started#installation):
 
 ```
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-```
-
-```
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
-```
-
-```
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ng add @ng-bootstrap/ng-bootstrap
 ```
 
 <br>
@@ -241,6 +241,10 @@ In the Integrated terminal, execute the following 2 "npm install" commands:
 
 - `npm install socket.io-client`
 - `npm install --save-dev @types/socket.io-client`
+
+Once this is complete, open the file: **tsconfig.app.json** and **remove** the empty "types" property under "compilerOptions":
+
+- "types": []
 
 <br>
 
@@ -353,8 +357,8 @@ At first glance, it looks like there's a lot going on in this Component, but rea
 We now have everything in place to create the template for our ChatWindow Component.  Enter the following code in the "chat-window.component.html" file:
 {% raw %}
 ```html
-<div class="well" style="height: 300px; overflow-y: scroll; margin-top:15px">
-  <div *ngFor="let message of messages">{{message}}</div>
+<div class="card card-body bg-light" style="height: 300px; overflow-y: scroll; margin-top:15px">
+    <div *ngFor="let message of messages">{{message}}</div>
 </div>
 {% endraw %}
 
@@ -376,7 +380,7 @@ Everything is nearly ready for testing, the only thing left is to update app.com
 ```html
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col">
     <app-chat-window></app-chat-window>
   </div>
   </div>
@@ -389,7 +393,7 @@ Everything is nearly ready for testing, the only thing left is to update app.com
 
 The application should now be ready for testing.  You should be able to serve the app and open multiple windows to `http://localhost:4200` and be able to enter chat messages that are echoed in every window.
 
-This is a good start in getting a proof-of-concept chat window going, but there's lots of room for improvement.  For example, we can add a feature that lets users choose their own user name or even log in prior to using the chat window.  We could also persist existing message boards using MongoDB so that new users can see an existing conversation when they first log in, or continue a conversation later on.  We could even implement different chat "rooms" (see the documentation for "Rooms and Namespaces" in the [official socket.io documentation](https://socket.io/docs/rooms-and-namespaces/).  
+This is a good start in getting a proof-of-concept chat window going, but there's lots of room for improvement.  For example, we can add a feature that lets users choose their own user name or even log in prior to using the chat window.  We could also persist existing message boards using MongoDB so that new users can see an existing conversation when they first log in, or continue a conversation later on.  We could even implement different chat "rooms" (see the documentation for "Rooms" in the [official socket.io documentation](https://socket.io/docs).  
 
 Another interesting use case might be an application with a single "project lead" that assigns "tasks" to users in the application.  If a logged-in user receives a "task", we can use socket.io to alert that user immediately that a new task has been assigned to them.  This can be done *without* constantly polling the database / API for "task" updates (the traditional approach to solving this problem).
 
