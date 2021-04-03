@@ -7,9 +7,7 @@ const HTTP_PORT = process.env.PORT || 8080;
 // setup socket.io
 var http = require('http').Server(app);
 const io = require('socket.io')(http, {
-  cors: {
-    origin: '*'
-  }
+  cors: {}
 });
 
 io.on('connection', function(socket){
