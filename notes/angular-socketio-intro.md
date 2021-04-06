@@ -36,7 +36,6 @@ Creating any application that makes use of socket.io, requires two parts: a **cl
 ```js
 const express = require("express");
 const app = express();
-const path = require("path");
 
 const HTTP_PORT = process.env.PORT || 8080;
 
@@ -76,12 +75,11 @@ Before we move on, let's explain what's going on in the above code.
 ```js
 const express = require("express");
 const app = express();
-const path = require("path");
 
 const HTTP_PORT = process.env.PORT || 8080;
 ```
 
-This is fairly standard and was discussed in detail during our time in WEB322.  Essentially it loads the "express" & "path" modules as well as sets the port to either 8080 *or* the PORT identified within an environment variable (used by Heroku).
+This is fairly standard and was discussed in detail during our time in WEB322.  Essentially it loads the "express" module as well as sets the port to either 8080 *or* the PORT identified within an environment variable (used by Heroku).
 
 <br>
 
