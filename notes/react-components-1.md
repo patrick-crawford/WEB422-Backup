@@ -11,7 +11,6 @@ As we have stated, at the core of all applications written using React, are **co
 
 
 ```jsx
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -41,9 +40,7 @@ export default App;
 
 This is known as a [functional component](https://reactjs.org/docs/components-and-props.html#function-and-class-components), since it's defined as a "function".  The name of the function corresponds to the tag used to render the component, in this case &lt;App /&gt;.  This tag is said to be "self-closing", but we could also write the component in this form: &lt;App&gt;&lt;/App&gt;.  Ths is not as common however, and it's unnecessary unless we wish to write a component that acts as a wrapper that simply renders other components.
 
-Additionally, you will notice that our function is preceded by three import statements.  In this case, they provide the following functionality:
-
-* `import React from 'react';` - This may look strange, because we don't reference "React" directly anywhere in our file.  However, it is required because of the strange syntax that exists in the return statement (ie: JSX - explained further down). **NOTE** Starting from React 17, it's [not necessary to import React to use JSX](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports). 
+Additionally, you will notice that our function is preceded by two import statements.  In this case, they provide the following functionality:
 
 * `import logo from './logo.svg';` - This provides the actual source code for the svg file used in the cool spinning "React" logo - you can see it for yourself if you open the logo.svg file.
 
@@ -60,8 +57,6 @@ Now that we have seen what a basic component consists of, let's create our own c
 Start by creating a new file in the "src" directory called "Hello.js" (Our component will be named "Hello").  Inside the component, we will add everything required for a basic component that outputs (you guessed it: "Hello World"), ie:
 
 ```jsx
-import React from 'react';
-
 function Hello() {
   return (
     <p>Hello World!</p>
@@ -88,11 +83,9 @@ Next, include the "Hello" component *beneath* the "Learn React" link using its a
 This should cause your App.js file to look like the following;
 
 ```jsx
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Hello from './Hello';
-
 
 function App() {
   return (
