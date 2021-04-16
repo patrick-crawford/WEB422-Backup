@@ -271,7 +271,7 @@ To actually see this in action, let's create a new component called **Clock**:
 First, create a new file in "src" called "Clock.js".  Once this is done, add the following code:
 
 ```jsx
-import React, {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 function Clock(props){
     return (

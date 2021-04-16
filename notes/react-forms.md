@@ -232,7 +232,7 @@ Additionally, you should use the [File API](https://developer.mozilla.org/en-US/
 
 ```jsx
 
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 
 function FileInput(props) {
 

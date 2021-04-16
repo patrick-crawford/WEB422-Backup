@@ -31,7 +31,7 @@ is slightly different in React:
 To see this in action, let's code a simple "click counter" component that renders a single button that shows a number that increases by one (1) every time it's clicked.  To achieve this, we'll create a new component called "ClickCounter":
 
 ```jsx
-import React, {useState} from 'react';
+import { useState } from 'react';
 
 function ClickCounter(props){
     const [numClicks, setNumClicks] = useState(0);
