@@ -1,9 +1,7 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Hello from './Hello';
 import Clock from './Clock';
-
 
 function App() {
   return (
@@ -20,7 +18,6 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-          
         </a>
         <Hello />
         <Clock />
