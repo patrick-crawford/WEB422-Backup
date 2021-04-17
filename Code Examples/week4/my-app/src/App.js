@@ -34,11 +34,21 @@ function App() {
         <Row>
           <Col>
             <Switch>
-              <Route exact path="/" render={()=>(<Redirect to="/products" />)} />
-              <Route exact path="/products" render={()=>(<Products />)} />
-              <Route path="/product/:id" render={(props)=>(<Product id={props.match.params.id} />)} />
-              <Route exact path="/about" render={()=>(<About />)} />
-              <Route render={()=>(<Notfound />)} />
+              <Route exact path="/">
+                <Redirect to="/products" />
+              </Route>
+              <Route exact path="/products">
+                <Products />
+              </Route>
+              <Route path="/product/:id">
+                <Product />
+              </Route> 
+              <Route exact path="/about">
+                <About />
+              </Route>
+              <Route>
+                <Notfound />
+              </Route>
             </Switch>
           </Col>
         </Row>

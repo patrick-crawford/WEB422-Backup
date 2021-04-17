@@ -1,25 +1,28 @@
 import { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { useParams } from "react-router-dom";
 
 export default function Product(props) {
+
+    let { id } = useParams();
 
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://reqres.in/api/unknown/${props.id}`).then(res => res.json()).then(product => {
+        fetch(`https://reqres.in/api/unknown/${id}`).then(res => res.json()).then(product => {
             setLoading(false);
             setProduct(product.data);
         });
-    }, [props.id])
+    }, [id])
 
     if (!loading) {
         if (product) {
             return (
                 <>
-                    <h3>Product {props.id}</h3>
+                    <h3>Product {id}</h3>
                     <br />
                     <Card>
                         <Card.Body>
@@ -38,7 +41,7 @@ export default function Product(props) {
         } else {
             return (
                 <>
-                    <h3>Product {props.id}</h3>
+                    <h3>Product {id}</h3>
                     <p>Not Found...</p>
                 </>
             );
