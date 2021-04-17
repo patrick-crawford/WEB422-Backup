@@ -2,8 +2,8 @@
 
 This is the React example for this week.  It features client-side routing using [react-router-dom](https://www.npmjs.com/package/react-router-dom) and custom UI components from the following packages:
 
-* [react-bootstrap - version 1.4.0](https://react-bootstrap.github.io/): `npm install react-bootstrap bootstrap`
-* [react-router-bootstrap - version 0.25.0"](https://www.npmjs.com/package/react-router-bootstrap): `npm install react-router-bootstrap`
+* [react-bootstrap](https://react-bootstrap.github.io/): `npm install react-bootstrap bootstrap`
+* [react-router-bootstrap](https://www.npmjs.com/package/react-router-bootstrap): `npm install react-router-bootstrap`
 
 For data, it uses [https://reqres.in/](https://reqres.in/).
 
