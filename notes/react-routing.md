@@ -127,7 +127,7 @@ In all three above routes, we use the ["exact"](https://reactrouter.com/web/api/
 
 ### Adding URL Parameters to our Routes
 
-If we wish to pass a specific URL parameter to a given route, we can use the same syntax as we're accustomed to in Node.js, ie: "/routeName/:parameter". To pass the ":parameter" to the `<Project />` component (so we can make use of routes like "/project/4", etc), we need to make the following changes to our files: 
+If we wish to pass a specific URL parameter to a given route, we can use the same syntax as we're accustomed to in Node.js, ie: "/routeName/:parameter". To read the ":parameter" in the `<Project />` component (so we can make use of routes like "/project/4", etc), we need to make the following changes to our files: 
 
 * Update the "Project" `<Route>` component:
 
