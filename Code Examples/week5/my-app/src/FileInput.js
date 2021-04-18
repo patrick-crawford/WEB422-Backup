@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 
-function FileInput(props) {
+function FileInput() {
 
   const fileInput = useRef(null);
 

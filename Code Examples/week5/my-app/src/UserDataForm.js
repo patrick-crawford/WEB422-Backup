@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
-function UserDataForm(props){
+function UserDataForm(){
 
     const [userData, setUserData] = useState(null);
 
