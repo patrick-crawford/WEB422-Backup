@@ -77,7 +77,7 @@ This guide describes how to set up and run tests with karma.</p>
 End-to-end tests explore the application <em>as users experience it</em>.
 In e2e testing, one process runs the real application
 and a second process runs protractor tests that simulate user behavior
-and assert that the application respond in the browser as expected.</p>
+and assert that the application responds in the browser as expected.</p>
     </td>
   </tr>
 </tbody></table>
