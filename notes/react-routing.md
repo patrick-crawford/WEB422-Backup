@@ -99,7 +99,7 @@ Update the return value of the "App" function to use the following JSX:
 </Switch>
 ```
   
-Here, we can define our routes explicitly using the ["Switch" component](https://reactrouter.com/web/api/Switch) with our three nested ["Route" components](https://reactrouter.com/web/api/Route).  Each of the routes have a "path" property which we use to define the target route, as well as a "render" property which defines which component will be rendered for that route.  
+Here, we can define our routes explicitly using the ["Switch" component](https://reactrouter.com/web/api/Switch) with our three nested ["Route" components](https://reactrouter.com/web/api/Route).  Each of the routes have a "path" property which we use to define the target route. 
 
 In all three above routes, we use the ["exact"](https://reactrouter.com/web/api/Route/exact-bool) because we want to match the route *exactly* (ie, we don't care about "/Project/1" yet, only "/Project"). 
 
