@@ -138,7 +138,7 @@ If we wish to pass a specific URL parameter to a given route, we can use the sam
   ```
 * Update the `Project.js` file:
   
-  To read the value of the "id" route parameter, we need to make a few changes to our "Project" component (defined in `Project.js`), ie:
+  To read the value of the "id" route parameter, we need to make a few changes to our "Project" component, ie:
 
   * Add the ["useParams" Hook](https://reactrouter.com/core/api/Hooks/useparams): 
     
@@ -162,7 +162,7 @@ Once we have made the above changes (removed "exact", added /:id, pulled the par
 
 ### Adding Query Parameters to our Routes
 
-If we wish to obtain the query parameters for a specific route, the process is very similar, however the ability to actually parse the value(s) is absent from React Router, so we require one extra step, ie:
+If we wish to obtain the query parameters for a specific route, the process is very similar, however the ability to actually parse the value(s) is absent from React Router so we require one extra step (below).  To get started:
 
   * Add the ["useLocation" Hook](https://reactrouter.com/core/api/Hooks/uselocation):
    
@@ -170,7 +170,7 @@ If we wish to obtain the query parameters for a specific route, the process is v
     import { useLocation } from 'react-router-dom';
     ```
 
-  * Inside your Component function, add the below code to reference the "id" route parameter using the hook: 
+  * Inside your Component function, add the below code to reference the route "location" using the hook: 
 
     ```jsx
     let location = useLocation();
