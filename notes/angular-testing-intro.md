@@ -102,29 +102,28 @@ For now, let's see how we can perform our first, simple unit test:
 
 2. Create a new file called `1st.spec.ts` in the application root folder, `src/app/`
 
-  NOTE: Tests written in Jasmine are called specs. **The filename extension must be** .spec.ts, the convention adhered to by karma.conf.js and other tooling.
+    **NOTE**: Tests written in Jasmine are called specs. **The filename extension must be** .spec.ts, the convention adhered to by karma.conf.js and other tooling.
   
 3. Open the file and enter the following code:
-
-```js
-describe('1st tests', () => {
-    it('true is true', () => {
-        expect(true).toBe(true);
-    });
-});
-```
+    
+    ```js
+   describe('1st tests', () => {
+         it('true is true', () => {
+           expect(true).toBe(true);
+       });
+   });
+    ```
 
 4. Run the command `npm test` from the integrated terminal
 
-  You should see some text output to the terminal, ie:
-  
-  ```
-15 03 2020 21:47:06.130:WARN [karma]: No captured browser, open http://localhost:9876/
-15 03 2020 21:47:06.241:INFO [karma-server]: Karma v4.1.0 server started at http://0.0.0.0:9876/
-15 03 2020 21:47:06.241:INFO [launcher]: Launching browsers Chrome with concurrency unlimited
-15 03 2020 21:47:06.244:INFO [launcher]: Starting browser Chrome
-...
-```
+    You should see some text output to the terminal, ie:
+
+    ```
+   Generating browser application bundles...:WARN [karma]: No captured browser, open http://localhost:9876/
+   18 04 2021 21:11:47.341:INFO [karma-server]: Karma v6.1.2 server started at http://localhost:9876/
+   18 04 2021 21:11:47.341:INFO [launcher]: Launching browsers Chrome with concurrency unlimited
+   18 04 2021 21:11:47.346:INFO [launcher]: Starting browser Chrome
+    ```
 
 You may or may not see the "No captured browser" warning - if your default browser opens to a "Karma" page, then everything is working as expected and no further action is required.  If you see the warning, simply open the browser to the address identified, ie: `http://localhost:9876/`
 
@@ -416,7 +415,7 @@ component-one.component.ts
 The file that we're currently interested in looking at here is: **component-one.component.spec.ts**:
 
 ```js
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ComponentOneComponent } from './component-one.component';
 
@@ -424,12 +423,12 @@ describe('ComponentOneComponent', () => {
   let component: ComponentOneComponent;
   let fixture: ComponentFixture<ComponentOneComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ ComponentOneComponent ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ComponentOneComponent);
@@ -455,13 +454,7 @@ Essentially, TestBed provides the functionality to enable the configuration of t
 
 ### ComponentFixture
 
-The createComponent method returns a **ComponentFixture**, a handle on the test environment surrounding the created component. The fixture provides access to the **component instance itself** and to the [**DebugElement**](https://angular.io/guide/testing#debugelement), which is a handle on the component's DOM element (to be used in testing - ie: `fixture.debugElement`).
-
-### async
-
-We simply need this to invoke the first of two [beforeEach()](https://jasmine.github.io/tutorials/async) setup methods "asynchronously", ie: the test setup for ComponentOne must give the Angular template compiler [time to read &amp; compile the files](https://angular.io/guide/testing-components-basics).
-
-A second (synchronous) beforeeach is used to actually **create** the component using the TestBed.
+The createComponent method returns a **ComponentFixture**, a handle on the test environment surrounding the created component. The fixture provides access to the **component instance itself** and to the [**nativeElement**](https://angular.io/guide/testing-components-basics#nativeelement), which is a handle on the component's DOM element (to be used in testing - ie: `fixture.nativeElement`).
 
 <br>
 
@@ -477,30 +470,24 @@ Say our specification requires there to be certain elements present in the templ
 
 This would make a great test, but first we must learn how we can gain access to elements in the compiled template.
 
-Fortunately, this can be accomplished through the use of the **debugElement** as mentioned above, with special ".query" &amp; ".queryAll" methods, ie:
+Fortunately, this can be accomplished through the combined use of the **nativeElement** (as mentioned above) and the familiar DOM [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) / [querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) methods, ie:
 
 ```js
-fixture.debugElement.query() // return one element (the first matching element)
-fixture.debugElement.queryAll() // return a collection of elements
+fixture.nativeElement.querySelector() // return one element (the first matching element)
+fixture.nativeElement.querySelectorAll() // return a collection of elements
 ```
-
-In order to "query" the component element, we can use one of three methods (Note: to use "By" we must `import { By } from '@angular/platform-browser';`):
-
-* By.all - return all elements.
-* By.css(selector) - return elements with matching CSS selectors.
-* By.directive(directive) - return elements that Angular matched to an instance of the directive class.
 
 In our case, we wish to ensure that we have at least one &lt;p&gt; element (from above).  We can use the following syntax to get a collection of all &lt;p&gt; elements.
 
 ```js
-fixture.debugElement.queryAll(By.css('p'));
+fixture.nativeElement.querySelectorAll('p'));
 ```
 
 This would allow us to write our test as follows:
 
 ```js
 it('must have at least 1 paragraph', () => {
-  let pElements = fixture.debugElement.queryAll(By.css('p'));
+  let pElements = fixture.nativeElement.querySelectorAll('p')
   expect(pElements.length).toBeGreaterThan(0);
 });
 ```
@@ -517,24 +504,16 @@ Before we begin, let's update our paragraph element in our "component-one.compon
 <p class="greeting">Hello</p>
 ```
 
-For our test, we wish to use the "TextContent" method of our "greeting" paragraph element to determine whether or not the text is "Hello".  To accomplish this, you would assume that we can wire up our test as such:
+For our test, we wish to use the "TextContent" method of our "greeting" paragraph element to determine whether or not the text is "Hello".  To accomplish this, we can use the following code:
 
 ```js
 it('The "greeting" must read: "Hello"',()=>{
-  let greetingElement = fixture.debugElement.query(By.css('p.greeting'));
+  let greetingElement = fixture.nativeElement.querySelector('p.greeting');
   expect(greetingElement.textContent).toEqual('Hello');
 });
 ```
-However, you will notice that the "textContent" property is highlighted red.  This is because our **greetingElement** isn't  a DOM Node, but actually a **debugElement** (ie, fixture.debugElement).  To gain access to the native DOM node, we simply update the expectation to include the **nativeElement** property:
 
-```js
-it('The "greeting" must read: "Hello"',()=>{
-  let greetingElement = fixture.debugElement.query(By.css('p.greeting'));
-    //expect(greetingElement.textContent).toEqual('Hello'); // does not work, because we need a "native element"
-    expect(greetingElement.nativeElement.textContent).toEqual('Hello');
-});
-```
-If we try it now, we should see that everything works as expected and our test is a **success**.  To verify that this does indeed work, try modifying the content from "Hello" to something else, we will see that the test **fails**.
+If we run the tests we should see that everything works as expected and our test is a **success**.  To verify that this does indeed work, try modifying the content from "Hello" to something else, we will see that the test **fails**.
 
 <br>
 
@@ -571,10 +550,10 @@ To simulate the button click and check that the value of x is updated to one (1)
 
 ```js
 it('Sets x to 1 when "myButton" is clicked', () => {
-  let button = fixture.debugElement.query(By.css('button.myButton'));
+  let button = fixture.nativeElement.querySelector('button.myButton');
   expect(button).toBeTruthy();
 
-  button.nativeElement.click();
+  button.click();
 
   fixture.whenStable().then(() => {
     expect(component.x).toBe(1);
@@ -592,10 +571,4 @@ Angular testing is an extremely complex topic and beyond the scope of this lectu
 
 Happy Coding!
 
-
-
-
-
-
-
-
+<br />
