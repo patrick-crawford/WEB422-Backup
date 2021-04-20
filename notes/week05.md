@@ -11,8 +11,8 @@ Week 5 brings us to our final week discussing React, before we move on to Angula
 
 * [Processing forms in React](react-forms)
 
-* [Serving a React App / Hosting on Heroku](serving-react-heroku)
+<!--* [Serving a React App / Hosting on Heroku](serving-react-heroku)-->
 
-* [Hosting on Vercel](serving-react-vercel)
+* [Serving a React App / Hosting on Vercel](serving-react-vercel)
 
 <br>
