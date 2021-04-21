@@ -181,160 +181,16 @@ The **expect** function is used to build "Expectations", by providing a value, c
 
 ### Matcher Functions
 
-Jasmine comes with the following "Matcher Functions" that we can use to test our code.  Please note however, that it is also possible to create [custom matchers](https://jasmine.github.io/tutorials/custom_matcher) when required as well.
-
-#### toBe()
+Jasmine comes with the series of "matcher functions" that we can use to test our code. Matcher functions are paired with an "expect" call in order to create a test, using the following syntax (as seen above in our "true is true" test):
 
 ```js
-it("The 'toBe' matcher compares with ===", function () {
-    var a = 12;
-    var b = a;
-
-    expect(a).toBe(b);
-    expect(a).not.toBe(null);
-});
+expect(someValue).someMatcherFunction(matcherParameters);
 ```
 
-#### toEqual()
+Generally speaking, expectations for tests follow the pattern **expect** *some value* **toBe** *something*.  If the expectation holds true, then the test passes, otherwise it fails.  If there is more than one expectation in a test, then the failure of a single expectation will cause the test to fail.  It's also important to note that when writing tests using **expect**, "*some value*" could be a primitive, array, object, etc. and "**toBe** *something*" can be as simple as checking if "*some value*" is truthy, or as complex as checking to see if it's *close to* another value given a certain precision, for example:
 
 ```js
-it("works for simple literals and variables", function () {
-    var a = 12;
-    expect(a).toEqual(12);
-});
-
-it("should work for objects", function () {
-    var foo = {
-        a: 12,
-        b: 34
-    };
-    var bar = {
-        a: 12,
-        b: 34
-    };
-    expect(foo).toEqual(bar);
-});
-```
-
-#### toMatch()
-
-```js
-it("The 'toMatch' matcher is for regular expressions", function () {
-    var message = "foo bar baz";
-
-    expect(message).toMatch(/bar/);
-    expect(message).toMatch("bar");
-    expect(message).not.toMatch(/quux/);
-});
-```
-
-#### toBeDefined()
-
-```js
-it("The 'toBeDefined' matcher compares against `undefined`", function () {
-    var a = {
-        foo: "foo"
-    };
-
-    expect(a.foo).toBeDefined();
-    expect(a.bar).not.toBeDefined();
-});
-```
-
-#### toBeUndefined()
-
-```js
-it("The `toBeUndefined` matcher compares against `undefined`", function () {
-    var a = {
-        foo: "foo"
-    };
-
-    expect(a.foo).not.toBeUndefined();
-    expect(a.bar).toBeUndefined();
-});
-```
-
-#### toBeNull()
-
-```js
-it("The 'toBeNull' matcher compares against null", function () {
-    var a = null;
-    var foo = "foo";
-
-    expect(null).toBeNull();
-    expect(a).toBeNull();
-    expect(foo).not.toBeNull();
-});
-```
-
-#### toBeTruthy()
-
-```js
-it("The 'toBeTruthy' matcher is for boolean casting testing", function () {
-    var a, foo = "foo";
-
-    expect(foo).toBeTruthy();
-    expect(a).not.toBeTruthy();
-});
-```
-
-#### toBeFalsy()
-
-```js
-it("The 'toBeFalsy' matcher is for boolean casting testing", function () {
-    var a, foo = "foo";
-
-    expect(a).toBeFalsy();
-    expect(foo).not.toBeFalsy();
-});
-```
-
-#### toContain()
-
-```js
-it("works for finding an item in an Array", function () {
-    var a = ["foo", "bar", "baz"];
-
-    expect(a).toContain("bar");
-    expect(a).not.toContain("quux");
-});
-
-it("also works for finding a substring", function () {
-    var a = "foo bar baz";
-
-    expect(a).toContain("bar");
-    expect(a).not.toContain("quux");
-});
-```
-
-#### toBeLessThan()
-
-```js
-it("The 'toBeLessThan' matcher is for mathematical comparisons", function () {
-    var pi = 3.1415926,
-        e = 2.78;
-
-    expect(e).toBeLessThan(pi);
-    expect(pi).not.toBeLessThan(e);
-});
-```
-
-#### toBeGreaterThan()
-
-```js
-it("The 'toBeGreaterThan' matcher is for mathematical comparisons", function () {
-    var pi = 3.1415926,
-        e = 2.78;
-
-    expect(pi).toBeGreaterThan(e);
-    expect(e).not.toBeGreaterThan(pi);
-});
-```
-
-#### toBeCloseTo()
-
-```js
-it("The 'toBeCloseTo' matcher is for precision math comparison", function () {
+it("compares pi against e with multiple precision values", function () {
     var pi = 3.1415926,
         e = 2.78;
 
@@ -343,42 +199,14 @@ it("The 'toBeCloseTo' matcher is for precision math comparison", function () {
 });
 ```
 
-#### toThrow()
+**Important:** Before moving on to directly testing a component, you should reference the documentation (below) and familiarize yourself with some simple matchers and how they're used.
 
-```js
-it("The 'toThrow' matcher is for testing if a function throws an exception", function () {
-    var foo = function () {
-        return 1 + 2;
-    };
-    var bar = function () {
-        return a + 1;
-    };
-    var baz = function () {
-        throw 'what';
-    };
+* Jasmine Matchers: [https://jasmine.github.io/api/edge/matchers.html](https://jasmine.github.io/api/edge/matchers.html)
 
-    expect(foo).not.toThrow();
-    expect(bar).toThrow();
-    expect(baz).toThrow('what');
-});
-```
 
-#### toThrowError()
+#### Special Case: Manually failing a spec with 'fail'.
 
-```js
-it("The 'toThrowError' matcher is for testing a specific thrown exception", function () {
-    var foo = function () {
-        throw new TypeError("foo bar baz");
-    };
-
-    expect(foo).toThrowError("foo bar baz");
-    expect(foo).toThrowError(/bar/);
-    expect(foo).toThrowError(TypeError);
-    expect(foo).toThrowError(TypeError, "foo bar baz");
-});
-```
-
-#### Manually failing a spec with 'fail'
+We can also write our tests to pass / fail by *conditionally* failing a test if a certain condition is met or our code ends up in a certain state.  This can be accomplished invoking the global ["fail()"](https://jasmine.github.io/api/edge/global.html#fail) method that will fail the test with a message.  For example:
 
 ```js
 var foo = function (x, callBack) {
