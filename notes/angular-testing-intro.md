@@ -141,7 +141,7 @@ describe('1st tests', () => {
 });
 ```
 
-We can see that it fails with "Expected false to be true".  Before moving on, change the expection back to "true" so that we no longer see the error
+We can see that it fails with "Expected false to be true".  Before moving on, change the expectation back to "true" so that we no longer see the error
 
 <br>
 
