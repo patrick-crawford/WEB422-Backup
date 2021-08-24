@@ -9,8 +9,6 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 
 <br>
 
-<!-- Regular Schedule
-
 <table>
 <thead>
 <tr>
@@ -139,8 +137,7 @@ Introduction to Socket.io <br><br>
 </tbody>
 </table>
 
--->
-
+<!-- 6 - 1 - 6 Schedule
  <table>
 <thead>
 <tr>
@@ -258,3 +255,5 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </tr>
 </tbody>
 </table>
+
+-->

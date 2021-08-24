@@ -13,7 +13,6 @@ Each test will commence at the start of the corresponding **Lecture** period (we
 
 <div class="wide-table">
 
-<!-- Regular Schedule
 
 <table>
 <thead>
@@ -280,7 +279,7 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </tbody>
 </table>
 
--->
+<!-- 6 - 1 - 6 Schedule
 
 <table>
 <thead>
@@ -530,6 +529,8 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 
 </tbody>
 </table>
+
+-->
 </div>
 <br />
 
