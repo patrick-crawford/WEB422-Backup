@@ -211,7 +211,7 @@ Introduction to Working with Forms in Angular<br><br>
 <td>
 Introduction to Angular Deployment &amp; Testing<br><br>
 <ul>
-<li>Introduction to Building / Deploying an Angular app using Node.js</li>
+<li>Introduction to Building / Deploying an Angular app using Netlify</li>
 <li>A brief introduction to the Angular testing landscape</li>
 </ul>
 </td>
@@ -478,7 +478,7 @@ Introduction to Working with Forms in Angular<br><br>
 <td>
 Introduction to Angular Deployment &amp; Testing<br><br>
 <ul>
-<li>Introduction to Building / Deploying an Angular app using Node.js</li>
+<li>Introduction to Building / Deploying an Angular app using Netlify</li>
 <li>A brief introduction to the Angular testing landscape</li>
 </ul>
 </td>
