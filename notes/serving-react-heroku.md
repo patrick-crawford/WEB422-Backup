@@ -20,7 +20,7 @@ Once this process is complete, open the newly created "build" folder.  You will 
 
 Now, all we need to run this in a "production" environment, is a static web server.  Fortunately for us, we know exactly how to create one using Node.js and Express.
 
-Recall [from WEB322](https://web322.ca/notes/week04), a **server.js** file using the following code:
+Recall [from WEB322](https://sictweb.github.io/web322/notes/week04), a **server.js** file using the following code:
 
 ```javascript
 var express = require("express");
@@ -56,6 +56,6 @@ Now that our server.js file running just fine on port 8080 on localhost, we shou
 
 For a refresher on how to initialize a local git repository, check in code, create a new app on Heroku, etc. please refer back to the documentation outlined in WEB322, ie:
 
-#### ["Getting Started With Heroku"](https://web322.ca/getting-started-with-heroku)
+#### ["Getting Started With Heroku"](https://sictweb.github.io/web322/getting-started-with-heroku)
 
 <br>

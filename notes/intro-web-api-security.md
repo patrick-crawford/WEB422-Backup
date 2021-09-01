@@ -39,13 +39,13 @@ More details can be found on MDN under "[Cross-Origin Resource Sharing (CORS)](h
 
 With our extremely simple "vehicles" API in place and producing data, we can now move on to discuss how we might *protect* this data from unwanted (unauthorized) access. 
 
-Back in WEB322, we discussed a number of [security considerations](https://web322.ca/notes/week12) that are vital to a modern web application.  This primarily included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up a MongoDB Atlas DB to store our user information & credentials.
+Back in WEB322, we discussed a number of [security considerations](https://sictweb.github.io/web322/notes/week12) that are vital to a modern web application.  This primarily included coverage of HTTPS, Certificates / Certificate Authorities and password encryption (hashing). In today's example, we will focus on bcrypt, as well as a refresher on setting up a MongoDB Atlas DB to store our user information & credentials.
 
 <br>
 
 #### MongoDB Atlas & MongoDB
 
-You should be familiar with MongoDB Atlas from our [experience in WEB322](https://web322.ca/notes/week08) as well as from your first WEB422 Assignment.  MongoDB Atlas will be responsible for hosting our separate (MongoDB) "simple-api-users" database.
+You should be familiar with MongoDB Atlas from our [experience in WEB322](https://sictweb.github.io/web322/notes/week08) as well as from your first WEB422 Assignment.  MongoDB Atlas will be responsible for hosting our separate (MongoDB) "simple-api-users" database.
 
 To begin, set up a new "simple-api-users" database with a "users" collection for the simple API.  Once this is done, get a copy of the connection string - this should look something like: 
 
@@ -334,7 +334,7 @@ You can also try entering incorrect credentials in the request body (ie: a diffe
 
 With our new authentication routes tested and working correctly, we can now concentrate on leveraging this logic to actually **secure** the vehicle data in our simple API.  Currently, the /api/vehicles route is available to anyone, regardless of whether they've been authenticated or not.  You can see this by executing a POST request to "/api/login" route from Postman with an incorrect password for "bob", followed by GET request for "/api/vehicles".  The fact that we did not provide correct credentials during the "login" phase, had no affect on whether or not we can access the data on the "/api/vehicles" route.  
 
-So, how can we solve this problem?  In WEB322, we would send a [cookie](https://web322.ca/notes/week10) back to the client, once they're logged in, to be used for subsequent requests. Unfortunately, we cannot rely on cookies to solve this problem, as we cannot guarantee that the client accessing the data is a web browser.  Our API simply takes individual JSON-formatted requests, sent over HTTP and returns JSON-formatted responses.  
+So, how can we solve this problem?  In WEB322, we would send a [cookie](https://sictweb.github.io/web322/notes/week10) back to the client, once they're logged in, to be used for subsequent requests. Unfortunately, we cannot rely on cookies to solve this problem, as we cannot guarantee that the client accessing the data is a web browser.  Our API simply takes individual JSON-formatted requests, sent over HTTP and returns JSON-formatted responses.  
 
 Instead, what we need is some kind of secure "logged in" identifier that we can **send** back to the client that can then be stored and used for subsequent requests.  The philosophy is similar, however we will not rely on cookies or make any assumptions about how the client will store this identifier.  
 
