@@ -29,7 +29,7 @@ If you need help debugging your code, please make an appointment with your profe
 
 <br>
 
-Please Note: The following is taken directly from the <a href="/graded-work">Graded Work</a> section of the website:
+Please Note: The following is taken directly from the <a href="/web422/graded-work">Graded Work</a> section of the website:
 
 ### Tests
 

@@ -37,7 +37,7 @@ Web services can be developed on any web-connected technology platform, in any l
 
 Study this diagram to understand the differences, and then be prepared to explain them to someone else:
 
-![Web app vs. web service](/media/web-app-vs-web-svc.png) 
+![Web app vs. web service](/web422/media/web-app-vs-web-svc.png) 
 
 <br>
 
@@ -159,7 +159,7 @@ So, in summary, a resource's representation can vary to meet the needs of the we
 
 Every representation is defined by an internet media type.
 
-![Same resource, same URI, but different representations](/media/different-representations.png)
+![Same resource, same URI, but different representations](/web422/media/different-representations.png)
 
 <br>
 
@@ -167,9 +167,9 @@ Every representation is defined by an internet media type.
 
 An *internet media type* is defined as a *data format* for a *representation* of a *resource* on the internet.
 
-The data formats are standardized, [published](https://www.iana.org/assignments/media-types/media-types.xhtml), and well-known, by the IANA (the Internet Assigned Numbers Authority).
+The data formats are standardized, [published](https://www.iana.org/assignments/web422/media-types/web422/media-types.xhtml), and well-known, by the IANA (the Internet Assigned Numbers Authority).
 
-[This Wikipedia article](https://en.wikipedia.org/wiki/Media_type) is an acceptable introduction to internet media types.
+[This Wikipedia article](https://en.wikipedia.org/wiki/web422/media_type) is an acceptable introduction to internet media types.
 
 For web service programmers, two important internet media types are used as data formats, [JSON](https://en.wikipedia.org/wiki/JSON) and [XML](https://en.wikipedia.org/wiki/XML).
 
