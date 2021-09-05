@@ -261,7 +261,7 @@ Generate some data. Make sure you configure enough fields to give you a rich var
 
 Here's a screen capture. (Right-click and then open it in a new tab/window to see it full size.) 
 
-![Mockaroo](/web422/media/web-api-create-mock-data-v1.png)
+![Mockaroo](/media/web-api-create-mock-data-v1.png)
 
 <br>
 

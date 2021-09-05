@@ -25,7 +25,7 @@ If your "simple-API" (from "[Introduction to Securing a Web API with JWT](/notes
 
 #### Obtaining &amp; Running the "simple-app"
 
-We have provided a "starting point" in the form of a simple Angular application containing a Navbar and two routes: "Home" and "Vehicles".  This Angular application is located in the "simple-app" folder from the [Week 11 example code](https://github.com/sictweb/web422/tree/master/Code%20Examples/week11)); download it and open it in Visual Studio Code before we proceed.
+We have provided a "starting point" in the form of a simple Angular application containing a Navbar and two routes: "Home" and "Vehicles".  This Angular application is located in the "simple-app" folder from the [Week 11 example code](https://github.com/sictweb/tree/master/Code%20Examples/week11)); download it and open it in Visual Studio Code before we proceed.
 
 You will notice that our "simpleApp" will not run as downloaded.  This is because the all-important "node_modules' folder containing all of our dependencies is missing.  To rebuild this folder and get the app running, we will need to execute the familiar `npm install` command.
 
@@ -273,7 +273,7 @@ Here, we have a simple form that captures the **userName** and **password** prop
 
 If we try to log in now, we should see everything functioning as expected: the errors show up correctly, and the user is redirected to the "/vehicles" route once correctly identified (authenticated).  
 
-![Simple App Login Error](/web422/media/simple-app-login-error-bob.png)
+![Simple App Login Error](/media/simple-app-login-error-bob.png)
 
 Unfortunately, even though we have stored the JWT in local storage as "access_token" (this can be verified using the Chrome dev tools under the "Application" tab) we still are not getting any **vehicle** data back from the server.  This is because we are still **not sending the JWT** with the request.  To remedy this and *automatically* send the JWT with our requests, we need to create another service:  
 
@@ -375,7 +375,7 @@ You will notice that we do not add the "InterceptTokenService" directly.  Instea
 
 If we refresh the "/vehicles" route, we should now see our list of vehicles!  This is because our "Authorization" header was correctly added to the request (thanks to our "InterceptTokenService") and the simple-API accepted our token (stored in local storage after login).
 
-![Simple App Vehicles Populated](/web422/media/simple-app-vehicles-populated.png)
+![Simple App Vehicles Populated](/media/simple-app-vehicles-populated.png)
 
 <br>
 
@@ -475,11 +475,11 @@ There are a number of ways to address this problem, however the simplest method 
 
 In our case, we will ensure that the NavComponent template shows the following if the user is **not** authenticated (ie: the "Home" and "Login" Links):
 
-![Simple App Nav Unauthenticated](/web422/media/simple-app-nav-unauthenticated.png)
+![Simple App Nav Unauthenticated](/media/simple-app-nav-unauthenticated.png)
 
 If the user **is** authenticated, then we will show the following (ie: the text for "Home" contains a welcome message for the user, the "Login" link is removed and finally, the "Vehicles" link is made available) 
 
-![Simple App Nav Authenticated](/web422/media/simple-app-nav-authenticated.png)
+![Simple App Nav Authenticated](/media/simple-app-nav-authenticated.png)
 
 To accomplish this, we will need to make a few small alterations to the NavComponent class &amp; template files:
 

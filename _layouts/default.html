@@ -27,19 +27,19 @@
             <!-- <p>{{ site.description | default: site.github.project_tagline }}</p> -->
 
             <p><img src="https://raw.githubusercontent.com/sictweb/resources/master/logo-sict-v1.png" alt="SICT" /></p>
-            <h1><a href="/web422/">WEB422</a></h1>
+            <h1><a href="/">WEB422</a></h1>
             <p>Web Programming for Apps and Services</p>
 
             {% assign current = page.url | downcase | split: '/' %}
 
             <!-- <p>current - {{ current[1] }}</p> -->
 
-                    <a href="/web422/weekly-schedule" {% if current[1] == 'weekly-schedule.html' %}class='btn active'{% else %}class='btn'{% endif %}>Schedule</a>
-        <a href="/web422/notes" {% if current[1] == 'notes' %}class='btn active'{% else %}class='btn'{% endif %}>Notes</a>
-        <a href="/web422/resources" {% if current[1] == 'resources.html' %}class='btn active'{% else %}class='btn'{% endif %}>Resources</a>
-        <a href="/web422/lab-instructions" {% if current[1] == 'lab-instructions.html' %}class='btn active'{% else %}class='btn'{% endif %}>MyApps Instructions</a>
-        <a href="/web422/graded-work" {% if current[1] == 'graded-work.html' %}class='btn active'{% else %}class='btn'{% endif %}>Graded Work</a>
-            <a href="https://github.com/sictweb/web422/tree/master/Code%20Examples" class='btn' target="_blank">Code examples</a>
+                    <a href="/weekly-schedule" {% if current[1] == 'weekly-schedule.html' %}class='btn active'{% else %}class='btn'{% endif %}>Schedule</a>
+        <a href="/notes" {% if current[1] == 'notes' %}class='btn active'{% else %}class='btn'{% endif %}>Notes</a>
+        <a href="/resources" {% if current[1] == 'resources.html' %}class='btn active'{% else %}class='btn'{% endif %}>Resources</a>
+        <a href="/lab-instructions" {% if current[1] == 'lab-instructions.html' %}class='btn active'{% else %}class='btn'{% endif %}>MyApps Instructions</a>
+        <a href="/graded-work" {% if current[1] == 'graded-work.html' %}class='btn active'{% else %}class='btn'{% endif %}>Graded Work</a>
+            <a href="https://github.com/sictweb/tree/master/Code%20Examples" class='btn' target="_blank">Code examples</a>
 
             
             <!-- {% if site.github.is_project_page %}

@@ -25,11 +25,11 @@ Sign in to your GitHub account.
 
 Find and click a "+" button on the Navigation Bar. Then, choose "New Repository" from the dropdown menu.
 
-![New repository button screenshot](/web422/media/react-deployment-1.png)
+![New repository button screenshot](/media/react-deployment-1.png)
 
 Fill in the repository name text field with the name of your project. Also, please make sure that the "Private" option is selected:
 
-![New repository page screenshot](/web422/media/react-deployment-2.png)
+![New repository page screenshot](/media/react-deployment-2.png)
 
 Once you're happy with the settings, hit the "Create repository" button.
 
@@ -52,7 +52,7 @@ Now that we're sure that our local git repository is set up, we need to add and 
 
 Go to your GitHub repository and click the "copy" button in the "Quick Setup" block:
 
-![Quick setup page screenshot](/web422/media/react-deployment-3.png)
+![Quick setup page screenshot](/media/react-deployment-3.png)
 
 This will copy the URL of your remote GitHub repository.
 
@@ -76,7 +76,7 @@ git push origin master
 
 You can verify that the code was pushed by going back to your Browser and opening your GitHub repository.
 
-![Repo screenshot](/web422/media/react-deployment-4.png)
+![Repo screenshot](/media/react-deployment-4.png)
 
 <br>
 
@@ -84,7 +84,7 @@ You can verify that the code was pushed by going back to your Browser and openin
 
 Once we have made our source code available on GitHub, we can proceed to [Vercel](https://vercel.com/#get-started) and import our git repository from GitHub.
 
-![Import Git Repository](/web422/media/react-deployment-5.png)
+![Import Git Repository](/media/react-deployment-5.png)
 
 Once you click on "Continue with Github", you will be asked to log into your github account before then proceeding to "**Import Git Repository**".  
 
@@ -93,14 +93,14 @@ From here, click the "**Select...**" dropdown and select "**+ Add GitHub Org or 
 Pick your personal account, select "**Only Select Repositories**" and navigate to our newly created "my-app" repository, before clicking the green "**Install**" button:
 
 
-![Install Vercel](/web422/media/react-deployment-6.png)
+![Install Vercel](/media/react-deployment-6.png)
 
 
 Once this process has completed, you should see "my-app" listed in the "Import Git Repository" section next to a blue "**Import**" button.  Click this to select the "**Vercel Scope**" - this is going to just be our personal account (we do not need to create a team at this point).
 
 Once you have selected your *Personal Account* by clicking the blue "Select" button, you will finally be presented with the "Deploy" option:
 
-![Import Project](/web422/media/react-deployment-7.png)
+![Import Project](/media/react-deployment-7.png)
 
 You will notice that before we click deploy, we have the option to set environment variables or build / output settings.  At this point, we do not need to change any of these settings and are free to proceed with the **Deploy**.
 

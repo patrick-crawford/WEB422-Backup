@@ -11,7 +11,7 @@ Get ready by visiting the [React home page](https://reactjs.org/), and read/scan
 
 <!-- On the top navigation menu, notice the [Docs](https://reactjs.org/docs/installation.html) (documentation) and [Tutorial](https://reactjs.org/tutorial/tutorial.html) items. 
 
-![React web site](/web422/media/react-web-site.png) -->
+![React web site](/media/react-web-site.png) -->
 <br>
 
 ### Create an app

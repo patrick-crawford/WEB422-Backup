@@ -5,7 +5,7 @@ layout: default
 
 ## Introduction to Securing a Web API with JWT
 
-Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 11 example code](https://github.com/sictweb/web422/tree/master/Code%20Examples/week11)).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
+Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 11 example code](https://github.com/sictweb/tree/master/Code%20Examples/week11)).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
 
 Once you have grabbed the "simple-api" folder from gitHub, open it in Visual Studio and execute the command:
 
@@ -260,11 +260,11 @@ If you entered the data correctly, postman should look like the below:
 
 **"Headers" Tab**<br>
 
-![Postman Headers](/web422/media/Postman-headers.png)
+![Postman Headers](/media/Postman-headers.png)
 
 **"Body" Tab**<br>
 
-![Postman Body](/web422/media/Postman-body.png)
+![Postman Body](/media/Postman-body.png)
 
 When you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
 
@@ -277,7 +277,7 @@ Once the request is processed, it should return with a status 200 and the JSON:
 ```
 You can see this in Postman by scrolling down and selecting "body" in the response section:
 
-![Postman Response](/web422/media/Postman-response.png)
+![Postman Response](/media/Postman-response.png)
 
 <br>
 
@@ -310,7 +310,7 @@ To test this new route, once again stop and start your API (server.js) and open 
 
 If you entered the data correctly, postman should look like the below:
 
-![Postman Login Data](/web422/media/Postman-login-data.png)
+![Postman Login Data](/media/Postman-login-data.png)
 
 
 Again, when you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
@@ -324,7 +324,7 @@ Once the request is processed, it should return with a status 200 and the JSON:
 ```
 You can see this in Postman by scrolling down and selecting "body" in the response section:
 
-![Postman Login Response](/web422/media/Postman-login-response.png)
+![Postman Login Response](/media/Postman-login-response.png)
 
 You can also try entering incorrect credentials in the request body (ie: a different "userName", or an incorrect "password") to validate that our service is indeed functioning properly and will not send the "login successful" message to unauthorized users. 
 
@@ -592,45 +592,45 @@ To test this, we must insure the following series of actions yields the expected
 
 **Action**: Attempt to access the route /api/vehicles as before (without supplying a JWT).
 
-![Postman Get Vehicles](/web422/media/postman-get-vehicles-1.png)
+![Postman Get Vehicles](/media/postman-get-vehicles-1.png)
 
 <br>
 
 **Expected Result:** Server returns a 401 error code and the text "unauthorized".
 
-![Postman Unauthorized](/web422/media/postman-get-vehicles-error.png)
+![Postman Unauthorized](/media/postman-get-vehicles-error.png)
 
 <br>
 <br>
 
 **Action**: Log in as user "bob" (as above) and copy the value of the returned "token" property.
 
-![Postman Login Token](/web422/media/postman-login-token.png)
+![Postman Login Token](/media/postman-login-token.png)
 
 <br>
 
 **Action**: Attempt to access the route /api/vehicles as before, only this time add the header "Authorization" with the value "JWT" followed by a *space*, follwed by the returned "token" that was sent when "bob" logged in (above)
 
-![Postman Get Vehicles with Token](/web422/media/postman-get-vehicles-token.png)
+![Postman Get Vehicles with Token](/media/postman-get-vehicles-token.png)
 
 <br>
 
 **Expected Result:** Vehicle data is returned
 
-![Postman Vehicle Data](/web422/media/postman-get-vehicles-success.png)
+![Postman Vehicle Data](/media/postman-get-vehicles-success.png)
 
 <br>
 <br>
 
 **Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).
 
-![Postman Vehicle Data - Incorrect Token](/web422/media/postman-get-vehicles-incorrect-token.png)
+![Postman Vehicle Data - Incorrect Token](/media/postman-get-vehicles-incorrect-token.png)
 
 <br>
 
 **Expected Result**: Server returns a 401 error code and the text "unauthorized".
 
-![Postman Unauthorized](/web422/media/postman-get-vehicles-error.png)
+![Postman Unauthorized](/media/postman-get-vehicles-error.png)
 
 <br>
 
