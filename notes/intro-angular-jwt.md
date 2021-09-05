@@ -25,7 +25,7 @@ If your "simple-API" (from "[Introduction to Securing a Web API with JWT](/notes
 
 #### Obtaining &amp; Running the "simple-app"
 
-We have provided a "starting point" in the form of a simple Angular application containing a Navbar and two routes: "Home" and "Vehicles".  This Angular application is located in the "simple-app" folder from the [Week 11 example code](https://github.com/sictweb/tree/master/Code%20Examples/week11)); download it and open it in Visual Studio Code before we proceed.
+We have provided a "starting point" in the form of a simple Angular application containing a Navbar and two routes: "Home" and "Vehicles".  This Angular application is located in the "simple-app" folder from the [Week 11 example code](https://github.com/sictweb/WEB422/tree/master/Code%20Examples/week11)); download it and open it in Visual Studio Code before we proceed.
 
 You will notice that our "simpleApp" will not run as downloaded.  This is because the all-important "node_modules' folder containing all of our dependencies is missing.  To rebuild this folder and get the app running, we will need to execute the familiar `npm install` command.
 

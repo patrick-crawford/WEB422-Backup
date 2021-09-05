@@ -5,7 +5,7 @@ layout: default
 
 ## Putting it All Together
 
-For this next section, we will be walking through the **[Week 4 Example](https://github.com/sictweb/tree/master/Code%20Examples/week4)**.
+For this next section, we will be walking through the **[Week 4 Example](https://github.com/sictweb/WEB422/tree/master/Code%20Examples/week4)**.
 The following instructions are here to help get us started, as well as to provide guidance for installing dependencies, styles, 3rd party components, routes, etc.
 
 ### New App - my-app

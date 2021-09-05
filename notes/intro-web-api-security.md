@@ -5,7 +5,7 @@ layout: default
 
 ## Introduction to Securing a Web API with JWT
 
-Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 11 example code](https://github.com/sictweb/tree/master/Code%20Examples/week11)).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
+Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 11 example code](https://github.com/sictweb/WEB422/tree/master/Code%20Examples/week11)).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
 
 Once you have grabbed the "simple-api" folder from gitHub, open it in Visual Studio and execute the command:
 
