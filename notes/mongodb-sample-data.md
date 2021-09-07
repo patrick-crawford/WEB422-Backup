@@ -94,7 +94,7 @@ If you click on the collections button now, you should see that you now have acc
 
 **NOTE:** To get the connection string to connect to this database, you will have to go through the same procedure as WEB322 (ie: click the "connect" button and whitelist the IP address 0.0.0.0/0 and create a user before clicking "Connect Your Application").  For a refresher on how to do this, please see the [Week 8 notes for WEB322](https://sictweb.github.io/web322/notes/week08) under "Setting up a MongoDB Atlas account".  
 
-Do not forget that once you get your connection string, replace the instance of "test" with the database that you wish to connect to, ie: "sample_supplies".
+Do not forget that once you get your connection string, replace the instance of "myFirstDatabase" with the database that you wish to connect to, ie: "sample_supplies".
 
 
 
