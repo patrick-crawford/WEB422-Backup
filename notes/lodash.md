@@ -67,6 +67,8 @@ Returns the index of the first element **predicate** returns truthy for, instead
 
 See: [https://lodash.com/docs/4.17.15#findIndex](https://lodash.com/docs/4.17.15#findIndex) and also [https://lodash.com/docs/4.17.15#findLastIndex](https://lodash.com/docs/4.17.15#findLastIndex) and [https://lodash.com/docs/4.17.15#find](https://lodash.com/docs/4.17.15#find)
 
+> **NOTE:** findIndex is also available on the global Array Object - see: [Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+
 ```js
 let findIndex1 = _.findIndex(users, function(user) { 
     return user.user == 'fred'; 
@@ -97,6 +99,8 @@ Iterates over elements of **collection**, returning an array of all elements **p
  
 See: [https://lodash.com/docs/4.17.15#filter](https://lodash.com/docs/4.17.15#filter) and also: [https://lodash.com/docs/4.17.15#find](https://lodash.com/docs/4.17.15#find)
 
+> **NOTE:** filter is also available on the global Array Object - see: [Array.prototype.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
 ```js
 let filter1 = _.filter(users, function(user) {
     return user.active == true;
@@ -110,6 +114,8 @@ let filter1 = _.filter(users, function(user) {
 Creates an array of elements, sorted in ascending order by the results of running each element in a collection thru each iteratee. This method performs a stable sort, that is, it preserves the original sort order of equal elements. The iteratees are invoked with one argument: (value). 
 
 See: [https://lodash.com/docs/4.17.15#sortBy](https://lodash.com/docs/4.17.15#sortBy)
+
+> **NOTE:** a similar "sort" method is also available on the global Array Object - see: [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 
 ```js
 let sortBy1 = _.sortBy(users, [
@@ -178,8 +184,10 @@ Creates an object composed of the picked object properties.
 
 See: [https://lodash.com/docs/4.17.15#pick](https://lodash.com/docs/4.17.15#pick)
 
+> **NOTE:** properties can be "picked" in a similar way using object "destructuring" &amp; "object initializer" syntax - see: [Object destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#object_destructuring) &amp; [Object initializer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+
 ```js
-let pick1 = _.pick(users[0], ['user', 'age']); // => { 'user': 'fred', 'age': 40 } // note: pick !== users[0]
+let pick1 = _.pick(users[0], ['user', 'age']); // => { 'user': 'fred', 'age': 40 } // note: pick1 !== users[0]
 ```
 
 <br>
