@@ -387,7 +387,7 @@ let $warningAlert = $(`<div class="alert alert-warning alert-dismissible fade in
 ```
 We can use this to create alert messages on the fly and .append() them to our page whenever we wish to alert the user.  
 
-Unlike the modal window, these small messages don't block the UI and don't demand any action from the user, except to expictly close them.  We can however, get around this limitation by using the .alert('close') method after a certain amount of time:
+Unlike the modal window, these small messages don't block the UI and don't demand any action from the user, except to explicitly close them.  We can however, get around this limitation by using the .alert('close') method after a certain amount of time:
 
 ```js
 setTimeout(function(){
