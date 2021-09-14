@@ -378,12 +378,12 @@ $("#dynamicPopover").popover({
 Alerts are small messages that take the form of "**success**", "**information**", "**warning**", or "**danger**".  The template for creating alerts is fairly consistant, ie:
 
 ```js
-let alertTemplate = `<div class="alert alert-warning alert-dismissible fade in" role="alert">
+let $warningAlert = $(`<div class="alert alert-warning alert-dismissible fade in" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                         <strong>Warning</strong> ${alertMessage}
-                    </div>`;
+                    </div>`);
 ```
 We can use this to create alert messages on the fly and .append() them to our page whenever we wish to alert the user.  
 
