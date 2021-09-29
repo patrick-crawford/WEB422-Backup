@@ -111,7 +111,7 @@ The example uses 4 components:
 
 They can be accessed using the routes:
 
-* "/" - Redirects to **&lt;Products /&gt;**
+* "/" - Redirects to **"/Products"**
 
 * "/Products" - Renders **&lt;Products /&gt;**
 
