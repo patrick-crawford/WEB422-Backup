@@ -103,7 +103,7 @@ The example uses 4 components:
 
 * **&lt;Products /&gt;**: Renders a collection of elements in a table, where each row is a link to a specific element 
 
-* **&lt;Product id={id value from route} /&gt;**: Renders the details of a specific element
+* **&lt;Product /&gt;**: Renders the details of a specific element
 
 * **&lt;About /&gt;**: Simple component that renders [Lorem Ipsum](https://www.lipsum.com/) Text
 
