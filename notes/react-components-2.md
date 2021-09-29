@@ -115,7 +115,7 @@ They can be accessed using the routes:
 
 * "/Products" - Renders **&lt;Products /&gt;**
 
-* "/Product/:id "- Renders **&lt;Product id={id value from route} /&gt;**
+* "/Product/:id "- Renders **&lt;Product /&gt;**
 
 * "/About" - Renders **&lt;About /&gt;**
 
