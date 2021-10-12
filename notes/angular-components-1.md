@@ -264,7 +264,7 @@ export class FooComponent implements OnInit {
 
   studentName: string = "Jason Bourne";
   //studentPhoto: string = "https://upload.wikimedia.org/wikipedia/en/6/60/Jason_bourne_infobox.jpg";
-  @Input() photos: Array<string>
+  @Input() photos: Array<string> = [];
   studentUpdated: Date = new Date();
 
   constructor() { }
@@ -320,7 +320,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FooComponent implements OnInit {
 
   studentName: string = "Jason Bourne";
-  @Input() photos: Array<string>
+  @Input() photos: Array<string> = [];
   studentUpdated: Date = new Date();
   currentPhoto: number = 0;
 
