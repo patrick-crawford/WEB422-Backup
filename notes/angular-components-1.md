@@ -33,13 +33,7 @@ The definition and assignment to the "title" property is actually our first line
 title: string = 'my-app';
 ```
 
-However, because the "title" property was assigned a value of type *string*, the type was implied.  If we did not have a default value for *string* the code would instead look like:
-
-```typescript
-title: string;
-```
-
-As expected, the value of **this.title** is undefined.  However, unlike regular JavaScript, if we decide to assign "title" a number value later, we will actually get an error,  ie:
+However, because the "title" property was assigned a value of type *string*, the type was implied. If we decide to assign "title" a number value later, we will actually get an error,  ie:
 
 ```javascript
 this.title = 5;
