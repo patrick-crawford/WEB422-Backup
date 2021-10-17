@@ -124,11 +124,11 @@ In the following examples, we will assume that our component contains a single "
 
 ```typescript
 class User{
-  firstName: string;
-  email: string;
-  age: number;
-  language: string;
-  active: boolean;
+  firstName: string = "";
+  email: string = "";
+  age: number = 0;
+  language: string = "";
+  active: boolean = false;
 }
 ```
 
