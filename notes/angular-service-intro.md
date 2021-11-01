@@ -144,7 +144,7 @@ import { Post } from './Post';
 })
 export class AppComponent implements OnInit {
 
-  staticPost: Post;
+  staticPost: Post = {} as Post; // cast the empty object as type "Post"
 
   constructor(private data: DataManagerService){ }
 
