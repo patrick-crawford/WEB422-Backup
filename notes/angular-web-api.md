@@ -237,7 +237,7 @@ export class AppComponent implements OnInit, OnDestroy {
   staticPost: Post = {} as Post; // cast the empty object as type "Post"
   posts: Array<Post> = [];
 
-  private livePostsSub; // make the subscription reference "private"
+  private livePostsSub: any; // make the subscription reference "private"
 
   constructor(private data: DataManagerService){ }
 
