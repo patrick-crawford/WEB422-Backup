@@ -91,10 +91,10 @@ So far, we have created a single "DataManagerService".  Why don't we add a funct
 
 ```js
 class Post {
-    id:         number;
-    userId:     number;
-    title:      string;
-    body:       string;
+    id: number = 0;
+    userId: number = 0;
+    title: string = "";
+    body: string = "";
 }
 ```
 
