@@ -213,7 +213,7 @@ With our component in place we can begin to update the original "Standard" form 
 >
 > Angular offers a special two-way data binding syntax for this purpose, ```[(x)]```. The ```[(x)]``` syntax combines the brackets of property binding, ```[x]```, with the parentheses of event binding, ```(x)```.
 >
-> ([https://angular.io/guide/template-syntax#two-way-binding-](https://angular.io/guide/template-syntax#two-way-binding-))
+> ([https://angular.io/guide/two-way-binding](https://angular.io/guide/two-way-binding))
 
 Since we're working with "Forms", Angular actually provides a very handy **NgModel** Directive that we can bind to, so that we can update our data model!
 
