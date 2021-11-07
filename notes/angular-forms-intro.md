@@ -130,7 +130,7 @@ It's possible that you have written hundreds of these forms. It's a very well-un
 
 ### Configuring an Angular app to use HTML forms
 
-Before making any changes to the form, we must add the Angular forms-handling bits to the project. In the documentation's [Revise *app.module.ts*](https://angular.io/guide/forms#revise-appmodulets) section, we do a task with two related steps:
+Before making any changes to the form however, we must first add the Angular "FormsModule" to the "imports" array in our **app.module.ts** file:
 
 1. Import the [FormsModule](https://angular.io/api/forms/FormsModule) from '@angular/forms'
 2. Add **FormsModule** to the "imports" array
