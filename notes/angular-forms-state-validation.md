@@ -71,7 +71,7 @@ Some of the most common validation attributes are:
 <input type="text" name="email" email>
 ```
 
-More complex validation tasks will need to be created as [Custom Validators](https://angular.io/guide/form-validation#custom-validators), however this is beyond the scope of the lecture today.
+More complex validation tasks will need to be implemented using [Custom Validators](https://angular.io/guide/form-validation#custom-validators), however this is beyond the scope of the lecture today.
 
 If we wish to display a message for a specific type of error, we must first include a [template reference](https://angular.io/guide/template-reference-variables) to the element we want using a property (variable) name, beginning with "#" and taking the value of "ngModel".  For example, if we wish to add "template reference variable" called "name" to the "name" field from our example, we use the syntax: **#name="ngModel"**:
 
