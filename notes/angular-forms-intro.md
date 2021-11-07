@@ -147,17 +147,17 @@ For example, consider the following Component.  It contains all the data that is
 import { Component, OnInit } from '@angular/core';
 
 export class Driver{
-    name: string; 
-    description: string; 
-    ownedTransportation: string[]; 
-    favouriteTransportation: string; 
-    driverLicence: boolean; 
-    vehicleUse: string; 
+    name: string = ""; 
+    description: string = ""; 
+    ownedTransportation: string[] = []; 
+    favouriteTransportation: string = ""; 
+    driverLicence: boolean = false; 
+    vehicleUse: string = ""; 
 }
 
 export class Option{
-  value: string;
-  text: string;
+  value: string = "";
+  text: string = "";
 }
 
 @Component({
@@ -170,7 +170,7 @@ export class DriverComponent implements OnInit {
   constructor() { }
  
   // the data that will be used in the form
-  driverData: Driver;
+  driverData: Driver = {} as Driver;
 
   // Define the preset list of "transportation" options
   transportationList: Option[] = [
