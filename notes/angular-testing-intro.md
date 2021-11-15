@@ -114,7 +114,7 @@ For now, let's see how we can perform our first, simple unit test:
    });
     ```
 
-4. Run the command `npm test` from the integrated terminal
+4. Run the command `npm run test` from the integrated terminal
 
     You should see some text output to the terminal, ie:
 
@@ -270,7 +270,7 @@ describe('ComponentOneComponent', () => {
 });
 ```
 
-The above code is "boilerplate" and the minimum required code to create the single 'should create' test to ensure that the component ("component") is indeed created.  We can see that this test passes by starting up the test server again `npm test` (Note: we will no longer be working with 1st.spec.ts, so its code can be commented out / the file can be removed).
+The above code is "boilerplate" and the minimum required code to create the single 'should create' test to ensure that the component ("component") is indeed created.  We can see that this test passes by starting up the test server again `npm run test` (Note: we will no longer be working with 1st.spec.ts, so its code can be commented out / the file can be removed).
 
 While this does work as expected, there's a lot of strange code in here.  Why don't we take a look at the pieces one-by-one:
 
