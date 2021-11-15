@@ -209,7 +209,7 @@ it("compares pi against e with multiple precision values", function () {
 We can also write our tests to pass / fail by *conditionally* failing a test if a certain condition is met or our code ends up in a certain state.  This can be accomplished invoking the global ["fail()"](https://jasmine.github.io/api/edge/global.html#fail) method that will fail the test with a message.  For example:
 
 ```js
-var foo = function (x, callBack) {
+var foo = function (x:boolean, callBack:any) {
     if (x) {
         callBack();
     }
