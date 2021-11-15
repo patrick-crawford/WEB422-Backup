@@ -358,15 +358,14 @@ Notice how it has a "click" event that invokes an "onClick()" method?  Our next 
 ```ts
 export class ComponentOneComponent implements OnInit {
 
-  public x:number;
-
   constructor() { }
 
-  ngOnInit() {
-    this.x=0;
+  public x:number = 0;
+
+  ngOnInit(): void {
   }
 
-  onClick(){
+  onClick(): void{
     this.x=1;
   }
 
