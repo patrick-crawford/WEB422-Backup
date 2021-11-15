@@ -54,7 +54,7 @@ It will prompt you to select a repository, so simply click on the name of the re
 Next, you will have to fill in the deploy settings for your app:
   
 1. Make sure that the "master" branch is selected under "Branch to deploy" option.
-2. Add a build command stating: `ng build --prod`.
+2. Add a build command stating (this should be the default): `npm run build`.
 3. Add the publish directory: `dist/NAME_OF_YOUR_APP`.
     
     ![Netlify sites screenshot](/media/angular-deployment-6.png)
@@ -86,7 +86,7 @@ As a final note, let's quickly discuss how we can deploy an Angular app to our "
 * First, run
   
   ```
-ng build --prod --base-href /~matrixuser/
+ng build --base-href /~matrixuser/
   ```
   to get a production build (dist directory) (where matrixuser is your user name (ie: john.smith).
    
