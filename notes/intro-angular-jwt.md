@@ -208,8 +208,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth:AuthService, private router:Router) { }
 
-  ngOnInit() {
-    this.user = new User();
+  ngOnInit(): void {
   }
 
   onSubmit(f: NgForm): void {
@@ -518,7 +517,7 @@ public token: any;
 #### Step 3: Update the ngOnInit() Method 
 
 ```ts
-ngOnInit() {
+ngOnInit(): void {
   this.router.events.subscribe((event: Event) => {
     if (event instanceof NavigationStart) { // only read the token on "NavigationStart"
       this.token = this.auth.readToken();
