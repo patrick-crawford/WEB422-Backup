@@ -74,11 +74,11 @@ In a new file called "User.ts", add the following code (below).  This will defin
 
 ```js
 export default class User{
-    "_id": string;
-    "userName": string;
-    "password": string;
-    "fullName": string;
-    "role": string;
+    _id: string = "";
+    userName: string = "";
+    password: string = "";
+    fullName: string = "";
+    role: string = "";
 }
 ```
 
@@ -203,8 +203,8 @@ import { Router } from "@angular/router"
 })
 export class LoginComponent implements OnInit {
 
-  public user:User;
-  public warning:string;
+  public user:User = new User();
+  public warning:string = "";
 
   constructor(private auth:AuthService, private router:Router) { }
 
