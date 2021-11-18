@@ -103,13 +103,18 @@ export class AuthService {
 
   constructor( private http: HttpClient ) { }
 
-  public getToken(): string {
+  public getToken(): string | null {
     return localStorage.getItem('access_token');
   }
 
-  public readToken(): any{
+  public readToken(): User | null {
     const token = localStorage.getItem('access_token');
-    return helper.decodeToken(token);
+
+    if (token) {
+      return helper.decodeToken(token)
+    } else {
+      return null;
+    }
   }
 
   isAuthenticated(): boolean {
