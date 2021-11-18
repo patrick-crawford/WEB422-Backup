@@ -72,8 +72,8 @@ ng g s Auth
 
 In a new file called "User.ts", add the following code (below).  This will define a "User" object with the same properties as our "userSchema" (used by the simple-API users database on MongoDB Atlas).
 
-```
-export class User{
+```js
+export default class User{
     "_id": string;
     "userName": string;
     "password": string;
@@ -94,7 +94,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 const helper = new JwtHelperService();
 
-import {User} from './User';
+import User from './User';
 
 @Injectable({
   providedIn: 'root'
