@@ -33,6 +33,12 @@ With the dependencies fetched, we can now start up our app with `ng serve`.  You
 
 <br>
 
+### Configuring our App to use HTML Forms
+
+Since we will be requiring the user to enter their credentials via a web form, we must be sure to include the **FormsModule** from "@angular/forms" in the **imports** array of **app.module.ts**
+
+<br>
+
 ### Adding support for JWT (JwtModule)
 
 If we wish to work with JWT in our Angular application, we will need to obtain the ([`@auth0/angular-jwt`](https://www.npmjs.com/package/@auth0/angular-jwt) package) - this will give us access to the "JwtHelperService". 
@@ -74,11 +80,11 @@ In a new file called "User.ts", add the following code (below).  This will defin
 
 ```js
 export default class User{
-    _id: string = "";
-    userName: string = "";
-    password: string = "";
-    fullName: string = "";
-    role: string = "";
+    _id: string | undefined;
+    userName: string | undefined;
+    password: string | undefined;
+    fullName: string | undefined;
+    role: string | undefined;
 }
 ```
 
@@ -191,7 +197,7 @@ In the "navbar-collapse" &lt;div&gt;...&lt;/div&gt;, just above "home" link, add
 
 ```ts
 import { Component, OnInit } from '@angular/core';
-import { User } from '../User';
+import User from '../User';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from "@angular/router"
