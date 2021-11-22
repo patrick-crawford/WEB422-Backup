@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {VehiclesService} from '../vehicles.service';
-import {Vehicle} from '../Vehicle';
+import Vehicle from '../Vehicle';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-vehicles',
@@ -10,7 +11,7 @@ import {Vehicle} from '../Vehicle';
 export class VehiclesComponent implements OnInit {
 
   public vehicles: Vehicle[] = [];
-  private vehicleSub;
+  private vehicleSub: Subscription | undefined;
 
   constructor(private vs: VehiclesService) { }
 
@@ -19,7 +20,7 @@ export class VehiclesComponent implements OnInit {
   }
 
   ngOnDestroy(){
-    this.vehicleSub.unsubscribe();
+    this.vehicleSub?.unsubscribe();
   }
 
 }

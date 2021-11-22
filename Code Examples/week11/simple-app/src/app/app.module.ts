@@ -1,28 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
+import { NavComponent } from './nav/nav.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { VehiclesComponent } from './vehicles/vehicles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     HomeComponent,
-    VehiclesComponent,
-    NotFoundComponent
+    NavComponent,
+    NotFoundComponent,
+    VehiclesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
