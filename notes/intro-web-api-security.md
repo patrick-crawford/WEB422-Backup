@@ -5,9 +5,9 @@ layout: default
 
 ## Introduction to Securing a Web API with JWT
 
-Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-api" folder from the [Week 11 example code](https://github.com/sictweb/WEB422/tree/master/Code%20Examples/week11)).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
+Before we can begin learning about how to secure a Web API, we will need to create a simple Node.js server to handle our API requests.  To speed this along, we have included a simple Web API in the Code Examples for this week (See the "simple-API" folder from the [Week 11 example code](https://github.com/sictweb/WEB422/tree/master/Code%20Examples/week11)).  Currently, the primary function of this Web API is to return a hard-coded, static list of vehicles from its data-service.js module, using the route "/api/vehicles".  
 
-Once you have grabbed the "simple-api" folder from gitHub, open it in Visual Studio and execute the command:
+Once you have grabbed the "simple-API" folder from gitHub, open it in Visual Studio and execute the command:
 
 ```
 npm install
@@ -45,15 +45,15 @@ Back in WEB322, we discussed a number of [security considerations](https://sictw
 
 #### MongoDB Atlas & MongoDB
 
-You should be familiar with MongoDB Atlas from our [experience in WEB322](https://sictweb.github.io/web322/notes/week08) as well as from your first WEB422 Assignment.  MongoDB Atlas will be responsible for hosting our separate (MongoDB) "simple-api-users" database.
+You should be familiar with MongoDB Atlas from our [experience in WEB322](https://sictweb.github.io/web322/notes/week08) as well as from your first WEB422 Assignment.  MongoDB Atlas will be responsible for hosting our separate (MongoDB) "simple-API-users" database.
 
-To begin, set up a new "simple-api-users" database with a "users" collection for the simple API.  Once this is done, get a copy of the connection string - this should look something like: 
+To begin, set up a new "simple-API-users" database with a "users" collection for the simple API.  Once this is done, get a copy of the connection string - this should look something like: 
 
 ```
 mongodb+srv://user:<password>@cluster0-abc1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 ```
 
-**Note:** You will have to change **myFirstDatabase** in the above connection string to **simple-api-users**, as well as the values for **user** and **&lt;password&gt;** to match the credentials that you created for a user of the cluster.
+**Note:** You will have to change **myFirstDatabase** in the above connection string to **simple-API-users**, as well as the values for **user** and **&lt;password&gt;** to match the credentials that you created for a user of the cluster.
 
 Be sure to keep track of your connection string, as we will be using it in the next piece:
 
@@ -190,21 +190,13 @@ Not much has changed here.  Instead of simply comaring userData.password with us
 
 Now that we have a working "user" service that will handle registering and validating user information, we should add some new "/api/" authentication routes to add the functionality to our API.  **NOTE:** Since we do not have a UI to gather user information for registration and validation, we must make use of an API testing application such as [**Postman**](https://www.getpostman.com/) (installed on the lab machines) to provide POST data to our new routes.
 
-Since our new routes will be accepting input (via JSON, posted to the route), we will need the "body-parser" module.  
-
-Install the module using npm and "require" it near the top of your server.js file:
+Since our new routes will be accepting input (via JSON, posted to the route), we will need to configure our server to correctly parse "JSON" formatted data.  As you will recall from WEB322, this can be accomplished by adding the line:
 
 ```javascript
-const bodyParser = require('body-parser');
+app.use(express.json());
 ```
 
-Next, we must configure body-parser to parse "JSON" formatted data.  As you will recall from WEB322, this can be accomplished by adding the line:
-
-```javascript
-app.use(bodyParser.json());
-```
-
-With the body-parser module correctly installed and configured, we can reliably assume that the "body" property of the request (req) will contain the properties and values of the data sent from the AJAX request.
+With the middleware correctly configured, we can reliably assume that the "body" property of the request (req) will contain the properties and values of the data sent from the AJAX request.
 
 <br>
 
