@@ -1,13 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const dataService = require("./data-service.js");
+const userService = require("./user-service.js");
 const jwt = require('jsonwebtoken');
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
-const dataService = require("./data-service.js");
-const userService = require("./user-service.js");
-const bodyParser = require('body-parser');
-
 const app = express();
+
+const HTTP_PORT = process.env.PORT || 8080;
 
 // JSON Web Token Setup
 var ExtractJwt = passportJWT.ExtractJwt;
@@ -48,10 +48,8 @@ passport.use(strategy);
 // add passport as application-level middleware
 app.use(passport.initialize());
 
-app.use(bodyParser.json());
 app.use(cors());
-
-const HTTP_PORT = process.env.PORT || 8080;
+app.use(express.json());
 
 app.get("/api/vehicles",passport.authenticate('jwt', { session: false }), (req,res)=>{
     dataService.getAllVehicles().then((data)=>{
@@ -61,13 +59,12 @@ app.get("/api/vehicles",passport.authenticate('jwt', { session: false }), (req,r
     });
 });
 
-app.post("/api/register", (req, res) => {
-    userService.registerUser(req.body)
-        .then((msg) => {
-            res.json({ "message": msg });
-        }).catch((msg) => {
-            res.status(422).json({ "message": msg });
-        });
+app.post("/api/register", (req,res)=>{
+    userService.registerUser(req.body).then(msg=>{
+        res.json({message: msg});
+    }).catch(msg=>{
+        res.status(422).json({message: msg});
+    });
 });
 
 app.post("/api/login", (req, res) => {
@@ -80,7 +77,7 @@ app.post("/api/login", (req, res) => {
                 fullName: user.fullName,
                 role: user.role
             };
-
+            
             var token = jwt.sign(payload, jwtOptions.secretOrKey);
 
             res.json({ "message": "login successful", "token": token });
@@ -94,9 +91,8 @@ app.use((req, res) => {
 });
 
 userService.connect().then(()=>{
-    app.listen(HTTP_PORT, ()=>{console.log("API listening on: " + HTTP_PORT)});
-})
-.catch((err)=>{
-    console.log("unable to start the server: " + err);
-    process.exit();
-});
+    app.listen(HTTP_PORT, ()=>{
+        console.log("API listening on: " + HTTP_PORT);
+    });
+}).catch(err=>console.log(err))
+
