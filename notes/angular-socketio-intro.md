@@ -233,12 +233,9 @@ ng add @ng-bootstrap/ng-bootstrap
 
 #### Step 2: Setting up the "socket.io" Client Library
 
-For us to use the features of socket.io on the client side in Angular, we must use NPM to obtain the "socket.io-client" library, as well as some packages defining the "types", so that TypeScript will recognize our new code.
-
-In the Integrated terminal, execute the following 2 "npm install" commands:
+For us to use the features of socket.io on the client side in Angular, we must use NPM to obtain the "socket.io-client" library.  In the Integrated terminal, execute the following "npm install" command:
 
 - `npm install socket.io-client`
-- `npm install --save-dev @types/socket.io-client`
 
 <br>
 
