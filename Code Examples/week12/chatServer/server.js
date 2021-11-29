@@ -1,19 +1,17 @@
 const express = require("express");
 const app = express();
 
-const HTTP_PORT = process.env.PORT || 8080;
-
-// setup socket.io
-var http = require('http').Server(app);
-const io = require('socket.io')(http, {
-  cors: {}
+const http = require("http").Server(app);
+const io = require("socket.io")(http, {
+    cors: {}
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected'); // show when the user connected
-  
-  // assign them a temporary user name:
-  let tempUserName = "User-" + Math.floor(Math.random() * (100000 - 1 + 1)) + 1; 
+const HTTP_PORT = process.env.PORT || 8080;
+
+app.use(express.static("public"));
+
+io.on("connection", socket=>{
+    let tempUserName = "User-" + Math.floor(Math.random() * (100000 - 1 + 1)) + 1; 
 
   socket.on('disconnect', function(){
     console.log('user disconnected'); // show when the user disconnected
@@ -25,8 +23,8 @@ io.on('connection', function(socket){
   });
 });
 
-app.use(express.static("public"));
 
-http.listen(HTTP_PORT,()=>{ // note - we use http here, not app
-  console.log("listening on: " + HTTP_PORT);
+http.listen(HTTP_PORT, ()=>{
+    console.log("server listening on: " + HTTP_PORT);
 });
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ChatService } from '../chat.service';
 
 @Component({
@@ -8,14 +9,14 @@ import { ChatService } from '../chat.service';
 })
 export class ChatWindowComponent implements OnInit {
 
-  private getMessagesSub: any;
+  private getMessagesSub: Subscription | undefined;
   messages: string[] = [];
-  currentMessage: string;
+  currentMessage: string = "";
 
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
-    this.getMessagesSub = this.chatService.getMessages.subscribe((data) => {
+    this.getMessagesSub = this.chatService.getMessages.subscribe((data: string) => {
       this.messages.push(data);
     });
   }    
@@ -26,7 +27,7 @@ export class ChatWindowComponent implements OnInit {
   }
 
   ngOnDestroy(){    
-     this.getMessagesSub.unsubscribe();
+     this.getMessagesSub?.unsubscribe();
   } 
 
 }
