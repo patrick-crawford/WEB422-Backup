@@ -166,10 +166,10 @@ Once this file (public/index.html) is created, enter the following HTML:
 <html>
   <head>
     <title>Socket.IO Connection Test</title>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous"></script>
      
      <script>
-      var socket = io.connect('http://localhost:8080'); // we can also use io.connect() to connect to the current host
+      var socket = io('http://localhost:8080');
       socket.on('connect', function(data) {
           socket.emit('chat message', 'Hello World');
       });
@@ -240,10 +240,6 @@ In the Integrated terminal, execute the following 2 "npm install" commands:
 - `npm install socket.io-client`
 - `npm install --save-dev @types/socket.io-client`
 
-Once this is complete, open the file: **tsconfig.app.json** and **remove** the empty "types" property under "compilerOptions":
-
-- "types": []
-
 <br>
 
 #### Step 3: Adding a new ChatService
@@ -254,29 +250,28 @@ With our new ChatService created, we can update chat.service.ts to use the follo
 
 ```js
 import { Injectable } from '@angular/core';
-import * as io from 'socket.io-client';
-import { Subject } from "rxjs"; 
+import { io, Socket } from 'socket.io-client';
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  private socket: SocketIOClient.Socket; // The client instance of socket.io
-  public getMessages: any; 
+  private socket: Socket; // The client instance of socket.io
+  public getMessages: Subject<string> = new Subject();
 
   constructor() {
-    this.getMessages = new Subject(); 
-    
-    this.socket = io.connect('http://localhost:8080'); // we can also use io.connect() to connect to the current host
 
-    this.socket.on('chat message', (msg) => {
+    this.socket = io('http://localhost:8080');
+
+    this.socket.on('chat message', (msg: string) => {
       this.getMessages.next(msg); // send the new message
     });
 
   }
 
-  sendMessage(msg){
+  sendMessage(msg: string) {
     this.socket.emit('chat message', msg);
   }
 
@@ -285,7 +280,7 @@ export class ChatService {
 
 Here, you will notice that we import the required files for "socket.io-client" and "Subject" ("Subjects" are a special kind of Observable - for a quick explanation of the differences, see: [http://javascript.tutorialhorizon.com/2017/03/23/rxjs-subject-vs-observable/](http://javascript.tutorialhorizon.com/2017/03/23/rxjs-subject-vs-observable/) ). 
 
-We declare a local "socket" as type "SocketIOClient.Socket" and connect to it within the constructor function using our familiar "io.connect" code.  We also make use of the socket.on() method, only instead of outputting the "msg" to the console (as we did in our test code), we will instead use our "getMessages" Subject to send the message out to the "Subscribers" of the service, using its "next()" method.
+We declare a local "socket" as type "Socket" and connect to it within the constructor function using our familiar "io()" code.  We also make use of the socket.on() method, only instead of outputting the "msg" to the console (as we did in our test code), we will instead use our "getMessages" Subject to send the message out to the "Subscribers" of the service, using its "next()" method.
 
 Lastly, we include a "sendMessage()" method that simply sends a given message to the socket, using the familiar socket.emit() method from the test code
 
@@ -299,6 +294,7 @@ With our new ChatWindowComponent created, we can update chat-window.component.ts
 
 ```js
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ChatService } from '../chat.service';
 
 @Component({
@@ -308,14 +304,14 @@ import { ChatService } from '../chat.service';
 })
 export class ChatWindowComponent implements OnInit {
 
-  private getMessagesSub: any;
+  private getMessagesSub: Subscription | undefined;
   messages: string[] = [];
-  currentMessage: string;
+  currentMessage: string = "";
 
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
-    this.getMessagesSub = this.chatService.getMessages.subscribe((data) => {
+    this.getMessagesSub = this.chatService.getMessages.subscribe((data: string) => {
       this.messages.push(data);
     });
   }    
@@ -326,7 +322,7 @@ export class ChatWindowComponent implements OnInit {
   }
 
   ngOnDestroy(){    
-     this.getMessagesSub.unsubscribe();
+     this.getMessagesSub?.unsubscribe();
   } 
 
 }
@@ -359,7 +355,6 @@ We now have everything in place to create the template for our ChatWindow Compon
     <div *ngFor="let message of messages">{{message}}</div>
 </div>
 {% endraw %}
-
 <form (ngSubmit)="sendMessage()">
     <input type="text" name="currentMessage" class="form-control" [(ngModel)]="currentMessage" />
     <br />
