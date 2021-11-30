@@ -255,21 +255,21 @@ import { Subject } from "rxjs";
 })
 export class ChatService {
 
-  private socket: Socket; // The client instance of socket.io
+  private socket: Socket | undefined; // The client instance of socket.io
   public getMessages: Subject<string> = new Subject();
 
   constructor() {
 
     this.socket = io('http://localhost:8080');
 
-    this.socket.on('chat message', (msg: string) => {
+    this.socket?.on('chat message', (msg: string) => {
       this.getMessages.next(msg); // send the new message
     });
 
   }
 
   sendMessage(msg: string) {
-    this.socket.emit('chat message', msg);
+    this.socket?.emit('chat message', msg);
   }
 
 }
