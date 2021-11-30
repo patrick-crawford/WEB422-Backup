@@ -416,9 +416,8 @@ var jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
 
 // IMPORTANT - this secret should be a long, unguessable string 
-// (ideally stored in a "protected storage" area on the 
-// web server, a topic that is beyond the scope of this course)
-// We suggest that you generate a random 64-character string
+// (ideally stored in a "protected storage" area on the web server).
+// We suggest that you generate a random 50-character string
 // using the following online tool:
 // https://lastpass.com/generatepassword.php 
 
@@ -477,9 +476,8 @@ var jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
 
 // IMPORTANT - this secret should be a long, unguessable string 
-// (ideally stored in a "protected storage" area on the 
-// web server, a topic that is beyond the scope of this course)
-// We suggest that you generate a random 64-character string
+// (ideally stored in a "protected storage" area on the web server).
+// We suggest that you generate a random 50-character string
 // using the following online tool:
 // https://lastpass.com/generatepassword.php 
 
