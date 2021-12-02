@@ -113,6 +113,10 @@ export class AuthService {
     return localStorage.getItem('access_token');
   }
 
+  public setToken(token: string): void{
+    localStorage.setItem('access_token', token);
+  }
+
   public readToken(): User | null {
     const token = localStorage.getItem('access_token');
 
@@ -150,6 +154,8 @@ There's a lot going on in the above code, so let's break it down *piece by piece
 After injecting our required services in the constructor, we see the following methods:
 
 * **getToken()** The get token method simply pulls the token from "local storage".  It will return **null** if the token does not exist
+
+* **setToken()** The set token method stores the token in "local storage".
 
 * **readToken()** This method is designed to return the data from the JWT stored in "local storage".  It uses the [decodeToken()](https://www.npmjs.com/package/@auth0/angular-jwt#decodetoken) method from the JwtHelperService.
 
@@ -221,8 +227,8 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(this.user).subscribe(
       (success) => {
-        // store the returned token in local storage as 'access_token'
-        localStorage.setItem('access_token',success.token);
+        // store the returned token 
+        this.auth.setToken(success.token);
         // redirect to the "vehicles" route
         this.router.navigate(['/vehicles']);
       },
@@ -235,7 +241,7 @@ export class LoginComponent implements OnInit {
 }
 ```
 
-If we examine the above code, we can see that there's nothing too new happening here, with the exception of the "onSubmit()" method.  In **onSubmit()**, the **user** property (modified using the form in the component template - see below) is passed to the **login** method, which (as we have seen) will pass the data on to the "/api/login" route of our "simple-API".  If our simple-API successfully authenticates the user based on these credentials, the Observable will pass the message back (success), containing the JWT (in the "token" property).  We then take this "token" (JWT) and store it in local storage as "access_token" for later use. Additionally, we will redirect the user to the "/vehicles" route.  
+If we examine the above code, we can see that there's nothing too new happening here, with the exception of the "onSubmit()" method.  In **onSubmit()**, the **user** property (modified using the form in the component template - see below) is passed to the **login** method, which (as we have seen) will pass the data on to the "/api/login" route of our "simple-API".  If our simple-API successfully authenticates the user based on these credentials, the Observable will pass the message back (success), containing the JWT (in the "token" property).  We then take this "token" (JWT) and pass it to the "setToken" method to be stored (using localStorage) for later use. Additionally, we will redirect the user to the "/vehicles" route.  
 
 If the simple-API sends an error back stating that there's an issue with the credentials, we can catch this error (err) in the 2nd "subscribe" callback and set the "warning" property of the component with the returned message.  This will provide appropriate feedback to the user in the event that they have made a mistake entering their login credentials. 
 
