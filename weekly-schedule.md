@@ -544,3 +544,11 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 * Achieve an average of 50% or better for all assignments
 * Achieve an average of 50% or better for all tests
 * Achieve a weighted average of 50% or better for the course
+
+#### Copyright Notice
+
+Most of the materials posted in this course are protected by copyright. It is a violation of Canada's Copyright Act and Seneca's Copyright Policy to share, post, and/or upload course material in part or in whole without the permission of the copyright owner. This includes posting materials to third-party file-sharing sites such as assignment-sharing or homework help sites. Course material includes teaching material, assignment questions, tests, and presentations created by faculty, other members of the Seneca community, or other copyright owners.
+ 
+It is also prohibited to reproduce or post to a third-party commercial website work that is either your own work or the work of someone else, including (but not limited to) assignments, tests, exams, group work projects, etc. This explicit or implied intent to help others may constitute a violation of Seneca’s Academic Integrity Policy and potentially involve such violations as cheating, plagiarism, contract cheating, etc.  
+ 
+These prohibitions remain in effect both during a student’s enrollment at the college as well as withdrawal or graduation from Seneca. 
