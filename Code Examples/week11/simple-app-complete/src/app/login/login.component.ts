@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(this.user).subscribe(
       (success) => {
-        // store the returned token in local storage as 'access_token'
-        localStorage.setItem('access_token',success.token);
+        // store the returned token 
+        this.auth.setToken(success.token);
         // redirect to the "vehicles" route
         this.router.navigate(['/vehicles']);
       },

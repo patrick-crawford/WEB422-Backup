@@ -18,6 +18,10 @@ export class AuthService {
     return localStorage.getItem('access_token');
   }
 
+  public setToken(token: string): void{
+    localStorage.setItem('access_token', token);
+  }
+
   public readToken(): User | null {
     const token = localStorage.getItem('access_token');
 
