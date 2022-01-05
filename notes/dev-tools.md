@@ -30,7 +30,7 @@ File system CLI | Terminal | Terminal on **Ubuntu**
 Editor | Visual Studio Code | Visual Studio Code<br>installed on **Windows**
 Node.js<br>React tools<br>Angular tools | Install these on macOS | Install these on **Ubuntu**
 Web browser(s)<br>including dev tools,<br>debugger | Chrome<br>Firefox<br>Opera<br>Safari | Chrome<br>Firefox<br>Opera<br>Edge 
-HTTP inspector | Postman | Postman<br>installed on **Windows**
+HTTP inspector | Visual Studio Code Extension:<br>[Thunder Client](https://www.thunderclient.io/) (or)<br>REST Client (Huachao Mao) | Visual Studio Code Extension:<br>[Thunder Client](https://www.thunderclient.io/) (or)<br>REST Client (Huachao Mao)
 Data generator | [mockaroo.com](https://mockaroo.com)<br>online | [mockaroo.com](https://mockaroo.com)<br>online
 
 <br>
