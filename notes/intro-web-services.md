@@ -102,9 +102,9 @@ You will continue to use the frameworks and tools from the previous web programm
 
 Each web service that you create will be treated as a *separate and distinct* program, and not bundled in with the front end client (browser) app that you may be working on. It will be concerned only with listening then responding to requests that come in. 
 
-During development, you will use an *HTTP inspector* app, like [Postman](https://www.getpostman.com/), to create and send requests to a web service. 
+During development, you will use an *HTTP inspector* app, like [Thunder Client](https://www.thunderclient.io/), to create and send requests to a web service. 
 
-> [Postman how-to article](https://www.sitepoint.com/master-api-workflow-postman/)
+> [Thunder Client Documentation](https://github.com/rangav/thunder-client-support)
 
 Then, you will be creating *separate* web app *clients*, which send requests to your web service. 
 

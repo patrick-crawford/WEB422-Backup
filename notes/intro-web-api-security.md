@@ -188,7 +188,7 @@ Not much has changed here.  Instead of simply comaring userData.password with us
 
 #### Adding & Testing Authentication Routes
 
-Now that we have a working "user" service that will handle registering and validating user information, we should add some new "/api/" authentication routes to add the functionality to our API.  **NOTE:** Since we do not have a UI to gather user information for registration and validation, we must make use of an API testing application such as [**Postman**](https://www.getpostman.com/) (installed on the lab machines) to provide POST data to our new routes.
+Now that we have a working "user" service that will handle registering and validating user information, we should add some new "/api/" authentication routes to add the functionality to our API.  
 
 Since our new routes will be accepting input (via JSON, posted to the route), we will need to configure our server to correctly parse "JSON" formatted data.  As you will recall from WEB322, this can be accomplished by adding the line:
 
@@ -197,6 +197,8 @@ app.use(express.json());
 ```
 
 With the middleware correctly configured, we can reliably assume that the "body" property of the request (req) will contain the properties and values of the data sent from the AJAX request.
+
+**NOTE:** We do not yet have a UI to gather user information for registration and validation, so we must make use of an API testing tool such as the [Thunder Client Extension](https://www.thunderclient.io/) to make requests and provide POST data when testing our new routes.
 
 <br>
 
@@ -229,14 +231,12 @@ app.post("/api/register", (req, res) => {
 
 **NOTE:** The 422 error code communicates back to the client that the server understands the content type of the request  and the syntax is correct but was unable to process the data ([https://httpstatuses.com/422](https://httpstatuses.com/422)).
 
-To test this new route, stop and start your API (server.js) again and open the **Postman** app.  
-
-Proceed to enter the following data:
+To test this new route, stop and start your API (server.js) again and proceed to make the following request:
 
 * Make sure **POST** is selected in the request type dropdown
 * In the address bar, type: "http://localhost:8080/api/register"
 * In the **Headers** tab, ensure that "Content-Type" is selected with a value of "application/json"
-* In the **Body** tab, ensure that "raw" is selected and copy and paste our information for user "bob" in the provided text area:
+* In the **Body** tab, copy and paste our information for user "bob" in the provided text area:
 
 ```json
 {
@@ -248,18 +248,6 @@ Proceed to enter the following data:
 }
 ```
 
-If you entered the data correctly, postman should look like the below:
-
-**"Headers" Tab**<br>
-
-![Postman Headers](/media/Postman-headers.png)
-
-**"Body" Tab**<br>
-
-![Postman Body](/media/Postman-body.png)
-
-When you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
-
 Once the request is processed, it should return with a status 200 and the JSON: 
 
 ```json
@@ -267,9 +255,6 @@ Once the request is processed, it should return with a status 200 and the JSON:
     "message": "User bob successfully registered"
 }
 ```
-You can see this in Postman by scrolling down and selecting "body" in the response section:
-
-![Postman Response](/media/Postman-response.png)
 
 <br>
 
@@ -288,10 +273,10 @@ app.post("/api/login", (req, res) => {
 });
 ```
 
-To test this new route, once again stop and start your API (server.js) and open your trusty **Postman** app.  We will keep most of the values the same, with the following exceptions:
+To test this new route, once again stop and start your API (server.js) and make another request.  We will keep most of the values the same, with the following exceptions:
 
 * In the address bar, type: "http://localhost:8080/api/login"
-* In the **Body** tab, ensure that "raw" is selected and copy and paste our information for user "bob" in the provided text area:
+* In the **Body** tab, copy and paste our information for user "bob" in the provided text area:
 
 ```json
 {
@@ -300,12 +285,8 @@ To test this new route, once again stop and start your API (server.js) and open 
 }
 ```
 
-If you entered the data correctly, postman should look like the below:
 
-![Postman Login Data](/media/Postman-login-data.png)
-
-
-Again, when you're sure you've entered everything correctly and your server is running, hit the large blue **SEND** button to send the POST data to the API.
+Again, when you're sure you've entered everything correctly and your server is running, hit the blue **Send** button to send the POST data to the API.
 
 Once the request is processed, it should return with a status 200 and the JSON: 
 
@@ -314,9 +295,6 @@ Once the request is processed, it should return with a status 200 and the JSON:
     "message": "login successful"
 }
 ```
-You can see this in Postman by scrolling down and selecting "body" in the response section:
-
-![Postman Login Response](/media/Postman-login-response.png)
 
 You can also try entering incorrect credentials in the request body (ie: a different "userName", or an incorrect "password") to validate that our service is indeed functioning properly and will not send the "login successful" message to unauthorized users. 
 
@@ -324,7 +302,7 @@ You can also try entering incorrect credentials in the request body (ie: a diffe
 
 ### Introduction to JSON Web Tokens (JWT)
 
-With our new authentication routes tested and working correctly, we can now concentrate on leveraging this logic to actually **secure** the vehicle data in our simple API.  Currently, the /api/vehicles route is available to anyone, regardless of whether they've been authenticated or not.  You can see this by executing a POST request to "/api/login" route from Postman with an incorrect password for "bob", followed by GET request for "/api/vehicles".  The fact that we did not provide correct credentials during the "login" phase, had no affect on whether or not we can access the data on the "/api/vehicles" route.  
+With our new authentication routes tested and working correctly, we can now concentrate on leveraging this logic to actually **secure** the vehicle data in our simple API.  Currently, the /api/vehicles route is available to anyone, regardless of whether they've been authenticated or not.  You can see this by executing a POST request to "/api/login" with an incorrect password for "bob", followed by GET request for "/api/vehicles".  The fact that we did not provide correct credentials during the "login" phase, had no affect on whether or not we can access the data on the "/api/vehicles" route.  
 
 So, how can we solve this problem?  In WEB322, we would send a [cookie](https://sictweb.github.io/web322/notes/week10) back to the client, once they're logged in, to be used for subsequent requests. Unfortunately, we cannot rely on cookies to solve this problem, as we cannot guarantee that the client accessing the data is a web browser.  Our API simply takes individual JSON-formatted requests, sent over HTTP and returns JSON-formatted responses.  
 
@@ -578,49 +556,28 @@ We have now completed all of the changes that are required on our server.js and 
 
 To test this, we must insure the following series of actions yields the expected results (listed below):
 
-<br>
 
-**Action**: Attempt to access the route /api/vehicles as before (without supplying a JWT).
+- **Action**: Attempt to access the route /api/vehicles as before (without supplying a JWT).<br><br>
+- **Expected Result:** Server returns a 401 error code and the text "unauthorized".
 
-![Postman Get Vehicles](/media/postman-get-vehicles-1.png)
+![Unauthorized](/media/API-test-1.png)
 
-<br>
 
-**Expected Result:** Server returns a 401 error code and the text "unauthorized".
+- **Action**: Log in as user "bob" (as above) and copy the value of the returned "token" property.
 
-![Postman Unauthorized](/media/postman-get-vehicles-error.png)
+![Login Token](/media/API-test-2.png)
 
-<br>
-<br>
 
-**Action**: Log in as user "bob" (as above) and copy the value of the returned "token" property.
+- **Action**: Attempt to access the route /api/vehicles as before, only this time add the header "Authorization" with the value "JWT" followed by a *space*, followed by the returned "token" that was sent when "bob" logged in (above)<br><br>
+- **Expected Result:** Vehicle data is returned
 
-![Postman Login Token](/media/postman-login-token.png)
+![Vehicle Data](/media/API-test-3.png)
 
-<br>
 
-**Action**: Attempt to access the route /api/vehicles as before, only this time add the header "Authorization" with the value "JWT" followed by a *space*, follwed by the returned "token" that was sent when "bob" logged in (above)
+- **Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).<br><br>
+- **Expected Result**: Server returns a 401 error code and the text "unauthorized".
 
-![Postman Get Vehicles with Token](/media/postman-get-vehicles-token.png)
-
-<br>
-
-**Expected Result:** Vehicle data is returned
-
-![Postman Vehicle Data](/media/postman-get-vehicles-success.png)
-
-<br>
-<br>
-
-**Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).
-
-![Postman Vehicle Data - Incorrect Token](/media/postman-get-vehicles-incorrect-token.png)
-
-<br>
-
-**Expected Result**: Server returns a 401 error code and the text "unauthorized".
-
-![Postman Unauthorized](/media/postman-get-vehicles-error.png)
+![Unauthorized](/media/API-test-4.png)
 
 <br>
 

@@ -26,7 +26,7 @@ Therefore, continue to use the content from the courses that you have successful
    * [Getting started docs](https://code.visualstudio.com/docs)
 * Browsers (current versions of Chrome, Firefox, Safari, Opera, Edge)  
 * Browser dev tools  
-* HTTP inspector (e.g. [Postman](https://www.getpostman.com/))
+* HTTP inspector (e.g. [Thunder Client](https://www.thunderclient.io/))
 * [Plunker](https://plnkr.co/)
 * [jsFiddle](https://jsfiddle.net/)
 * [jsBin](https://jsbin.com)

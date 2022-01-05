@@ -180,9 +180,9 @@ In Terminal, run the app.
 
 Open a browser, and navigate to the root (home page). 
 
-Open Postman, and interact with the resources that begin with `/api/`. 
+Open Visual Studio, and interact with the resources that begin with `/api/` using the Thunder Client Extension. 
 
-> [This document](/notes/postman-intro) introduces you to Postman, and has how-to getting started info.
+> [This document](/notes/thunder-client-intro) introduces you to the Thunder Client Extension, and has how-to getting started info.
 
 <br>
 

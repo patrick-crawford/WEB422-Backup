@@ -46,7 +46,7 @@ New topic presentation, discussions, and demonstrations. While some brief notes 
 
 * [Creating a web service](web-api-v1)
 
-* [This document](postman-intro) introduces you to Postman, and has how-to getting started info.
+* [This document](thunder-client-intro) introduces you to the Thunder Client Extension, and has how-to getting started info.
 
 * [MongoDB Atlas Sample Data](mongodb-sample-data) guide for your MongoDB Account to be used this Semester
 
