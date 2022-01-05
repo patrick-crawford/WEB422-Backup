@@ -181,22 +181,16 @@ If we wish to obtain the query parameters for a specific route, the process is v
     <h1>Project query { location.search }</h1>
     ```
 
-This will give us the full query string (using "location.search"). However, if we wish to parse the string and convert it to an object, a 3rd party module will have to be used.  For example, the [query-string](https://www.npmjs.com/package/query-string) module can be employed to perform this task.  Once its been installed using npm (ie: "```npm i query-string```"), it can be added to any component:
+This will give us the full query string (using "location.search"). However, if we wish to parse the string and access individual parameters, we will need to make use of the native [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams), ie:
 
 ```jsx
-import queryString from 'query-string';
+const urlParams = new URLSearchParams(location.search);
 ```
 
-giving us access to a 'parse' method, used to convert the query string into an object:
+The 'urlParams' object can now be used to fetch individual query params, ie:
 
 ```jsx
-queryString.parse(location.search) // used to obtain an object from the query string (available using the "useLocation" hook)
-```
-
-To see this working, you can update your "return" statement to show the parsed query as JSON:
-
-```jsx
-<h1>Project query { JSON.stringify(queryString.parse(location.search)) }</h1>
+let page = urlParams.get("page"); // get the value of the "page" query parameter (NOTE: returns null if "page" was not found in the query string)
 ```
 
 <br>
