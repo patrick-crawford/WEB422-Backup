@@ -9,7 +9,7 @@ export class EventsComponent implements OnInit {
 
   clickLog: Array<string> = [];
 
-  logClick(msg){
+  logClick(msg: any){
     this.clickLog.push(msg);
   }
 

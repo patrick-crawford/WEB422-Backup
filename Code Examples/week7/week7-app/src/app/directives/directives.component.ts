@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 class User{
-  firstName: string;
-  email: string;
-  age: number;
-  language: string;
-  active: boolean;
+  firstName: string | undefined;
+  email: string | undefined;
+  age: number | undefined;
+  language: string | undefined;
+  active: boolean | undefined;
 }
 
 @Component({
