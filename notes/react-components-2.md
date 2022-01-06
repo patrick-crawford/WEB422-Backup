@@ -24,9 +24,9 @@ Once this is complete, we must change to the newly created "my-app" directory an
 
 * `react-router-dom` - (Enable client-side routing in the browser)
 
-* `react-bootstrap bootstrap@4.6.0` (Include the Bootstrap 4 Components for React &amp; bootstrap)
+* `react-bootstrap@1 bootstrap@4` (Include the Bootstrap 4 Components for React &amp; bootstrap)
 
-* `react-router-bootstrap` (Integration between React Bootstrap &amp; React Router v4, primarily the "LinkContainer" Component )
+* `react-router-bootstrap` (Integration between React Bootstrap &amp; React Router, primarily the "LinkContainer" Component )
 
 <br>
 
