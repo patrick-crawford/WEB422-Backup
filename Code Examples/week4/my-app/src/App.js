@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Products from './Products';
 import Product from './Product';
 import About from './About';
@@ -33,23 +33,13 @@ function App() {
       <Container>
         <Row>
           <Col>
-            <Switch>
-              <Route exact path="/">
-                <Redirect to="/products" />
-              </Route>
-              <Route exact path="/products">
-                <Products />
-              </Route>
-              <Route path="/product/:id">
-                <Product />
-              </Route> 
-              <Route exact path="/about">
-                <About />
-              </Route>
-              <Route>
-                <Notfound />
-              </Route>
-            </Switch>
+            <Routes>
+              <Route path="/" element={<Navigate to="/products" />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/product/:id" element={<Product />} />
+              <Route path="/about" element={<About />} />
+              <Route path="*" element={<Notfound />} />
+            </Routes>
           </Col>
         </Row>
       </Container>

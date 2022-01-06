@@ -1,17 +1,20 @@
 import {useState, useEffect} from 'react';
 import { ListGroup } from 'react-bootstrap';
-import { useHistory } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 export default function Products(){
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const history = useHistory();
+    const navigate = useNavigate();
+    let location = useLocation();
 
     useEffect(()=>{
+        const urlParams = new URLSearchParams(location.search);
+        let page = urlParams.get("page"); // get the value of the "page" query parameter (NOTE: returns null if "page" was not found in the query string)
         setLoading(true);
-        fetch("https://reqres.in/api/unknown").then(res=>res.json()).then(products=>{
+        fetch( page ? `https://reqres.in/api/unknown?page=${page}` : "https://reqres.in/api/unknown").then(res=>res.json()).then(products=>{
             setLoading(false);
             setProducts(products.data);
         })
@@ -25,7 +28,7 @@ export default function Products(){
                 <ListGroup>
                     {
                         products.map(prod=>(
-                            <ListGroup.Item onClick={(e)=>{history.push(`product/${prod.id}`)}} style={{backgroundColor: prod.color}} key={prod.id}>{prod.name} - {prod.year}</ListGroup.Item>
+                            <ListGroup.Item onClick={(e)=>{navigate(`/product/${prod.id}`)}} style={{backgroundColor: prod.color}} key={prod.id}>{prod.name} - {prod.year}</ListGroup.Item>
                         ))
                     }
                 </ListGroup>

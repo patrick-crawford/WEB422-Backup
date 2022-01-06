@@ -11,7 +11,7 @@ const data = require("./dbdata-theaters.json");
 
 module.exports = {
 
-    // ############################################################
+  // ############################################################
     // theater requests
 
     // Fetch all 
@@ -54,7 +54,7 @@ module.exports = {
         data[index] = newItem;
         return newItem;
       }
-
+      
       return data[index];
     },
 
