@@ -58,7 +58,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ### NavBar
 
-The Week 4 example uses the following navbar consisting of the custom components installed using npm (above).  This navbar is placed above the (soon to be added) &lt;Switch&gt;&lt;/Switch&gt; element in *App.js*
+The Week 4 example uses the following navbar consisting of the custom components installed using npm (above).  This navbar is placed above the (soon to be added) &lt;Routes&gt;&lt;/Routes&gt; element in *App.js*
 
 ```jsx
 <Navbar bg="light" expand="lg">
@@ -83,15 +83,15 @@ The Week 4 example uses the following navbar consisting of the custom components
 
 ### Container, Routes & Components
 
-All routes in the example code are defined using a &lt;Switch&gt;&lt;/Switch&gt; element in *App.js*.  Immediately surrounding this component (below the Navbar), we need to add the bootstrap "Container", "Row" and "Col" components, ie:
+All routes in the example code are defined using a &lt;Routes&gt;&lt;/Routes&gt; element in *App.js*.  Immediately surrounding this component (below the Navbar), we need to add the bootstrap "Container", "Row" and "Col" components, ie:
 
 ```jsx
 <Container>
   <Row>
     <Col>
-      <Switch>
+      <Routes>
         ...
-      </Switch>
+      </Routes>
     </Col>
   </Row>
 </Container>

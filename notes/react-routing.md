@@ -65,15 +65,15 @@ We need to modify our App.js file as well as our index.js file.
   );
   ```
 
-FYI, if you have to work with old obsolete legacy browser versions: The above code specifies the type of router that we will be using in our `<App />` component.  This could be either [&lt;BrowserRouter&gt;](https://reactrouter.com/web/api/BrowserRouter) or [&lt;HashRouter&gt;](https://reactrouter.com/web/api/HashRouter). The Hash Router technique is used to support legacy browsers.
+FYI, if you have to work with old obsolete legacy browser versions: The above code specifies the type of router that we will be using in our `<App />` component.  This could be either [&lt;BrowserRouter&gt;](https://reactrouter.com/docs/en/v6/api#browserrouter) or [&lt;HashRouter&gt;](https://reactrouter.com/docs/en/v6/api#hashrouter). The Hash Router technique is generally used to support legacy browsers and React "strongly recommend(s) you do not use HashRouter unless you absolutely have to."
 
 <br>
 
 ### App.js changes
 
-Import the `<Route>` and `<Switch>` components:  
+Import the `<Route>` and `<Routes>` components:  
 ```js
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 ```
 
 Import the `<Home>`, `<Projects>`, `<Project>` components:
@@ -86,39 +86,25 @@ import Project from './Project';
 Update the return value of the "App" function to use the following JSX:
 
 ```jsx
-<Switch>
-  <Route exact path='/'>
-    <Home />
-  </Route>
-  <Route exact path='/Projects'>
-    <Projects />
-  </Route>
-  <Route exact path='/Project'>
-    <Project />
-  </Route>
-</Switch>
+<Routes>
+  <Route path='/' element={<Home />} />
+  <Route path='/Projects' element={<Projects />} />
+  <Route path='/Project' element={<Project />} />
+</Routes>
 ```
   
-Here, we can define our routes explicitly using the ["Switch" component](https://reactrouter.com/web/api/Switch) with our three nested ["Route" components](https://reactrouter.com/web/api/Route).  Each of the routes have a "path" property which we use to define the target route. 
+Here, we can define our routes explicitly using the **"Routes"** component with our three nested **"Route"** components.  Each of the routes have a "path" property which we use to define the target route and an "element" property that we use to define the component (see: [&lt;Routes&gt; &amp; &lt;Route&gt; ](https://reactrouter.com/docs/en/v6/api#routes-and-route)). 
 
-In all three above routes, we use the ["exact"](https://reactrouter.com/web/api/Route/exact-bool) because we want to match the route *exactly* (ie, we don't care about "/Project/1" yet, only "/Project"). 
-
-**NOTE:** Components will only be added or removed as children of the &lt;Switch&gt;&lt;/Switch&gt; component, so if we wish to have parts of the UI that are consistent across all routes, we can place JSX *above* or *below* it, for example:
+**NOTE:** Components will only be added or removed as children of the &lt;Routes&gt;&lt;/Routes&gt; component, so if we wish to have parts of the UI that are consistent across all routes, we can place JSX *above* or *below* it, for example:
 
 ```jsx
 <header>Header</header>
 
-<Switch>
-  <Route exact path='/'>
-    <Home />
-  </Route>
-  <Route exact path='/Projects'>
-    <Projects />
-  </Route>
-  <Route exact path='/Project'>
-    <Project />
-  </Route>
-</Switch>
+<Routes>
+  <Route path='/' element={<Home />} />
+  <Route path='/Projects' element={<Projects />} />
+  <Route path='/Project' element={<Project />} />
+</Routes>
 
 <footer>Footer</footer>
 ```
@@ -132,15 +118,13 @@ If we wish to pass a specific URL parameter to a given route, we can use the sam
 * Update the "Project" `<Route>` component:
 
   ```jsx
-  <Route path='/Project/:id'>
-    <Project />
-  </Route>
+  <Route path='/Project/:id' element={<Project />} />
   ```
 * Update the `Project.js` file:
   
   To read the value of the "id" route parameter, we need to make a few changes to our "Project" component, ie:
 
-  * Add the ["useParams" Hook](https://reactrouter.com/core/api/Hooks/useparams): 
+  * Add the ["useParams" Hook](https://reactrouter.com/docs/en/v6/api#useparams): 
     
     ```jsx
     import { useParams } from 'react-router-dom';
@@ -156,7 +140,7 @@ If we wish to pass a specific URL parameter to a given route, we can use the sam
     <h1>Project { id }</h1>
     ```
   
-Once we have made the above changes (removed "exact", added /:id, pulled the parameter using userParams hook, etc.), we can now render routes that look like "/Project/9" or "/Project/abc" and see the results reflected in the browser.
+Once we have made the above changes (pulled the parameter using useParams hook, etc.), we can now render routes that look like "/Project/9" or "/Project/abc" and see the results reflected in the browser.
 
 <br>
 
@@ -164,7 +148,7 @@ Once we have made the above changes (removed "exact", added /:id, pulled the par
 
 If we wish to obtain the query parameters for a specific route, the process is very similar, however the ability to actually parse the value(s) is absent from React Router so we require one extra step (below).  To get started:
 
-  * Add the ["useLocation" Hook](https://reactrouter.com/core/api/Hooks/uselocation):
+  * Add the ["useLocation" Hook](https://reactrouter.com/docs/en/v6/api#uselocation):
    
     ```jsx
     import { useLocation } from 'react-router-dom';
@@ -199,12 +183,10 @@ let page = urlParams.get("page"); // get the value of the "page" query parameter
 
 Using React Router, we can easily define a "Not Found" route - this is analogous to the "404" error that we returned in our server.js files in WEB322 when a route was not matched.
 
-To add a "Not Found" route, we simply need to add another route as a child to our `<Switch>` component defined in App.js.  This route will need to be **beneath** the other routes, so that it doesn't block any of our legitimate routes:
+To add a "Not Found" route, we simply need to add another route as a child to our `<Routes>` component defined in App.js.  This route will simply match the path "*", ie:
 
 ```jsx
-<Route>
-  <h1>Not Found</h1>
-</Route>
+<Route path="*" element={<Notfound />} />
 ```
 
 <br>
@@ -228,24 +210,24 @@ The same code can updated to use the `<Link>` component as follows:
 
 ### "Redirecting" to a Route
 
-Sometimes, we wish to "redirect" the user to a different route and override the current route in the "history" stack (or alternatively "push" it onto the current history stack) - this is similar to what we would use [res.redirect()](http://expressjs.com/en/4x/api.html#res.redirect) for in our Node.js servers.
+Sometimes, we wish to "redirect" the user to a different route and override the current route in the "history" stack (or alternatively "push" it onto the current history stack) - this is similar to what we would use **res.redirect()** for in our Node.js servers.
 
-React provides an intuitive way to achieve this, by providing a special [&lt;Redirect /&gt;](https://reactrouter.com/web/api/Redirect) component.  When rendered, it will redirect the client to the specified route using the following syntax:
+React provides an intuitive way to achieve this, by providing a special [&lt;Navigate /&gt;](https://reactrouter.com/docs/en/v6/api#navigate) component.  When rendered, it will redirect the client to the specified route using the following syntax:
 
 ```jsx
-<Redirect to="/newRoute" />
+<Navigate to="/newRoute" />
 ```
 
-Additionally, we have the ability to *programmatically* change routes from within our code (for example, when an event occurs).  This can be accomplished using the [useHistory hook](https://reactrouter.com/web/api/Hooks/usehistory) from 'react-router-dom':
+Additionally, we have the ability to *programmatically* change routes from within our code (for example, when an event occurs).  This can be accomplished using the [useNavigate hook](https://reactrouter.com/docs/en/v6/api#usenavigate) from 'react-router-dom':
 
 ```jsx
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function HomeButton() {
-  let history = useHistory();
+  const navigate = useNavigate()
 
   function handleClick() {
-    history.push("/home");
+    navigate("/home");
   }
 
   return (
