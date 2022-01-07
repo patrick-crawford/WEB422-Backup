@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DataManagerService } from './data-manager.service'
 import { Post } from './Post';
 
@@ -9,10 +10,10 @@ import { Post } from './Post';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  staticPost: Post;
-  posts: Array<Post>;
+  staticPost: Post = new Post();
+  posts: Array<Post> = [];
 
-  private livePostsSub; // make the subscription reference "private"
+  private livePostsSub: Subscription | undefined; // make the subscription reference "private"
 
   constructor(private data: DataManagerService){ }
 
@@ -22,6 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.livePostsSub.unsubscribe();
+    this.livePostsSub?.unsubscribe();
   }
 }

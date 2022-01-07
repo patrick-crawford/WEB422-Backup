@@ -14,7 +14,7 @@ export class DataManagerService {
     return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
 
-  getPostById(id): Observable<Post>{
+  getPostById(id:any): Observable<Post>{
     return this.http.get<Post>(`https://jsonplaceholder.typicode.com/posts/${id}`);
   }
 }

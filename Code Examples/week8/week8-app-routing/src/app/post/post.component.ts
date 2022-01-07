@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from '../Post';
 import { DataManagerService } from '../data-manager.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post',
@@ -10,8 +11,8 @@ import { DataManagerService } from '../data-manager.service';
 })
 export class PostComponent implements OnInit, OnDestroy {
 
-  post: Post;
-  private postSub;
+  post: Post = new Post();
+  private postSub: Subscription | undefined;
 
   constructor(private data: DataManagerService, private route: ActivatedRoute) { }
 
@@ -20,7 +21,7 @@ export class PostComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.postSub.unsubscribe();
+    this.postSub?.unsubscribe();
   }
 
 }
