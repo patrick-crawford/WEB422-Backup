@@ -93,7 +93,7 @@ This will initially show "null" as the text "Richard Hammond" is currently enter
 appear in our diagnostic code.  We can then use this to conditionally show a warning the moment the user violates the validation rule, using the code:
 
 ```html
-<div *ngIf="name.errors?.required">
+<div *ngIf="name.errors?.['required']">
   <strong>Warning:</strong> "Full Name:" is required.
 </div>
 ```
