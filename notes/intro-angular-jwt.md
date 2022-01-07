@@ -39,16 +39,16 @@ Since we will be requiring the user to enter their credentials via a web form, w
 
 <br>
 
-### Adding support for JWT (JwtModule)
+### Adding support for decoding JWT
 
-If we wish to work with JWT in our Angular application, we will need to obtain the ([`@auth0/angular-jwt`](https://www.npmjs.com/package/@auth0/angular-jwt) package) - this will give us access to the "JwtHelperService". 
+If we wish to decode JSON Web Tokens in our Angular application, we will need to obtain a package to help us.  One possibility is [`jwt-decode`](https://www.npmjs.com/package/jwt-decode): 
 
 <br>
 
-#### Install the @auth0/angular-jwt package 
+#### Install the jwt-decode package 
 
 ```
-npm install @auth0/angular-jwt
+npm install jwt-decode
 ```
 
 <br>
@@ -96,9 +96,7 @@ export default class User{
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { JwtHelperService } from '@auth0/angular-jwt';
-
-const helper = new JwtHelperService();
+import jwt_decode from "jwt-decode";
 
 import User from './User';
 
@@ -121,7 +119,7 @@ export class AuthService {
     const token = localStorage.getItem('access_token');
 
     if (token) {
-      return helper.decodeToken(token)
+      return jwt_decode(token);
     } else {
       return null;
     }
@@ -157,7 +155,7 @@ After injecting our required services in the constructor, we see the following m
 
 * **setToken()** The set token method stores the token in "local storage".
 
-* **readToken()** This method is designed to return the data from the JWT stored in "local storage".  It uses the [decodeToken()](https://www.npmjs.com/package/@auth0/angular-jwt#decodetoken) method from the JwtHelperService.
+* **readToken()** This method is designed to return the data from the JWT stored in "local storage".  It uses [jwt-decode](https://www.npmjs.com/package/jwt-decode) to read the token.
 
 * **isAuthenticated()** The isAuthenticated() method really only checks to see if there's a token available in local storage.  If there is a token, return **true**, otherwise return **false**.  This will be used by a future "GuardAuthService" to prevent the user from accessing a specific route, if the token is unavailable.
 
