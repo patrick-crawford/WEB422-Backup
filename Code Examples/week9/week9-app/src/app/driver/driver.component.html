@@ -3,7 +3,7 @@
     <div class="form-group">
       <label class="control-label" for="name" [class.text-danger]="!name.valid">Full Name:</label>
       <input type="text" class="form-control" [class.is-invalid]="!name.valid" id="name" name="name" [(ngModel)]="driverData.name" required autofocus #name="ngModel"> 
-      <div *ngIf="name.errors?.required">
+      <div *ngIf="name.errors?.['required']">
         <small class="text-danger">
             <strong>Warning:</strong> "Full Name:" is required.
         </small>

@@ -3,17 +3,17 @@ import { NgForm } from "@angular/forms";
 
 
 export class Driver{
-    name: string; 
-    description: string; 
-    ownedTransportation: string[]; 
-    favouriteTransportation: string; 
-    driverLicence: boolean; 
-    vehicleUse: string; 
+    name: string | undefined; 
+    description: string | undefined; 
+    ownedTransportation: string[] = []; 
+    favouriteTransportation: string | undefined; 
+    driverLicence: boolean = false; 
+    vehicleUse: string | undefined; 
 }
 
 export class Option{
-  value: string;
-  text: string;
+  value: string | undefined;
+  text: string | undefined;
 }
 
 @Component({
@@ -26,7 +26,7 @@ export class DriverComponent implements OnInit {
   constructor() { }
  
   // the data that will be used in the form
-  driverData: Driver;
+  driverData: Driver = new Driver();
 
   // Define the preset list of "transportation" options
   transportationList: Option[] = [
