@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { JwtHelperService } from '@auth0/angular-jwt';
-
-const helper = new JwtHelperService();
+import jwt_decode from "jwt-decode";
 
 import User from './User';
 
@@ -26,7 +24,7 @@ export class AuthService {
     const token = localStorage.getItem('access_token');
 
     if (token) {
-      return helper.decodeToken(token)
+      return jwt_decode(token);
     } else {
       return null;
     }
