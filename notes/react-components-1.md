@@ -410,7 +410,7 @@ const timerID = setInterval(()=>{
 },1000);
 ```
 
-and check our updated code running in the browser, we will see that things quickly get out of control in the console. To resolve this, we need to ensure that out setInterval function is only executed **once**.
+and check our updated code running in the browser, we will see that things quickly get out of control in the console. To resolve this, we need to ensure that our setInterval function is only executed **once**.
 
 This can be achieved by using the **[useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)** hook, which will help us to ensure that our function is only executed after the component is "mounted" (ie: after the first render).  This is typically where we will set up any asynchronous operations such as fetching data (or registering a callback timer in this case).  It's important to note however, that the "useEffect" hook can be used to execute code at other times as well (ie: when a state or props value has been updated), but we will discuss this topic later on.
 
