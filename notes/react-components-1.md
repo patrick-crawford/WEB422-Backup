@@ -242,7 +242,7 @@ For example, class becomes [className](https://developer.mozilla.org/en-US/docs/
 
 Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
 
-For example, we can extend our "Hello" component to accept one or more "props" by including the "props" parameter to our function definition and acccessing each named "prop" as an attribute using the same name, ie:
+For example, we can extend our "Hello" component to accept one or more "props" by including the "props" parameter to our function definition and accessing each named "prop" as an attribute using the same name, ie:
 
 ```jsx
 function Hello(props) {
@@ -256,6 +256,19 @@ will allow us to provide "fName" and "lName" values to the component using the s
 
 ```jsx
 <Hello fName="Jason" lName="Perez" />
+```
+
+**NOTE**: If we wish to have *default* values] for props (in this case: **fName** and **lName**), we can add the following code in our "Hello.js" file, just *beneath* our "Hello" function definition, ie:
+
+```jsx
+function Hello(props){
+  // ...
+}
+
+Hello.defaultProps = {
+  fName: "First Name",
+  lName: "Last Name"
+};
 ```
 
 <br>
