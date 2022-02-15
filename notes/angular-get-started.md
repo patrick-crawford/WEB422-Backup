@@ -34,15 +34,7 @@ Next, create a new app. Assuming that you want to create a new app (and folder) 
 ng new my-app --routing -S -g
 ```
 
-Next, you will be presented with the following options:
-
-```bash
-Do you want to enforce stricter type checking and stricter bundle budgets in the workspace?
-This setting helps improve maintainability and catch bugs ahead of time.
-For more information, see https://angular.io/strict y/N)
-```
-
-Hit **Enter** to accept the default "N"
+Next, you will be presented with the following option:
 
 ```bash
 Which stylesheet format would you like to use? (Use arrow keys)
