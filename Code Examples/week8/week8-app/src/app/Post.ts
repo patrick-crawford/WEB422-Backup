@@ -1,6 +1,6 @@
-export class Post {
-    id:         number | undefined;
-    userId:     number | undefined;
-    title:      string | undefined;
-    body:       string | undefined;
+export interface Post {
+    id: number;
+    userId: number;
+    title: string;
+    body: string;
 }
