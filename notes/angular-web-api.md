@@ -48,6 +48,9 @@ var subscription = source.subscribe(
 // subscription.unsubscribe();
 ```
 
+> **NOTE:** As of RxJS 6.4, the above "subscribe" pattern has been deprecated in favour of explicitly defining the next, error and complete functions - see: [https://rxjs.dev/deprecations/subscribe-arguments](https://rxjs.dev/deprecations/subscribe-arguments)
+
+
 In the above code, we create an "Observable" by passing a function that contains operations that we wish to **subscribe** to (ie: "be notified of", or "observe").  In the above case, every 1000 ms, the function increases an internal counter ( **i** ) and notifies any subscribers (there can be more than one) of the change, by invoking the "next" method. 
 
 Once the function is complete, it notifies any subscribers by invoking the "complete" method.
