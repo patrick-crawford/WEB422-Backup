@@ -89,18 +89,18 @@ The idea behind dependency injection is very simple. You have a component that d
 
 So far, we have created a single "DataManagerService".  Why don't we add a function to return a simple piece of data, ie: a "Post":
 
-```js
-class Post {
-    id: number = 0;
-    userId: number = 0;
-    title: string = "";
-    body: string = "";
+```ts
+interface Post {
+    id: number;
+    userId: number;
+    title: string;
+    body: string;
 }
 ```
 
 To ensure that the "Post" type can be used across multiple files, we should place it in a separate file from our service (ie: "Post.ts"). 
 
-**Note**:  Do not forget to "export" the class once it's placed in its own file.
+**Note**:  Do not forget to "export" the interface once it's placed in its own file.
 
 Once "Post.ts" is created (in this case, in the "src/app" directory), we must import it into our DataService.  While we're at it, let's also create a method to return a single, hard-coded "Post" object:
 
