@@ -205,7 +205,7 @@ With the server still running, click the "+" icon next to the dropdown in the to
 
 <br >
 
-#### Step 1: Enable Angular Forms & Bootstrap 4 (ng-bootstrap)
+#### Step 1: Enable Angular Forms & Bootstrap 4
 
 We will be using a simple web form to write "chat" messages, so we must enable Angular Forms.  Recall, this involves adding the "FormsModule" to the "@NgModule" imports array within **app.module.ts**, ie:
 
@@ -223,11 +223,23 @@ import { FormsModule } from '@angular/forms';
 })
 ```
 
-Additionally, we will use [ng-bootstrap](https://ng-bootstrap.github.io/#/home) ("Bootstrap widgets - the angular way") to give us a clean UI.  Execute the following line in your terminal to [add ng-bootstrap](https://ng-bootstrap.github.io/#/getting-started#installation):
+Additionally, we will use the bootstrap 4 CSS to give us a clean UI.  Execute the following line in the integrated terminal to install bootstrap 4:
+
+```
+npm i bootstrap@4
+```
+
+Once this is complete, you can add the Bootstrap 4 CSS to the **src/styles.css** file with the line
+
+```
+@import "~bootstrap/dist/css/bootstrap.min.css
+```
+
+<!--Additionally, we will use the Bootstrap 4 [ng-bootstrap](https://ng-bootstrap.github.io/#/home) ("Bootstrap widgets - the angular way") to give us a clean UI.  Execute the following line in your terminal to [add ng-bootstrap](https://ng-bootstrap.github.io/#/getting-started#installation):
 
 ```
 ng add @ng-bootstrap/ng-bootstrap
-```
+```-->
 
 <br>
 
@@ -365,7 +377,7 @@ Here, we have a "well" with a few simple inline styles added (these should be mo
 
 #### Step 6: Updating app.component.html
 
-Everything is nearly ready for testing, the only thing left is to update app.component.html to include our ChatWindowComponent (`<app-chat-window></app-chat-window>`).  Since we're using Bootstrap 3, we will ensure that this component sits within the responsive grid system:
+Everything is nearly ready for testing, the only thing left is to update app.component.html to include our ChatWindowComponent (`<app-chat-window></app-chat-window>`).  Since we're using Bootstrap 4, we will ensure that this component sits within the responsive grid system:
 
 ```html
 <div class="container">
