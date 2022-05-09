@@ -13,7 +13,7 @@ This page has details about the graded work in WEB422, for the current academic 
 
 We have planned six (6) tests during the term, each worth 10% of your final course grade.
 
-The duration of each test will range from 30 to 35 minutes. Each test will be available on My.Seneca for 24 hours on the day discussed with your professor.
+The duration of each test will range from 30 to 35 minutes. If the course is being offered online, each test will be available on My.Seneca for 24 hours on the day discussed with your professor.  If the course is offered as a "hybrid" course, each test will be given in person, during the designated time.
 
 If you miss a test, there is no opportunity to do a replacement test. However, absence due to illness or other reasons happen occasionally. As a result, you can miss up to one (1) test, without suffering the loss of grades.
 
