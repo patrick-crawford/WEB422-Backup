@@ -76,11 +76,11 @@ An easy edit, just to prove that you can do so, is to edit the `App.js` file in 
 So far, we have a single *component:* **App**.  This is our high-level component that we will place all of our other components inside.  If you open the "index.js" file, beneath the "import" statements (discussed later) at line 7, you should see the lines:
 
 ```jsx
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 ```
 

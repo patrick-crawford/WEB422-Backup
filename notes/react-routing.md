@@ -52,16 +52,16 @@ We need to modify our App.js file as well as our index.js file.
 ### index.js changes
 
 * "import" the `<BrowserRouter>` Component using `import { BrowserRouter } from 'react-router-dom'`
-* Update the ReactDom.render() method to wrap the `<App />` component in a `<BrowserRouter>` component:
+* Update the root.render() method to wrap the `<App />` component in a `<BrowserRouter>` component:
 
   ```jsx
-  ReactDOM.render(
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
     <React.StrictMode>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </React.StrictMode>,
-  document.getElementById('root')
+    </React.StrictMode>
   );
   ```
 
