@@ -3,4 +3,5 @@ author_profile: true
 title: WEB422
 description: Web Programming for Apps and Services
 encoding: UTF-8
-url: https://patrick-crawford.github.io/WEB422-Backup
+url: https://patrick-crawford.github.io
+baseurl: /WEB422-Backup
