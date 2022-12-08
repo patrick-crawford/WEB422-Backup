@@ -18,7 +18,7 @@ Here, you will find the links to the weekly notes.  Please also remember to refe
 </thead>
 <tbody>
 <tr>
-<td><a href="/notes/week01">1 - Notes</a></td>
+<td><a href="{{ site.baseurl }}/notes/week01">1 - Notes</a></td>
 <td>
 Welcome to WEB422:<br><br>
 <ul>
@@ -28,7 +28,7 @@ Welcome to WEB422:<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week02">2 - Notes</a></td>
+<td><a href="{{ site.baseurl }}/notes/week02">2 - Notes</a></td>
 <td>
 Bootstrap 3, jQuery and Other Libraries:<br><br>
 <ul>
@@ -38,7 +38,7 @@ Bootstrap 3, jQuery and Other Libraries:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week03">3 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week03">3 - Notes</a></td>
 <td>
 Introduction to Component-based architecture using React:<br><br>
 <ul>
@@ -48,7 +48,7 @@ Introduction to Component-based architecture using React:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week04">4 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week04">4 - Notes</a></td>
 <td>
 Continue React Development:<br><br>
 <ul>
@@ -58,7 +58,7 @@ Continue React Development:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week05">5 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week05">5 - Notes</a></td>
 <td>
 React Forms &amp; Deployment:<br><br>
 <ul>
@@ -67,7 +67,7 @@ React Forms &amp; Deployment:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week06">6 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week06">6 - Notes</a></td>
 <td>
 Introduction to Angular:<br><br>
 <ul>
@@ -77,7 +77,7 @@ Introduction to Angular:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week07">7 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week07">7 - Notes</a></td>
 <td>
 Additional Bindings, Directives, Events &amp; Routing:<br><br>
 <ul>
@@ -87,7 +87,7 @@ Additional Bindings, Directives, Events &amp; Routing:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week08">8 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week08">8 - Notes</a></td>
 <td>
 Introduction to Services, HttpClient &amp; More Routing Options<br><br>
 <ul>
@@ -96,7 +96,7 @@ Introduction to Services, HttpClient &amp; More Routing Options<br><br>
 <li>Angular Routing Continued</li>
 </ul>
 </td>
-</tr><tr><td><a href="/notes/week09">9 - Notes</a></td>
+</tr><tr><td><a href="{{ site.baseurl }}/notes/week09">9 - Notes</a></td>
 <td>
 Introduction to Working with Forms in Angular<br><br>
 <ul>
@@ -104,7 +104,7 @@ Introduction to Working with Forms in Angular<br><br>
 <li>Element "State" &amp; Validation</li>
 </ul>
 </td>
-</tr><tr><td><a href="/notes/week10">10 - Notes</a></td>
+</tr><tr><td><a href="{{ site.baseurl }}/notes/week10">10 - Notes</a></td>
 <td>
 Introduction to Angular Deployment &amp; Testing<br><br>
 <ul>
@@ -113,7 +113,7 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week11">11 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week11">11 - Notes</a></td>
 <td>
   Introduction to Securing a Web API with JWT <br><br>
 <ul>
@@ -125,7 +125,7 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week12">12 - Notes</a></td>
+<td><a href="{{ site.baseurl }}/notes/week12">12 - Notes</a></td>
 <td>
 Introduction to Socket.io <br><br>
 <ul>
@@ -147,7 +147,7 @@ Introduction to Socket.io <br><br>
 </thead>
 <tbody>
 <tr>
-<td><a href="/notes/week01">1 - Notes</a></td>
+<td><a href="{{ site.baseurl }}/notes/week01">1 - Notes</a></td>
 <td>
 Welcome to WEB422:<br><br>
 <ul>
@@ -157,7 +157,7 @@ Welcome to WEB422:<br><br>
 </td>
 </tr>
 <tr>
-<td><a href="/notes/week02">2 - Notes</a></td>
+<td><a href="{{ site.baseurl }}/notes/week02">2 - Notes</a></td>
 <td>
 Bootstrap 3, jQuery and Other Libraries:<br><br>
 <ul>
@@ -167,7 +167,7 @@ Bootstrap 3, jQuery and Other Libraries:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week03">3 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week03">3 - Notes</a></td>
 <td>
 Introduction to Component-based architecture using React:<br><br>
 <ul>
@@ -177,7 +177,7 @@ Introduction to Component-based architecture using React:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week04">4 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week04">4 - Notes</a></td>
 <td>
 Continue React Development:<br><br>
 <ul>
@@ -187,7 +187,7 @@ Continue React Development:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week05">5 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week05">5 - Notes</a></td>
 <td>
 React Forms &amp; Deployment:<br><br>
 <ul>
@@ -196,7 +196,7 @@ React Forms &amp; Deployment:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week06">6 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week06">6 - Notes</a></td>
 <td>
 Introduction to Angular:<br><br>
 <ul>
@@ -206,7 +206,7 @@ Introduction to Angular:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week07">7 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week07">7 - Notes</a></td>
 <td>
 Additional Bindings, Directives, Events &amp; Routing:<br><br>
 <ul>
@@ -216,7 +216,7 @@ Additional Bindings, Directives, Events &amp; Routing:<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week08">8 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week08">8 - Notes</a></td>
 <td>
 Introduction to Services, HttpClient &amp; More Routing Options<br><br>
 <ul>
@@ -225,7 +225,7 @@ Introduction to Services, HttpClient &amp; More Routing Options<br><br>
 <li>Angular Routing Continued</li>
 </ul>
 </td>
-</tr><tr><td><a href="/notes/week09">9 - Notes</a></td>
+</tr><tr><td><a href="{{ site.baseurl }}/notes/week09">9 - Notes</a></td>
 <td>
 Introduction to Working with Forms in Angular<br><br>
 <ul>
@@ -233,7 +233,7 @@ Introduction to Working with Forms in Angular<br><br>
 <li>Element "State" &amp; Validation</li>
 </ul>
 </td>
-</tr><tr><td><a href="/notes/week10">10 - Notes</a></td>
+</tr><tr><td><a href="{{ site.baseurl }}/notes/week10">10 - Notes</a></td>
 <td>
 Introduction to Angular Deployment &amp; Testing<br><br>
 <ul>
@@ -242,7 +242,7 @@ Introduction to Angular Deployment &amp; Testing<br><br>
 </ul>
 </td>
 </tr>
-<tr><td><a href="/notes/week11">11 - Notes</a></td>
+<tr><td><a href="{{ site.baseurl }}/notes/week11">11 - Notes</a></td>
 <td>
   Introduction to Securing a Web API with JWT <br><br>
 <ul>
