@@ -560,24 +560,24 @@ To test this, we must insure the following series of actions yields the expected
 - **Action**: Attempt to access the route /api/vehicles as before (without supplying a JWT).<br><br>
 - **Expected Result:** Server returns a 401 error code and the text "unauthorized".
 
-![Unauthorized](/media/API-test-1.png)
+![Unauthorized]({{ site.baseurl }}/media/API-test-1.png)
 
 
 - **Action**: Log in as user "bob" (as above) and copy the value of the returned "token" property.
 
-![Login Token](/media/API-test-2.png)
+![Login Token]({{ site.baseurl }}/media/API-test-2.png)
 
 
 - **Action**: Attempt to access the route /api/vehicles as before, only this time add the header "Authorization" with the value "JWT" followed by a *space*, followed by the returned "token" that was sent when "bob" logged in (above)<br><br>
 - **Expected Result:** Vehicle data is returned
 
-![Vehicle Data](/media/API-test-3.png)
+![Vehicle Data]({{ site.baseurl }}/media/API-test-3.png)
 
 
 - **Action**: Attempt to access the route /api/vehicles again, only this time slightly modify the JWT (ie: remove/add a character).<br><br>
 - **Expected Result**: Server returns a 401 error code and the text "unauthorized".
 
-![Unauthorized](/media/API-test-4.png)
+![Unauthorized]({{ site.baseurl }}/media/API-test-4.png)
 
 <br>
 

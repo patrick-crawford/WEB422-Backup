@@ -13,23 +13,23 @@ While it's recommended that you use your own Linux / Unix based platform (Or one
 
 2.  On the right corner (under your name), you should see a "Search Apps" field: 
     
-    ![MyApps Search](/media/myapps-search.png)
+    ![MyApps Search]({{ site.baseurl }}/media/myapps-search.png)
 
 3.  Search for the text "VSCode"
     
-    ![MyApps Search - VSCode](/media/VSCode-search.png )
+    ![MyApps Search - VSCode]({{ site.baseurl }}/media/VSCode-search.png )
 
 4.  This should effectively trim the results down to a single result (VSCode + Node + Git).  Hover over the result to reveal a "Launch" button:
     
-    ![Launch VSCode](/media/lauch-vsCode.png)
+    ![Launch VSCode]({{ site.baseurl }}/media/lauch-vsCode.png)
 
 5.  Click the "Launch" Button.  This should open the "Cloudpaging Player" with our VSCode + Node + Git combo added to the bottom:
     
-    ![Cloudpaging Player](/media/cloudpaging-player.png)
+    ![Cloudpaging Player]({{ site.baseurl }}/media/cloudpaging-player.png)
         
     You should also notice that a folder has opened up containing the following shortcuts:
 
-    ![MyApps Shortcuts Folder](/media/myapps-shortcuts-folder.png)
+    ![MyApps Shortcuts Folder]({{ site.baseurl }}/media/myapps-shortcuts-folder.png)
 
 6.  Click on the "Code - Shortcut" shortcut to open Visual Studio Code.
 
@@ -38,15 +38,15 @@ While it's recommended that you use your own Linux / Unix based platform (Or one
 
 1.  With Visual Studio Code open and focused, enter the keyboard shortcut: **Shift + Ctrl + P**.  This will bring up a command prompt with various options:
     
-    ![VS Code Prompt](/media/vs-code-prompt.png)
+    ![VS Code Prompt]({{ site.baseurl }}/media/vs-code-prompt.png)
 
 2.  Type "Shell" and you should see the following options:
     
-    ![VS Code Prompt - Shell](/media/vs-code-prompt-shell.png)
+    ![VS Code Prompt - Shell]({{ site.baseurl }}/media/vs-code-prompt-shell.png)
 
 3.  Click the first option "Terminal: Select Default Shell"  You should then see the below options: 
     
-    ![VS Code Prompt - Shell Options](/media/vs-code-prompt-shell-options.png)
+    ![VS Code Prompt - Shell Options]({{ site.baseurl }}/media/vs-code-prompt-shell-options.png)
 
 4.  Lastly, Click the bottom option: "Git Bash"
 

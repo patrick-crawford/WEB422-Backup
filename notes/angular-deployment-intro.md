@@ -45,7 +45,7 @@ You will need a Netlify account, so click "Sign Up" on the navigation bar. You w
 
 Once you have logged in, you should see the "Sites" page. Proceed to create a "New site from Git".
 
-![Netlify sites screenshot](/media/angular-deployment-5.png)
+![Netlify sites screenshot]({{ site.baseurl }}/media/angular-deployment-5.png)
 
 Select GitHub from the "Continuous Deployment" section.
 
@@ -57,13 +57,13 @@ Next, you will have to fill in the deploy settings for your app:
 2. Add a build command stating (this should be the default): `npm run build`.
 3. Add the publish directory: `dist/NAME_OF_YOUR_APP`.
     
-    ![Netlify sites screenshot](/media/angular-deployment-6.png)
+    ![Netlify sites screenshot]({{ site.baseurl }}/media/angular-deployment-6.png)
 
 4. Click "Deploy site".
     
     This will take you to the site overview page, where you can find all the details about your project. Currently, you will see that the site is being published. After some time, if the site is built successfully, you will see the URL to your published website.
     
-    ![Site overview screenshot](/media/angular-deployment-7.png)
+    ![Site overview screenshot]({{ site.baseurl }}/media/angular-deployment-7.png)
 
     **Congrats**, your app is live!
 

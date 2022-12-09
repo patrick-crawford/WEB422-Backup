@@ -13,7 +13,7 @@ During the React topic coverage, you learned to use and perhaps install the *Rea
 
 Angular has an app generator too, the [Angular CLI](https://cli.angular.io/). It adds the `ng` command to your shell. 
 
-![Angular CLI web site](/media/angular-cli-web-site.png)
+![Angular CLI web site]({{ site.baseurl }}/media/angular-cli-web-site.png)
 
 <br>
 
@@ -69,7 +69,7 @@ ng serve --open
 
 The server begins listening on HTTP port 4200. 
 
-![Server is running](/media/angular-server-process.png)
+![Server is running]({{ site.baseurl }}/media/angular-server-process.png)
 
 <br>
 
@@ -95,7 +95,7 @@ The Angular CLI has included many files and folders for us to begin our developm
 * The `src` folder: This is where all the code for your app will reside
 * The `src/app` folder:  This folder contains the code assets for the "app" component (every new component that we create will be in its own folder within `src`)
 
-![New app folder structure](/media/angular-cli-project-structure-2.png)
+![New app folder structure]({{ site.baseurl }}/media/angular-cli-project-structure-2.png)
 
 <br>
 

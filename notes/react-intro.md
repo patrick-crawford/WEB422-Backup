@@ -63,7 +63,7 @@ Notice the light green box (titled "Info container") surrounding the content bel
 
 Notice also the darker green box (titled "Current weather details"). That is also a component, with embedded components inside. 
 
-![Weather app](/media/react-components-weather.png)
+![Weather app]({{ site.baseurl }}/media/react-components-weather.png)
 
 <br>
 
@@ -75,6 +75,6 @@ As a React app, each rectangle is a *component*. In contrast to the above, many 
 
 Notice the nesting of components.
 
-![Online store app](/media/react-components-shopping.png)
+![Online store app]({{ site.baseurl }}/media/react-components-shopping.png)
 
 <br>

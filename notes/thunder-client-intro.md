@@ -19,7 +19,7 @@ Its user interface gives us the ability to "compose" a request. Then, we can sen
 
 After installing the extension, you can get started by clicking on the new "thunderbolt" icon in the left sidebar.  This should show you the following screen, with the option to create a new request.
 
-![Thunder Client start screen](/media/thunder-client-start.png)
+![Thunder Client start screen]({{ site.baseurl }}/media/thunder-client-start.png)
 
 ### Important features
 
@@ -27,7 +27,7 @@ Once you click the "New Request" button, you will notice that the screen is popu
 1. Request and response areas - enables you to inspect the contents of both the request and the response (right pane)
 3. List of past requests - saves all requests as a history under the "Activity" tab (left pane)
 
-![Thunder Client start screen new request](/media/thunder-client-start-2.png)
+![Thunder Client start screen new request]({{ site.baseurl }}/media/thunder-client-start-2.png)
 
 <br>
 
@@ -51,7 +51,7 @@ To compose an HTTP GET request, two settings are required:
 
 Other settings may be required (e.g. security-related info, etc.), and we'll see those in the future. 
 
-![Simple GET request](/media/thunder-client-get.png)
+![Simple GET request]({{ site.baseurl }}/media/thunder-client-get.png)
 
 <br>
 
@@ -69,13 +69,13 @@ As above, other settings may be required, but these will enable you to get start
 
 The image below shows a simple post request, with metadata for the first three settings. Notice that you must select the "Headers" tab to get to the data-entry panel. The header we want is `Content-Type`, and its value will be `application/json`, because that's what we're sending
 
-![Simple POST request](/media/thunder-client-post-1.png)
+![Simple POST request]({{ site.baseurl }}/media/thunder-client-post-1.png)
 
 <br>
 
 The image below shows how to enter metadata for the fourth setting. Select the "Body" tab and then in the text entry area, add the JSON that correctly defines a new item for the collection.
 
-![Simple POST request, body](/media/thunder-client-post-2.png)
+![Simple POST request, body]({{ site.baseurl }}/media/thunder-client-post-2.png)
 
 <br>
 
